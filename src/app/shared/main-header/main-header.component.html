@@ -1,0 +1,186 @@
+<header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <!-- Top bar -->
+    <div class="bg-gray-100 text-sm text-gray-700 flex justify-end  py-[13px] space-x-6 text-nowrap max-lg:hidden">
+        <nav
+            class="w-[80%] m-auto flex justify-end space-x-7 text-[16px]  tracking-normal leading-[20px] text-black font-semibold">
+            <a href="#" class="hover:text-blue-600">Log in</a>
+            <a href="#" class="hover:text-blue-600">Open a franchise</a>
+            <a href="#" class="hover:text-blue-600">Licenses</a>
+            <a href="#" class="hover:text-blue-600">Become a lecturer</a>
+        </nav>
+    </div>
+
+    <!-- Main desktop navbar -->
+    <div class="w-full px-6 h-22 text-nowrap max-lg:hidden">
+        <div
+            class="max-w-[87%] max-[1440px]:max-w-[100%] max-[1260px]:mx-5  mx-auto flex items-center justify-between h-full">
+            <!-- Logo and brand -->
+            <div class="flex items-center space-x-2 cursor-pointer" routerLink="/">
+                <img src="favicon.ico" alt="Logo" class="w-11 h-12 max-[1260px]:h-8 max-[1260px]:w-8">
+                <span class="font-semibold text-lg  text-gray-800 max-[1260px]:text-sm ">Little Polyglot</span>
+            </div>
+
+            <!-- Nav items -->
+            <nav>
+                <ul
+                    class="flex space-x-6 min-[1440px]:space-x-4 max-[1260px]:space-x-4 max-[1260px]:text-sm text-md font-semibold text-gray-800 items-center">
+                    <!-- Dropdown with icon -->
+                    <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
+                        <div class="flex items-center space-x-1">
+                            <button class="hover:text-black font-bold leading-0.5"
+                                routerLink="/courses">Courses</button>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
+                                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-40 z-50">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Frontend</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Backend</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Fullstack</a>
+                        </div>
+                    </li>
+
+                    <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
+                        <div class="flex items-center space-x-1">
+                            <button class="hover:text-black font-bold leading-0.5">Find a school</button>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
+                                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-48 z-50">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Public</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Private</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">International</a>
+                        </div>
+                    </li>
+
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5"><a href="#"
+                            class="hover:text-black">Price-list</a>
+                    </li>
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5"><a href="#"
+                            class="hover:text-black">Method</a></li>
+                    <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
+                        <div class="flex items-center space-x-1">
+                            <button class="hover:text-black font-bold leading-0.5">For the parents</button>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
+                                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-40 z-50">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Articles</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">News</a>
+                        </div>
+                    </li>
+                    <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
+                        <div class="flex items-center space-x-1">
+                            <button class="hover:text-black font-bold leading-0.5">Blog</button>
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
+                                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-40 z-50">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Articles</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100">News</a>
+                        </div>
+                    </li>
+
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5"><a href="#" class="hover:text-black">About
+                            us</a></li>
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5"><a href="#"
+                            class="hover:text-black">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Save button -->
+            <button
+                class="bg-pink-600 text-white font-bold text-sm px-10 py-3.5 max-[1260px]:px-6 max-[1260px]:py-2.5 rounded-full shadow-md hover:bg-pink-950">
+                SAVE
+            </button>
+        </div>
+    </div>
+</header>
+<!-- Mobile Header -->
+<div class="w-full h-full min-lg:hidden ">
+    <header
+        class="flex items-center justify-between fixed px-5 py-3 w-full  bg-white z-60 m-auto min-[1024px]:hidden">
+        <button aria-label="Menu" class="text-2xl cursor-pointer " (click)="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="flex items-center space-x-2">
+            <img src="favicon.ico" alt="Logo" class="w-8 h-9" />
+            <span class="font-semibold text-lg text-gray-800">Little Polyglot</span>
+        </div>
+        <button
+            class="bg-pink-600 text-white font-semibold text-sm rounded-full px-6 py-2 hover:bg-pink-700 transition">
+            SAVE
+        </button>
+    </header>
+
+    <!-- Mobile Menu Content (Toggleable) -->
+    <div *ngIf="isMobileMenuOpen"
+        class="min-[1024px]:hidden fixed top-18 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
+        <!-- Close Button -->
+        <div class="w-full h-10 bg-gray-100 flex justify-end items-center px-4">
+            <button aria-label="Close menu" (click)="closeMobileMenu()"
+                class="text-pink-600 text-xxl font-bold rounded-full w-8 h-8 flex items-center justify-center leading-none">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1L1 13M1 1L13 13" stroke="#EC268F" stroke-width="2px" stroke-linecap="round"
+                        stroke-linejoin="round" fill="none"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Links (Main Menu) -->
+        <main *ngIf="!activeSubmenu"
+            class="bg-white flex-grow p-5 space-y-4 text-black font-semibold text-sm leading-6">
+            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full"
+                (click)="openSubmenu('courses')">
+                <span>Courses</span>
+                <i class="fas fa-chevron-right text-sm"></i>
+            </a>
+            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full" href="#">Find a
+                school</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full" href="#">Price-list</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full" href="#">Method</a>
+            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full"
+                (click)="openSubmenu('parent')">
+                <span>For the parent</span>
+                <i class="fas fa-chevron-right text-sm"></i>
+            </a>
+            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full"
+                (click)="openSubmenu('blog')">
+                <span>Blog</span>
+                <i class="fas fa-chevron-right text-sm"></i>
+            </a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">About us</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Contact</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Log in</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Open a franchise</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Licenses</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Become a lecturer</a>
+        </main>
+
+        <!-- Submenu Panel -->
+        <main *ngIf="activeSubmenu" class="bg-white flex-grow p-5 space-y-4 text-black font-semibold text-sm leading-6">
+            <a class="cursor-pointer hover:text-pink-400 flex gap-2 font-bold items-center w-full"
+                (click)="backToMainMenu()">
+                <i class="fas fa-chevron-left text-[10px]"></i>
+                <span class="pb-1 text-xl text-pink-500">Return</span>
+            </a>
+            <ng-container *ngFor="let item of getSubmenuItems(activeSubmenu)">
+                <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">{{ item }}</a>
+            </ng-container>
+        </main>
+
+    </div>
+
+
+</div>
