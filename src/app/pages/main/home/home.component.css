@@ -1,0 +1,6 @@
+.parent-carousel::-webkit-scrollbar {
+  display: none;
+}
+.parent-carousel::-webkit-scrollbar-thumb {
+  display: none;
+}
