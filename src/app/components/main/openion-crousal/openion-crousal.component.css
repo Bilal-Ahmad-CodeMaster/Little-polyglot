@@ -1,0 +1,19 @@
+.review-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Ensure the container takes the full width of its parent */
+}
+
+.review-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Ensure the track also takes the full width of the container */
+}
+
+.review-slide {
+  flex-shrink: 0;
+  width: 100%; /* Each slide takes the full width of the container */
+  padding: 1rem;
+  box-sizing: border-box; /* Prevent padding from affecting the width */
+  overflow: hidden; /* Prevent content overflow inside each slide */
+}
