@@ -1,0 +1,23 @@
+<div class="bg-white flex flex-col items-center p-4">
+    <h2 class="text-center text-black text-3xl font-semibold my-10">
+        {{ title }}
+    </h2>
+
+    <div class="relative max-w-7xl w-full rounded-lg overflow-hidden">
+        <ng-container *ngIf="!showVideo; else videoBlock">
+            <img [src]="thumbnailUrl" alt="Video thumbnail" class="w-full h-auto object-cover rounded-lg" />
+            <button (click)="playVideo()" aria-label="Play demo lesson video"
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
+                type="button">
+                <svg aria-hidden="true" class="w-7 h-7 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"></path>
+                </svg>
+            </button>
+        </ng-container>
+
+        <ng-template #videoBlock>
+            <video [src]="videoUrl" controls autoplay class="w-full h-auto rounded-lg"
+                aria-label="Demo lesson video"></video>
+        </ng-template>
+    </div>
+</div>

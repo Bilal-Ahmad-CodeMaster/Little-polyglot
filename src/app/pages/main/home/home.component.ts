@@ -9,7 +9,7 @@ import { OpenionCrousalComponent } from "../../../components/main/openion-crousa
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   @ViewChild('carouselContainer') carouselContainer!: ElementRef<HTMLDivElement>;
 
   featureArray: any[] = [
@@ -94,44 +94,6 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  isCarouselMode = false;
-  currentIndex = 0;
-  itemsPerView = 3;
 
-  get visibleDots() {
-    return new Array(Math.ceil(this.cards.length / this.itemsPerView));
-  }
 
-  @HostListener('window:resize')
-  onResize() {
-    this.isCarouselMode = window.innerWidth <= 1340;
-  }
-
-  ngOnInit() {
-    this.onResize();
-  }
-
-  scrollToIndex(index: number) {
-    const container = this.carouselContainer?.nativeElement;
-    const scrollAmount = index * (container.scrollWidth / Math.ceil(this.cards.length / this.itemsPerView));
-    container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-    this.currentIndex = index;
-  }
-
-  prev() {
-    if (this.currentIndex > 0) {
-      this.scrollToIndex(this.currentIndex - 1);
-    }
-  }
-
-  next() {
-    const maxIndex = Math.ceil(this.cards.length / this.itemsPerView) - 1;
-    if (this.currentIndex < maxIndex) {
-      this.scrollToIndex(this.currentIndex + 1);
-    }
-  }
-
-  goTo(index: number) {
-    this.scrollToIndex(index);
-  }
 }

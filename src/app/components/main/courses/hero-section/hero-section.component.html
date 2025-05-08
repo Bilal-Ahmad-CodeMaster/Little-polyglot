@@ -1,0 +1,35 @@
+<div class="relative overflow-hidden bg-[#FCEFD9] mb-20">
+    <div class="max-w-[1300px] mx-auto ">
+        <!-- Breadcrumb -->
+        <nav class="text-[15px] pt-10 px-5">
+            <a [href]="content.breadcrumb.link" class="text-pink-600 font-semibold underline">
+                {{ content.breadcrumb.label }}
+            </a>
+            <span class="text-black">| {{ content.breadcrumb.current }}</span>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 h-full px-5">
+            <!-- Text Section -->
+            <div class="w-full mb-8 lg:mb-0">
+                <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug text-black">
+                    {{ content.title }}<br />{{ content.subtitle }}
+                </h1>
+                <p class="text-[14px] text-black leading-relaxed">
+                    <strong>{{ content.description.split(':')[0] }}:</strong>
+                    {{ content.description.split(':')[1] }}
+                </p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="w-full flex justify-center">
+                <img [src]="content.imageUrl" alt="Hero image" class="w-full  min-h-full object-contain" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Pattern Strip -->
+    <div class="w-full max-h-12">
+        <img alt="Colorful" class="w-full object-cover" src="/assets/spacer-desktop.png" width="1920" />
+    </div>
+</div>
