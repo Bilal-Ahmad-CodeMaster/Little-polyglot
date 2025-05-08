@@ -154,15 +154,12 @@
 
 <app-openion-crousal></app-openion-crousal>
 
-<div class="px-4 py-10 bg-[#f0f8f9]">
+<div class="px-4 py-10 bg-[#f0f8f9]    ">
     <h2 class="text-center text-black text-lg mb-8">For the parent</h2>
 
-    <div class="parent-carousel-wrapper" [class.carousel-mode]="isCarouselMode">
-        <div class="parent-carousel flex gap-6 justify-center max-w-6xl mx-auto transition-transform duration-300"
-            [ngClass]="{
-        'overflow-x-auto flex-nowrap': isCarouselMode,
-        'flex-wrap': !isCarouselMode
-      }" #carouselContainer>
+    <div class="parent-carousel-wrapper">
+        <div class="flex-wrap parent-carousel flex gap-6 justify-center max-w-6xl mx-auto transition-transform duration-300"
+            #carouselContainer>
             <div *ngFor="let card of cards" class="bg-white rounded-md shadow-sm p-6 w-full sm:w-72 flex-shrink-0">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="p-2 rounded border border-pink-400 text-pink-500">
@@ -179,29 +176,6 @@
             </div>
         </div>
 
-        <!-- Navigation (only show in carousel mode) -->
-        <nav *ngIf="isCarouselMode" class="flex flex-col items-center mt-6 space-y-3">
-            <ul class="flex items-center space-x-4 text-pink-600 text-sm">
-                <li>
-                    <button (click)="prev()" aria-label="Previous" class="focus:outline-none cursor-pointer">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                </li>
-                <li *ngFor="let dot of visibleDots; let i = index">
 
-                    <button [ngClass]="{
-              'bg-pink-600': i === currentIndex,
-              'bg-gray-300': i !== currentIndex
-            }" class="w-2.5 h-2.5 rounded-full cursor-pointer" (click)="goTo(i)"
-                        [attr.aria-label]="'Section ' + (i + 1)"></button>
-                </li>
-                <li>
-                    <button (click)="next()" aria-label="Next" class="focus:outline-none cursor-pointer">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </li>
-            </ul>
-
-        </nav>
     </div>
 </div>
