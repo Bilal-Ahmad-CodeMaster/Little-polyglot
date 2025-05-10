@@ -1,0 +1,337 @@
+<app-hero-section [content]="{
+    breadcrumb: {
+      label: 'Home page',
+      link: '/',
+      current: 'Method'
+    },
+    title: 'Early Stage English Teaching Method',
+    subtitle: '',
+    description: 'Rhymes, music, movement – ​​there is no room for boredom during our classes! We have 12 superpowers that draw children into the world of free communication, break their fears, and change the blushes of embarrassment into flushes of excitement.',
+    imageUrl: 'assets/methods/method-hero.webp',
+  }"></app-hero-section>
+
+
+
+
+<main class="w-full   py-10">
+    <h2 class="text-center text-3xl  font-normal mb-10">
+        More than just learning English
+    </h2>
+
+    <section class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-20 mb-14">
+        <div class="flex flex-col items-center">
+            <span class="text-pink-500 font-semibold text-4xl leading-none">31</span>
+            <span class="text-gray-600 text-sm mt-1">years of method development</span>
+        </div>
+        <div class="border-l border-gray-300 h-10 hidden sm:block"></div>
+        <div class="flex flex-col items-center">
+            <span class="text-pink-500 font-semibold text-4xl leading-none">12</span>
+            <span class="text-gray-600 text-sm mt-1">proven superpowers</span>
+        </div>
+        <div class="border-l border-gray-300 h-10 hidden sm:block"></div>
+        <div class="flex flex-col items-center">
+            <span class="text-pink-500 font-semibold text-4xl leading-none">10</span>
+            <span class="text-gray-600 text-sm mt-1">competences of the future</span>
+        </div>
+    </section>
+
+    <section class="max-w-[70%] mx-auto text-sm sm:text-base text-gray-900 leading-relaxed">
+        <p class="mb-4">
+            <strong>Our method is the result of many years of experience in teaching children and young
+                people.</strong> We operate in accordance with the growth mindset approach. It assumes a
+            developmental view of the capabilities of the human brain, treating learning as a process. Thanks to it,
+            our students are not afraid of challenges and do not treat mistakes as failures. They willingly take the
+            risk of further development, because they know that a possible stumble does not invalidate their
+            previous achievements. It is only a stage on the way to a new goal.
+        </p>
+        <p>
+            <strong>By teaching English, we simultaneously develop in students the competences of the
+                future,</strong> useful in other areas of life, including: creativity, openness, critical thinking
+            and a focus on development.
+        </p>
+    </section>
+</main>
+
+
+
+
+<div class="bg-[#f3fcfb] min-h-screen flex flex-col items-center py-10 px-4">
+    <h2 class="text-black text-lg mb-8">Discover our superpowers</h2>
+    <div class="flex flex-wrap justify-center gap-6  w-full">
+        <app-superpower-card *ngFor="let card of cards" [card]="card" [isExpanded]="expandedCardId === card.id"
+            [onToggle]="toggleCard.bind(this, card.id)"></app-superpower-card>
+    </div>
+</div>
+
+
+
+<main>
+
+    <div
+        class="competences__container col-span-full sm:col-span-2 lg:col-span-4 w-[70%] mx-auto text-center flex flex-col justify-center items-center my-24">
+
+        <!-- Centered Heading -->
+        <h2 class="competences__heading text-2xl sm:text-3xl font-bold w-full text-center my-5">
+            Our English courses develop skills for the future
+        </h2>
+
+        <!-- Centered Subheading -->
+        <p class="competences__sub-heading text-base sm:text-lg text-center">
+            The comprehensive development of children is our priority. We focus on the gradual deepening of various
+            competencies necessary in the 21st century world.
+        </p>
+
+
+    </div>
+    <div class="max-w-7xl sm:mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 mx-3">
+        <!-- Kids -->
+        <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
+            <header class="flex items-center gap-3 bg-[#f6b1c0] rounded-t-md px-4 py-5">
+                <svg class="courses-icon" width="37" height="40" viewBox="0 0 37 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
+                        fill=" white "></path>
+                    <path
+                        d="M23.8038 11.65H20.3478L16.1898 17.248V11.65H13.2738V24.25H16.1898V18.688L20.3298 24.25H23.8038L18.8538 17.896L23.8038 11.65Z"
+                        fill="#161616"></path>
+                </svg>
+                <h2 class="font-bold text-lg text-black flex-1">Kids</h2>
+                <span class="text-black font-bold text-lg">3-6 years</span>
+            </header>
+            <ul class="px-6 py-4 pb-28 space-y-3 text-sm text-gray-900">
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#f6b1c0] text-[#f6b1c0] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    openness
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#f6b1c0] text-[#f6b1c0] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    creative expression
+                </li>
+            </ul>
+        </section>
+
+        <!-- Juniors -->
+        <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
+            <header class="flex items-center gap-3 bg-[#fdcf9c] rounded-t-md px-4 py-5">
+                <svg class="courses-icon" width="37" height="40" viewBox="0 0 37 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
+                        fill=" white "></path>
+                    <path
+                        d="M17.6569 24.574C20.5369 24.574 22.2649 22.9 22.2649 19.804V11.65H19.3669V19.984C19.3669 21.226 18.8089 22.072 17.6569 22.072C16.5229 22.072 15.9829 21.208 15.9829 19.912H13.0669C13.0669 22.612 14.6149 24.574 17.6569 24.574Z"
+                        fill="#161616"></path>
+                </svg>
+                <h2 class=" text-black text-lg font-bold flex-1">Juniors</h2>
+                <span class="text-black text-lg font-bold  ">7-10 years</span>
+            </header>
+            <ul class="px-6 py-4 pb-28 space-y-3 text-sm text-gray-900">
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#fdcf9c] text-[#fdcf9c] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    Creativity
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#fdcf9c] text-[#fdcf9c] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    communication skills
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#fdcf9c] text-[#fdcf9c] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    development mindset
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold ">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-amber-200 text-[#fdcf9c] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    openness
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold ">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-amber-200 text-[#fdcf9c] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    creative expression
+                </li>
+            </ul>
+        </section>
+
+        <!-- Teens -->
+        <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
+            <header class="flex items-center gap-3 bg-[#ffd549] rounded-t-md px-4 py-5">
+                <svg class="courses-icon" width="37" height="40" viewBox="0 0 37 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
+                        fill=" white "></path>
+                    <path d="M16.545 24.25H19.443V14.242H22.917V11.65H13.089V14.242H16.545V24.25Z" fill="#161616">
+                    </path>
+                </svg>
+                <h2 class="font-bold text-lg text-black flex-1">Teens</h2>
+                <span class="text-black font-bold text-lg">11-14 years old</span>
+            </header>
+            <ul class="px-6 py-4 pb-28 space-y-3 text-sm text-gray-900">
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#ffd549] text-[#ffd549] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    critical thinking
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#ffd549] text-[#ffd549] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    social competences
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#ffd549] text-[#ffd549] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    ability to learn
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-yellow-200 text-[#ffd549] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    Creativity
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-yellow-200 text-[#ffd549] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    communication skills
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-yellow-200 text-[#ffd549] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    development mindset
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-yellow-200 text-[#ffd549] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    openness
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-yellow-200 text-[#ffd549] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    creative expression
+                </li>
+            </ul>
+        </section>
+
+        <!-- Masters -->
+        <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
+            <header class="flex items-center gap-3 bg-[#ee4023] rounded-t-md px-4 py-5">
+                <svg class="courses-icon" width="37" height="40" viewBox="0 0 37 40" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
+                        fill=" white "></path>
+                    <path
+                        d="M11.3051 24.25H14.0951V16.024L16.9571 24.25H19.1171L21.9071 16.078V24.25H24.6971V11.65H21.3851L18.0371 20.596L14.6891 11.65H11.3051V24.25Z"
+                        fill="#161616"></path>
+                </svg>
+                <h2 class="font-bold text-lg text-black flex-1">Masters</h2>
+                <span class="text-black font-bold text-lg">15-19 years old</span>
+            </header>
+            <ul class="px-6 py-4 pb-28 space-y-3 text-sm text-gray-900">
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#ee4023] text-[#ee4023] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    autonomy
+                </li>
+                <li class="flex items-center gap-2 font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-[#ee4023] text-[#ee4023] text-xs">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    proactivity
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    critical thinking
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    social competences
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    ability to learn
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    Creativity
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    communication skills
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    development mindset
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    openness
+                </li>
+                <li class="flex items-center gap-2 text-black font-semibold">
+                    <span
+                        class="flex items-center justify-center w-5 h-5 rounded-full border border-red-300 text-[#ee4023] text-xs">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    creative expression
+                </li>
+            </ul>
+        </section>
+    </div>
+</main>

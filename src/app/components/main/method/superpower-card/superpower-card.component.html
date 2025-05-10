@@ -1,0 +1,17 @@
+<div class="bg-white rounded-md shadow-sm w-72 p-4 flex flex-col items-center transition-all duration-500">
+    <img [src]="card.icon" [alt]="card.alt" class="mb-2 w-12 h-8 object-cover" />
+    <h3 class="font-semibold text-xl  mb-0.5">{{ card.title }}</h3>
+    <p class="text-sm font-normal mb-2 text-center leading-tight">
+        {{ card.subtitle }}
+    </p>
+
+    <div *ngIf="isExpanded" class="text-sm font-normal text-center leading-tight mb-2 transition-all duration-500">
+        <div [innerHTML]="card.expandedText"></div>
+    </div>
+
+    <button (click)="onToggle()"
+        class="text-sm font-normal text-[#ea1e79] hover:underline mt-auto flex items-center gap-1">
+        <span>{{ isExpanded ? 'Collapse' : 'Expand' }}</span>
+        <i class="fas" [ngClass]="isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+    </button>
+</div>
