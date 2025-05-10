@@ -10,6 +10,7 @@ import { EnglishFor3To6YearKidsComponent } from './pages/main/courses/english-fo
 import { EnglishFor7To10YearComponent } from './pages/main/courses/english-for-7-to-10-year/english-for-7-to-10-year.component';
 import { EnglishFor11To14YearTeenComponent } from './pages/main/courses/english-for-11-to-14-year-teen/english-for-11-to-14-year-teen.component';
 import { EnglishFor14To19YearOldComponent } from './pages/main/courses/english-for-14-to-19-year-old/english-for-14-to-19-year-old.component';
+import { MethodComponent } from './pages/main/method/method.component';
 
 
 export const routes: Routes = [
@@ -23,6 +24,8 @@ export const routes: Routes = [
             { path: 'courses/english-for-children-7-10', component: EnglishFor7To10YearComponent },
             { path: 'courses/english-for-children-11-14', component: EnglishFor11To14YearTeenComponent },
             { path: 'courses/english-for-children-14-19', component: EnglishFor14To19YearOldComponent },
+            { path: 'method', component: MethodComponent },
+
             { path: 'about', component: AboutComponent },
         ],
     },
