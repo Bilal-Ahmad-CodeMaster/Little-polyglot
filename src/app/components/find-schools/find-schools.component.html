@@ -57,13 +57,14 @@
 <div class="flex flex-col lg:flex-row h-[80vh]">
     <!-- Location List -->
     <div class="w-full lg:w-[30%] overflow-y-auto border-r border-gray-200">
-        <button *ngFor="let item of locations" class="w-full text-left px-4 py-6 border-b hover:bg-gray-50 transition">
+        <button *ngFor="let item of locations" class="w-full text-left px-4 py-6 border-b hover:bg-gray-50 transition"
+            (click)="sendSchoolDetails(item)">
             <div class="flex flex-wrap gap-2 mb-2">
                 <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.title }}</span>
                 <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.description }}</span>
             </div>
             <div class="mb-2">
-                <h2 class="text-lg font-medium text-gray-900">{{ item.badges.join(', ') }}</h2>
+                <h2 class="text-lg font-medium text-gray-900">{{ item.branches.join(', ') }}</h2>
                 <p class="text-sm text-gray-700">{{ item.description }}</p>
             </div>
             <ul class="list-disc list-inside text-gray-600 text-sm">
@@ -72,11 +73,17 @@
         </button>
     </div>
 
-    <!-- Embedded Map -->
-    <div class="hidden lg:block lg:w-[70%]">
-        <iframe class="w-full h-full border-0" loading="lazy" allowfullscreen
+    <!-- Embedded Map with Modal -->
+    <div class="relative w-full lg:w-[70%] h-[600px] overflow-hidden">
+        <!-- Google Map Iframe -->
+        <iframe class="absolute top-0 left-0 w-full h-full border-0 z-0" loading="lazy" allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111256.75802333384!2d71.60761057736994!3d29.3769149704731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90c46c611ad5%3A0xfcdf0da8e103f862!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1730097186118!5m2!1sen!2s">
         </iframe>
+
+        <!-- Modal -->
+        <app-school-detail-modal class="z-10 absolute left-6 top-6 inset-0"></app-school-detail-modal>
     </div>
+
+
 </div>
