@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { HeroSectionComponent } from "../../../components/main/courses/hero-section/hero-section.component";
 import { SuperpowerCardComponent } from "../../../components/main/method/superpower-card/superpower-card.component";
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-method',
-  imports: [HeroSectionComponent, SuperpowerCardComponent, NgFor],
+  imports: [HeroSectionComponent, SuperpowerCardComponent, NgFor,RouterLink],
   templateUrl: './method.component.html',
   styleUrl: './method.component.css'
 })
