@@ -1,0 +1,107 @@
+<section *ngIf="isModalOpen"
+    class="absolute inset-0 z-10 lg:shadow-lg lg:max-w-lg lg:max-h-[400px] bg-white w-full h-full">
+
+    <!-- Fixed Header -->
+    <div class="bg-[#F3F5F8] p-6 sticky top-0 z-10">
+        <div class="flex justify-between items-center">
+            <h2 class="text-xl font-semibold">{{ schoolDetails.title }}</h2>
+            <button class="text-gray-500 hover:text-red-500" (click)="closeModal()">
+                <span class="material-icons cursor-pointer">close</span>
+            </button>
+        </div>
+        <div class="mt-2 text-sm">
+            <p class="font-medium" *ngFor="let address of schoolDetails.details">{{ address }}</p>
+            <p>{{ schoolDetails.description }}</p>
+            <ul class="flex flex-wrap gap-2 mt-2 text-xs">
+                <li class="bg-white font-semibold text-black px-2 py-1 rounded"
+                    *ngFor="let branch of schoolDetails.branches">
+                    {{ branch }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scrollable Content -->
+    <div #scrollContainer class="overflow-y-auto px-4 pb-28 pt-4 max-h-[calc(100%-128px)] bg-white"
+        (scroll)="onScroll()">
+
+        <!-- Tabs -->
+        <nav class="mt-0">
+            <ul class="flex border-b border-gray-200 text-sm">
+                <li *ngFor="let tab of tabs; let i = index" (click)="scrollToTab(tabSections[i].el, tab)"
+                    class="px-4 py-2 cursor-pointer hover:text-pink-500" [ngClass]="{
+                        'border-b-2 border-pink-500 text-pink-500 font-semibold': activeTab === tab
+                    }">
+                    {{ tab }}
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Categories -->
+        <div class="flex overflow-x-auto gap-2 mt-4 pb-2">
+            <div *ngFor="let cat of categories; let i = index"
+                class="px-4 py-2 whitespace-nowrap rounded-full border cursor-pointer"
+                [ngClass]="i === activeCategory ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800'"
+                (click)="activeCategory = i">
+                {{ cat }}
+            </div>
+        </div>
+
+        <!-- Price Card -->
+        <div #priceListSection id="price-list" class="mt-4 border rounded-lg p-4 bg-gray-50">
+            <h3 class="text-lg font-semibold">Kids (1xweek)</h3>
+            <p class="text-sm text-gray-600">Classes once a week</p>
+            <div class="flex justify-between mt-3 text-sm">
+                <div>
+                    <p><span class="font-semibold">1 x 45 min</span> per week</p>
+                    <p><span class="font-semibold">34 classes</span> per school year</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xl font-bold">190 PLN</p>
+                    <p class="text-xs text-gray-500">per month</p>
+                    <p class="text-xs mt-1 text-gray-500">+ 220 PLN for educational materials</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div #contactSection id="contact" class="mt-4 text-sm text-gray-700">
+            <p class="mb-2">Contact us at:</p>
+            <ul>
+                <li><strong>Phone:</strong> +48 123 456 789</li>
+                <li><strong>Email:</strong> contact&#64;earlystage.com</li>
+                <li><strong>Hours:</strong> Mon-Fri 8:00 AM - 5:00 PM</li>
+            </ul>
+        </div>
+
+        <!-- Gallery -->
+        <div #gallerySection id="gallery" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <img *ngFor="let img of ['img1.jpg', 'img2.jpg', 'img3.jpg']" [src]="img" alt="Gallery Image"
+                class="rounded-lg w-full h-32 object-cover" />
+        </div>
+
+        <!-- CTA -->
+        <div #demoSection id="demo" class="mt-4 text-sm text-gray-700">
+            <p>
+                You can schedule a demonstration lesson to experience our teaching method.
+                <br />
+                Fill the form or contact us directly.
+            </p>
+            <button class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                Schedule Now
+            </button>
+        </div>
+    </div>
+
+    <!-- Fixed Footer -->
+    <div
+        class="flex justify-between items-center gap-4 px-4 py-6 bg-white sticky bottom-0 z-10 border-t border-gray-200 lg:shadow-lg">
+        <a class="px-4 py-2 rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200 transition w-full text-center">
+            Details
+        </a>
+        <a
+            class="px-4 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700 transition font-semibold w-full text-center">
+            Sign up your child
+        </a>
+    </div>
+</section>

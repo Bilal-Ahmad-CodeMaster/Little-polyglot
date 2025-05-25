@@ -1,11 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { SchoolDetailModalComponent } from "../../modals/school-detail-modal/school-detail-modal.component";
+import { SharedServiceService } from '../../services/shared-service.service';
 
 @Component({
   selector: 'app-find-schools',
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink],
+  imports: [NgIf, NgFor, RouterLink, SchoolDetailModalComponent],
   templateUrl: './find-schools.component.html',
   styleUrl: './find-schools.component.css',
 })
@@ -19,7 +21,7 @@ export class FindSchoolsComponent {
     '7th-8th grade',
     'High School'
   ];
-
+  constructor(private sharedService: SharedServiceService) {}  
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
@@ -53,7 +55,7 @@ export class FindSchoolsComponent {
     {
       title: 'ul. Antoniuk Fabryczny 5/7',
       description: 'Szkoła Podstawowa nr 24 im. 2 Korpusu Polskich Sił Zbrojnych na Zachodzie',
-      badges: ['Białystok', 'Białystok I'],
+      branches: ['Białystok', 'Białystok I'],
       details: [
         'Zajęcia na terenie tej placówki',
         'Zapraszamy uczniów z pobliskich placówek'
@@ -62,11 +64,22 @@ export class FindSchoolsComponent {
     {
       title: 'ul. Noniewicza 85C/16',
       description: 'Lokal Noniewicza 85C/16',
-      badges: ['Białystok', 'Białystok I'],
+      branches: ['Białystok', 'Białystok I'],
       details: [
         'Zajęcia na terenie tej placówki',
         'Zapraszamy uczniów z pobliskich placówek'
       ]
     }
   ];
+  sendSchoolDetails(school: { title: string; description: string; branches: string[]; details: string[] }) {
+    // Logic to handle sending school details
+
+
+    this.sharedService.showDetails({ title: school.title, description: school.description, branches: school.branches, details: school.details });
+    this.openModal();
+
+  }
+  openModal() {
+    this.sharedService.showModal(true);
+  }
 }
