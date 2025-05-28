@@ -1,5 +1,224 @@
-<!-- about-page.component.html -->
-<section class="p-8 text-center">
-    <h2 class="text-3xl font-bold mb-4 text-green-600">About Us</h2>
-    <p class="text-gray-700">This page hides the footer.</p>
-</section>
+<!-- hero section  -->
+
+<div class="relative overflow-hidden bg-[#FCEFD9] mb-20">
+    <div class="max-w-[1300px] mx-auto px-5">
+        <!-- Breadcrumb -->
+        <nav class="text-sm pt-10 mb-4" aria-label="Breadcrumb">
+            <ol class="list-none flex space-x-2">
+                <li>
+                    <a routerLink="/"
+                        class="text-pink-600 font-semibold underline hover:text-pink-700 transition">Home</a>
+                </li>
+                <li class="text-black">|</li>
+                <li class="text-black">About</li>
+            </ol>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 py-0">
+            <!-- Text Section -->
+            <div class="w-full lg:w-1/2">
+                <h1 class="text-3xl sm:text-4xl font-bold text-black leading-snug mb-4">
+                    About
+                </h1>
+                <p class="text-base text-black leading-relaxed">
+                    Without dreams, we would never spread our wings. Without action, we would never learn to fly.
+                    Without school, we would never be able to share what gives us wings.
+                </p>
+            </div>
+
+            <!-- Image Section -->
+            <div class="w-full lg:w-1/2 flex justify-center max-h-[300px]">
+                <img src="assets/about/about-desktop.webp" alt="Students learning at Early Stage"
+                    class="w-full h-auto object-contain" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative Pattern Strip -->
+    <div class="w-full h-12">
+        <img src="/assets/spacer-desktop.png" alt="Decorative colorful strip" class="w-full h-full object-cover"
+            width="1920" />
+    </div>
+</div>
+
+
+
+<app-feature [featureArray]="featureArray"></app-feature>
+
+
+<main class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-center text-2xl font-normal mb-6">
+        Who creates Early Stage?
+    </h1>
+    <p class="text-start text-sm max-w-3xl mx-auto mb-6 leading-relaxed">
+        Early Stage is an English language school that was created out of a passion for teaching, a need for
+        development, and authentic contact with children and young people. School branches throughout Poland are created
+        by people who hold these values close.
+        <br />
+        We cooperate with franchisees who create a space friendly for children's development. Our methodologists support
+        teachers in improving their work and create ambitious educational materials. Teachers with passion, commitment
+        and empathy conduct classes, focusing on authentic contact with students. We invite parents who care about the
+        comprehensive development of their children, but above all children, whose colorful world drives us to action.
+    </p>
+
+    <!-- Carousel -->
+    <div class="max-w-3xl mx-auto mt-10 relative">
+        <ng-container *ngIf="items[currentIndex] as item">
+            <!-- BANNER -->
+            <img *ngIf="item.type === 'banner'" [src]="item.thumbnail" class="w-full rounded-lg object-cover"
+                alt="Banner" />
+
+            <!-- VIDEO -->
+            <div *ngIf="item.type === 'video'" class="relative">
+                <img *ngIf="!item.playing" [src]="item.thumbnail" class="w-full rounded-lg object-cover cursor-pointer"
+                    (click)="showVideo(item)" />
+                <button *ngIf="!item.playing" (click)="showVideo(item)"
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                </button>
+                <video *ngIf="item.playing" class="w-full rounded-lg" [src]="item.videoUrl" controls autoplay
+                    (ended)="onVideoEnded(item)"></video>
+            </div>
+        </ng-container>
+
+        <!-- Controls -->
+        <nav class="flex justify-center items-center space-x-6 mt-6 text-pink-600 text-sm select-none">
+            <button (click)="prev()" aria-label="Previous" class="focus:outline-none">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <ng-container *ngFor="let item; index as i of items">
+                <span class="w-3 h-3 rounded-full inline-block"
+                    [ngClass]="i === currentIndex ? 'bg-pink-600' : 'bg-gray-300'"></span>
+            </ng-container>
+            <button (click)="next()" aria-label="Next" class="focus:outline-none">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </nav>
+    </div>
+</main>
+
+
+
+<main class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <img alt="Two women posing for a photo, one wearing blue glasses and pink sweater, the other with blonde hair and green shirt"
+        class="rounded-lg w-full max-w-md object-cover" height="300"
+        src="https://storage.googleapis.com/a1aa/image/b1ac4653-607b-4f97-0b84-2105a9573504.jpg" width="400" />
+    <section class="max-w-xl">
+        <h1 class="text-2xl md:text-3xl font-normal mb-4 leading-snug">
+            How did Early Stage come about?
+        </h1>
+        <p class="text-sm md:text-base leading-relaxed mb-4">
+            It all started in Warsaw’s Mokotów district, in a grey, inconspicuous building, where Joanna Zarańska
+            founded a language school, one of the first in Poland specializing in teaching English to children. After a
+            few weeks, it turned out that the appearance of the building had nothing to do with what was happening
+            inside. The classes were interesting, cheerful and colorful. Joanna’s enthusiasm combined with her own
+            program implemented during the course gave amazing results. The young students talked about the lessons as
+            if they were real adventures, full of puzzles, songs, rhymes and movement, increasingly using English words.
+        </p>
+        <p class="text-sm md:text-base leading-relaxed">
+            It was 1993, a supernova had just been discovered in the constellation of the Great Bear, and the Early
+            Stage language school debuted in a small Warsaw housing estate, innovative in terms of teaching methods,
+            opening children to the world, born under a lucky star.
+        </p>
+    </section>
+</main>
+
+
+<main class="max-w-6xl mx-auto px-6 py-10">
+    <div class="flex flex-col-reverse md:flex-row md:items-start md:space-x-10">
+        <section class="md:flex-1 max-w-xl">
+            <h1 class="text-2xl md:text-3xl font-normal mb-6 leading-tight text-gray-900">
+                Can you have two right hands?
+            </h1>
+            <p class="text-sm md:text-base text-gray-900 mb-6 leading-relaxed">
+                It soon became clear that the school needed new people. But not ordinary English teachers, but
+                passionate, creative, cheerful teachers who loved working with children and ambitious challenges. This
+                is how Joanna's daughters joined the team: first Agnieszka, now known by her stage name Aga Zaryan, and
+                after a few years Tonia, who currently manages the entire Early Stage company together with her husband
+                Adam. For many years, the school operated as a small family business, gaining popularity and a wider
+                group of new students year by year.
+            </p>
+            <p class="text-sm md:text-base text-gray-900 leading-relaxed">
+                In 1997, it was time for a change. Joanna, at the urging of one of her parents, opened another branch of
+                the school, in Ursynów. At Agnieszka's initiative, a branch was established in Warsaw's Ochota district.
+                This is how Early Stage's journey around the capital began. Today, our schools operate throughout
+                Poland.
+            </p>
+        </section>
+        <section class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+            <img alt="Portrait photo of three people: an older woman with short blonde hair and glasses wearing a pink top and scarf, a man with medium length blonde hair wearing a light blue shirt, and a woman with blonde hair wearing a teal shirt, all smiling"
+                class="rounded-lg max-w-full h-auto" height="300"
+                src="https://storage.googleapis.com/a1aa/image/b11b4efa-01df-4c06-be9c-6823a12e131f.jpg" width="400" />
+        </section>
+    </div>
+</main>
+
+
+<main class="max-w-6xl mx-auto px-4 py-10">
+    <div class="flex flex-col md:flex-row md:items-center md:space-x-10">
+        <div class="flex-shrink-0 md:w-1/2">
+            <img alt="Group of six smiling people sitting together with colorful background holding a yellow sign with Polish text"
+                class="rounded-md w-full h-auto object-cover" height="300"
+                src="https://storage.googleapis.com/a1aa/image/f0eed319-e6b7-400c-ba8e-0c2d1bde770d.jpg" width="500" />
+        </div>
+        <div class="mt-6 md:mt-0 md:w-1/2">
+            <h2 class="text-xl font-normal mb-4">
+                Small steps of big success
+            </h2>
+            <p class="text-sm leading-relaxed mb-4">
+                Our own textbooks, several years of experience, hundreds of ideas for interesting classes and enthusiasm
+                were the potential with which the school entered the new millennium. The New Year's Eve countdown began,
+                and with it the dynamic development of the company. Talented people joined the teaching staff, new
+                projects and branches were created. In 2005, Early Stage was awarded the European Language Label for
+                innovation in teaching a foreign language for the first time. In the years 2007-2011, the school went
+                beyond the borders of Warsaw, appearing in the largest Polish cities. Currently, it operates in over 850
+                locations, teaching over 58,000 children.
+            </p>
+            <p class="text-sm leading-relaxed">
+                Apart from numerous awards and educational successes, the greatest reason for pride are the young
+                graduates of the school, leaving its walls with an excellent knowledge of English. Their openness to the
+                world and wide development prospects are the best motivation for further work. Since the beginning of
+                the school, children have inspired us the most.
+            </p>
+        </div>
+    </div>
+</main>
+
+
+<app-openion-crousal></app-openion-crousal>
+
+
+<main class="flex flex-col lg:flex-row gap-6 justify-center mx-10  lg:mx-0">
+    <div class=" bg-[#ebf7ff] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+        <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
+            Do you know English well?
+
+        </h2>
+        <p class="text-[#4B4B5B] text-medium md:text-base font-semibold mb-8">
+            Apply for the Early Stage Lecturer position!
+        </p>
+        <button
+            class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
+            type="button">
+            Job for a lecturer
+        </button>
+    </div>
+    <div class=" bg-[#ffebf0] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+        <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
+            Want to start your own school?
+
+        </h2>
+        <p class="text-[#4B4B5B] text-base font-semibold mb-8">
+            Join the franchisee community
+        </p>
+        <button
+            class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
+            type="button">
+            Franchise
+        </button>
+    </div>
+
+</main>

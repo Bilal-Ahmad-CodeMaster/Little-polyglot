@@ -32,11 +32,12 @@ export class MainHeaderComponent {
     this.activeSubmenu = null;
   }
 
-  getSubmenuItems(menu: string): string[] {
-    const submenus: { [key: string]: string[] } = {
-      courses: ['Frontend', 'Backend', 'Fullstack'],
-      parent: ['Child Progress', 'Parental Guide', 'Feedback'],
-      blog: ['Latest Posts', 'Tips & Tricks', 'Success Stories'],
+  getSubmenuItems(menu: string): { item: string, routerLink: string }[] {
+    const submenus: { [key: string]: { item: string, routerLink: string }[] } = {
+      courses: [{ item: 'English for children 3-6 years old', routerLink: "/courses/english-for-children-3-6" }, { item: 'English for children 7-10 years old', routerLink: "/courses/english-for-children-7-10" }, { item: 'English for youth 11-14 years old', routerLink: "/courses/english-for-children-11-14" }, { item: 'English for young people 15-19 years old', routerLink: "/courses/english-for-children-14-19" }],
+      schools: [{ item: 'Lower Silesia', routerLink: "/schools" }, { item: 'Kuyavian-Pomeranian Voivodeship', routerLink: "/schools" } ],
+      parent: [{ item: 'Child Progress', routerLink: "/parent/child-progress" }, { item: 'Parental Guide', routerLink: "/parent/guide" }, { item: 'Feedback', routerLink: "/parent/feedback" }],
+      blog: [{ item: 'Latest Posts', routerLink: "/blog/latest" }, { item: 'Tips & Tricks', routerLink: "/blog/tips" }, { item: 'Success Stories', routerLink: "/blog/success" }],
     };
     return submenus[menu] || [];
   }
