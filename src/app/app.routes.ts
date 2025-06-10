@@ -13,6 +13,7 @@ import { EnglishFor14To19YearOldComponent } from './pages/main/courses/english-f
 import { MethodComponent } from './pages/main/method/method.component';
 import { FindSchoolsComponent } from './components/find-schools/find-schools.component';
 import { ContactUsComponent } from './pages/main/contact-us/contact-us.component';
+import { ParentComponent } from './pages/main/parent/parent.component';
 
 
 export const routes: Routes = [
@@ -31,6 +32,7 @@ export const routes: Routes = [
             { path: 'contact', component: ContactUsComponent },
 
             { path: 'about', component: AboutComponent },
+            { path: 'parent', component: ParentComponent },
         ],
     },
     {

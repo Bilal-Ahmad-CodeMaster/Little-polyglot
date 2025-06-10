@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 interface HeroContent {
   breadcrumb: {
@@ -15,7 +16,7 @@ interface HeroContent {
 
 @Component({
   selector: 'app-hero-section',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.css'
 })
