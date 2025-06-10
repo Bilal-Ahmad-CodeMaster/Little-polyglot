@@ -1,5 +1,5 @@
 <section *ngIf="isModalOpen"
-    class="absolute inset-0 z-10 lg:shadow-lg lg:max-w-lg lg:max-h-[400px] bg-white w-full h-full">
+    class="custom-style-for-small-screen absolute inset-0 z-10 lg:shadow-lg lg:max-w-lg lg:max-h-[400px] bg-white w-full h-full">
 
     <!-- Fixed Header -->
     <div class="bg-[#F3F5F8] p-6 sticky top-0 z-10">
@@ -22,7 +22,7 @@
     </div>
 
     <!-- Scrollable Content -->
-    <div #scrollContainer class="overflow-y-auto px-4 pb-28 pt-4 max-h-[calc(100%-128px)] bg-white"
+    <div #scrollContainer class="overflow-y-auto px-4 pb-8 pt-4 max-h-[calc(100%-128px)] bg-white"
         (scroll)="onScroll()">
 
         <!-- Tabs -->
@@ -65,31 +65,69 @@
         </div>
 
         <!-- Contact Info -->
-        <div #contactSection id="contact" class="mt-4 text-sm text-gray-700">
-            <p class="mb-2">Contact us at:</p>
-            <ul>
-                <li><strong>Phone:</strong> +48 123 456 789</li>
-                <li><strong>Email:</strong> contact&#64;earlystage.com</li>
-                <li><strong>Hours:</strong> Mon-Fri 8:00 AM - 5:00 PM</li>
-            </ul>
+        <div #contactSection id="contact" class="mt-4 text-sm text-gray-700 py-8 border-t border-gray-200">
+            <h2 class="text-black text-base font-semibold mb-6">Contact</h2>
+            <div class="flex items-center mb-4 space-x-4">
+                <i class="fas fa-phone-alt text-black text-lg"></i>
+                <span class="text-black text-base font-normal">797 637 537</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <i class="far fa-envelope text-black text-lg"></i>
+                <a href="mailto:bydgoszcz3@earlystage.pl"
+                    class="text-pink-700 text-base font-normal underline">bydgoszcz3&#64;earlystage.pl</a>
+            </div>
         </div>
 
         <!-- Gallery -->
-        <div #gallerySection id="gallery" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-2">
-            <img *ngFor="let img of ['img1.jpg', 'img2.jpg', 'img3.jpg']" [src]="img" alt="Gallery Image"
-                class="rounded-lg w-full h-32 object-cover" />
+        <div #gallerySection id="gallery" class="py-8 border-t border-gray-200 mt-4" *ngIf="schoolDetails.gallery">
+            <h3 class="text-lg font-semibold mb-4 text-gray-800">Photo gallery of our school</h3>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div *ngFor="let img of ['img1.jpg', 'img2.jpg', 'img3.jpg']"
+                    class="relative group overflow-hidden rounded-lg shadow-sm">
+                    <img [src]="img" alt="Gallery Image"
+                        class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="mt-4 py-8 border-t border-gray-200">
+            <h3 class="text-lg font-semibold mb-4">Videos</h3>
+            <video class="w-full h-[318px] rounded-lg" controls controlsList="nodownload"
+                poster="https://earlystage.pl/images/demo-lesson/demo-lesson-placeholder-kids.jpg">
+                <source src="https://earlystage.pl/storage/movies/early_stage_kompilacja.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+
         <!-- CTA -->
-        <div #demoSection id="demo" class="mt-4 text-sm text-gray-700">
-            <p>
-                You can schedule a demonstration lesson to experience our teaching method.
-                <br />
-                Fill the form or contact us directly.
-            </p>
-            <button class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                Schedule Now
-            </button>
+        <div #demoSection id="demo" class="mt-4 text-sm border-t border-gray-200 pt-8">
+            <ul class="list-disc pl-6 text-sm text-gray-400">
+                <li>
+                    The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
+                    months and
+                    includes
+                    the specified number of classes – regardless of the number of classes each month.
+                </li>
+                <li>
+                    If a course starts in a different month or includes fewer classes than indicated, both the total
+                    course price
+                    and
+                    monthly fees may change.
+                </li>
+                <li>
+                    The prices listed on the website are for information purposes only and do not constitute an offer.
+                    The final price of the course will be presented in the contract, taking into account the start date
+                    and the
+                    number of
+                    classes.
+                </li>
+            </ul>
+
         </div>
     </div>
 

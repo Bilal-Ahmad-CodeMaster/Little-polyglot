@@ -1,1 +1,15 @@
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+@media (max-width: 1024px) {
+  .custom-style-for-small-screen {
+    min-width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    z-index: 99999 !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 8rem;
+  }
+}

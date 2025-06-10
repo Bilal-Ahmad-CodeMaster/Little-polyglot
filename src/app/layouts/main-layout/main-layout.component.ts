@@ -15,10 +15,18 @@ export class MainLayoutComponent {
   showFooter = true;
 
   constructor(private router: Router) {
+    // Subscribe to router events to determine when to show or hide the footer
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        this.showFooter = !event.url.includes('schools');
-      });
-  }
+        console.log(event.url.includes('contact'));
+        if (event.url.includes('schools')) {
+          this.showFooter = !event.url.includes('schools');
+        } else if (event.url.includes('contact')) {
+          this.showFooter = !event.url.includes('contact');
+        } else {    
+          this.showFooter = true;
+        } 
+      }); 
+  } 
 }

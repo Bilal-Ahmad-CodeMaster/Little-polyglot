@@ -27,7 +27,7 @@
                     <!-- Dropdown with icon -->
                     <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer ">
                         <div class="flex items-center space-x-1  hover:text-pink-500  ">
-                            <button class=" font-bold leading-0.5" routerLink="/courses">Courses</button>
+                            <button class=" font-bold leading-0.5 cursor-pointer" routerLink="/courses">Courses</button>
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
                                 <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
@@ -53,7 +53,8 @@
 
                     <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
                         <div class="flex items-center space-x-1  hover:text-pink-500">
-                            <button class=" font-bold leading-0.5">Find a school</button>
+                            <button class=" font-bold leading-0.5 cursor-pointer" routerLink="/schools">Find a
+                                school</button>
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
                                 <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
@@ -63,86 +64,94 @@
                         <div
                             class="hidden group-hover:flex absolute bg-white shadow-md mt-9 right-[-100px] rounded w-fit z-50">
 
-                            <div> <a routerLink="/schools" 
-                                    class="block px-4 py-2 hover:text-pink-500">Lower
+                            <div> <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lower
                                     Silesia</a>
-                                <a routerLink="/schools" 
+                                <a routerLink="/schools"
                                     class="block px-4 py-2 hover:text-pink-500">Kuyavian-Pomeranian</a>
-                                <a routerLink="/schools" 
-                                    class="block px-4 py-2 hover:text-pink-500">Lublin</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Lubusz</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lublin</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lubusz</a>
                                 <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lodz</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Lesser
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lesser
                                     Poland</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Masovian</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Opole</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Masovian</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Opole</a>
                             </div>
                             <div>
-                                <a routerLink="/school"
-                                    class="block px-4 py-2 hover:text-pink-500">Subcarpathian</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Podlaskie</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Pomeranian</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Subcarpathian</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Podlaskie</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Pomeranian</a>
 
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Silesian</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Warmia-Masuria</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Greater
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Silesian</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Warmia-Masuria</a>
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Greater
                                     Poland</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">West
+                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">West
                                     Pomeranian</a>
                             </div>
                         </div>
 
                     </li>
 
-                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a routerLink="/schools"
-                           >Price-list</a>
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a
+                            routerLink="/schools">Price-list</a>
                     </li>
                     <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a
                             routerLink="/method" class="">Method</a></li>
                     <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
                         <div class="flex items-center space-x-1  hover:text-pink-500">
-                            <button class=" font-bold leading-0.5">For the parents</button>
+                            <button class=" font-bold leading-0.5 cursor-pointer" routerLink="/parent">For the parents</button>
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
                                 <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-40 z-50">
-                            <a routerLink="" class="block px-4 py-2 hover:text-pink-500">Articles</a>
-                            <a routerLink="" class="block px-4 py-2 hover:text-pink-500">News</a>
+                        <div
+                            class="hidden group-hover:flex  absolute bg-white shadow-md mt-9 right-[-150px] rounded w-fit z-50">
+
+                            <div>
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">Login to Early
+                                    Stage Online</a>
+
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">Smart Parent
+                                    Academy</a>
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">Thematic
+                                    projects</a>
+                            </div>
+                            <div>
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">Summer camps for
+                                    children</a>
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">GRAMMAR RHYMES
+                                    Manual</a>
+                                <a routerLink="/parent" class="block px-4 py-2 hover:text-pink-500">FAQ</a>
+
+                            </div>
                         </div>
                     </li>
                     <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
                         <div class="flex items-center space-x-1  hover:text-pink-500">
-                            <button class=" font-bold leading-0.5">Blog</button>
+                            <button class=" font-bold leading-0.5 cursor-pointer" routerLink="/blogs">Blog</button>
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
                                 <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <div class="hidden group-hover:block absolute bg-white shadow-md mt-10 rounded w-40 z-50">
-                            <a routerLink="" class="block px-4 py-2 hover:text-pink-500">Articles</a>
-                            <a routerLink="" class="block px-4 py-2 hover:text-pink-500">News</a>
+                        <div
+                            class="hidden group-hover:flex absolute bg-white flex-col shadow-md mt-9 right-[-100px] rounded w-fit z-50">
+
+                            <a routerLink="/blogs" class="block px-4 py-2 hover:text-pink-500">Education</a>
+                            <a routerLink="/blogs" class="block px-4 py-2 hover:text-pink-500">Creative learning</a>
+                            <a routerLink="/blogs" class="block px-4 py-2 hover:text-pink-500">Interesting places</a>
+
                         </div>
                     </li>
 
-                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a href="#"
-                            class="">About
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a routerLink=""
+                            routerLink="/about">About
                             us</a></li>
-                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a href="#"
-                            class="">Contact</a></li>
+                    <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5  hover:text-pink-500"><a routerLink=""
+                            routerLink="/contact">Contact</a></li>
                 </ul>
             </nav>
 
@@ -157,7 +166,8 @@
 <!-- Mobile Header -->
 <div class="w-full h-full min-lg:hidden ">
     <header
-        class="flex items-center justify-between fixed px-5 py-3 w-full bg-white z-60 m-auto min-[1024px]:hidden max-[500px]:px-3 max-[500px]:py-2">
+        class="flex items-center justify-between fixed px-5 py-3 w-full bg-white  m-auto min-[1024px]:hidden max-[500px]:px-3 max-[500px]:py-2"
+        style="z-index: 1000;">
         <button aria-label="Menu" class="text-2xl cursor-pointer max-[500px]:text-xl" (click)="toggleMobileMenu()">
             <i class="fas fa-bars"></i>
         </button>
@@ -196,10 +206,16 @@
                 <span>Courses</span>
                 <i class="fas fa-chevron-right text-sm"></i>
             </a>
-            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full" href="#">Find a
-                school</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full" href="#">Price-list</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full" href="#">Method</a>
+
+            <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full"
+                (click)="openSubmenu('schools')">
+                <span>Find a School</span>
+                <i class="fas fa-chevron-right text-sm"></i>
+            </a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block " routerLink="/school"
+                (click)="closeMobileMenu()">Price-list</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" routerLink="/method"
+                (click)="closeMobileMenu()">Method</a>
             <a class="cursor-pointer hover:text-pink-400 flex justify-between items-center w-full"
                 (click)="openSubmenu('parent')">
                 <span>For the parent</span>
@@ -210,12 +226,11 @@
                 <span>Blog</span>
                 <i class="fas fa-chevron-right text-sm"></i>
             </a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">About us</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Contact</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Log in</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Open a franchise</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Licenses</a>
-            <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">Become a lecturer</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" routerLink="/about"
+                (click)="closeMobileMenu()">About us</a>
+            <a class="cursor-pointer hover:text-pink-400 w-full block" routerLink="/contact"
+                (click)="closeMobileMenu()">Contact</a>
+
         </main>
 
         <!-- Submenu Panel -->
@@ -226,7 +241,9 @@
                 <span class="pb-1 text-xl text-pink-500">Return</span>
             </a>
             <ng-container *ngFor="let item of getSubmenuItems(activeSubmenu)">
-                <a class="cursor-pointer hover:text-pink-400 w-full block" href="#">{{ item }}</a>
+                <a class="cursor-pointer hover:text-pink-400 w-full block" [routerLink]="item.routerLink"
+                    (click)="closeMobileMenu()">{{ item.item
+                    }}</a>
             </ng-container>
         </main>
 
