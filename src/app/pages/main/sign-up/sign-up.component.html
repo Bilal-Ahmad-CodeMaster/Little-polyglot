@@ -1,4 +1,4 @@
-<main class="bg-[#FAFAFC] px-24 min-h-screen">
+<main class="px-24 min-h-screen bg-[#FAFAFC]">
     <section>
         <!-- Breadcrumb -->
         <nav class="text-[15px] pt-10 ">
@@ -37,56 +37,60 @@
         </div>
     </section>
 
-    <main class=" flex  gap-5 mt-10 pb-10">
+    <div class=" flex  gap-5 mt-10 pb-10">
         <section class="min-w-[70%] max-w-[70%]">
-            <div class="w-full  bg-white p-5 rounded-md shadow-md mt-10">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <!-- Student Data -->
+                <div class="w-full  p-5  mt-10 ">
+                    <div class="w-full bg-white p-5 rounded-md shadow-md ">
+                        <h2 class="text-2xl font-bold mb-4">Student Data</h2>
+                        <div formGroupName="studentData">
+                            <!-- Student Name 1 -->
+                            <div>
+                                <label for="studentName1" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Student Name
+                                </label>
+                                <input type="text" id="studentName1" formControlName="studentName1"
+                                    placeholder="Enter student name"
+                                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
+                            </div>
 
-                <h2 class="text-2xl font-bold mb-4">Student Data</h2>
-                <!-- Main content -->
-                <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">
-                    <form class="bg-white flex flex-col gap-6">
+                            <!-- Student Name 2 -->
+                            <div>
+                                <label for="studentName2" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Student Name
+                                </label>
+                                <input type="text" id="studentName2" formControlName="studentName2"
+                                    placeholder="Enter student name"
+                                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
+                            </div>
 
-                        <!-- Student Name 1 -->
-                        <div>
-                            <label for="studentName1" class="block text-sm font-semibold text-gray-700 mb-2">Student
-                                Name</label>
-                            <input type="text" id="studentName1" name="studentName1" placeholder="Enter student name"
-                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
-                        </div>
-
-                        <!-- Student Name 2 -->
-                        <div>
-                            <label for="studentName2" class="block text-sm font-semibold text-gray-700 mb-2">Student
-                                Name</label>
-                            <input type="text" id="studentName2" name="studentName2" placeholder="Enter student name"
-                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
-                        </div>
-                        <!-- Year of Birth -->
-                        <div>
-                            <label for="yearOfBirth" class="block text-sm font-semibold text-gray-700 mb-2">Year of
-                                Birth</label>
-                            <select id="yearOfBirth" name="yearOfBirth"
-                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                <option value="">Select year</option>
-                                <option value="2010">2010</option>
-                                <option value="2011">2011</option>
-                                <option value="2012">2012</option>
-                                <option value="2013">2013</option>
-                                <option value="2014">2014</option>
-                                <option value="2015">2015</option>
-                                <option value="2016">2016</option>
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
-                                <option value="2020">2020</option>
-                            </select>
-                        </div>
-                        <!-- select faculity -->
-                        <form [formGroup]="schoolForm" (ngSubmit)="onSubmit()" class="space-y-4">
+                            <!-- Year of Birth -->
+                            <div>
+                                <label for="yearOfBirth" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Year of Birth
+                                </label>
+                                <select id="yearOfBirth" formControlName="yearOfBirth"
+                                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
+                                    <option value="">Select year</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                            </div>
                             <!-- Select Facility -->
                             <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">Student's
-                                    school/kindergarten</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Student's school/kindergarten
+                                </label>
                                 <select formControlName="facility"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
                                     <option value="">Select facility</option>
@@ -155,142 +159,245 @@
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Submit Button -->
+                    <!-- Parent Data -->
+                    <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
+                        <h2 class="text-2xl font-bold mb-4">Parent Data</h2>
+                        <div formGroupName="parentData">
                             <div>
-                                <button type="submit"
-                                    class="px-6 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition">
-                                    Submit
-                                </button>
+                                <label for="parentPhone" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Phone Number
+                                </label>
+                                <input type="tel" id="parentPhone" formControlName="parentPhone"
+                                    placeholder="Enter phone number"
+                                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                             </div>
-                        </form>
 
+                            <div>
+                                <label for="parentEmail" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address
+                                </label>
+                                <input type="email" id="parentEmail" formControlName="parentEmail"
+                                    placeholder="Enter email"
+                                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
+                            </div>
 
-                    </form>
-                </main>
-            </div>
-            <div class="w-full  bg-white p-5 rounded-md shadow-md mt-10">
+                            <!-- Additional Contact Persons -->
+                            <div formArrayName="additionalContacts">
+                                <div *ngFor="let contact of additionalContacts.controls; let i = index"
+                                    [formGroupName]="i">
+                                    <div *ngIf="additionalContacts.length === 1" class="mt-6 border-t pt-6 relative">
+                                        <h3 class="text-lg font-semibold mb-2 flex items-center">
+                                            Additional Contact Person
+                                        </h3>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
+                                                aria-hidden="true">
+                                                <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
+                                                    aria-hidden="true"></i>
+                                            </span>
+                                            <p class="m-0">Please remember to make sure you are authorized to provide
+                                                your
+                                                contact information.</p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone
+                                                Number</label>
+                                            <input type="tel" formControlName="phone" placeholder="Enter phone number"
+                                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email
+                                                Address</label>
+                                            <input type="email" formControlName="email" placeholder="Enter email"
+                                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <h2 class="text-2xl font-bold mb-4">Parent Data</h2>
-                <!-- Main content -->
-                <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-4xl">
-                    <div>
-                        <label for="parentPhone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number
-                        </label>
-                        <input type="number" id="parentPhone" name="parentPhone" placeholder="Enter  phone number"
-                            class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
-                            style="appearance: textfield; -moz-appearance: textfield;" />
-                    </div>
+                            <button *ngIf="additionalContacts.length === 0" type="button" (click)="addContact()"
+                                class="mt-6 flex items-center text-pink-500 hover:text-pink-700 font-semibold">
+                                <i class="fas fa-plus-circle mr-2"></i>
+                                Add Additional Contact Person
+                            </button>
 
-
-                    <div>
-                        <label for="parentEmail" class="block text-sm font-semibold text-gray-700 mb-2">Email Address
-                        </label>
-                        <input type="text" id="parentEmail" name="parentEmail" placeholder="Enter email"
-                            class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
-                    </div>
-                    <!-- Additional Contact Persons -->
-                    <div *ngIf="additionalContacts.length === 1" class="mt-6 border-t pt-6 relative">
-                        <h3 class="text-lg font-semibold mb-2 flex items-center">
-                            Additional Contact Person
-
-                        </h3>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1" aria-hidden="true">
-                                <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i>information
-                            </span>
-                            <p class="m-0">Please remember to make sure you are authorized to provide your contact
-                                information.</p>
+                            <button *ngIf="additionalContacts.length === 1" type="button" (click)="removeContact(0)"
+                                class="mt-6 flex items-center text-pink-500 hover:text-pink-700 font-semibold">
+                                <i class="fas fa-minus-circle mr-2"></i>
+                                Remove Additional Contact Person
+                            </button>
                         </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label>
-                            <input type="number" [(ngModel)]="additionalContacts[0].phone" name="additionalPhone0"
-                                placeholder="Enter phone number"
-                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
-                                style="appearance: textfield; -moz-appearance: textfield;" />
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-                            <input type="text" [(ngModel)]="additionalContacts[0].email" name="additionalEmail0"
-                                placeholder="Enter email"
-                                class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
-                        </div>
                     </div>
 
 
-                    <!-- Show "Add" button only if there is no additional contact -->
-                    <button *ngIf="additionalContacts.length === 0" type="button" (click)="addContact()"
-                        class="mt-6 flex items-center text-pink-500 hover:text-pink-700 font-semibold">
-                        <i class="fas fa-plus-circle mr-2"></i>
-                        Add Additional Contact Person
-                    </button>
-                    <!-- Show "Remove" button only if there is one additional contact -->
-                    <button *ngIf="additionalContacts.length === 1" type="button" (click)="removeContact(0)"
-                        class="ml-2 text-pink-500 hover:text-pink-700" aria-label="Remove additional contact">
-                        <i class="fas fa-minus-circle"></i>
-                        Remove Additional Contact Person
-                    </button>
-                </main>
-            </div>
-            <div class="w-full  bg-white p-5 rounded-md shadow-md mt-10">
-                <label for="comment" class="block text-sm font-semibold text-gray-700 mb-2">Comment on the entry
-                    (optional)</label>
-                <textarea id="comment" name="comment" rows="4" placeholder="Enter your comment"
-                    class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
-            </div>
-            <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
-                <h3 class="text-lg font-bold mb-2">Stay in touch with us</h3>
-                <p class="mb-4 text-gray-700">
-                    Our branch is bustling with life, we organize workshops, picnics and other attractions. If you want
-                    to stay up to date, check the consents below. We promise not to spam!
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-start">
-                        <input type="checkbox" id="consentMarketing" name="consentMarketing"
-                            class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500"
-                            (change)="toggleAllConsents($event)" [(ngModel)]="consentMarketing" />
-                        <label for="consentMarketing" class="block text-sm font-semibold text-gray-700">
-                            I consent to marketing
+                    <!-- Comment -->
+                    <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
+                        <label for="comment" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Comment on the entry (optional)
                         </label>
+                        <textarea id="comment" formControlName="comment" rows="4" placeholder="Enter your comment"
+                            class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
                     </div>
-                    <div class="flex items-start">
-                        <input type="checkbox" id="consentDataProcessing" name="consentDataProcessing"
-                            class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500"
-                            [(ngModel)]="consentDataProcessing" />
-                        <label for="consentDataProcessing" class="block text-sm text-gray-700">
-                            I consent to the processing of my personal data by Early Stage, i.e. name, surname, e-mail
-                            address and telephone number – for the purposes of marketing Early Stage's own products and
-                            services.
-                        </label>
-                    </div>
-                    <div class="flex items-start">
-                        <input type="checkbox" id="consentEmail" name="consentEmail"
-                            class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500"
-                            [(ngModel)]="consentEmail" />
-                        <label for="consentEmail" class="block text-sm text-gray-700">
-                            I consent to receiving Early Stage marketing information via e-mail to the e-mail address
-                            and telephone number provided by me.
-                        </label>
-                    </div>
-                    <div class="flex items-start">
-                        <input type="checkbox" id="consentDirectMarketing" name="consentDirectMarketing"
-                            class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500"
-                            [(ngModel)]="consentDirectMarketing" />
-                        <label for="consentDirectMarketing" class="block text-sm text-gray-700">
-                            I consent to Early Stage sending me direct marketing using telecommunications terminal
-                            equipment (telephone, tablet, computer connected to the Internet) to the telephone number
-                            and e-mail address provided by me.
-                        </label>
+
+                    <!-- Consents -->
+                    <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
+                        <h3 class="text-lg font-bold mb-2">Stay in touch with us</h3>
+                        <p class="mb-4 text-gray-700">
+                            Our branch is bustling with life, we organize workshops, picnics and other attractions. If
+                            you want
+                            to stay up to date, check the consents below. We promise not to spam!
+                        </p>
+                        <div formGroupName="consents">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="consentMarketing" formControlName="consentMarketing"
+                                        (change)="toggleAllConsents($event)"
+                                        class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
+                                    <label for="consentMarketing" class="block text-sm font-semibold text-gray-700">
+                                        I consent to marketing
+                                    </label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="consentDataProcessing"
+                                        formControlName="consentDataProcessing"
+                                        class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
+                                    <label for="consentDataProcessing" class="block text-sm text-gray-700">
+                                        I consent to the processing of my personal data by Early Stage, i.e. name,
+                                        surname, e-mail
+                                        address and telephone number – for the purposes of marketing Early Stage's own
+                                        products and
+                                        services.
+                                    </label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="consentEmail" formControlName="consentEmail"
+                                        class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
+                                    <label for="consentEmail" class="block text-sm text-gray-700">
+                                        I consent to receiving Early Stage marketing information via e-mail to the
+                                        e-mail address
+                                        and telephone number provided by me.
+                                    </label>
+                                </div>
+                                <div class="flex items-start">
+                                    <input type="checkbox" id="consentDirectMarketing"
+                                        formControlName="consentDirectMarketing"
+                                        class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
+                                    <label for="consentDirectMarketing" class="block text-sm text-gray-700">
+                                        I consent to Early Stage sending me direct marketing using telecommunications
+                                        terminal
+                                        equipment (telephone, tablet, computer connected to the Internet) to the
+                                        telephone number
+                                        and e-mail address provided by me.
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full p-5 mt-10">
+                            <div class="flex items-start gap-3 mb-2">
+                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
+                                    aria-hidden="true">
+                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
+                                        aria-hidden="true"></i>information
+                                </span>
+                                <p class="m-0">
+                                    We inform you that for the purpose of concluding an agreement regarding the Child's
+                                    participation in this course, the data contained in the above application will be
+                                    processed by
+                                    MKKM Partners Sp. z o. o., Chopina, 71, 67-200 Głogów, NIP no. 6932198334, REGON
+                                    540944102, KRS
+                                    0001156752.<br>
+                                    <a href="#" class="text-pink-600 underline">See details</a>
+                                </p>
+                            </div>
+                            <div class="flex items-start gap-3 mb-2">
+                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
+                                    aria-hidden="true">
+                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
+                                        aria-hidden="true"></i>information
+                                </span>
+                                <p class="m-0">
+                                    The application does not constitute a contract for the provision of an English
+                                    language course.
+                                    We will inform you about the next steps related to the application by e-mail. In
+                                    some of our
+                                    branches, organizing a group for a child may not be possible due to the availability
+                                    of rooms,
+                                    the availability of teachers, the schedule of lessons at the school and the number
+                                    of
+                                    applications.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex justify-end mt-6">
+                            <button type="submit"
+                                class="px-8 py-3 bg-pink-500 text-white font-semibold rounded-md hover:bg-pink-600 transition">
+                                Submit a request
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </section>
-        <aside class="min-w-[30%] max-w-[30%]">
-            <h2 class="text-lg font-bold mb-4">See Price list</h2>
 
+        <aside class="min-w-[30%] max-w-[30%] mt-20 hiden lg:block">
+            <h2 class="text-lg font-bold mb-4">See Price list</h2>
+            <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
+                receive an invitation
+                to a leveling
+                meeting. When creating a group, we take into account the child's age and language proficiency level.</p>
+            <div class="max-w-xl mx-auto space-y-4 mt-10">
+                <div *ngFor="let item of accordionItems; let i = index">
+                    <button (click)="toggleItem(i)"
+                        class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
+                        <span class="font-semibold text-gray-700">{{ item.title }}</span>
+                        <svg class="w-5 h-5 transform transition-transform duration-200"
+                            [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
+
+                        <div *ngFor="let card of item.cards" class="border-gray-300 p-4 bg-white rounded-md shadow-md">
+                            <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                            <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
+                            </p>
+
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <p *ngIf="card.schedule"><strong><span class="text-pink-500">{{ card.schedule }}</span>
+                                    </strong> per week</p>
+                                <p *ngIf="card.minutes">or <strong><span class="text-pink-500">{{ card.minutes
+                                            }}</span></strong> of English per week</p>
+                                <p *ngIf="card.classes"><strong><span class="text-pink-500">{{ card.classes }}</span>
+                                    </strong> per school year</p>
+                            </div>
+
+                            <hr *ngIf="card.price || card.materials" class="my-2" />
+
+                            <h1 *ngIf="card.price" class="font-semibold text-gray-900 text-lg">{{ card.price }}</h1>
+                            <p *ngIf="card.materials" class="text-gray-600 text-md">{{ card.materials }}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex flex-col gap-10 mt-10 text-[12px]">
+                <p>The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
+                    months and includes
+                    the specified number of classes – regardless of the number of classes each month.</p>
+                <p>If a course starts in a different month or includes fewer classes than indicated, both the total
+                    course price and
+                    monthly fees may change.</p>
+                <p>The prices listed on the website are for information purposes only and do not constitute an offer.
+                    The final price of
+                    the course will be presented in the contract, taking into account the start date and the number of
+                    classes.</p>
+            </div>
 
         </aside>
-
-    </main>
-
+    </div>
 </main>
