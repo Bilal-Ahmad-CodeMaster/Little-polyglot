@@ -3,11 +3,12 @@ import {
   Component, ElementRef, OnInit, ViewChild, AfterViewInit
 } from '@angular/core';
 import { SharedServiceService } from '../../services/shared-service.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-school-detail-modal',
   standalone: true,
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, CommonModule, RouterLink],
   templateUrl: './school-detail-modal.component.html',
   styleUrl: './school-detail-modal.component.css'
 })
@@ -39,9 +40,9 @@ export class SchoolDetailModalComponent implements OnInit, AfterViewInit {
 
       // Wait for DOM to render after modal opens
       if (this.isModalOpen) {
-      setTimeout((): void => {
-        this.initializeTabRefs();
-      }, 0);
+        setTimeout((): void => {
+          this.initializeTabRefs();
+        }, 0);
       }
     });
   }

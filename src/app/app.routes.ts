@@ -14,6 +14,8 @@ import { MethodComponent } from './pages/main/method/method.component';
 import { FindSchoolsComponent } from './components/find-schools/find-schools.component';
 import { ContactUsComponent } from './pages/main/contact-us/contact-us.component';
 import { ParentComponent } from './pages/main/parent/parent.component';
+import { SmartParentAcademyComponent } from './pages/main/parent/smart-parent-academy/smart-parent-academy.component';
+import { SignUpComponent } from './pages/main/sign-up/sign-up.component';
 
 
 export const routes: Routes = [
@@ -33,6 +35,8 @@ export const routes: Routes = [
 
             { path: 'about', component: AboutComponent },
             { path: 'parent', component: ParentComponent },
+            { path: 'parent/smart-parent-academy', component: SmartParentAcademyComponent },
+            { path: 'registration/applicationForm', component: SignUpComponent },
         ],
     },
     {
