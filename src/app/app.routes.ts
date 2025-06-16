@@ -16,6 +16,7 @@ import { ContactUsComponent } from './pages/main/contact-us/contact-us.component
 import { ParentComponent } from './pages/main/parent/parent.component';
 import { SmartParentAcademyComponent } from './pages/main/parent/smart-parent-academy/smart-parent-academy.component';
 import { SignUpComponent } from './pages/main/sign-up/sign-up.component';
+import { BranchPriceDetailComponent } from './pages/main/branch-price-detail/branch-price-detail.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'courses', component: CoursesComponent },
             { path: 'schools', component: FindSchoolsComponent },
+            { path: 'branch/detail', component: BranchPriceDetailComponent },
             { path: 'courses/english-for-children-3-6', component: EnglishFor3To6YearKidsComponent },
             { path: 'courses/english-for-children-7-10', component: EnglishFor7To10YearComponent },
             { path: 'courses/english-for-children-11-14', component: EnglishFor11To14YearTeenComponent },

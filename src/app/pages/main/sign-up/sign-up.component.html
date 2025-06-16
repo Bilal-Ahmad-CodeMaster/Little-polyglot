@@ -1,4 +1,4 @@
-<main class="px-24 min-h-screen bg-[#FAFAFC]">
+<main class="lg:px-24 px-5 min-h-screen bg-[#FAFAFC]">
     <section>
         <!-- Breadcrumb -->
         <nav class="text-[15px] pt-10 ">
@@ -14,18 +14,22 @@
             <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-11 text-black">
                 Registration for the Głogów I branch
             </h1>
-            <div class="flex gap-10 text-pink-600">
+            <div class="flex gap-10 text-pink-600 flex-col md:flex-row">
                 <button class="cursor-pointer hover:text-[#894858]">Branch locations >
                 </button>
                 <button class="cursor-pointer hover:text-[#894858]">Contact details >
+                </button>
+                <button (click)="isAsideOpen = true" class="cursor-pointer hover:text-[#894858] md:hidden">See Price
+                    List>
                 </button>
             </div>
         </div>
         <!-- INFORMATION BOX -->
         <div class="bg-[#e8f4ff] border-l-4 border-[#1890ff] p-3 rounded-md text-black flex items-start space-x-4
     max-w-3xl mt-5 ml-5" role="alert" aria-label="Information">
-            <span class="material-icons text-[#1890ff] text-2xl  flex-shrink-0 mt-1" aria-hidden="true">
-                <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i>information</span>
+            <span class="material-icons text-[#1890ff] text-2xl  flex-shrink-0 mt-1 flex" aria-hidden="true">
+                <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
+                    class=" hidden md:block">information</span></span>
             <div>
                 <p class="font-semibold">You are registering for the 2025/2026 school year</p>
                 <p class="mt-1 text-black max-w-lg leading-relaxed">
@@ -38,7 +42,7 @@
     </section>
 
     <div class=" flex  gap-5 mt-10 pb-10">
-        <section class="min-w-[70%] max-w-[70%]">
+        <section class="lg:min-w-[70%] lg:max-w-[70%] md:max-w-[60%] max-w-full">
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
                 <!-- Student Data -->
                 <div class="w-full  p-5  mt-10 ">
@@ -198,7 +202,8 @@
                                                 <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
                                                     aria-hidden="true"></i>
                                             </span>
-                                            <p class="m-0">Please remember to make sure you are authorized to provide
+                                            <p class="m-0 ">Please remember to make sure you are
+                                                authorized to provide
                                                 your
                                                 contact information.</p>
                                         </div>
@@ -297,10 +302,10 @@
                         </div>
                         <div class="w-full p-5 mt-10">
                             <div class="flex items-start gap-3 mb-2">
-                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
+                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1 flex"
                                     aria-hidden="true">
-                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
-                                        aria-hidden="true"></i>information
+                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
+                                        class=" hidden md:block">information</span>
                                 </span>
                                 <p class="m-0">
                                     We inform you that for the purpose of concluding an agreement regarding the Child's
@@ -313,10 +318,10 @@
                                 </p>
                             </div>
                             <div class="flex items-start gap-3 mb-2">
-                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
+                                <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1 flex"
                                     aria-hidden="true">
-                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
-                                        aria-hidden="true"></i>information
+                                    <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
+                                        class=" hidden md:block">information</span>
                                 </span>
                                 <p class="m-0">
                                     The application does not constitute a contract for the provision of an English
@@ -342,7 +347,7 @@
             </form>
         </section>
 
-        <aside class="min-w-[30%] max-w-[30%] mt-20 hiden lg:block">
+        <aside class="min-w-full md:min-w-[40%] md:max-w-[40%] lg:max-w-[30%] mt-20 hidden md:block">
             <h2 class="text-lg font-bold mb-4">See Price list</h2>
             <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
                 receive an invitation
@@ -401,3 +406,70 @@
         </aside>
     </div>
 </main>
+
+
+<div *ngIf="isAsideOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 flex items-center justify-center md:hidden">
+    <div class="bg-white w-full h-full p-4 overflow-y-auto relative">
+
+        <aside class="min-w-full mt-10">
+            <!-- Close Button -->
+            <button (click)="isAsideOpen = false"
+                class="absolute top-16 right-4 text-gray-500 hover:text-black text-2xl font-bold z-50">
+                &times;
+            </button>
+            <!-- Copy your same <aside> content here or extract it into a reusable component if needed -->
+            <!-- 🔁 Start -->
+            <h2 class="text-lg font-bold mb-4">See Price list</h2>
+            <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
+                receive an invitation
+                to a leveling
+                meeting. When creating a group, we take into account the child's age and language proficiency level.</p>
+
+            <div class="max-w-xl mx-auto space-y-4 mt-10">
+                <div *ngFor="let item of accordionItems; let i = index">
+                    <button (click)="toggleItem(i)"
+                        class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
+                        <span class="font-semibold text-gray-700">{{ item.title }}</span>
+                        <svg class="w-5 h-5 transform transition-transform duration-200"
+                            [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
+                        <div *ngFor="let card of item.cards" class="border-gray-300 p-4 bg-white rounded-md shadow-md">
+                            <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                            <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
+                            </p>
+                            <div class="text-sm text-gray-700 space-y-1">
+                                <p *ngIf="card.schedule"><strong><span class="text-pink-500">{{ card.schedule
+                                            }}</span></strong> per week</p>
+                                <p *ngIf="card.minutes">or <strong><span class="text-pink-500">{{ card.minutes
+                                            }}</span></strong> of English per week</p>
+                                <p *ngIf="card.classes"><strong><span class="text-pink-500">{{ card.classes
+                                            }}</span></strong> per school year</p>
+                            </div>
+                            <hr *ngIf="card.price || card.materials" class="my-2" />
+                            <h1 *ngIf="card.price" class="font-semibold text-gray-900 text-lg">{{ card.price }}</h1>
+                            <p *ngIf="card.materials" class="text-gray-600 text-md">{{ card.materials }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-10 mt-10 text-[12px]">
+                <p>The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
+                    months and includes
+                    the specified number of classes – regardless of the number of classes each month.</p>
+                <p>If a course starts in a different month or includes fewer classes than indicated, both the total
+                    course price and
+                    monthly fees may change.</p>
+                <p>The prices listed on the website are for information purposes only and do not constitute an offer.
+                    The final price of
+                    the course will be presented in the contract, taking into account the start date and the number of
+                    classes.</p>
+            </div>
+            <!-- 🔁 End -->
+        </aside>
+    </div>
+</div>
