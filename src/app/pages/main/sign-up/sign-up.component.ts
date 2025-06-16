@@ -9,12 +9,13 @@ import emailJS from '@emailjs/browser';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
   registrationForm: FormGroup;
+  isAsideOpen: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
@@ -325,7 +326,7 @@ export class SignUpComponent {
           price: '340 PLN per month',
           materials: 'PLN 320 for educational materials (payment in the first month)'
         },
-      
+
       ], isOpen: false
     },
   ];
@@ -333,4 +334,7 @@ export class SignUpComponent {
   toggleItem(index: number): void {
     this.accordionItems[index].isOpen = !this.accordionItems[index].isOpen;
   }
+
+
+
 }
