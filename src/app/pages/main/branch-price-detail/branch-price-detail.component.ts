@@ -11,7 +11,11 @@ import { RouterLink } from '@angular/router';
 export class BranchPriceDetailComponent {
   showMore: boolean = false;
   activeIndex = 0; // Default to first item
+  showVideo = false;
 
+  playVideo() {
+    this.showVideo = true;
+  }
   setActiveItem(index: number): void {
     this.activeIndex = index;
   }
