@@ -17,6 +17,7 @@ import { ParentComponent } from './pages/main/parent/parent.component';
 import { SmartParentAcademyComponent } from './pages/main/parent/smart-parent-academy/smart-parent-academy.component';
 import { SignUpComponent } from './pages/main/sign-up/sign-up.component';
 import { BranchPriceDetailComponent } from './pages/main/branch-price-detail/branch-price-detail.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 export const routes: Routes = [
@@ -41,6 +42,7 @@ export const routes: Routes = [
             { path: 'registration/applicationForm', component: SignUpComponent },
         ],
     },
+    { path: 'login', component: LoginComponent },
     {
         path: 'blogs',
         component: BlogsLayoutComponent,
