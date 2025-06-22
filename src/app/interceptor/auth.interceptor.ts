@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-console.log(token);
+    console.log(token);
     let authReq = req;
 
     if (token) {
@@ -27,7 +27,7 @@ console.log(token);
       authReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-         
+
         },
       });
     }
@@ -37,7 +37,7 @@ console.log(token);
         // If token is invalid or expired (typically 401), redirect to login
         if (error.status === 401 || error.status === 403) {
           localStorage.removeItem('token');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
         }
         return throwError(() => error);
       })
