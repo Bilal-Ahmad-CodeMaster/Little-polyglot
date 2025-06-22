@@ -28,10 +28,28 @@ export class ApiServicesService {
     return this.http.put(`${API_CONFIG['branches']}/${id}`, payload);
   }
 
-
-
   deleteBranch(id: string) {
     return this.http.delete(`${API_CONFIG['branches']}/${id}`);
+  }
+
+  // Blogs API
+  getBlogs() {
+    return this.http.get(`${API_CONFIG['blogs']}`);
+  }
+  getSingleBlogs(id:string) {
+    return this.http.get(`${API_CONFIG['blogs']}`);
+  }
+
+  createBlog(payload: FormData) {
+    return this.http.post(`${API_CONFIG['blogs']}`, payload);
+  }
+
+  updateBlog(id: string, payload: FormData) {
+    return this.http.put(`${API_CONFIG['blogs']}/${id}`, payload);
+  }
+
+  deleteBlog(id: string) {
+    return this.http.delete(`${API_CONFIG['blogs']}/${id}`);
   }
 
   deleteMedia(branchId: string, type: string, mediaId: string) {

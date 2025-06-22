@@ -24,6 +24,7 @@ import { ProfileComponent } from './components/admin-panel/profile/profile.compo
 import { BranchesComponent } from './components/admin-panel/branches/branches.component';
 import { BlogHomeComponent } from './pages/blogs/blog-home/blog-home.component';
 import { InterestingPlacesComponent } from './pages/blogs/interesting-places/interesting-places.component';
+import { BlogsComponent } from './components/admin-panel/blogs/blogs.component';
 
 
 export const routes: Routes = [
@@ -57,6 +58,7 @@ export const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'profile', component: ProfileComponent },
             { path: 'branches', component: BranchesComponent },
+            { path: 'blogs', component: BlogsComponent },
         ],
     }, 
     {

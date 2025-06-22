@@ -1,0 +1,10 @@
+::placeholder {
+    color: #d1d5db; /* Tailwind's gray-300 */
+    opacity: 1; /* Ensure full opacity */
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #d1d5db;
+    opacity: 1;
+}
