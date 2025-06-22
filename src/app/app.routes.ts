@@ -17,6 +17,8 @@ import { ParentComponent } from './pages/main/parent/parent.component';
 import { SmartParentAcademyComponent } from './pages/main/parent/smart-parent-academy/smart-parent-academy.component';
 import { SignUpComponent } from './pages/main/sign-up/sign-up.component';
 import { BranchPriceDetailComponent } from './pages/main/branch-price-detail/branch-price-detail.component';
+import { BlogHomeComponent } from './pages/blogs/blog-home/blog-home.component';
+import { InterestingPlacesComponent } from './pages/blogs/interesting-places/interesting-places.component';
 
 
 export const routes: Routes = [
@@ -45,8 +47,10 @@ export const routes: Routes = [
         path: 'blogs',
         component: BlogsLayoutComponent,
         children: [
-            { path: '', component: EducationComponent },
+            { path: '', component: BlogHomeComponent },
+            { path: 'education', component: EducationComponent },
             { path: 'creativeLearning', component: CreativeLearningComponent },
+            { path: 'interestingPlaces', component: InterestingPlacesComponent },
         ],
     },
 ];
