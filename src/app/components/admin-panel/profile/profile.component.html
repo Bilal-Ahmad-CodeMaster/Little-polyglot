@@ -1,0 +1,114 @@
+<div class="max-w-4xl mx-auto px-6 py-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Profile Overview</h1>
+        <span class="text-sm text-gray-500">Last updated: {{ profile.updatedAt | date:'medium' }}</span>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+        <div class="flex flex-col md:flex-row items-center md:items-start p-6 gap-6">
+            <!-- Profile Image -->
+            <img [src]="profile.profileUrl" alt="Profile image"
+                class="w-32 h-32 rounded-full border-4 border-pink-500 object-cover" />
+
+            <!-- Info -->
+            <div class="flex-1">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-1">{{ profile.username }}</h2>
+                <p class="text-gray-500 text-sm mb-4">{{ profile.email }}</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div>
+                        <span class="font-medium text-gray-600">User ID:</span>
+                        <p class="truncate">{{ profile._id }}</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-gray-600">Role:</span>
+                        <p class="text-pink-600 font-bold">{{ profile.role }}</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-gray-600">Created At:</span>
+                        <p>{{ profile.createdAt | date:'medium' }}</p>
+                    </div>
+                    <div>
+                        <span class="font-medium text-gray-600">Status:</span>
+                        <p>
+                            <span class="inline-block px-2 py-0.5 rounded-full text-white text-xs font-medium"
+                                [ngClass]="profile.isLoggedIn ? 'bg-green-500' : 'bg-red-500'">
+                                {{ profile.isLoggedIn ? 'Online' : 'Offline' }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="border-t px-6 py-4 bg-gray-50 flex justify-end gap-4">
+            <button (click)="openEditModal()"
+                class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all text-sm font-medium">
+                Edit Profile
+            </button>
+
+            <button
+                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all text-sm font-medium">
+                Logout
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div *ngIf="showModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+    <div class="bg-white rounded-xl p-6 w-full max-w-md shadow-lg">
+        <h2 class="text-xl font-bold mb-4 text-gray-800">Edit Profile</h2>
+
+        <form [formGroup]="editForm" (ngSubmit)="saveProfile()" class="grid gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Username</label>
+                <input type="text" formControlName="username"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
+                <p *ngIf="editForm.get('username')?.invalid && editForm.get('username')?.touched"
+                    class="text-red-500 text-xs mt-1">
+                    Username is required (min 2 chars)
+                </p>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                <input type="email" formControlName="email"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
+                <p *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched"
+                    class="text-red-500 text-xs mt-1">
+                    Enter a valid email
+                </p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-600 mb-1">Profile Image</label>
+                <input type="file" accept="image/*" (change)="onFileSelected($event)"
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
+            
+                <p *ngIf="imageUploadError" class="text-red-500 text-xs mt-1">
+                    {{ imageUploadError }}
+                </p>
+            
+                <div *ngIf="previewUrl" class="mt-2 flex items-center gap-3">
+                    <img [src]="previewUrl" alt="Preview" class="w-20 h-20 rounded-full object-cover border" />
+                    <span class="text-xs text-gray-500">Preview</span>
+                </div>
+            </div>
+              
+            <div class="flex justify-end gap-4 mt-4">
+                <button type="button" (click)="cancelEdit()"
+                    class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 text-sm">
+                    Cancel
+                </button>
+                <button type="submit" [disabled]="editForm.invalid"
+                    class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 text-sm">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+  

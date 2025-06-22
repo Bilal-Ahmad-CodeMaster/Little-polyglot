@@ -1,6 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ApiServicesService } from '../../services/api-services.service';
 
 @Component({
   selector: 'app-main-header',
@@ -10,7 +11,24 @@ import { RouterLink } from '@angular/router';
 })
 export class MainHeaderComponent {
   dropdown: string | null = null;
-
+  branches:any
+ constructor(private api: ApiServicesService) {}
+  ngOnInit(): void {
+    this.api.getBranches().subscribe(
+      (res: any) => {
+       
+        for (let index = 0; index < res.data.length; index++) {
+          this.branches = res.data[index];
+          
+        }
+        console.log(this.branches);
+      },
+      (error) => {
+        console.error('Failed to fetch branches', error);
+        this.branches = [];
+      }
+    );
+  }
   isMobileMenuOpen = false;
   activeSubmenu: string | null = null;
 

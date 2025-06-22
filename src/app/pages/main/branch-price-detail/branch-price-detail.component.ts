@@ -4,14 +4,18 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-branch-price-detail',
-  imports: [RouterLink, NgIf,NgFor,CommonModule],
+  imports: [RouterLink, NgIf, NgFor, CommonModule],
   templateUrl: './branch-price-detail.component.html',
   styleUrl: './branch-price-detail.component.css'
 })
 export class BranchPriceDetailComponent {
   showMore: boolean = false;
   activeIndex = 0; // Default to first item
+  showVideo = false;
 
+  playVideo() {
+    this.showVideo = true;
+  }
   setActiveItem(index: number): void {
     this.activeIndex = index;
   }

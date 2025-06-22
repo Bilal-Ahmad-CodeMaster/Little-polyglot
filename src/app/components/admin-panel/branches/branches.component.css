@@ -1,0 +1,50 @@
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+}
+.input {
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    outline: none;
+}
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ec4899;
+    border-color: #ec4899;
+}
+
+.textarea {
+    width: 100%;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0.25rem;
+    height: 6rem;
+    resize: none;
+    outline: none;
+}
+.textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ec4899;
+    border-color: #ec4899;
+}
+
+
+.input::placeholder,
+.textarea::placeholder {
+    color: #d1d5db; /* Tailwind's gray-300 */
+    opacity: 1;
+}

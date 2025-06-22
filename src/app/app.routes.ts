@@ -17,6 +17,11 @@ import { ParentComponent } from './pages/main/parent/parent.component';
 import { SmartParentAcademyComponent } from './pages/main/parent/smart-parent-academy/smart-parent-academy.component';
 import { SignUpComponent } from './pages/main/sign-up/sign-up.component';
 import { BranchPriceDetailComponent } from './pages/main/branch-price-detail/branch-price-detail.component';
+import { LoginComponent } from './components/login/login.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { DashboardComponent } from './components/admin-panel/dashboard/dashboard.component';
+import { ProfileComponent } from './components/admin-panel/profile/profile.component';
+import { BranchesComponent } from './components/admin-panel/branches/branches.component';
 import { BlogHomeComponent } from './pages/blogs/blog-home/blog-home.component';
 import { InterestingPlacesComponent } from './pages/blogs/interesting-places/interesting-places.component';
 
@@ -43,6 +48,17 @@ export const routes: Routes = [
             { path: 'registration/applicationForm', component: SignUpComponent },
         ],
     },
+    { path: 'login', component: LoginComponent },
+    {
+        path: 'adminPanel',
+        component: AdminPanelComponent,
+        children: [
+            { path: '', component: DashboardComponent },
+            { path: 'dashboard', component: DashboardComponent },
+            { path: 'profile', component: ProfileComponent },
+            { path: 'branches', component: BranchesComponent },
+        ],
+    }, 
     {
         path: 'blogs',
         component: BlogsLayoutComponent,
