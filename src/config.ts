@@ -1,5 +1,6 @@
 // const BASE_URL = "https://your-api.example.com/api";
 const BASE_URL = "http://localhost:3000/api";
+
 export const API_CONFIG: Record<string, string> = {
   login: `${BASE_URL}/auth/signin`,
   logout: `${BASE_URL}/auth/signout`,
@@ -10,5 +11,8 @@ export const API_CONFIG: Record<string, string> = {
   updateProfile: `${BASE_URL}/users/me/update-profile`,
   changePassword: `${BASE_URL}/users/changePassword`,
   branches: `${BASE_URL}/school-branches`,
-  
+
+
+  blogs: `${BASE_URL}/blog`,
+
 };

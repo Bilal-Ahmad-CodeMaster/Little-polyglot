@@ -1,0 +1,139 @@
+<div class="p-4">
+    <!-- Search + Add Blog -->
+    <div class="flex justify-between items-center mb-4">
+        <form [formGroup]="searchForm" class="w-full max-w-md">
+            <input type="text" formControlName="search" placeholder="Search by title or category"
+            class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+            (input)="applyFilter()" />
+        </form>
+        <button (click)="addBlog()" class="ml-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
+            + Add Blog
+        </button>
+    </div>
+
+    <!-- Data Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+            <thead>
+                <tr class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
+                    <th class="px-4 py-3 border-b">#</th>
+                    <th class="px-4 py-3 border-b">Image</th>
+                    <th class="px-4 py-3 border-b">Title</th>
+                    <th class="px-4 py-3 border-b">Category</th>
+                    <th class="px-4 py-3 border-b">Likes</th>
+                    <th class="px-4 py-3 border-b text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let blog of paginatedBlogs; let i = index" class="hover:bg-gray-50">
+                    <td class="px-4 py-3 border-b">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                    <td class="px-4 py-3 border-b">
+                        <img [src]="blog.image" alt="blog" class="w-20 h-14 object-cover rounded border" />
+                    </td>
+                    <td class="px-4 py-3 border-b">{{ blog.Title }}</td>
+                    <td class="px-4 py-3 border-b">{{ blog.category }}</td>
+                    <td class="px-4 py-3 border-b">{{ blog.likes }}</td>
+                    <td class="px-4 py-3 border-b text-center">
+                        <button (click)="editBlog(blog)" class="text-blue-600 hover:underline mr-2">Edit</button>
+                        <button (click)="deleteBlog(blog._id)" class="text-red-600 hover:underline">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-4 flex justify-center space-x-2">
+        <button class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)">
+            Prev
+        </button>
+        <button *ngFor="let page of [].constructor(totalPages); let i = index" class="px-3 py-1 rounded" [ngClass]="{
+          'bg-pink-600 text-white': currentPage === i + 1,
+          'bg-gray-200 hover:bg-gray-300': currentPage !== i + 1
+        }" (click)="goToPage(i + 1)">
+            {{ i + 1 }}
+        </button>
+        <button class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)">
+            Next
+        </button>
+    </div>
+</div>
+
+<!-- Blog Add/Edit Modal -->
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" *ngIf="showModal">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative" role="dialog" aria-modal="true">
+        <!-- Modal Header -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold">
+                {{ isEditMode ? 'Edit Blog' : 'Add New Blog' }}
+            </h2>
+            <button (click)="closeModal()" class="text-gray-600 hover:text-red-600 text-2xl font-bold leading-none"
+                aria-label="Close modal">
+                &times;
+            </button>
+        </div>
+
+        <!-- Modal Form -->
+        <form [formGroup]="blogForm" (ngSubmit)="submitBlog()" enctype="multipart/form-data" class="space-y-4">
+            <div>
+                <input formControlName="Title" type="text" placeholder="Blog Title"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                <div *ngIf="blogForm.get('Title')?.invalid && (blogForm.get('Title')?.dirty || blogForm.get('Title')?.touched)"
+                    class="text-red-600 text-sm mt-1">
+                    <span *ngIf="blogForm.get('Title')?.errors?.['required']">Title is required.</span>
+                    <span *ngIf="blogForm.get('Title')?.errors?.['minlength']">Title must be at least
+                        {{blogForm.get('Title')?.errors?.['minlength'].requiredLength}} characters.</span>
+                </div>
+            </div>
+            <div>
+                <select formControlName="category"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    <option value="">Select Category</option>
+                    <option value="Wychowanie">Wychowanie</option>
+                    <option value="Kreatywna nauka">Kreatywna nauka</option>
+                    <option value="Ciekawe miejsca">Ciekawe miejsca</option>
+                </select>
+                <div *ngIf="blogForm.get('category')?.invalid && (blogForm.get('category')?.dirty || blogForm.get('category')?.touched)"
+                    class="text-red-600 text-sm mt-1">
+                    <span *ngIf="blogForm.get('category')?.errors?.['required']">Category is required.</span>
+                </div>
+            </div>
+            <div>
+                <textarea formControlName="description" placeholder="Description" rows="5"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                <div *ngIf="blogForm.get('description')?.invalid && (blogForm.get('description')?.dirty || blogForm.get('description')?.touched)"
+                    class="text-red-600 text-sm mt-1">
+                    <span *ngIf="blogForm.get('description')?.errors?.['required']">Description is required.</span>
+                    <span *ngIf="blogForm.get('description')?.errors?.['minlength']">Description must be at least
+                        {{blogForm.get('description')?.errors?.['minlength'].requiredLength}} characters.</span>
+                </div>
+            </div>
+
+            <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
+                <label class="block mb-2 font-semibold text-gray-700">Upload Image</label>
+                <input type="file" (change)="onImageChange($event)" accept="image/*"
+                    class="block w-full text-sm text-gray-700 border border-gray-300 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100" />
+                <div *ngIf="imageError" class="text-red-600 text-sm mt-1">
+                    {{ imageError }}
+                </div>
+            </div>
+
+            <!-- Image Preview -->
+            <div *ngIf="imagePreview" class="mt-2 w-full justify-center items-center">
+                <img [src]="imagePreview" alt="Blog Image Preview" class="w-40 h-24 object-cover rounded border" />
+            </div>
+
+            <div class="flex justify-end space-x-2 pt-4">
+                <button type="button" (click)="closeModal()" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+                    Cancel
+                </button>
+                <button type="submit" [disabled]="blogForm.invalid"
+                    class="px-6 py-2 rounded bg-pink-600 text-white hover:bg-pink-700 disabled:bg-pink-300 disabled:text-white disabled:opacity-60">
+                    {{ isEditMode ? 'Update Blog' : 'Add Blog' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
