@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { ApiServicesService } from '../../services/api-services.service';
 import { CommonModule, NgIf } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,6 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiServicesService,
     private router: Router,
-    private toaster: ToastrService
   ) { }
 
   ngOnInit() {
@@ -44,14 +42,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.data.accessToken);
       localStorage.setItem('userDetail', JSON.stringify(res.data.data));
       console.log(res);
-      setTimeout(() => {
-        this.toaster.success(res.message, 'Success', { toastClass: 'ngx-toastr toast-success' });
-      }, 1000);
+  
       this.router.navigate(['/adminPanel']);
     } catch (err: any) {
 
       const errorMsg = err?.error?.message || 'An error occurred';
-      this.toaster.error(errorMsg);
+  console.log(errorMsg);
 
     } finally {
       this.loading = false;
