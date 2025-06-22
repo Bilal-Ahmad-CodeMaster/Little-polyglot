@@ -1,0 +1,171 @@
+<div class="p-4">
+    <!-- Search + Add Branch -->
+    <div class="flex justify-between items-center mb-4">
+        <form [formGroup]="searchForm" (ngSubmit)="applyFilter()" class="w-full max-w-md">
+            <input type="text" formControlName="search" placeholder="Search by name, location, or phone"
+                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+        </form>
+        <button (click)="addBranch()" class="ml-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
+            + Add Branch
+        </button>
+    </div>
+
+    <!-- Data Table -->
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+            <thead>
+                <tr class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
+                    <th class="px-4 py-3 border-b">#</th>
+                    <th class="px-4 py-3 border-b">Branch Name</th>
+                    <th class="px-4 py-3 border-b">Location</th>
+                    <th class="px-4 py-3 border-b">Phone</th>
+                    <th class="px-4 py-3 border-b">Email</th>
+                    <th class="px-4 py-3 border-b text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let branch of paginatedBranches; let i = index" class="hover:bg-gray-50">
+                    <td class="px-4 py-3 border-b">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+                    <td class="px-4 py-3 border-b">{{ branch.name }}</td>
+                    <td class="px-4 py-3 border-b">{{ branch.location }}</td>
+                    <td class="px-4 py-3 border-b">{{ branch.branchContactDetails.phone }}</td>
+                    <td class="px-4 py-3 border-b">{{ branch.branchContactDetails.email }}</td>
+                    <td class="px-4 py-3 border-b text-center">
+                        <button (click)="editBranch(branch)" class="text-blue-600 hover:underline mr-2">Edit</button>
+                        <button (click)="deleteBranch(branch._id)" class="text-red-600 hover:underline">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-4 flex justify-center space-x-2">
+        <button class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" [disabled]="currentPage === 1"
+            (click)="goToPage(currentPage - 1)">
+            Prev
+        </button>
+        <button *ngFor="let page of [].constructor(totalPages); let i = index" class="px-3 py-1 rounded" [ngClass]="{
+          'bg-pink-600 text-white': currentPage === i + 1,
+          'bg-gray-200 hover:bg-gray-300': currentPage !== i + 1
+        }" (click)="goToPage(i + 1)">
+            {{ i + 1 }}
+        </button>
+        <button class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)">
+            Next
+        </button>
+    </div>
+</div>
+
+
+
+<div class="fixed inset-0 bg-[#000000c4] z-40 flex items-center justify-center" *ngIf="showModal">
+    <div class="bg-white w-full lg:max-w-5xl h-[100vh] lg:h-[90vh] flex flex-col rounded-lg shadow-lg">
+
+        <!-- Fixed Header -->
+        <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+            <h2 class="text-xl font-semibold">{{ isEditMode ? 'Edit Branch' : 'Add New Branch' }}</h2>
+            <button (click)="closeModal()" class="text-gray-600 hover:text-red-600">&times;</button>
+        </div>
+
+        <!-- Step Tabs (still fixed under header) -->
+        <div class="px-4 pt-4 sticky top-[65px] bg-white z-10">
+            <div class="flex space-x-2">
+                <button *ngFor="let step of steps; let i = index" class="px-4 py-2 rounded-t border-b-2" [ngClass]="{
+              'border-pink-600 text-pink-600': currentStep === i,
+              'border-transparent text-gray-500': currentStep !== i
+            }" (click)="currentStep = i">
+                    {{ step }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <form [formGroup]="branchForm" (ngSubmit)="submitBranch()" enctype="multipart/form-data"
+            class="flex flex-col flex-1 overflow-hidden">
+            <div class="p-4 space-y-4 overflow-y-auto flex-1">
+                <!-- Step 1 -->
+                <div *ngIf="currentStep === 0">
+                    <h3 class="text-lg font-semibold">Branch Contact Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input formControlName="branchName" placeholder="Branch Name" class="input" />
+                        <input formControlName="phone" placeholder="Phone" class="input" />
+                        <input formControlName="branchLocation" placeholder="Branch Location" class="input" />
+                        <input formControlName="email" placeholder="Branch Email" class="input" />
+                        <input formControlName="address" placeholder="Branch Address" class="input" />
+                        <input formControlName="googleLocation" placeholder="Google Maps Embed URL" class="input" />
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div *ngIf="currentStep === 1">
+                    <h3 class="text-lg font-semibold">School Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input formControlName="schoolTitle" placeholder="School Title" class="input" />
+                        <input formControlName="schoolEmail" placeholder="School Email" class="input" />
+                        <input formControlName="schoolAddress" placeholder="School Address" class="input" />
+                        <input formControlName="contactNo" placeholder="Contact No" class="input" />
+                        <input formControlName="headquarterLocation" placeholder="Headquarter Location" class="input" />
+                        <textarea formControlName="schoolDescription" placeholder="School Description"
+                            class="textarea"></textarea>
+                        <textarea formControlName="extraDescription" placeholder="Extra Description"
+                            class="textarea"></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div *ngIf="currentStep === 2">
+                    <h3 class="text-lg font-semibold">Franchise Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input formControlName="franchiseName" placeholder="Franchise Name" class="input" />
+                        <input formControlName="franchiseAddress" placeholder="Franchise Address" class="input" />
+                        <input formControlName="taxId" placeholder="Tax Identification Number" class="input" />
+                        <input formControlName="regon" placeholder="REGON Number" class="input" />
+                        <input formControlName="krs" placeholder="KRS No" class="input" />
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div *ngIf="currentStep === 3">
+                    <h3 class="text-lg font-semibold">Media Upload</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div (drop)="handleDrop($event, 'image')" (dragover)="$event.preventDefault()"
+                            class="border-2 border-dashed border-pink-400 p-4 text-center rounded cursor-pointer">
+                            <p class="text-gray-600">Drag & drop images here or click</p>
+                            <input type="file" multiple (change)="onImageSelect($event)" accept="image/*"
+                                class="hidden" />
+                        </div>
+                        <div (drop)="handleDrop($event, 'video')" (dragover)="$event.preventDefault()"
+                            class="border-2 border-dashed border-pink-400 p-4 text-center rounded cursor-pointer">
+                            <p class="text-gray-600">Drag & drop videos here or click</p>
+                            <input type="file" multiple (change)="onVideoSelect($event)" accept="video/*"
+                                class="hidden" />
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 pt-4">
+                        <img *ngFor="let img of imagePreviews" [src]="img" class="w-full h-24 object-cover rounded" />
+                        <video *ngFor="let vid of videoPreviews" [src]="vid" class="w-full h-24 rounded"
+                            controls></video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fixed Footer -->
+            <div class="border-t p-4 flex justify-between bg-white sticky bottom-0 z-10">
+                <button type="button" (click)="currentStep = currentStep - 1" [disabled]="currentStep === 0"
+                    class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+                    Back
+                </button>
+                <button type="button" *ngIf="currentStep < steps.length - 1" (click)="currentStep = currentStep + 1"
+                    class="px-4 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
+                    Next
+                </button>
+                <button type="submit" *ngIf="currentStep === steps.length - 1"
+                    class="px-6 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
+                    {{ isEditMode ? 'Update Branch' : 'Save Branch' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
