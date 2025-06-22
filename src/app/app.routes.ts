@@ -22,6 +22,8 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { DashboardComponent } from './components/admin-panel/dashboard/dashboard.component';
 import { ProfileComponent } from './components/admin-panel/profile/profile.component';
 import { BranchesComponent } from './components/admin-panel/branches/branches.component';
+import { BlogHomeComponent } from './pages/blogs/blog-home/blog-home.component';
+import { InterestingPlacesComponent } from './pages/blogs/interesting-places/interesting-places.component';
 
 
 export const routes: Routes = [
@@ -61,8 +63,10 @@ export const routes: Routes = [
         path: 'blogs',
         component: BlogsLayoutComponent,
         children: [
-            { path: '', component: EducationComponent },
+            { path: '', component: BlogHomeComponent },
+            { path: 'education', component: EducationComponent },
             { path: 'creativeLearning', component: CreativeLearningComponent },
+            { path: 'interestingPlaces', component: InterestingPlacesComponent },
         ],
     },
 ];

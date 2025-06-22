@@ -19,3 +19,6 @@ body {
 .goog-te-gadget-icon {
   display: none !important;
 }
+body {
+  font-family: sans-serif;
+}
