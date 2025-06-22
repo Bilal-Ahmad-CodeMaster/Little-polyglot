@@ -41,17 +41,18 @@ export class LoginComponent implements OnInit {
 
     try {
       const res: any = await this.api.login(this.form.value).toPromise();
-      localStorage.setItem('token', res.token);
+      localStorage.setItem('token', res.data.accessToken);
+      localStorage.setItem('userDetail', JSON.stringify(res.data.data));
+      console.log(res);
       setTimeout(() => {
-        this.toaster.success('Manual toast test');
+        this.toaster.success(res.message, 'Success', { toastClass: 'ngx-toastr toast-success' });
       }, 1000);
-      this.router.navigate(['/AdminPanel']);
-
+      this.router.navigate(['/adminPanel']);
     } catch (err: any) {
-      setTimeout(() => {
-        console.log("hello");
-        this.toaster.success('Manual toast test');
-      }, 100);
+
+      const errorMsg = err?.error?.message || 'An error occurred';
+      this.toaster.error(errorMsg);
+
     } finally {
       this.loading = false;
     }

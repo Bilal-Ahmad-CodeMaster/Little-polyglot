@@ -1,14 +1,30 @@
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection, inject } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), importProvidersFrom(BrowserAnimationsModule),
-    importProvidersFrom(ToastrModule.forRoot()),
+    // ✅ Provide the interceptor so Angular can inject it
+    AuthInterceptor,
+
+    // ✅ Register the interceptor using inject()
+    provideHttpClient(
+      withInterceptors([
+        (req, next) => inject(AuthInterceptor).intercept(req, { handle: next })
+      ])
+    ),
+
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    importProvidersFrom(BrowserAnimationsModule),
+    importProvidersFrom(
+      ToastrModule.forRoot({
+        positionClass: 'toast-top-left'
+      })
+    ),
   ]
 };
-
