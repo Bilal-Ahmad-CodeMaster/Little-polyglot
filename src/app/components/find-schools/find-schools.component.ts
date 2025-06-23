@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SchoolDetailModalComponent } from "../../modals/school-detail-modal/school-detail-modal.component";
 import { SharedServiceService } from '../../services/shared-service.service';
 
@@ -21,11 +21,17 @@ export class FindSchoolsComponent {
     '7th-8th grade',
     'High School'
   ];
-  constructor(private sharedService: SharedServiceService) {}  
+  constructor(private sharedService: SharedServiceService, private route: ActivatedRoute) {}  
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
-
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const branchName = params['branch'];
+      console.log('Selected Branch:', branchName);
+      
+    })
+  }
   selectOption(option: string) {
     const index = this.selectedOptions.indexOf(option);
     if (index >= 0) {
@@ -42,7 +48,7 @@ export class FindSchoolsComponent {
   get displayValue(): string {
     return this.selectedOptions.length ? this.selectedOptions.join(', ') : 'Select age group';
   }
-
+ 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
