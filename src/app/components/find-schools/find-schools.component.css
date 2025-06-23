@@ -1,0 +1,20 @@
+::placeholder {
+  color: #828589; /* Tailwind's gray-300 */
+  opacity: 1;
+}
+
+input::-webkit-input-placeholder {
+  color: #828589;
+}
+
+input:-ms-input-placeholder {
+  color: #828589;
+}
+
+input::-ms-input-placeholder {
+  color: #828589;
+}
+
+input::placeholder {
+  color: #828589;
+}

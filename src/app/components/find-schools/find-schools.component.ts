@@ -3,7 +3,8 @@ import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SchoolDetailModalComponent } from "../../modals/school-detail-modal/school-detail-modal.component";
 import { SharedServiceService } from '../../services/shared-service.service';
-
+import { ApiServicesService } from '../../services/api-services.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-find-schools',
   standalone: true,
@@ -21,16 +22,34 @@ export class FindSchoolsComponent {
     '7th-8th grade',
     'High School'
   ];
-  constructor(private sharedService: SharedServiceService, private route: ActivatedRoute) {}  
+  branches: any;
+
+  globalIframeSrc: any ="" ;
+  constructor(private sharedService: SharedServiceService, private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) {
+    const rawUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38291.27281554404!2d17.523204484746508!3d53.14242340845767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703a03bb964bed3%3A0xad0f7f8a02451a69!2zTmFrxYJvIG5hZCBOb3RlY2nEhSwgUG9sYW5k!5e0!3m2!1sen!2s!4v1750678214500!5m2!1sen!2s';
+    this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
+  }
+    
+  
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
   ngOnInit() {
+
     this.route.queryParams.subscribe(params => {
       const branchName = params['branch'];
       console.log('Selected Branch:', branchName);
-      
+
     })
+    this.api.getBranches().subscribe({
+      next: (response: any) => {
+        console.log('Branches fetched successfully:', response.data);
+        this.branches = response.data;
+      },
+      error: (err) => {
+        console.error('Error fetching branches:', err);
+      }
+    });
   }
   selectOption(option: string) {
     const index = this.selectedOptions.indexOf(option);
@@ -46,9 +65,9 @@ export class FindSchoolsComponent {
   }
 
   get displayValue(): string {
-    return this.selectedOptions.length ? this.selectedOptions.join(', ') : 'Select age group';
+    return this.selectedOptions.length ? this.selectedOptions.join(', ') : 'Select City';
   }
- 
+
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -57,26 +76,7 @@ export class FindSchoolsComponent {
     }
   }
 
-  locations = [
-    {
-      title: 'ul. Antoniuk Fabryczny 5/7',
-      description: 'Szkoła Podstawowa nr 24 im. 2 Korpusu Polskich Sił Zbrojnych na Zachodzie',
-      branches: ['Białystok', 'Białystok I'],
-      details: [
-        'Zajęcia na terenie tej placówki',
-        'Zapraszamy uczniów z pobliskich placówek'
-      ]
-    },
-    {
-      title: 'ul. Noniewicza 85C/16',
-      description: 'Lokal Noniewicza 85C/16',
-      branches: ['Białystok', 'Białystok I'],
-      details: [
-        'Zajęcia na terenie tej placówki',
-        'Zapraszamy uczniów z pobliskich placówek'
-      ]
-    }
-  ];
+
   sendSchoolDetails(school: { title: string; description: string; branches: string[]; details: string[] }) {
     // Logic to handle sending school details
 
