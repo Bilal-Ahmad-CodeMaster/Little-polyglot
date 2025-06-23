@@ -1,11 +1,11 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ApiServicesService } from '../../services/api-services.service';
 
 @Component({
   selector: 'app-main-header',
-  imports: [RouterLink, NgIf, NgFor],
+  imports: [RouterLink, NgIf, NgFor,CommonModule],
   templateUrl: './main-header.component.html',
   styleUrl: './main-header.component.css',
 })
@@ -16,11 +16,7 @@ export class MainHeaderComponent {
   ngOnInit(): void {
     this.api.getBranches().subscribe(
       (res: any) => {
-       
-        for (let index = 0; index < res.data.length; index++) {
-          this.branches = res.data[index];
-          
-        }
+     this.branches=res.data
         console.log(this.branches);
       },
       (error) => {
