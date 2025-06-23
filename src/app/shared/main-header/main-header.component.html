@@ -62,31 +62,18 @@
                             </svg>
                         </div>
                         <div
-                            class="hidden group-hover:flex absolute bg-white shadow-md mt-9 right-[-100px] rounded w-fit z-50">
+                            class="absolute mt-3  z-50  bg-white rounded-xl shadow-lg p-3 hidden group-hover:block transition-all duration-300">
+                            <div [ngClass]="{
+                                                    'grid grid-cols-2 gap-2 w-max ': branches.length > 5,
+                                                    'flex flex-col min-w-[240px] right-0': branches.length <= 5
+                                                  }"
+                                class="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
+                                <a *ngFor="let branch of branches" [routerLink]="['/schools']"
+                                    [queryParams]="{ branch: branch.name }"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:text-pink-500 rounded transition-colors duration-200 whitespace-nowrap">
+                                    {{ branch.name }}
+                                </a>
 
-                            <div> <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lower
-                                    Silesia</a>
-                                <a routerLink="/schools"
-                                    class="block px-4 py-2 hover:text-pink-500">Kuyavian-Pomeranian</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lublin</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lubusz</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lodz</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Lesser
-                                    Poland</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Masovian</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Opole</a>
-                            </div>
-                            <div>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Subcarpathian</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Podlaskie</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Pomeranian</a>
-
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Silesian</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Warmia-Masuria</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">Greater
-                                    Poland</a>
-                                <a routerLink="/schools" class="block px-4 py-2 hover:text-pink-500">West
-                                    Pomeranian</a>
                             </div>
                         </div>
 
