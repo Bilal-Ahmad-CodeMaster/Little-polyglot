@@ -10,6 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class BlogsHeaderComponent {
   as: boolean = true
+  isMenuOpen = false;
   education = [
     {
       image: 'https://earlystage.pl/blog/wp-content/uploads/2022/04/6-wiosennych-zabaw-dla-dzieci-z-angielskim-w-tle-585x390.jpg',

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ApiServicesService } from '../../../services/api-services.service';
 
 @Component({
   selector: 'app-blog-home',
@@ -8,6 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './blog-home.component.css'
 })
 export class BlogHomeComponent {
+  constructor(private api :ApiServicesService){}
+  ngOnInit(){
+    this.api.getBlogs().subscribe((blog)=>{
+      console.log(blog)
+    })
+    
+  }
   popularPosts = [
   {
     img: 'https://earlystage.pl/blog/wp-content/uploads/2025/06/nowy-podrecznik-dla-uczniow-early-stage-upside-down-1-585x390.png',
@@ -61,5 +69,6 @@ export class BlogHomeComponent {
   }
 
   ];
+  
   
 }
