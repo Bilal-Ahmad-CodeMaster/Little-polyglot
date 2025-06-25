@@ -78,7 +78,9 @@
 
 
     </main>
-
+    <section>
+        jk
+    </section>
 
     <section class="my-10">
         <div>
@@ -127,7 +129,7 @@
         </div>
         <div class="flex flex-col gap-4 mt-4 text-[12px] pl-4 max-w-full lg:max-w-[70%]  mx-auto">
             <p *ngFor="let info of BrachData.extraInfoModal">{{info}}</p>
-          
+
         </div>
         <div class="w-full flex justify-center items-center">
             <button routerLink="/registration/applicationForm"
@@ -278,24 +280,48 @@
     </section>
 
 
-    <section>Photo gallery of our school
 
+    <section *ngIf="BrachData.BranchEvents.length>0" class="border-b border-gray-200 pb-10">
+        <h2 class="text-2xl font-semibold w-full text-center">Events at the branch</h2>
 
+        <div class="flex flex-col md:flex-row  gap-4">
+            <div *ngFor="let event of BrachData.BranchEvents; let i = index"
+                class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200 ">
+                <h2 class="text-xl font-semibold mb-2">
+                    {{event.title}}
+                </h2>
+                <p class="text-sm text-gray-500 mb-4">{{event.date}}</p>
 
+                <div>
+                    <p class="mb-3">
+                        {{event.description}}
+                    </p>
+                    <ng-container *ngIf="expandedEventIndex === i">
+                        <p>
+                            {{event.extraDescription}}
+                        </p>
+                    </ng-container>
+                </div>
+
+                <button *ngIf="event.extraDescription"
+                    (click)="expandedEventIndex === i ? expandedEventIndex = -1 : expandedEventIndex = i"
+                    class="mt-4 text-pink-600 font-semibold hover:underline focus:outline-none">
+                    {{ expandedEventIndex === i ? 'Collapse ↑' : 'Read more ↓' }}
+                </button>
+            </div>
+        </div>
     </section>
-    <section>Events at the branch
-    </section>
 
-    <div class="bg-white flex flex-col items-center p-4">
+    <div class="bg-white flex flex-col items-center p-4" *ngIf="BrachData.videosGallery.length>0">
         <h2 class="text-center text-black text-3xl font-semibold my-10">
             Watch a demo lesson
         </h2>
-
-        <div class="relative max-w-7xl w-full rounded-lg overflow-hidden">
-            <ng-container *ngIf="!showVideo; else videoBlock">
-                <img src="https://earlystage.pl/images/demo-lesson/demo-lesson-placeholder-kids2.webp"
-                    alt="Video thumbnail" class="w-full h-auto object-cover rounded-lg" />
-                <button (click)="playVideo()" aria-label="Play demo lesson video"
+        <div class="relative max-w-7xl w-full rounded-lg overflow-hidden  mt-10"
+            *ngFor="let video of BrachData.videosGallery; let i = index">
+            <ng-container *ngIf="!video.showVideo; else videoBlock">
+                <img [src]="BrachData.imagesGallery[i].imageUrl || video.thumbnail || '/assets/images.jpeg'"
+                    alt="Video thumbnail" class="w-full max-h-[546px]  rounded-lg" />
+                <button (click)="video.showVideo = true" aria-label="Play demo lesson video"
                     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
                     type="button">
                     <svg aria-hidden="true" class="w-7 h-7 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
@@ -304,88 +330,33 @@
                 </button>
             </ng-container>
 
-            <ng-template #videoBlock>
-                <video src="https://earlystage.pl/storage/movies/early_stage_kompilacja.mp4" controls autoplay
-                    class="w-full h-auto rounded-lg" aria-label="Demo lesson video"></video>
+            <ng-template #videoBlock class="">
+                <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg "
+                    aria-label="Demo lesson video"></video>
             </ng-template>
         </div>
     </div>
 
-    <section class="bg-white py-12">
-        <div class="container mx-auto px-4 space-y-16">
+    <section class="bg-white py-12" *ngIf="BrachData.SEOBaseAdditionalInfo">
+        <div class="container mx-auto px-4 space-y-16" *ngFor="let SEOInfo of BrachData.SEOBaseAdditionalInfo">
             <!-- Article 1 -->
             <article class="  p-6">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    Class schedule adapted to the school
+                    {{ SEOInfo.title}}
                 </h2>
                 <div class="space-y-4 text-gray-700">
+
+
+                    <p class="font-semibold mt-4">{{ SEOInfo.subTittle}}</p>
                     <p>
-                        We understand that the school schedule is important. That's why we adjust the schedule of our
-                        English classes so that students can learn English without having to give up other classes.
+                        {{SEOInfo.description}}
                     </p>
 
-                    <p class="font-semibold mt-4">Child drop-off service</p>
-                    <p>
-                        If you need support with bringing your child to and from classes, we are here to help. Our
-                        tutors
-                        can bring children to classes and take them to school, ensuring safety and comfort.
-                    </p>
-
-                    <p class="font-semibold mt-4">Long-term student development path</p>
-                    <p>
-                        At our English language school in Bydgoszcz, we plan learning in a long-term way. We care about
-                        the
-                        continuity of the student's development, helping them achieve a higher level of language
-                        competence.
-                    </p>
-
-                    <p class="mt-4">
-                        <strong>
-                            We invite you to our English language school for children and teenagers in Bydgoszcz
-                        </strong>, where learning is not only an obligation, but also a pleasure and passion!
-                    </p>
                 </div>
             </article>
             <hr class="my-8 border-t border-gray-200">
             <!-- Article 2 -->
-            <article class="  p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    English language school for children and youth in Bydgoszcz
-                </h2>
-                <div class="space-y-4 text-gray-700">
-                    <p>
-                        We invite you to a fascinating journey through the world of English for children and young
-                        people in
-                        Wyżyna in Bydgoszcz!
-                    </p>
 
-                    <p class="font-semibold mt-4">Inspiring English learning with experienced teachers</p>
-                    <p>
-                        Our educational branch in Bydgoszcz is a place where learning English becomes a real adventure.
-                        Our
-                        close-knit team of experienced and passionate teachers transforms each class into an
-                        unforgettable
-                        experience.
-                        <strong>Learning English can be fascinating and inspiring!</strong>
-                    </p>
-
-                    <p class="font-semibold mt-4">English full of music, movement and fun</p>
-                    <p>
-                        English is not just about learning, it is also about fun! We use music, movement and creative
-                        ideas
-                        in our classes, making the learning process a pleasure.
-                    </p>
-
-                    <p class="font-semibold mt-4">Convenient locations of our English schools in Bydgoszcz</p>
-                    <p>
-                        <strong>English lessons for children and teenagers are held in two conveniently located
-                            locations in
-                            Bydgoszcz:</strong> ul. Siedleckiego 10, next to Zespół Szkół nr 19, and ul. Białogardzka 7,
-                        near Primary School nr 60.
-                    </p>
-                </div>
-            </article>
-            <hr class="my-8 border-t border-gray-200">
 
         </div>
     </section>
@@ -400,32 +371,31 @@
             </p>
 
             <!-- Franchisee Details -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Franchisee details</h3>
 
                 <div class="grid gap-4 text-sm text-gray-700">
                     <div class="flex justify-between">
                         <span class="font-medium">Name:</span>
-                        <span>Englify Sp. z o. o.</span>
+                        <span>{{BrachData.franchiseDetails.name}}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="font-medium">Address:</span>
                         <span class="text-right">
-                            Glinki, 97/22<br />
-                            85-861 Bydgoszcz
+                            {{BrachData.franchiseDetails.Address}}
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="font-medium">Tax identification number:</span>
-                        <span>9532795401</span>
+                        <span>{{BrachData.franchiseDetails.TaxIdentification}}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="font-medium">REGON:</span>
-                        <span>52491217800000</span>
+                        <span>{{BrachData.franchiseDetails.REGON}}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="font-medium">KRS:</span>
-                        <span>0001028581</span>
+                        <span>{{BrachData.franchiseDetails.KRSNo}}</span>
                     </div>
                 </div>
             </div>
