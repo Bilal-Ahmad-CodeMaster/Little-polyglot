@@ -73,19 +73,29 @@
 <div class="flex flex-col lg:flex-row h-[80vh]">
     <!-- Location List -->
     <div class="w-full lg:w-[40%] overflow-y-auto border-r border-gray-200">
-        <button *ngFor="let item of branches" class="w-full text-left px-4 py-6 border-b hover:bg-gray-50 transition"
-            (click)="sendSchoolDetails(item)">
-            <div class="flex flex-wrap gap-2 mb-2">
-                <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.city}}</span>
-                <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.region }}</span>
+        <ng-container *ngIf="branches && branches.length; else noSchools">
+            <button *ngFor="let item of branches" class="w-full text-left px-4 py-6 border-b hover:bg-gray-50 transition"
+                (click)="sendSchoolDetails(item)">
+                <div class="flex flex-wrap gap-2 mb-2">
+                    <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.city}}</span>
+                    <span class="text-xs bg-gray-100 text-gray-600 rounded px-2 py-1">{{ item.region }}</span>
+                </div>
+                <div class="mb-2">
+                    <h2 class="text-lg font-medium text-gray-900">{{ item.schoolName}}</h2>
+                    <p class="text-lg font-medium text-gray-800">{{ item.streetAddress }}</p>
+                    <p class="text-sm text-gray-700">{{ item.annotation }}</p>
+                </div>
+            </button>
+        </ng-container>
+        <ng-template #noSchools>
+            <div class="flex flex-col items-center justify-center h-full py-20 text-center text-gray-500">
+                <svg class="w-12 h-12 mb-4 text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 018 0v2M12 7a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+                <p class="text-lg font-semibold mb-2">No schools found for the selected province and city.</p>
+                <p class="text-sm">Please try selecting a different province or city to see available schools.</p>
             </div>
-            <div class="mb-2">
-                <h2 class="text-lg font-medium text-gray-900">{{ item.schoolName}}</h2>
-                <p class="text-lg font-medium text-gray-800">{{ item.streetAddress }}</p>
-                <p class="text-sm text-gray-700">{{ item.annotation }}</p>
-            </div>
-
-        </button>
+        </ng-template>
     </div>
 
     <!-- Embedded Map with Modal -->
