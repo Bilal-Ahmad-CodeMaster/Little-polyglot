@@ -18,8 +18,14 @@ export class BranchPriceDetailComponent {
   globalIframeSrc: any;
   contactDetail: any;
   accordionItems: any
+i: any;
+expandedEventIndex: any;
   constructor(private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) { }
+  expanded = false;
 
+  toggleExpand() {
+    this.expanded = !this.expanded;
+  }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const branchId = params['branchId'];
