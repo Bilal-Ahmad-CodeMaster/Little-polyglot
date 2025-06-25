@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ApiServicesService } from '../../services/api-services.service';
 
 @Component({
   selector: 'app-blogs-header',
@@ -9,6 +10,15 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './blogs-header.component.css'
 })
 export class BlogsHeaderComponent {
+  constructor(private api: ApiServicesService) { }
+  allBlogs: any;
+  ngOnInit() {
+    this.api.getBlogs().subscribe((res: any) => {
+      this.allBlogs = res.data;
+      console.log("from header" , this.allBlogs)
+
+    })
+  }
   as: boolean = true
   isMenuOpen = false;
   education = [
@@ -226,4 +236,5 @@ export class BlogsHeaderComponent {
       tag: "Interesting places"
     }
   ];
+
 }
