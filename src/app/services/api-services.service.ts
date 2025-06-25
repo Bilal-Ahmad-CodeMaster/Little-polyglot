@@ -20,6 +20,10 @@ export class ApiServicesService {
     return this.http.get(`${API_CONFIG['branches']}`);
   }
 
+  getSingleBranch(id: string) {
+    return this.http.get(`${API_CONFIG['branches']}/${id}`);
+  }
+
   createBranch(payload: FormData) {
     return this.http.post(`${API_CONFIG['branches']}`, payload);
   }

@@ -4,128 +4,131 @@
     <!-- Fixed Header -->
     <div class="bg-[#F3F5F8] p-6 sticky top-0 z-10">
         <div class="flex justify-between items-center">
-            <h2 class="text-xl font-semibold">{{ schoolDetails.title }}</h2>
+            <h2 class="text-xl font-semibold">{{ schoolDetails.city }}</h2>
             <button class="text-gray-500 hover:text-red-500" (click)="closeModal()">
                 <span class="material-icons cursor-pointer">close</span>
             </button>
         </div>
         <div class="mt-2 text-sm">
-            <p class="font-medium" *ngFor="let address of schoolDetails.details">{{ address }}</p>
-            <p>{{ schoolDetails.description }}</p>
+            <p class="font-medium">{{ schoolDetails.schoolName }}</p>
+            <p class="text-gray-400">{{ schoolDetails.streetAddress }}</p>
             <ul class="flex flex-wrap gap-2 mt-2 text-xs">
-                <li class="bg-white font-semibold text-black px-2 py-1 rounded"
-                    *ngFor="let branch of schoolDetails.branches">
-                    {{ branch }}
+                <li class="bg-white font-semibold text-black px-2 py-1 rounded">
+                    {{ schoolDetails.region }}
                 </li>
             </ul>
         </div>
     </div>
 
     <!-- Scrollable Content -->
-    <div #scrollContainer class="overflow-y-auto px-4 pb-8 pt-4 max-h-[calc(100%-128px)] bg-white"
-        (scroll)="onScroll()">
+    <div #scrollContainer class="overflow-y-auto px-4 pb-8 pt-4 max-h-[calc(100%-128px)] bg-white">
 
-        <!-- Tabs -->
-        <nav class="mt-0">
-            <ul class="flex border-b border-gray-200 text-sm">
-                <li *ngFor="let tab of tabs; let i = index" (click)="scrollToTab(tabSections[i].el, tab)"
-                    class="px-4 py-2 cursor-pointer hover:text-pink-500" [ngClass]="{
-                        'border-b-2 border-pink-500 text-pink-500 font-semibold': activeTab === tab
-                    }">
-                    {{ tab }}
-                </li>
-            </ul>
-        </nav>
+
+
+
 
         <!-- Categories -->
-        <div class="flex overflow-x-auto gap-2 mt-4 pb-2">
+        <div class="flex overflow-x-auto gap-2  pb-3">
             <div *ngFor="let cat of categories; let i = index"
-                class="px-4 py-2 whitespace-nowrap rounded-full border cursor-pointer"
-                [ngClass]="i === activeCategory ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800'"
-                (click)="activeCategory = i">
+                class="px-1 py-2 whitespace-nowrap rounded-full border cursor-pointer"
+                [ngClass]="i === 1 ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800'">
                 {{ cat }}
             </div>
         </div>
 
-        <!-- Price Card -->
-        <div #priceListSection id="price-list" class="mt-4 border rounded-lg p-4 bg-gray-50">
-            <h3 class="text-lg font-semibold">Kids (1xweek)</h3>
-            <p class="text-sm text-gray-600">Classes once a week</p>
-            <div class="flex justify-between mt-3 text-sm">
-                <div>
-                    <p><span class="font-semibold">1 x 45 min</span> per week</p>
-                    <p><span class="font-semibold">34 classes</span> per school year</p>
+        <section class="w-full">
+            <div>
+                <div class="scroller-container w-full">
+                    <div class="scroller w-full">
+                        <div class="scroller-content flex w-full">
+                            <div class="item flex-1 text-center" [ngClass]="{ 'activeMenu': activeIndex === i }"
+                                *ngFor="let item of accordionItems; let i = index" (click)="setActiveItem(i)">
+                                {{ item.label }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-xl font-bold">190 PLN</p>
-                    <p class="text-xs text-gray-500">per month</p>
-                    <p class="text-xs mt-1 text-gray-500">+ 220 PLN for educational materials</p>
+
+                <!-- Content -->
+                <div class="bg-white w-full h-full overflow-y-auto mt-1">
+                    <div class="space-y-4">
+                        <div *ngFor="let card of accordionItems[activeIndex]?.packages"
+                            class=" p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200 ">
+                            <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
+                            <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
+
+                            <div class="text-sm text-gray-700 mt-2 space-y-1">
+                                <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per
+                                    week</p>
+                                <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{
+                                        card.durationInMinutes
+                                        }}</strong> of
+                                    English per week</p>
+                                <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses
+                                        }}</strong>
+                                    per
+                                    school year</p>
+                            </div>
+
+                            <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
+
+                            <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
+                                card.pricePerMonth }}
+                            </h4>
+                            <p *ngIf="card.materialsFee" class="text-gray-600 text-sm">{{ card.materialsFee }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Contact Info -->
         <div #contactSection id="contact" class="mt-4 text-sm text-gray-700 py-8 border-t border-gray-200">
             <h2 class="text-black text-base font-semibold mb-6">Contact</h2>
             <div class="flex items-center mb-4 space-x-4">
                 <i class="fas fa-phone-alt text-black text-lg"></i>
-                <span class="text-black text-base font-normal">797 637 537</span>
+                <span class="text-black text-base font-normal">{{contactInfo.phone}}</span>
             </div>
             <div class="flex items-center space-x-4">
                 <i class="far fa-envelope text-black text-lg"></i>
                 <a href="mailto:bydgoszcz3@earlystage.pl"
-                    class="text-pink-700 text-base font-normal underline">bydgoszcz3&#64;earlystage.pl</a>
+                    class="text-pink-700 text-base font-normal underline">{{contactInfo.email}}</a>
             </div>
         </div>
 
         <!-- Gallery -->
-        <div #gallerySection id="gallery" class="py-8 border-t border-gray-200 mt-4" *ngIf="schoolDetails.gallery">
+        <div #gallerySection id="gallery" class="py-8 border-t border-gray-200 mt-4"
+            *ngIf="schoolDetails.imagesGallery.length>0">
             <h3 class="text-lg font-semibold mb-4 text-gray-800">Photo gallery of our school</h3>
 
             <div class="grid grid-cols-1 gap-4">
-                <div *ngFor="let img of ['img1.jpg', 'img2.jpg', 'img3.jpg']"
+                <div *ngFor="let img of schoolDetails.imagesGallery"
                     class="relative group overflow-hidden rounded-lg shadow-sm">
-                    <img [src]="img" alt="Gallery Image"
+                    <img [src]="img.imageUrl" alt="Gallery Image" [attr.title]="img.title"
                         class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105" />
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="mt-4 py-8 border-t border-gray-200">
+        <div class="mt-4 py-8 border-t border-gray-200" *ngIf="schoolDetails.videosGallery.length>0">
             <h3 class="text-lg font-semibold mb-4">Videos</h3>
-            <video class="w-full h-[318px] rounded-lg" controls controlsList="nodownload"
-                poster="https://earlystage.pl/images/demo-lesson/demo-lesson-placeholder-kids.jpg">
-                <source src="https://earlystage.pl/storage/movies/early_stage_kompilacja.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            <div *ngFor="let video of schoolDetails.videosGallery">
+                <video class="w-full h-[318px] rounded-lg" controls controlsList="nodownload">
+                    <source [src]="video.videoUrl" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
 
 
         <!-- CTA -->
         <div #demoSection id="demo" class="mt-4 text-sm border-t border-gray-200 pt-8">
             <ul class="list-disc pl-6 text-sm text-gray-400">
-                <li>
-                    The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
-                    months and
-                    includes
-                    the specified number of classes – regardless of the number of classes each month.
+                <li *ngFor="let info of schoolDetails.extraInfoModal">
+                    {{info}}
                 </li>
-                <li>
-                    If a course starts in a different month or includes fewer classes than indicated, both the total
-                    course price
-                    and
-                    monthly fees may change.
-                </li>
-                <li>
-                    The prices listed on the website are for information purposes only and do not constitute an offer.
-                    The final price of the course will be presented in the contract, taking into account the start date
-                    and the
-                    number of
-                    classes.
-                </li>
+
             </ul>
 
         </div>
@@ -134,13 +137,14 @@
     <!-- Fixed Footer -->
     <div
         class="flex justify-between items-center gap-4 px-4 py-6 bg-white sticky bottom-0 z-10 border-t border-gray-200 lg:shadow-lg">
-        <a  routerLink="/branch/detail"
+        <a (click)="closeModal()" routerLink="/branch/detail" [queryParams]="{ branchId: schoolDetails._id }"
             class="px-4 py-2 rounded-lg bg-gray-100 text-gray-800 hover:bg-gray-200 transition w-full text-center cursor-pointer">
-            Details
+            Visit our site
         </a>
-        <a routerLink="/registration/applicationForm"
+        <a (click)="closeModal()" [routerLink]="['/registration/applicationForm']"
+            [queryParams]="{ branchId: schoolDetails._id }"
             class="px-4 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700 transition font-semibold w-full text-center cursor-pointer">
-            Sign up your child
+            Join Us
         </a>
     </div>
 </section>

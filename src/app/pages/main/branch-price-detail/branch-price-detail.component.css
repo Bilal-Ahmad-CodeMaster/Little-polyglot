@@ -9,7 +9,7 @@
 }
 .scroller-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   transition: transform 0.3s ease;
   overflow-x: auto;

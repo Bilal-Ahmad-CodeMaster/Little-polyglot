@@ -12,40 +12,88 @@
 
         <div class="mt-10 ">
             <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-11 text-black">
-                Registration for the Głogów I branch
+                Registration for the {{BrachData?.schoolDetail?.branchName}}
             </h1>
             <div class="flex gap-10 text-pink-600 flex-col md:flex-row">
-                <button class="cursor-pointer hover:text-[#894858]">Branch locations >
-                </button>
-                <button class="cursor-pointer hover:text-[#894858]">Contact details >
-                </button>
+                <button class="cursor-pointer hover:text-[#894858]" (click)="isLocationModalOpen = true">Branch
+                    locations ></button>
+                <div *ngIf="isLocationModalOpen"
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
+                    <div
+                        class="bg-white rounded-lg shadow-lg max-w-[800px] h-[400px] w-full p-2 relative flex justify-center items-center flex-col">
+                        <button type="button" (click)="isLocationModalOpen = false"
+                            class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
+
+
+                        <iframe class="w-full h-full" loading="lazy" allowfullscreen [src]="globalIframeSrc"> </iframe>
+                    </div>
+
+                </div>
+
+                <button class="cursor-pointer hover:text-[#894858]" (click)="isContactModalOpen = true">Contact
+                    details &gt;</button>
+
+                <!-- Contact Modal -->
+                <div *ngIf="isContactModalOpen"
+                    class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
+                    <div
+                        class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative flex justify-center items-center flex-col">
+                        <button type="button" (click)="isContactModalOpen = false"
+                            class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
+                        <h2 class="text-xl font-bold mb-4">Contact Details</h2>
+                        <div class="mb-6 shadow-md rounded-md m-4 p-5 w-full text-gray-800">
+                            <h3 class="font-semibold mb-2 text-center">
+                                <i class="fas fa-user-tie mr-2 text-pink-500"></i>
+                                Headmaster
+                            </h3>
+                            <p>
+                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                                <strong>Email:</strong> {{contactDetail.headmaster.email}}
+                            </p>
+                            <p>
+                                <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
+                                <strong>Location:</strong> {{contactDetail.headmaster.location}}
+                            </p>
+                            <p>
+                                <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
+                                <strong>Phone:</strong> {{contactDetail.headmaster.phone}}
+                            </p>
+                        </div>
+                        <div class="shadow-md rounded-md m-4 p-5 w-full text-gray-800">
+                            <h3 class="font-semibold mb-2 text-center">
+                                <i class="fas fa-building mr-2 text-pink-500"></i>
+                                Headquarter
+                            </h3>
+                            <p>
+                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                                <strong>Email:</strong> {{contactDetail.headquarter.email}}
+                            </p>
+                            <p>
+                                <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
+                                <strong>Location:</strong> {{contactDetail.headquarter.location}}
+                            </p>
+                            <p>
+                                <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
+                                <strong>Phone:</strong> {{contactDetail.headquarter.phone}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
                 <button (click)="isAsideOpen = true" class="cursor-pointer hover:text-[#894858] md:hidden">See Price
                     List>
                 </button>
             </div>
         </div>
-        <!-- INFORMATION BOX -->
-        <div class="bg-[#e8f4ff] border-l-4 border-[#1890ff] p-3 rounded-md text-black flex items-start space-x-4
-    max-w-3xl mt-5 ml-5" role="alert" aria-label="Information">
-            <span class="material-icons text-[#1890ff] text-2xl  flex-shrink-0 mt-1 flex" aria-hidden="true">
-                <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
-                    class=" hidden md:block">information</span></span>
-            <div>
-                <p class="font-semibold">You are registering for the 2025/2026 school year</p>
-                <p class="mt-1 text-black max-w-lg leading-relaxed">
-                    The course registration itself does not involve any costs, and fees are charged after signing the
-                    educational agreement.
-                    We will contact you by email or phone for details.
-                </p>
-            </div>
-        </div>
+
     </section>
 
     <div class=" flex  gap-5 mt-10 pb-10">
         <section class="lg:min-w-[70%] lg:max-w-[70%] md:max-w-[60%] max-w-full">
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
                 <!-- Student Data -->
-                <div class="w-full  p-5  mt-10 ">
+                <div class="w-full   mt-10 ">
                     <div class="w-full bg-white p-5 rounded-md shadow-md ">
                         <h2 class="text-2xl font-bold mb-4">Student Data</h2>
                         <div formGroupName="studentData">
@@ -270,9 +318,9 @@
                                         formControlName="consentDataProcessing"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentDataProcessing" class="block text-sm text-gray-700">
-                                        I consent to the processing of my personal data by Early Stage, i.e. name,
+                                        I consent to the processing of my personal data by Polyglot Kid, i.e. name,
                                         surname, e-mail
-                                        address and telephone number – for the purposes of marketing Early Stage's own
+                                        address and telephone number – for the purposes of marketing Polyglot Kid's own
                                         products and
                                         services.
                                     </label>
@@ -281,7 +329,7 @@
                                     <input type="checkbox" id="consentEmail" formControlName="consentEmail"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentEmail" class="block text-sm text-gray-700">
-                                        I consent to receiving Early Stage marketing information via e-mail to the
+                                        I consent to receiving Polyglot Kid marketing information via e-mail to the
                                         e-mail address
                                         and telephone number provided by me.
                                     </label>
@@ -291,7 +339,7 @@
                                         formControlName="consentDirectMarketing"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentDirectMarketing" class="block text-sm text-gray-700">
-                                        I consent to Early Stage sending me direct marketing using telecommunications
+                                        I consent to Polyglot Kid sending me direct marketing using telecommunications
                                         terminal
                                         equipment (telephone, tablet, computer connected to the Internet) to the
                                         telephone number
@@ -310,11 +358,8 @@
                                 <p class="m-0">
                                     We inform you that for the purpose of concluding an agreement regarding the Child's
                                     participation in this course, the data contained in the above application will be
-                                    processed by
-                                    MKKM Partners Sp. z o. o., Chopina, 71, 67-200 Głogów, NIP no. 6932198334, REGON
-                                    540944102, KRS
-                                    0001156752.<br>
-                                    <a href="#" class="text-pink-600 underline">See details</a>
+                                    processed.
+
                                 </p>
                             </div>
                             <div class="flex items-start gap-3 mb-2">
@@ -347,7 +392,7 @@
             </form>
         </section>
 
-        <aside class="min-w-full md:min-w-[40%] md:max-w-[40%] lg:max-w-[30%] mt-20 hidden md:block">
+        <aside class="min-w-full md:min-w-[39%] md:max-w-[39%] lg:min-w-[39px] lg:max-w-[39%] mt-20 hidden md:block">
             <h2 class="text-lg font-bold mb-4">See Price list</h2>
             <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
                 receive an invitation
@@ -357,7 +402,7 @@
                 <div *ngFor="let item of accordionItems; let i = index">
                     <button (click)="toggleItem(i)"
                         class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
-                        <span class="font-semibold text-gray-700">{{ item.title }}</span>
+                        <span class="font-semibold text-gray-700">{{ item.label }}</span>
                         <svg class="w-5 h-5 transform transition-transform duration-200"
                             [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -366,24 +411,28 @@
 
                     <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
 
-                        <div *ngFor="let card of item.cards" class="border-gray-300 p-4 bg-white rounded-md shadow-md">
+                        <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
+                            shadow-md">
                             <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
                             <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
                             </p>
 
                             <div class="text-sm text-gray-700 space-y-1">
-                                <p *ngIf="card.schedule"><strong><span class="text-pink-500">{{ card.schedule }}</span>
+                                <p *ngIf="card.duration"><strong><span class="text-pink-500">{{ card.duration }}</span>
                                     </strong> per week</p>
-                                <p *ngIf="card.minutes">or <strong><span class="text-pink-500">{{ card.minutes
+                                <p *ngIf="card.durationInMinutes">or <strong><span class="text-pink-500">{{
+                                            card.durationInMinutes
                                             }}</span></strong> of English per week</p>
-                                <p *ngIf="card.classes"><strong><span class="text-pink-500">{{ card.classes }}</span>
+                                <p *ngIf="card.totalClasses"><strong><span class="text-pink-500">{{ card.totalClasses
+                                            }}</span>
                                     </strong> per school year</p>
                             </div>
 
-                            <hr *ngIf="card.price || card.materials" class="my-2" />
+                            <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
 
-                            <h1 *ngIf="card.price" class="font-semibold text-gray-900 text-lg">{{ card.price }}</h1>
-                            <p *ngIf="card.materials" class="text-gray-600 text-md">{{ card.materials }}</p>
+                            <h1 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
+                                card.pricePerMonth }}</h1>
+                            <p *ngIf="card.materialsFee" class="text-gray-600 text-md">{{ card.materialsFee }}</p>
                         </div>
 
                     </div>
@@ -391,16 +440,8 @@
                 </div>
             </div>
             <div class="flex flex-col gap-10 mt-10 text-[12px]">
-                <p>The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
-                    months and includes
-                    the specified number of classes – regardless of the number of classes each month.</p>
-                <p>If a course starts in a different month or includes fewer classes than indicated, both the total
-                    course price and
-                    monthly fees may change.</p>
-                <p>The prices listed on the website are for information purposes only and do not constitute an offer.
-                    The final price of
-                    the course will be presented in the contract, taking into account the start date and the number of
-                    classes.</p>
+                <p *ngFor="let item of BrachData.extraInfoModal">{{item}}</p>
+
             </div>
 
         </aside>
@@ -409,7 +450,7 @@
 
 
 <div *ngIf="isAsideOpen" class="fixed inset-0 z-40 bg-black bg-opacity-50 flex items-center justify-center md:hidden">
-    <div class="bg-white w-full h-full p-4 overflow-y-auto relative">
+    <div class="bg-white w-full h-full p-4  overflow-y-auto relative">
 
         <aside class="min-w-full mt-10">
             <!-- Close Button -->
@@ -424,55 +465,52 @@
                 receive an invitation
                 to a leveling
                 meeting. When creating a group, we take into account the child's age and language proficiency level.</p>
-
             <div class="max-w-xl mx-auto space-y-4 mt-10">
                 <div *ngFor="let item of accordionItems; let i = index">
                     <button (click)="toggleItem(i)"
                         class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
-                        <span class="font-semibold text-gray-700">{{ item.title }}</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200"
-                            [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span class="font-semibold text-gray-700">{{ item.label }}</span>
+                        <svg class="w-5 h-5 transform transition-transform duration-200" [class.rotate-180]="item.isOpen"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-
+            
                     <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
-                        <div *ngFor="let card of item.cards" class="border-gray-300 p-4 bg-white rounded-md shadow-md">
+            
+                        <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
+                                        shadow-md">
                             <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
                             <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
                             </p>
+            
                             <div class="text-sm text-gray-700 space-y-1">
-                                <p *ngIf="card.schedule"><strong><span class="text-pink-500">{{ card.schedule
-                                            }}</span></strong> per week</p>
-                                <p *ngIf="card.minutes">or <strong><span class="text-pink-500">{{ card.minutes
+                                <p *ngIf="card.duration"><strong><span class="text-pink-500">{{ card.duration }}</span>
+                                    </strong> per week</p>
+                                <p *ngIf="card.durationInMinutes">or <strong><span class="text-pink-500">{{
+                                            card.durationInMinutes
                                             }}</span></strong> of English per week</p>
-                                <p *ngIf="card.classes"><strong><span class="text-pink-500">{{ card.classes
-                                            }}</span></strong> per school year</p>
+                                <p *ngIf="card.totalClasses"><strong><span class="text-pink-500">{{ card.totalClasses
+                                            }}</span>
+                                    </strong> per school year</p>
                             </div>
-                            <hr *ngIf="card.price || card.materials" class="my-2" />
-                            <h1 *ngIf="card.price" class="font-semibold text-gray-900 text-lg">{{ card.price }}</h1>
-                            <p *ngIf="card.materials" class="text-gray-600 text-md">{{ card.materials }}</p>
+            
+                            <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
+            
+                            <h1 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
+                                card.pricePerMonth }}</h1>
+                            <p *ngIf="card.materialsFee" class="text-gray-600 text-md">{{ card.materialsFee }}</p>
                         </div>
+            
                     </div>
+            
                 </div>
             </div>
-
             <div class="flex flex-col gap-10 mt-10 text-[12px]">
-                <p>The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
-                    months and includes
-                    the specified number of classes – regardless of the number of classes each month.</p>
-                <p>If a course starts in a different month or includes fewer classes than indicated, both the total
-                    course price and
-                    monthly fees may change.</p>
-                <p>The prices listed on the website are for information purposes only and do not constitute an offer.
-                    The final price of
-                    the course will be presented in the contract, taking into account the start date and the number of
-                    classes.</p>
+                <p *ngFor="let item of BrachData.extraInfoModal">{{item}}</p>
+            
             </div>
             <!-- 🔁 End -->
         </aside>
     </div>
 </div>
-
-
-
