@@ -2,20 +2,15 @@
     <div routerLink="/schools" class="cursor-pointer text-black hover:text-pink-600 ">← Back to map</div>
     <main class="flex flex-col  gap-10 mt-14 bg-[#F3F5F8] p-5 md:p-10 rounded-lg ">
         <div class="w-full md:w-[50%]">
-            <h2 class="text-lg md:text-4xl  font-semibold">English for children and youth
-                Bydgoszcz III</h2>
+            <h2 class="text-lg md:text-4xl  font-semibold">{{BrachData.schoolDetail.titleToShowBranchFor}}</h2>
             <div class="flex flex-col gap-10 mt-10 items-start">
                 <!-- Description with Expand/Collapse functionality -->
                 <p>
-                    We cordially invite you to English lessons for children and youth at Wyżyny in Bydgoszcz. Our
-                    experienced and enthusiastic teachers ensure each class is an engaging and memorable experience.
+                    {{BrachData.schoolDetail.description}}
                 </p>
 
                 <p *ngIf="showMore">
-                    Our English courses for children combine music, movement, and fun, making learning enjoyable and
-                    effective. Classes are held at ul. Siedleckiego 10 (next to ZS19) and ul. Białogardzka 7 (near
-                    SP60), with schedules tailored to school timetables. If needed, our teachers can accompany children
-                    to and from classes. We offer a comprehensive, long-term development path for every student.
+                    {{BrachData.schoolDetail.extraDescription}}
                 </p>
 
                 <button class="text-pink-600 hover:text-pink-900 font-semibold flex items-center gap-1"
@@ -29,68 +24,58 @@
                 </button>
             </div>
         </div>
-        <div class="flex gap-5 items-start w-full">
-            <div class="w-1/5 min-w-[40%] hidden lg:block">
-                <iframe class="w-full h-[27rem] border-0 z-0" loading="lazy" allowfullscreen
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111256.75802333384!2d71.60761057736994!3d29.3769149704731!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393b90c46c611ad5%3A0xfcdf0da8e103f862!2sBahawalpur%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1730097186118!5m2!1sen!2s">
-                </iframe>
-            </div>
-            <div class="w-4/5 flex flex-col  items-start px-10">
-                <div>
-                    <h1 class="text-2xl font-semibold">Class locations:</h1>
-                    <div class="flex gap-5 md:gap-24 mt-4  flex-wrap md:flex-nowrap">
-                        <div class="flex items-start gap-4 mt-4">
-                            <i class="fa fa-map-marker-alt pt-2 pl-1"></i>
-                            <div>
-                                <p> Adama Grzymała-Siedleckiego 10 </p>
-                                <p>Bydgoszcz, 85-870</p>
-                                <div>
-                                    Early Stage Venue </div>
-                            </div>
-                        </div>
+        <div class="w-full flex flex-col md:flex-row gap-6 px-4 md:px-10">
 
-                        <div class="flex items-start gap-4 mt-4">
-                            <i class="fa fa-map-marker-alt pt-2 pl-1"></i>
-                            <div>
-                                <p>Bialogardzka 7 St. </p>
-                                <p>Bydgoszcz, 85-808</p>
-                                <div>
-                                    Early Stage Venue </div>
-                            </div>
-                        </div>
+            <!-- Left Side: Class Location -->
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Class Location</h2>
+                <div class="flex items-start gap-4">
+                    <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
+                    <div>
+                        <p>{{BrachData.streetAddress}}</p>
+                        <p>{{BrachData.city}}</p>
+                        <p class="font-medium mt-1 text-gray-700">{{BrachData.schoolName}}</p>
                     </div>
                 </div>
-                <div>
-                    <h1 class="text-2xl font-semibold">Headquarters (Office)</h1>
-                    <div class="flex flex-col gap-3 mt-4">
+            </div>
 
-                        <div class="flex items-start gap-4 mt-4">
-                            <i class="fa fa-map-marker-alt pt-2 pl-1"></i>
-                            <div>
-                                <p> ul. Adama Grzymały-Siedleckiego 10 </p>
-                                <p>Bydgoszcz 85-868</p>
+            <!-- Right Side: Headquarters -->
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">Headquarters (Office)</h2>
+                <div class="space-y-4">
 
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 mt-4">
-                            <i class="fa fa-phone pt-2 pl-1"></i>
-                            <div>
-                                <p> +48 797 637 537</p>
-
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4 mt-4">
-                            <i class="fa fa-envelope pt-2 pl-1"></i>
-                            <div>
-                                <p>bydgoszcz3&#64;earlystage.pl</p>
-
-                            </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
+                        <div>
+                            <p>{{contactDetail.headquarter.location}}</p>
                         </div>
                     </div>
+
+                    <div class="flex items-start gap-4">
+                        <i class="fa fa-phone text-lg pt-1 text-blue-600"></i>
+                        <div>
+                            <p>{{contactDetail.headquarter.phone}}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <i class="fa fa-envelope text-lg pt-1 text-green-600"></i>
+                        <div>
+                            <p>{{contactDetail.headquarter.email}}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+
+        <!-- Map Section -->
+        <div class="w-full px-4 md:px-10 mt-8">
+            <iframe class="w-full h-[27rem] border-0 rounded-lg shadow" loading="lazy" allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade" [src]="globalIframeSrc">
+            </iframe>
+        </div>
+
 
     </main>
 
@@ -102,52 +87,47 @@
                 <div class="scroller">
                     <div class="scroller-content">
                         <div class="item " [ngClass]="{ 'activeMenu': activeIndex === i, '': activeIndex !== i }"
-                            *ngFor="let item of accordionItems; let i = index" (click)="setActiveItem(i)">{{ item.title
+                            *ngFor="let item of accordionItems; let i = index" (click)="setActiveItem(i)">{{ item.label
                             }}</div>
-
-
                     </div>
                 </div>
 
             </div>
 
             <!-- Content -->
-            <div class="bg-white w-full h-full p-4 overflow-y-auto mt-6">
-                <div class="space-y-6">
-                    <div *ngFor="let card of accordionItems[activeIndex]?.cards"
-                        class="border-gray-300 p-4 bg-white rounded-md shadow-md max-w-full md:max-w-[70%] lg:max-w-[40%] mx-auto">
+            <div class="bg-white w-full h-full overflow-y-auto mt-1">
+                <div class="space-y-4">
+                    <div *ngFor="let card of accordionItems[activeIndex]?.packages"
+                        class=" p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200 ">
                         <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
                         <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
 
                         <div class="text-sm text-gray-700 mt-2 space-y-1">
-                            <p *ngIf="card.schedule"><strong class="text-pink-500">{{ card.schedule }}</strong> per week
-                            </p>
-                            <p *ngIf="card.minutes">or <strong class="text-pink-500">{{ card.minutes }}</strong> of
-                                English
-                                per week</p>
-                            <p *ngIf="card.classes"><strong class="text-pink-500">{{ card.classes }}</strong> per school
-                                year</p>
+                            <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per
+                                week</p>
+                            <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{
+                                    card.durationInMinutes
+                                    }}</strong> of
+                                English per week</p>
+                            <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses
+                                    }}</strong>
+                                per
+                                school year</p>
                         </div>
 
-                        <hr *ngIf="card.price || card.materials" class="my-2" />
+                        <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
 
-                        <h4 *ngIf="card.price" class="font-semibold text-gray-900 text-lg">{{ card.price }}</h4>
-                        <p *ngIf="card.materials" class="text-gray-600 text-sm">{{ card.materials }}</p>
+                        <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
+                            card.pricePerMonth }}
+                        </h4>
+                        <p *ngIf="card.materialsFee" class="text-gray-600 text-sm">{{ card.materialsFee }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="flex flex-col gap-4 mt-4 text-[12px] pl-4 max-w-full lg:max-w-[70%]  mx-auto">
-            <p>The monthly prices quoted are based on the assumption that the course starts in September, lasts 10
-                months and includes
-                the specified number of classes – regardless of the number of classes each month.</p>
-            <p>If a course starts in a different month or includes fewer classes than indicated, both the total course
-                price and
-                monthly fees may change.</p>
-            <p>The prices listed on the website are for information purposes only and do not constitute an offer. The
-                final price of
-                the course will be presented in the contract, taking into account the start date and the number of
-                classes.</p>
+            <p *ngFor="let info of BrachData.extraInfoModal">{{info}}</p>
+          
         </div>
         <div class="w-full flex justify-center items-center">
             <button routerLink="/registration/applicationForm"
@@ -200,7 +180,7 @@
                     <li class="flex items-start gap-2">
                         <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
                         <span class="text-gray-600 text-lg ">
-                            access to the Early Stage MUSIC music application
+                            access to the Polyglot Kid MUSIC music application
                         </span>
                     </li>
                     <li class="flex items-start gap-2">
@@ -250,7 +230,7 @@
                     </li>
                     Safety rules: <br>
 
-                    Remember to check if the sender of the message is Early Stage
+                    Remember to check if the sender of the message is Polyglot Kid
                 </div>
                 <hr class="my-8 border-t border-gray-200">
 
@@ -266,7 +246,7 @@
                     <strong>Sibling discount</strong>
                     <p>Each sibling receives a PLN 16 discount for each month ,
 
-                        where at least two children are studying in Early Stage. To receive this discount, it is
+                        where at least two children are studying in Polyglot Kid. To receive this discount, it is
                         sufficient that the same person
                         signs the contracts for each of the children.</p>
                     <br>
