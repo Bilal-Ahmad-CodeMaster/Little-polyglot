@@ -1,10 +1,11 @@
 <div class="p-4">
     <!-- Search + Add Branch -->
     <div class="flex justify-between items-center mb-4">
-        <form [formGroup]="searchForm" (ngSubmit)="applyFilter()" class="w-full max-w-md">
+        <form [formGroup]="searchForm" class="w-full max-w-md">
             <input type="text" formControlName="search" placeholder="Search by name, location, or phone"
                 class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500" />
         </form>
+
         <button (click)="addBranch()" class="ml-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
             + Add Branch
         </button>
@@ -27,7 +28,7 @@
 
 
 
-            <tbody>
+            <tbody *ngIf="paginatedBranches.length > 0; else noBlogs">
                 <tr *ngFor="let branch of paginatedBranches; let i = index" class="hover:bg-gray-50">
                     <td class="px-4 py-3 border-b">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
                     <td class="px-4 py-3 border-b">{{ branch.schoolName }}</td>
@@ -41,12 +42,27 @@
                     </td>
                 </tr>
             </tbody>
+            <ng-template #noBlogs>
+                <tr>
+                    <td colspan="7" class="py-12">
+                        <div class="flex flex-col items-center justify-center text-gray-500">
+                            <svg class="w-16 h-16 mb-4 text-pink-400" fill="none" stroke="currentColor"
+                                stroke-width="1.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <div class="text-lg font-semibold mb-1">No blogs found</div>
+                            <div class="text-sm">Add more blogs to see them listed here.</div>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
 
         </table>
     </div>
 
     <!-- Pagination -->
-    <div class="mt-4 flex justify-center space-x-2">
+    <div class="mt-4 flex justify-center space-x-2" *ngIf="paginatedBranches.length > 0;">
         <button class="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300" [disabled]="currentPage === 1"
             (click)="goToPage(currentPage - 1)">
             Prev
@@ -66,372 +82,445 @@
 
 
 
-<div class="fixed inset-0 bg-[#000000c4] z-40 flex items-center justify-center" *ngIf="showModal">
-    <div class="bg-white w-full lg:max-w-5xl h-[100vh] lg:h-[90vh] flex flex-col rounded-lg shadow-lg">
-
-        <!-- Fixed Header -->
-        <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
-            <h2 class="text-xl font-semibold">{{ isEditMode ? 'Edit Branch' : 'Add New Branch' }}</h2>
-            <button (click)="closeModal()" class="text-gray-600 hover:text-red-600">&times;</button>
-        </div>
-
-        <!-- Step Panels -->
-        <div class="flex-1 overflow-y-auto p-4">
-            <!-- Step 0: Basic Info -->
-            <div *ngIf="currentStep === 0" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">Basic Info</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Street Address -->
-                    <div>
-                        <label class="block mb-1 font-medium">Street Address <span class="text-red-500">*</span></label>
-                        <input type="text" formControlName="streetAddress" class="w-full p-2 border rounded"
-                            placeholder="Enter Street Address" />
-                    </div>
-
-                    <!-- Region -->
-                    <div>
-                        <label class="block mb-1 font-medium">Region <span class="text-red-500">*</span></label>
-                        <input type="text" formControlName="region" class="w-full p-2 border rounded"
-                            placeholder="Enter Region" />
-                    </div>
-
-                    <!-- City -->
-                    <div>
-                        <label class="block mb-1 font-medium">City <span class="text-red-500">*</span></label>
-                        <input type="text" formControlName="city" class="w-full p-2 border rounded"
-                            placeholder="Enter City" />
-                    </div>
-
-                    <!-- School Name -->
-                    <div>
-                        <label class="block mb-1 font-medium">School Name <span class="text-red-500">*</span></label>
-                        <input type="text" formControlName="schoolName" class="w-full p-2 border rounded"
-                            placeholder="Enter School Name" />
-                    </div>
-
-                    <!-- Annotation -->
-                    <div class="md:col-span-2">
-                        <label class="block mb-1 font-medium">Annotation</label>
-                        <textarea formControlName="annotation" class="w-full p-2 border rounded" rows="2"
-                            placeholder="Enter annotation (optional)"></textarea>
-                    </div>
-
-                    <!-- Google Location Embed -->
-                    <div class="md:col-span-2">
-                        <label class="block mb-1 font-medium">Google Location Embed</label>
-                        <textarea formControlName="googleLocation" class="w-full p-2 border rounded" rows="3"
-                            placeholder="Paste iframe embed code"></textarea>
-                    </div>
-
-                    <!-- About Us Gallery Description -->
-                    <div class="md:col-span-2">
-                        <label class="block mb-1 font-medium">Image Gallery About Us Description</label>
-                        <textarea formControlName="imageGalleryAboutUsDescription" class="w-full p-2 border rounded"
-                            rows="3" placeholder="Describe your center..."></textarea>
-                    </div>
-                </div>
+<div *ngIf="showModal">
+    <form [formGroup]="branchForm" (ngSubmit)="submitBranch()"
+        class="fixed inset-0 bg-[#000000c4] z-40 flex items-center justify-center">
+        <div class="bg-white w-full lg:max-w-5xl h-[100vh] lg:h-[90vh] flex flex-col rounded-lg shadow-lg">
+            <div class="p-4 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                <h2 class="text-xl font-semibold">{{ isEditMode ? 'Edit Branch' : 'Add New Branch' }}</h2>
+                <a (click)="closeModal()" class="text-gray-600 hover:text-red-600 text-2xl">&times;</a>
             </div>
 
 
-            <!-- Step 1: Contact Info -->
-            <div *ngIf="currentStep === 1" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">Contact Info</h3>
 
-                <div formGroupName="contactInfo" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Step Panels -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <!-- Step 0: Basic Info -->
+                <div *ngIf="currentStep === 0">
+                    <h3 class="text-lg font-bold mb-4">Basic Info</h3>
 
-                    <!-- Headmaster Contact Info -->
-                    <div formGroupName="headmaster" class="border p-4 rounded shadow-sm">
-                        <h4 class="text-md font-semibold mb-2 text-pink-600">Headmaster Contact</h4>
-
-                        <div class="mb-4">
-                            <label class="block mb-1 font-medium">Email</label>
-                            <input type="email" formControlName="email" class="w-full p-2 border rounded"
-                                placeholder="headmaster@example.com" />
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Street Address -->
+                        <div>
+                            <label class="block mb-1 font-medium">Street Address <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" formControlName="streetAddress" class="w-full p-2 border rounded"
+                                placeholder="Enter Street Address" />
                         </div>
 
-                        <div class="mb-4">
-                            <label class="block mb-1 font-medium">Location</label>
-                            <input type="text" formControlName="location" class="w-full p-2 border rounded"
-                                placeholder="Enter Location" />
+                        <!-- Region -->
+                        <div>
+                            <label class="block mb-1 font-medium">Region <span class="text-red-500">*</span></label>
+                            <input type="text" formControlName="region" class="w-full p-2 border rounded"
+                                placeholder="Enter Region" />
                         </div>
 
-                        <div class="mb-0">
-                            <label class="block mb-1 font-medium">Phone</label>
-                            <input type="text" formControlName="phone" class="w-full p-2 border rounded"
-                                placeholder="Enter Phone" />
-                        </div>
-                    </div>
-
-                    <!-- Headquarter Contact Info -->
-                    <div formGroupName="headquarter" class="border p-4 rounded shadow-sm">
-                        <h4 class="text-md font-semibold mb-2 text-pink-600">Headquarter Contact</h4>
-
-                        <div class="mb-4">
-                            <label class="block mb-1 font-medium">Email</label>
-                            <input type="email" formControlName="email" class="w-full p-2 border rounded"
-                                placeholder="headquarter@example.com" />
+                        <!-- City -->
+                        <div>
+                            <label class="block mb-1 font-medium">City <span class="text-red-500">*</span></label>
+                            <input type="text" formControlName="city" class="w-full p-2 border rounded"
+                                placeholder="Enter City" />
                         </div>
 
-                        <div class="mb-4">
-                            <label class="block mb-1 font-medium">Location</label>
-                            <input type="text" formControlName="location" class="w-full p-2 border rounded"
-                                placeholder="Enter Location" />
+                        <!-- School Name -->
+                        <div>
+                            <label class="block mb-1 font-medium">School Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" formControlName="schoolName" class="w-full p-2 border rounded"
+                                placeholder="Enter School Name" />
                         </div>
 
-                        <div class="mb-0">
-                            <label class="block mb-1 font-medium">Phone</label>
-                            <input type="text" formControlName="phone" class="w-full p-2 border rounded"
-                                placeholder="Enter Phone" />
+                        <!-- Annotation -->
+                        <div class="md:col-span-2">
+                            <label class="block mb-1 font-medium">Annotation</label>
+                            <textarea formControlName="annotation" class="w-full p-2 border rounded" rows="2"
+                                placeholder="Enter annotation (optional)"></textarea>
                         </div>
-                    </div>
 
-                </div>
-            </div>
+                        <!-- Google Location Embed -->
+                        <div class="md:col-span-2">
+                            <label class="block mb-1 font-medium">Google Location Embed</label>
+                            <textarea formControlName="googleLocation" class="w-full p-2 border rounded" rows="3"
+                                placeholder="Paste iframe embed code"></textarea>
+                        </div>
 
-
-            <!-- Step 2: School Detail -->
-            <div *ngIf="currentStep === 2" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">School Detail</h3>
-
-                <div formGroupName="schoolDetail" class="grid grid-cols-1 gap-6">
-                    <!-- Title to Show Branch For -->
-                    <div>
-                        <label class="block mb-1 font-medium">Title to Show Branch For</label>
-                        <input type="text" formControlName="titleToShowBranchFor" class="w-full p-2 border rounded"
-                            placeholder="e.g., English for children and youth in Głogów" />
-                    </div>
-
-                    <!-- Branch Name -->
-                    <div>
-                        <label class="block mb-1 font-medium">Branch Name</label>
-                        <input type="text" formControlName="branchName" class="w-full p-2 border rounded"
-                            placeholder="e.g., Little Polyglot" />
-                    </div>
-
-                    <!-- Description -->
-                    <div>
-                        <label class="block mb-1 font-medium">Description</label>
-                        <textarea formControlName="description" class="w-full p-2 border rounded" rows="3"
-                            placeholder="Enter branch description"></textarea>
-                    </div>
-
-                    <!-- Extra Description -->
-                    <div>
-                        <label class="block mb-1 font-medium">Extra Description</label>
-                        <textarea formControlName="extraDescription" class="w-full p-2 border rounded" rows="3"
-                            placeholder="Any additional details..."></textarea>
+                        <!-- About Us Gallery Description -->
+                        <div class="md:col-span-2">
+                            <label class="block mb-1 font-medium">Image Gallery About Us Description</label>
+                            <textarea formControlName="imageGalleryAboutUsDescription" class="w-full p-2 border rounded"
+                                rows="3" placeholder="Describe your center..."></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Step 3: Franchise Details -->
-            <div *ngIf="currentStep === 3" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">Franchise Details</h3>
+                <!-- Step 1: Contact Info -->
+                <div *ngIf="currentStep === 1">
+                    <h3 class="text-lg font-bold mb-4">Contact Info</h3>
 
-                <div formGroupName="franchiseDetails" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Franchise Name -->
-                    <div>
-                        <label class="block mb-1 font-medium">Franchise Name</label>
-                        <input type="text" formControlName="name" class="w-full p-2 border rounded"
-                            placeholder="Enter franchise name" />
-                    </div>
+                    <div formGroupName="contactInfo" class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                    <!-- Address -->
-                    <div>
-                        <label class="block mb-1 font-medium">Franchise Address</label>
-                        <input type="text" formControlName="Address" class="w-full p-2 border rounded"
-                            placeholder="Enter address" />
-                    </div>
+                        <!-- Headmaster Contact Info -->
+                        <div formGroupName="headmaster" class="border p-4 rounded shadow-sm">
+                            <h4 class="text-md font-semibold mb-2 text-pink-600">Headmaster Contact</h4>
 
-                    <!-- Tax Identification -->
-                    <div>
-                        <label class="block mb-1 font-medium">Tax Identification</label>
-                        <input type="text" formControlName="TaxIdentification" class="w-full p-2 border rounded"
-                            placeholder="Enter tax ID" />
-                    </div>
+                            <div class="mb-4">
+                                <label class="block mb-1 font-medium">Email</label>
+                                <input type="email" formControlName="email" class="w-full p-2 border rounded"
+                                    placeholder="headmaster@example.com" />
+                            </div>
 
-                    <!-- REGON -->
-                    <div>
-                        <label class="block mb-1 font-medium">REGON</label>
-                        <input type="text" formControlName="REGON" class="w-full p-2 border rounded"
-                            placeholder="Enter REGON number" />
-                    </div>
+                            <div class="mb-4">
+                                <label class="block mb-1 font-medium">Location</label>
+                                <input type="text" formControlName="location" class="w-full p-2 border rounded"
+                                    placeholder="Enter Location" />
+                            </div>
 
-                    <!-- KRS Number -->
-                    <div class="md:col-span-2">
-                        <label class="block mb-1 font-medium">KRS Number</label>
-                        <input type="text" formControlName="KRSNo" class="w-full p-2 border rounded"
-                            placeholder="Enter KRS number" />
+                            <div class="mb-0">
+                                <label class="block mb-1 font-medium">Phone</label>
+                                <input type="text" formControlName="phone" class="w-full p-2 border rounded"
+                                    placeholder="Enter Phone" />
+                            </div>
+                        </div>
+
+                        <!-- Headquarter Contact Info -->
+                        <div formGroupName="headquarter" class="border p-4 rounded shadow-sm">
+                            <h4 class="text-md font-semibold mb-2 text-pink-600">Headquarter Contact</h4>
+
+                            <div class="mb-4">
+                                <label class="block mb-1 font-medium">Email</label>
+                                <input type="email" formControlName="email" class="w-full p-2 border rounded"
+                                    placeholder="headquarter@example.com" />
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="block mb-1 font-medium">Location</label>
+                                <input type="text" formControlName="location" class="w-full p-2 border rounded"
+                                    placeholder="Enter Location" />
+                            </div>
+
+                            <div class="mb-0">
+                                <label class="block mb-1 font-medium">Phone</label>
+                                <input type="text" formControlName="phone" class="w-full p-2 border rounded"
+                                    placeholder="Enter Phone" />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Step 4: About & Extra Info -->
-            <div *ngIf="currentStep === 4" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">Price List</h3>
+                <!-- Step 2: School Detail -->
+                <div *ngIf="currentStep === 2">
+                    <h3 class="text-lg font-bold mb-4">School Detail</h3>
 
-                <div formArrayName="priceList" class="space-y-6">
-                    <div *ngFor="let price of priceList.controls; let i = index" [formGroupName]="i"
-                        class="border p-4 rounded shadow-sm bg-gray-50">
+                    <div formGroupName="schoolDetail" class="grid grid-cols-1 gap-6">
+                        <!-- Title to Show Branch For -->
+                        <div>
+                            <label class="block mb-1 font-medium">Title to Show Branch For</label>
+                            <input type="text" formControlName="titleToShowBranchFor" class="w-full p-2 border rounded"
+                                placeholder="e.g., English for children and youth in Głogów" />
+                        </div>
 
-                        <h4 class="text-md font-semibold mb-2">Price Item {{ i + 1 }}</h4>
+                        <!-- Branch Name -->
+                        <div>
+                            <label class="block mb-1 font-medium">Branch Name</label>
+                            <input type="text" formControlName="branchName" class="w-full p-2 border rounded"
+                                placeholder="e.g., Little Polyglot" />
+                        </div>
 
-                        <!-- Groups -->
-                        <div formArrayName="groups" class="space-y-4">
-                            <div *ngFor="let group of getGroups(i).controls; let j = index" [formGroupName]="j"
-                                class="border p-4 rounded bg-white">
+                        <!-- Description -->
+                        <div>
+                            <label class="block mb-1 font-medium">Description</label>
+                            <textarea formControlName="description" class="w-full p-2 border rounded" rows="3"
+                                placeholder="Enter branch description"></textarea>
+                        </div>
 
-                                <label class="block font-medium mb-1">Group Label</label>
-                                <input type="text" formControlName="label" class="w-full p-2 border rounded mb-4"
-                                    placeholder="e.g. Kindergarden" />
+                        <!-- Extra Description -->
+                        <div>
+                            <label class="block mb-1 font-medium">Extra Description</label>
+                            <textarea formControlName="extraDescription" class="w-full p-2 border rounded" rows="3"
+                                placeholder="Any additional details..."></textarea>
+                        </div>
+                    </div>
+                </div>
 
-                                <!-- Packages inside each group -->
-                                <div formArrayName="packages" class="space-y-4">
-                                    <div *ngFor="let pack of getPackages(i, j).controls; let k = index"
-                                        [formGroupName]="k" class="border p-4 rounded bg-gray-100">
 
-                                        <h5 class="font-semibold text-sm mb-2">Package {{ k + 1 }}</h5>
+                <!-- Step 3: Franchise Details -->
+                <div *ngIf="currentStep === 3">
+                    <h3 class="text-lg font-bold mb-4">Franchise Details</h3>
 
-                                        <input formControlName="title" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Title" />
-                                        <input formControlName="description" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Description" />
-                                        <input formControlName="duration" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Duration (e.g. 2 x 60 min)" />
-                                        <input formControlName="durationInMinutes"
-                                            class="w-full p-2 border rounded mb-2" placeholder="Duration (minutes)" />
-                                        <input formControlName="totalClasses" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Total Classes" />
-                                        <input formControlName="pricePerMonth" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Price Per Month" />
-                                        <input formControlName="materialsFee" class="w-full p-2 border rounded mb-2"
-                                            placeholder="Materials Fee" />
+                    <div formGroupName="franchiseDetails" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Franchise Name -->
+                        <div>
+                            <label class="block mb-1 font-medium">Franchise Name</label>
+                            <input type="text" formControlName="name" class="w-full p-2 border rounded"
+                                placeholder="Enter franchise name" />
+                        </div>
 
-                                        <button type="button" class="text-red-500 mt-1 text-sm"
-                                            (click)="removePackage(i, j, k)">Remove Package</button>
+                        <!-- Address -->
+                        <div>
+                            <label class="block mb-1 font-medium">Franchise Address</label>
+                            <input type="text" formControlName="Address" class="w-full p-2 border rounded"
+                                placeholder="Enter address" />
+                        </div>
+
+                        <!-- Tax Identification -->
+                        <div>
+                            <label class="block mb-1 font-medium">Tax Identification</label>
+                            <input type="number" formControlName="TaxIdentification"
+                                class="no-spinner w-full p-2 border rounded" placeholder="Enter tax ID" />
+                        </div>
+
+                        <!-- REGON -->
+                        <div>
+                            <label class="block mb-1 font-medium">REGON</label>
+                            <input type="number" formControlName="REGON" class="no-spinner w-full p-2 border rounded"
+                                placeholder="Enter REGON number" />
+                        </div>
+
+                        <!-- KRS Number -->
+                        <div class="md:col-span-2">
+                            <label class="block mb-1 font-medium">KRS Number</label>
+                            <input type="number" formControlName="KRSNo" class="no-spinner w-full p-2 border rounded"
+                                placeholder="Enter KRS number" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Step 4: price -->
+                <div *ngIf="currentStep === 4">
+                    <h3 class="text-lg font-bold mb-4">Price List</h3>
+
+                    <div formArrayName="priceList" class="space-y-6">
+                        <div *ngFor="let price of priceList.controls; let i = index" [formGroupName]="i"
+                            class="border p-4 rounded shadow-sm bg-gray-50">
+
+                            <h4 class="text-md font-semibold mb-2">Price Item {{ i + 1 }}</h4>
+
+                            <!-- Groups -->
+                            <div formArrayName="groups" class="space-y-4">
+                                <div *ngFor="let group of getGroups(i).controls; let j = index" [formGroupName]="j"
+                                    class="border p-4 rounded bg-white">
+
+                                    <label class="block font-medium mb-1">Group Label</label>
+                                    <input type="text" formControlName="label" class="w-full p-2 border rounded mb-4"
+                                        placeholder="e.g. Kindergarden" />
+
+                                    <!-- Packages inside each group -->
+                                    <div formArrayName="packages" class="space-y-4">
+                                        <div *ngFor="let pack of getPackages(i, j).controls; let k = index"
+                                            [formGroupName]="k" class="border p-4 rounded bg-gray-100">
+
+                                            <h5 class="font-semibold text-sm mb-2">Package {{ k + 1 }}</h5>
+
+                                            <input formControlName="title" class="w-full p-2 border rounded mb-2"
+                                                placeholder="Title" />
+                                            <input formControlName="description" class="w-full p-2 border rounded mb-2"
+                                                placeholder="Description" />
+                                            <input formControlName="duration" class="w-full p-2 border rounded mb-2"
+                                                placeholder="Duration (e.g. 2 x 60 min)" />
+                                            <input formControlName="durationInMinutes"
+                                                class="w-full p-2 border rounded mb-2"
+                                                placeholder="Duration (minutes)" />
+                                            <input formControlName="totalClasses" class="w-full p-2 border rounded mb-2"
+                                                placeholder="Total Classes" />
+                                            <input formControlName="pricePerMonth"
+                                                class="w-full p-2 border rounded mb-2" placeholder="Price Per Month" />
+                                            <input formControlName="materialsFee" class="w-full p-2 border rounded mb-2"
+                                                placeholder="Materials Fee" />
+
+                                            <button type="button" class="text-red-500 mt-1 text-sm"
+                                                (click)="removePackage(i, j, k)">Remove Package</button>
+                                        </div>
+
+                                        <button type="button" class="text-blue-600 text-sm mt-2"
+                                            (click)="addPackage(i, j)">+ Add
+                                            Package</button>
                                     </div>
 
-                                    <button type="button" class="text-blue-600 text-sm mt-2"
-                                        (click)="addPackage(i, j)">+ Add
-                                        Package</button>
+                                    <button type="button" class="text-red-500 mt-3 text-sm"
+                                        (click)="removeGroup(i, j)">Remove
+                                        Group</button>
                                 </div>
 
-                                <button type="button" class="text-red-500 mt-3 text-sm"
-                                    (click)="removeGroup(i, j)">Remove
+                                <button type="button" class="text-blue-600 text-sm mt-2" (click)="addGroup(i)">+ Add
                                     Group</button>
                             </div>
 
-                            <button type="button" class="text-blue-600 text-sm mt-2" (click)="addGroup(i)">+ Add
-                                Group</button>
+                            <button type="button" class="text-red-600 mt-4" (click)="removePriceItem(i)">Remove Price
+                                Item</button>
                         </div>
+                    </div>
 
-                        <button type="button" class="text-red-600 mt-4" (click)="removePriceItem(i)">Remove Price
-                            Item</button>
+                    <button *ngIf="!priceListItemAdded" type="button"
+                        class="bg-pink-600 text-white px-4 py-2 mt-6 rounded" (click)="addPriceGroup()">
+                        + Add Price Item
+                    </button>
+                </div>
+
+                <!-- Step 5: Branch Events -->
+                <div *ngIf="currentStep === 5">
+                    <h3 class="text-lg font-bold mb-4">Branch Events</h3>
+
+                    <div formArrayName="BranchEvents" class="space-y-6">
+                        <div *ngFor="let event of BranchEvents.controls; let i = index" [formGroupName]="i"
+                            class="border p-4 rounded shadow-sm bg-gray-50">
+
+                            <h4 class="text-md font-semibold mb-3">Event {{ i + 1 }}</h4>
+
+                            <label class="block mb-1 font-medium">Title</label>
+                            <input formControlName="title" type="text" class="w-full p-2 border rounded mb-3"
+                                placeholder="Event Title" />
+
+                            <label class="block mb-1 font-medium">Description</label>
+                            <textarea formControlName="description" class="w-full p-2 border rounded mb-3" rows="2"
+                                placeholder="Event Description"></textarea>
+
+                            <label class="block mb-1 font-medium">Date</label>
+                            <input formControlName="date" type="date" class="w-full p-2 border rounded mb-3" />
+
+                            <label class="block mb-1 font-medium">Extra Description</label>
+                            <textarea formControlName="extraDescription" class="w-full p-2 border rounded mb-3" rows="2"
+                                placeholder="Additional info (optional)"></textarea>
+
+                            <button type="button" (click)="removeBranchEvent(i)"
+                                class="text-red-500 text-sm mt-2">Remove
+                                Event</button>
+                        </div>
+                    </div>
+
+                    <button type="button" (click)="addBranchEvent()"
+                        class="bg-pink-600 text-white px-4 py-2 rounded mt-6">
+                        + Add Event
+                    </button>
+                </div>
+
+
+                <!-- Step 6: SEO Info -->
+                <div *ngIf="currentStep === 6">
+                    <h3 class="text-lg font-bold mb-4">SEO Base Additional Info</h3>
+
+                    <div formArrayName="SEOBaseAdditionalInfo" class="space-y-6">
+                        <div *ngFor="let seo of SEOBaseAdditionalInfo.controls; let i = index" [formGroupName]="i"
+                            class="border p-4 rounded shadow-sm bg-gray-50">
+
+                            <h4 class="text-md font-semibold mb-3">SEO Entry {{ i + 1 }}</h4>
+
+                            <!-- Title -->
+                            <label class="block mb-1 font-medium">Title</label>
+                            <input formControlName="title" type="text" class="w-full p-2 border rounded mb-3"
+                                placeholder="e.g., Language Carnival" />
+                            <!-- SubTitle (e.g., date or highlight) -->
+                            <label class="block mb-1 font-medium">Sub Title</label>
+                            <input formControlName="subTittle" type="text" class="w-full p-2 border rounded mb-3"
+                                placeholder="e.g., 2025-11-10" />
+
+                            <!-- Description -->
+                            <label class="block mb-1 font-medium">Description</label>
+                            <textarea formControlName="description" class="w-full p-2 border rounded mb-3" rows="2"
+                                placeholder="SEO Description"></textarea>
+
+
+                            <!-- Remove Button -->
+                            <button type="button" (click)="removeSEOInfo(i)" class="text-red-500 text-sm mt-2">Remove
+                                SEO
+                                Info</button>
+                        </div>
+                    </div>
+
+                    <!-- Add Button -->
+                    <button type="button" (click)="addSEOInfo()" class="bg-pink-600 text-white px-4 py-2 rounded mt-6">
+                        + Add SEO Info
+                    </button>
+                </div>
+                <!-- Step 7: Extra Info Modal -->
+                <div *ngIf="currentStep === 7">
+                    <h3 class="text-lg font-bold mb-4">Extra Info (Modal)</h3>
+
+                    <div formArrayName="extraInfoModal" class="space-y-4">
+                        <div *ngFor="let infoCtrl of extraInfoModal.controls; let i = index"
+                            class="flex items-start gap-2">
+                            <textarea [formControlName]="i" rows="2" class="w-full p-2 border rounded resize-none"
+                                placeholder="Enter additional info..."></textarea>
+                            <button type="button" class="text-red-500 text-xl mt-1" (click)="removeExtraInfo(i)">
+                                &times;
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="button" (click)="addExtraInfo()"
+                        class="mt-4 px-4 py-2 bg-pink-600 text-white rounded hover:bg-pink-700">
+                        + Add Extra Info
+                    </button>
+                </div>
+                <!-- Step 8: Image and Video Gallery -->
+                <div *ngIf="currentStep === 8" class="space-y-8">
+                    <h3 class="text-2xl font-semibold text-gray-800">📷 Image & 🎥 Video Gallery</h3>
+
+                    <!-- Image Upload -->
+                    <div class="bg-white p-5 rounded-xl shadow border">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Images</label>
+                        <input type="file" (change)="onImageSelect($event)" multiple accept="image/*"
+                            class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100" />
+
+                        <!-- Image Preview Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-4">
+                            <div *ngFor="let img of imagePreviews; let i = index"
+                                class="relative rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                                <img [src]="img" alt="Image Preview" class="w-full h-32 object-cover" />
+                                <button type="button" (click)="removeImage(i)"
+                                    class="absolute top-1 right-1 bg-red-600 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center hover:bg-red-700">
+                                    ×
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Upload -->
+                    <div class="bg-white p-5 rounded-xl shadow border">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Videos</label>
+                        <input type="file" (change)="onVideoSelect($event)" multiple accept="video/*"
+                            class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
+
+                        <!-- Video Preview Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+                            <div *ngFor="let vid of videoPreviews; let i = index"
+                                class="relative rounded-lg overflow-hidden shadow hover:shadow-md transition">
+                                <video [src]="vid" controls class="w-full h-32 object-cover rounded"></video>
+                                <button type="button" (click)="removeVideo(i)"
+                                    class="absolute top-1 right-1 bg-red-600 text-white w-6 h-6 rounded-full text-xs flex items-center justify-center hover:bg-red-700">
+                                    ×
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <button *ngIf="!priceListItemAdded" type="button" class="bg-pink-600 text-white px-4 py-2 mt-6 rounded"
-                    (click)="addPriceGroup()">
-                    + Add Price Item
-                </button>
+
+
             </div>
 
-            <!-- Step 5: Branch Events -->
-            <div *ngIf="currentStep === 5" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">Branch Events</h3>
-
-                <div formArrayName="BranchEvents" class="space-y-6">
-                    <div *ngFor="let event of BranchEvents.controls; let i = index" [formGroupName]="i"
-                        class="border p-4 rounded shadow-sm bg-gray-50">
-
-                        <h4 class="text-md font-semibold mb-3">Event {{ i + 1 }}</h4>
-
-                        <label class="block mb-1 font-medium">Title</label>
-                        <input formControlName="title" type="text" class="w-full p-2 border rounded mb-3"
-                            placeholder="Event Title" />
-
-                        <label class="block mb-1 font-medium">Description</label>
-                        <textarea formControlName="description" class="w-full p-2 border rounded mb-3" rows="2"
-                            placeholder="Event Description"></textarea>
-
-                        <label class="block mb-1 font-medium">Date</label>
-                        <input formControlName="date" type="date" class="w-full p-2 border rounded mb-3" />
-
-                        <label class="block mb-1 font-medium">Extra Description</label>
-                        <textarea formControlName="extraDescription" class="w-full p-2 border rounded mb-3" rows="2"
-                            placeholder="Additional info (optional)"></textarea>
-
-                        <button type="button" (click)="removeBranchEvent(i)" class="text-red-500 text-sm mt-2">Remove
-                            Event</button>
-                    </div>
-                </div>
-
-                <button type="button" (click)="addBranchEvent()" class="bg-pink-600 text-white px-4 py-2 rounded mt-6">
-                    + Add Event
+            <!-- Fixed Footer -->
+            <div class="border-t p-4 flex justify-between bg-white sticky bottom-0 z-10 mt-auto">
+                <button type="button" (click)="currentStep = currentStep - 1" [disabled]="currentStep === 0"
+                    class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
+                    Back
                 </button>
-            </div>
 
+                <button type="button" *ngIf="currentStep < steps.length - 1" (click)="currentStep = currentStep + 1"
+                    class="px-4 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
+                    Next
+                </button>
 
-            <!-- Step 6: SEO Info -->
-            <div *ngIf="currentStep === 6" [formGroup]="branchForm">
-                <h3 class="text-lg font-bold mb-4">SEO Base Additional Info</h3>
-
-                <div formArrayName="SEOBaseAdditionalInfo" class="space-y-6">
-                    <div *ngFor="let seo of SEOBaseAdditionalInfo.controls; let i = index" [formGroupName]="i"
-                        class="border p-4 rounded shadow-sm bg-gray-50">
-
-                        <h4 class="text-md font-semibold mb-3">SEO Entry {{ i + 1 }}</h4>
-
-                        <!-- Title -->
-                        <label class="block mb-1 font-medium">Title</label>
-                        <input formControlName="title" type="text" class="w-full p-2 border rounded mb-3"
-                            placeholder="e.g., Language Carnival" />
-                        <!-- SubTitle (e.g., date or highlight) -->
-                        <label class="block mb-1 font-medium">Sub Title</label>
-                        <input formControlName="subTittle" type="text" class="w-full p-2 border rounded mb-3"
-                            placeholder="e.g., 2025-11-10" />
-
-                        <!-- Description -->
-                        <label class="block mb-1 font-medium">Description</label>
-                        <textarea formControlName="description" class="w-full p-2 border rounded mb-3" rows="2"
-                            placeholder="SEO Description"></textarea>
-
-
-                        <!-- Remove Button -->
-                        <button type="button" (click)="removeSEOInfo(i)" class="text-red-500 text-sm mt-2">Remove SEO
-                            Info</button>
-                    </div>
-                </div>
-
-                <!-- Add Button -->
-                <button type="button" (click)="addSEOInfo()" class="bg-pink-600 text-white px-4 py-2 rounded mt-6">
-                    + Add SEO Info
+                <button type="submit" *ngIf="currentStep === steps.length - 1"
+                    class="px-6 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
+                    {{ isEditMode ? 'Update Branch' : 'Save Branch' }}
                 </button>
             </div>
 
         </div>
-
-        <!-- Fixed Footer -->
-        <div class="border-t p-4 flex justify-between bg-white sticky bottom-0 z-10 mt-auto">
-            <button type="button" (click)="currentStep = currentStep - 1" [disabled]="currentStep === 0"
-                class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
-                Back
-            </button>
-
-            <button type="button" *ngIf="currentStep < steps.length - 1" (click)="currentStep = currentStep + 1"
-                class="px-4 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
-                Next
-            </button>
-
-            <button type="submit" *ngIf="currentStep === steps.length - 1"
-                class="px-6 py-2 rounded bg-pink-600 text-white hover:bg-pink-700">
-                {{ isEditMode ? 'Update Branch' : 'Save Branch' }}
-            </button>
-        </div>
-
-    </div>
-
+    </form>
 </div>

@@ -118,30 +118,25 @@
 
             <!-- Content -->
             <div class="bg-white w-full h-full overflow-y-auto mt-1">
-                <div class="space-y-4">
+                <div class="space-y-4 max-w-full md:max-w-sm lg:max-w-sm mx-auto my-10">
                     <div *ngFor="let card of accordionItems[activeIndex]?.packages"
-                        class=" p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200 ">
+                        class="p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200">
                         <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
                         <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
 
                         <div class="text-sm text-gray-700 mt-2 space-y-1">
-                            <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per
-                                week</p>
-                            <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{
-                                    card.durationInMinutes
-                                    }}</strong> of
-                                English per week</p>
-                            <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses
-                                    }}</strong>
-                                per
-                                school year</p>
+                            <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per week
+                            </p>
+                            <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{ card.durationInMinutes
+                                    }}</strong> of English per week</p>
+                            <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses }}</strong>
+                                per school year</p>
                         </div>
 
                         <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
 
-                        <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
-                            card.pricePerMonth }}
-                        </h4>
+                        <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{ card.pricePerMonth
+                            }}</h4>
                         <p *ngIf="card.materialsFee" class="text-gray-600 text-sm">{{ card.materialsFee }}</p>
                     </div>
                 </div>
