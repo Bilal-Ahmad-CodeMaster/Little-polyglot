@@ -6,7 +6,7 @@ import { API_CONFIG } from '../../config';
   providedIn: 'root'
 })
 export class ApiServicesService {
-    ;
+  ;
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +29,7 @@ export class ApiServicesService {
   }
 
   updateBranch(id: string, payload: FormData) {
-    return this.http.put(`${API_CONFIG['branches']}/${id}`, payload);
+    return this.http.patch(`${API_CONFIG['branches']}/${id}`, payload);
   }
 
   deleteBranch(id: string) {
@@ -40,7 +40,7 @@ export class ApiServicesService {
   getBlogs() {
     return this.http.get(`${API_CONFIG['blogs']}`);
   }
-  getSingleBlogs(id:string) {
+  getSingleBlogs(id: string) {
     return this.http.get(`${API_CONFIG['blogs']}`);
   }
 
