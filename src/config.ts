@@ -1,5 +1,5 @@
-// const BASE_URL = "http://polyglotkids-env.eba-pnrbavcf.ap-south-1.elasticbeanstalk.com/api";
-const BASE_URL = "http://localhost:3000/api";
+const BASE_URL = "http://polyglotkids-env.eba-pnrbavcf.ap-south-1.elasticbeanstalk.com/api";
+// const BASE_URL = "http://localhost:3000/api";
 
 
 export const API_CONFIG: Record<string, string> = {
