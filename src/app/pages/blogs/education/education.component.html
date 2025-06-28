@@ -1,42 +1,52 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div *ngFor="let card of cards" class="bg-white rounded-lg shadow overflow-hidden flex flex-col">
-      <a [href]="card.link">
-        <img [src]="card.image" alt="blog image" class="w-full h-48 object-cover">
-      </a>
-      <div class="p-6 flex flex-col flex-1">
-        <!-- Categories -->
-        <div class="text-pink-500 text-sm font-semibold uppercase mb-2">
-          {{ card.categories.join(' ◇ ') }}
-        </div>
-  
-        <!-- Title -->
-        <h3 class="text-lg font-bold mb-1">
-          <a [href]="card.link" class="hover:text-pink-500 transition duration-300">{{ card.title }}</a>
-        </h3>
-  
-        <!-- Date -->
-        <div class="text-gray-500 text-sm mb-3">{{ card.date }}</div>
-  
-        <!-- Description -->
-        <p class="text-gray-700 mb-4 flex-1">
-          {{ card.description }}
-        </p>
-  
-        <!-- Footer (socials) -->
-        <div class="flex justify-between items-center border-t pt-2 mt-auto">
-          <div class="flex space-x-4 text-gray-400 text-sm">
-            <a href="#" class="hover:text-pink-500">
-              <i class="fas fa-heart"></i>
-            </a>
-            <a href="#" class="hover:text-blue-600">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="hover:text-blue-700">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
+  <div
+    *ngFor="let card of allBlogs"
+    class="bg-white rounded-lg shadow overflow-hidden flex flex-col">
+    <a [routerLink]="['/blog-details', card._id]">
+      <img
+        [src]="card.image"
+        alt="blog image"
+        class="w-full h-48 object-cover" />
+    </a>
+    <div class="p-6 flex flex-col flex-1">
+      <!-- Categories -->
+      <div class="text-pink-500 text-sm font-semibold uppercase mb-2">
+        {{ card.category }}
+      </div>
+
+      <!-- Title -->
+      <h3 class="text-lg font-bold mb-1">
+        <a
+          [routerLink]="['/blog-details', card._id]"
+          class="hover:text-pink-500 transition duration-300"
+          >{{ card.title }}</a
+        >
+      </h3>
+
+      <!-- Date -->
+      <div class="text-gray-500 text-sm mb-3">
+        {{ card.createdAt | date : "MMMM d, y" }}
+      </div>
+
+      <!-- Description -->
+      <p class="text-gray-700 mb-4 flex-1">
+        {{ card.description }}
+      </p>
+
+      <!-- Footer (socials) -->
+      <div class="flex justify-between items-center border-t pt-2 mt-auto">
+        <div class="flex space-x-4 text-gray-400 text-sm">
+          <a href="#" class="hover:text-blue-600">
+            <i class="fab fa-facebook-f"></i> FaceBook
+          </a>
+          <a href="#" class="hover:text-pink-500">
+            <i class="fas fa-heart"></i> Like
+          </a>
+          <a href="#" class="hover:text-blue-700">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

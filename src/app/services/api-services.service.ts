@@ -40,9 +40,9 @@ export class ApiServicesService {
   getBlogs() {
     return this.http.get(`${API_CONFIG['blogs']}`);
   }
-  getSingleBlogs(id: string) {
-    return this.http.get(`${API_CONFIG['blogs']}`);
-  }
+  // getSingleBlogs(id: string) {
+  //   return this.http.get(`${API_CONFIG['blogs']}`);
+  // }
 
   createBlog(payload: FormData) {
     return this.http.post(`${API_CONFIG['blogs']}`, payload);
@@ -58,5 +58,10 @@ export class ApiServicesService {
 
   deleteMedia(branchId: string, type: string, mediaId: string) {
     return this.http.delete(`${API_CONFIG['branches']}/${branchId}/${type}/${mediaId}`);
+  }
+
+  // for get single blog
+  getBlogById(id: string) {
+    return this.http.get(`${API_CONFIG['blogs']}/${id}`);
   }
 }
