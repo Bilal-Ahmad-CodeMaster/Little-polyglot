@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ApiServicesService } from '../../../services/api-services.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-education',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })
 export class EducationComponent {
+  constructor(private api: ApiServicesService, private router: Router) { }
   cards = [
     {
       image: 'https://earlystage.pl/blog/wp-content/uploads/2025/06/zajecia-dodakowe-dla-dzieci-wroclaw-585x390.jpg',
@@ -35,7 +38,7 @@ export class EducationComponent {
     },
     {
       image: 'https://earlystage.pl/blog/wp-content/uploads/2022/08/Dzien-matki-po-angielsku-585x390.jpg',
-      categories: [ 'Education'],
+      categories: ['Education'],
       title: '6 Spring Games for Kids with English in the Background',
       date: 'May 21, 2025',
       description: 'The days are getting longer, the sun is peeking through the windows, and the world around you is exploding with colors. It\'s hard not to catch a spring surge of energy! It\'s worth using this energy well - preferably by playing with your children. Check it out...',
@@ -82,5 +85,16 @@ export class EducationComponent {
       link: '#'
     },
   ];
-  
+  allBlogs: any
+
+  ngOnInit() {
+    this.api.getBlogs().subscribe((res: any) => {
+      this.allBlogs = res.data.filter((b: any) => b.category === 'Wychowanie')
+    })
+  }
+
+  onBlogClick(id: string) {
+    this.router.navigate(['/blog', id]);
+  }
+
 }

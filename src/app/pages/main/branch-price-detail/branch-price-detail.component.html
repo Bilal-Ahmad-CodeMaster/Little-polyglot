@@ -1,421 +1,528 @@
 <section class="px-8 md:px-24 py-10 bg-white">
-    <div routerLink="/schools" class="cursor-pointer text-black hover:text-pink-600 ">← Back to map</div>
-    <main class="flex flex-col  gap-10 mt-14 bg-[#F3F5F8] p-5 md:p-10 rounded-lg ">
-        <div class="w-full md:w-[50%]">
-            <h2 class="text-lg md:text-4xl  font-semibold">{{BrachData.schoolDetail.titleToShowBranchFor}}</h2>
-            <div class="flex flex-col gap-10 mt-10 items-start">
-                <!-- Description with Expand/Collapse functionality -->
-                <p>
-                    {{BrachData.schoolDetail.description}}
-                </p>
+  <div
+    routerLink="/schools"
+    class="cursor-pointer text-black hover:text-pink-600">
+    ← Back to map
+  </div>
+  <main class="flex flex-col gap-10 mt-14 bg-[#F3F5F8] p-5 md:p-10 rounded-lg">
+    <div class="w-full md:w-[50%]">
+      <h2 class="text-lg md:text-4xl font-semibold">
+        {{ BrachData.schoolDetail.titleToShowBranchFor }}
+      </h2>
+      <div class="flex flex-col gap-10 mt-10 items-start">
+        <!-- Description with Expand/Collapse functionality -->
+        <p>
+          {{ BrachData.schoolDetail.description }}
+        </p>
 
-                <p *ngIf="showMore">
-                    {{BrachData.schoolDetail.extraDescription}}
-                </p>
+        <p *ngIf="showMore">
+          {{ BrachData.schoolDetail.extraDescription }}
+        </p>
 
-                <button class="text-pink-600 hover:text-pink-900 font-semibold flex items-center gap-1"
-                    (click)="showMore = !showMore" type="button" [attr.aria-expanded]="showMore">
-                    <span>
-                        {{ showMore ? 'Collapse' : 'Read more' }}
-                    </span>
-                    <span class="text-xs pt-0.5 pl-2">
-                        {{ showMore ? '▲' : '▼' }}
-                    </span>
-                </button>
-            </div>
+        <button
+          class="text-pink-600 hover:text-pink-900 font-semibold flex items-center gap-1"
+          (click)="showMore = !showMore"
+          type="button"
+          [attr.aria-expanded]="showMore">
+          <span>
+            {{ showMore ? "Collapse" : "Read more" }}
+          </span>
+          <span class="text-xs pt-0.5 pl-2">
+            {{ showMore ? "▲" : "▼" }}
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="w-full flex flex-col md:flex-row gap-6 px-4 md:px-10">
+      <!-- Left Side: Class Location -->
+      <div class="w-full md:w-1/2">
+        <h2 class="text-2xl font-semibold mb-4">Class Location</h2>
+        <div class="flex items-start gap-4">
+          <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
+          <div>
+            <p>{{ BrachData.streetAddress }}</p>
+            <p>{{ BrachData.city }}</p>
+            <p class="font-medium mt-1 text-gray-700">
+              {{ BrachData.schoolName }}
+            </p>
+          </div>
         </div>
-        <div class="w-full flex flex-col md:flex-row gap-6 px-4 md:px-10">
+      </div>
 
-            <!-- Left Side: Class Location -->
-            <div class="w-full md:w-1/2">
-                <h2 class="text-2xl font-semibold mb-4">Class Location</h2>
-                <div class="flex items-start gap-4">
-                    <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
-                    <div>
-                        <p>{{BrachData.streetAddress}}</p>
-                        <p>{{BrachData.city}}</p>
-                        <p class="font-medium mt-1 text-gray-700">{{BrachData.schoolName}}</p>
-                    </div>
-                </div>
+      <!-- Right Side: Headquarters -->
+      <div class="w-full md:w-1/2">
+        <h2 class="text-2xl font-semibold mb-4">Headquarters (Office)</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.location }}</p>
             </div>
+          </div>
 
-            <!-- Right Side: Headquarters -->
-            <div class="w-full md:w-1/2">
-                <h2 class="text-2xl font-semibold mb-4">Headquarters (Office)</h2>
-                <div class="space-y-4">
-
-                    <div class="flex items-start gap-4">
-                        <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
-                        <div>
-                            <p>{{contactDetail.headquarter.location}}</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <i class="fa fa-phone text-lg pt-1 text-blue-600"></i>
-                        <div>
-                            <p>{{contactDetail.headquarter.phone}}</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <i class="fa fa-envelope text-lg pt-1 text-green-600"></i>
-                        <div>
-                            <p>{{contactDetail.headquarter.email}}</p>
-                        </div>
-                    </div>
-
-                </div>
+          <div class="flex items-start gap-4">
+            <i class="fa fa-phone text-lg pt-1 text-blue-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.phone }}</p>
             </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <i class="fa fa-envelope text-lg pt-1 text-green-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.email }}</p>
+            </div>
+          </div>
         </div>
-
-        <!-- Map Section -->
-        <div class="w-full px-4 md:px-10 mt-8">
-            <iframe class="w-full h-[27rem] border-0 rounded-lg shadow" loading="lazy" allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade" [src]="globalIframeSrc">
-            </iframe>
-        </div>
-
-
-    </main>
-    <div class="w-full px-4 py-10 md:py-16 bg-white">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-10">
-
-            <!-- Left: Text Section -->
-            <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold mb-4 relative inline-block">
-                    About us<span class="text-pink-500">.</span>
-                    <div class="h-1 w-16 bg-pink-500 absolute left-0 -bottom-2"></div>
-                </h2>
-
-                <p>{{BrachData.imageGalleryAboutUsDescription}}</p>
-
-
-            </div>
-
-            <!-- Right: Image Section -->
-            <div class="md:w-1/2">
-                <img src="assets/images.jpeg" alt="English class photo"
-                    class="rounded shadow-md w-full object-cover max-h-[400px]">
-            </div>
-        </div>
+      </div>
     </div>
 
-
-    <section class="my-10">
-        <div>
-
-            <div class="scroller-container">
-                <div class="scroller">
-                    <div class="scroller-content">
-                        <div class="item " [ngClass]="{ 'activeMenu': activeIndex === i, '': activeIndex !== i }"
-                            *ngFor="let item of accordionItems; let i = index" (click)="setActiveItem(i)">{{ item.label
-                            }}</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Content -->
-            <div class="bg-white w-full h-full overflow-y-auto mt-1">
-                <div class="space-y-4 max-w-full md:max-w-sm lg:max-w-sm mx-auto my-10">
-                    <div *ngFor="let card of accordionItems[activeIndex]?.packages"
-                        class="p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200">
-                        <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
-                        <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
-
-                        <div class="text-sm text-gray-700 mt-2 space-y-1">
-                            <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per week
-                            </p>
-                            <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{ card.durationInMinutes
-                                    }}</strong> of English per week</p>
-                            <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses }}</strong>
-                                per school year</p>
-                        </div>
-
-                        <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
-
-                        <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{ card.pricePerMonth
-                            }}</h4>
-                        <p *ngIf="card.materialsFee" class="text-gray-600 text-sm">{{ card.materialsFee }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col gap-4 mt-4 text-[12px] pl-4 max-w-full lg:max-w-[70%]  mx-auto">
-            <p *ngFor="let info of BrachData.extraInfoModal">{{info}}</p>
-
-        </div>
-        <div class="w-full flex justify-center items-center">
-            <button routerLink="/registration/applicationForm" [queryParams]="{ branchId: BrachData._id }"
-                class="cursor-pointer bg-pink-600 text-white font-semibold text-md rounded-full px-6 py-3 hover:bg-pink-700 transition max-[500px]:text-xs max-[500px]:px-3 max-[500px]:py-1.5 mt-10">signup
-                your child
-            </button>
-        </div>
-    </section>
-
-
-
-
-
-
-
-    <section class="w-full flex flex-col gap-4 mt-10">
-        <div class="flex items-center gap-2 mx-auto"><img src="https://earlystage.pl/images/school.svg" width="30"
-                alt="Why choose us?">
-            <h2 class="text-2xl font-semibold">What else do you get?</h2>
-        </div>
-        <div class="flex flex-col md:flex-row   w-full">
-            <div class="flex flex-col gap-1 lg:gap-24 w-full lg:w-[70%] lg:flex-row mx-auto">
-                <ul class="space-y-2">
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            Your child's development path up to the final exams
-                        </span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            Regular progress summaries
-                        </span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            Constant monitoring of the level of knowledge
-                        </span>
-                    </li>
-                </ul>
-                <ul class="space-y-2">
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            a convenient e-journal with information about classes
-                        </span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            access to the Polyglot Kid MUSIC music application
-                        </span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <img src="https://earlystage.pl/images/check.svg" alt="Check" class="mt-1 w-5 h-5">
-                        <span class="text-gray-600 text-lg ">
-                            online platform with additional activities
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <hr class="my-8 border-t border-gray-200">
-
-    <section
-        class="flex gap-4 lg:flex-row flex-col lg:items-start items-center lg:justify-start justify-between  w-full">
-        <div class="lg:w-1/2 font-semibold text-2xl lg:text-5xl mb-16 md:text-3xl"> Additional information</div>
-        <section class="lg:w-1/2  flex flex-col gap-4">
-            <div class="w-full">
-                <div class="flex items-center gap-2 mx-auto w-full"><img
-                        src="https://earlystage.pl/images/menu-book.svg" alt=""><span
-                        class="text-lg font-semibold">Educational materials</span>
-                </div>
-                <p class="pl-8 mt-3 text-gray-600 ">Educational materials are subject to an additional fee.
-
-                    <strong>The one-time cost for the entire school year depends on the course level</strong> and is PLN
-                    140-350. We send the price list by
-                    email after assigning to a group. The fee for educational materials will be added to the first
-                    payment for the course.
-                </p>
-                <hr class="my-8 border-t border-gray-200">
-
-            </div>
-            <div>
-                <div class="flex items-center gap-2 mx-auto"><img src="https://earlystage.pl/images/payments-fill.svg"
-                        alt=""><span class="text-lg font-semibold">Payments</span>
-                </div>
-                <div class="pl-8 mt-3 text-gray-600 ">Once the educational agreement is signed, we send payment
-                    information to our clients.
-                    <p>You can pay for the course using quick payments:</p>
-                    <li>
-                        <strong>BLIK</strong>
-                    </li>
-                    <li>
-                        <strong>Fast transfer</strong>
-                    </li>
-                    Safety rules: <br>
-
-                    Remember to check if the sender of the message is Polyglot Kid
-                </div>
-                <hr class="my-8 border-t border-gray-200">
-
-            </div>
-
-
-            <div>
-                <div class="flex items-center gap-2 md:mx-auto"><img src="https://earlystage.pl/images/sell.svg"
-                        alt=""><span class="text-lg font-semibold">Discounts</span>
-                </div>
-                <div class="pl-8 mt-3 text-gray-600 ">The school offers the following discounts:
-                    <br>
-                    <strong>Sibling discount</strong>
-                    <p>Each sibling receives a PLN 16 discount for each month ,
-
-                        where at least two children are studying in Polyglot Kid. To receive this discount, it is
-                        sufficient that the same person
-                        signs the contracts for each of the children.</p>
-                    <br>
-                    <strong>Discounts for paying in advance</strong>
-                    <p>The discount for a combined payment for the entire course (10 months) is PLN 160, and for a
-                        combined payment
-                        corresponding to 5 monthly fees: PLN 80.00, in relation to the annual cost of the course.</p>
-                    <br>
-                    <strong>Discounts cannot be combined with each other.</strong>
-                </div>
-                <hr class="my-8 border-t border-gray-200">
-
-            </div>
-
-            <div>
-                <div class="flex items-center gap-2 mx-auto"><img src="https://earlystage.pl/images/history-edu.svg"
-                        alt=""><span class="text-lg font-semibold">Leveling meeting</span>
-                </div>
-                <p class="pl-8 mt-3 text-gray-600 ">We organize individual leveling meetings for all new students from
-                    the second grade of primary school. During the
-                    meeting, the methodologist talks to the student and conducts a short language skills test. On this
-                    basis, we can select
-                    a group appropriately suited to the child's level.
-                </p>
-                <hr class="my-8 border-t border-gray-200">
-
-            </div>
-        </section>
-    </section>
-
-
-
-    <section *ngIf="BrachData.BranchEvents.length>0" class="border-b border-gray-200 pb-10">
-        <h2 class="text-2xl font-semibold w-full text-center">Events at the branch</h2>
-
-        <div class="flex flex-col md:flex-row  gap-4">
-            <div *ngFor="let event of BrachData.BranchEvents; let i = index"
-                class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200 ">
-                <h2 class="text-xl font-semibold mb-2">
-                    {{event.title}}
-                </h2>
-                <p class="text-sm text-gray-500 mb-4">{{event.date}}</p>
-
-                <div>
-                    <p class="mb-3">
-                        {{event.description}}
-                    </p>
-                    <ng-container *ngIf="expandedEventIndex === i">
-                        <p>
-                            {{event.extraDescription}}
-                        </p>
-                    </ng-container>
-                </div>
-
-                <button *ngIf="event.extraDescription"
-                    (click)="expandedEventIndex === i ? expandedEventIndex = -1 : expandedEventIndex = i"
-                    class="mt-4 text-pink-600 font-semibold hover:underline focus:outline-none">
-                    {{ expandedEventIndex === i ? 'Collapse ↑' : 'Read more ↓' }}
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <div class="bg-white flex flex-col items-center p-4" *ngIf="BrachData.videosGallery.length>0">
-        <h2 class="text-center text-black text-3xl font-semibold my-10">
-            Watch a demo lesson
+    <!-- Map Section -->
+    <div class="w-full px-4 md:px-10 mt-8">
+      <iframe
+        class="w-full h-[27rem] border-0 rounded-lg shadow"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        [src]="globalIframeSrc">
+      </iframe>
+    </div>
+  </main>
+  <div class="w-full px-4 py-10 md:py-16 bg-white">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-10">
+      <!-- Left: Text Section -->
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-bold mb-4 relative inline-block">
+          About us<span class="text-pink-500">.</span>
+          <div class="h-1 w-16 bg-pink-500 absolute left-0 -bottom-2"></div>
         </h2>
-        <div class="relative max-w-7xl w-full rounded-lg overflow-hidden  mt-10"
-            *ngFor="let video of BrachData.videosGallery; let i = index">
-            <ng-container *ngIf="!video.showVideo; else videoBlock">
-                <img [src]="BrachData.imagesGallery[i].imageUrl || video.thumbnail || '/assets/images.jpeg'"
-                    alt="Video thumbnail" class="w-full max-h-[546px]  rounded-lg" />
-                <button (click)="video.showVideo = true" aria-label="Play demo lesson video"
-                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
-                    type="button">
-                    <svg aria-hidden="true" class="w-7 h-7 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"></path>
-                    </svg>
-                </button>
-            </ng-container>
 
-            <ng-template #videoBlock class="">
-                <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg "
-                    aria-label="Demo lesson video"></video>
-            </ng-template>
+        <p>{{ BrachData.imageGalleryAboutUsDescription }}</p>
+      </div>
+
+      <!-- Right: Image Section -->
+      <div class="md:w-1/2">
+        <!-- <img src="assets/images.jpeg" alt="English class photo"
+                    class="rounded shadow-md w-full object-cover max-h-[400px]"> -->
+
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper w-[350px] lg:w-full mx-auto">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let image of branchImages">
+              <img
+                [src]="image.imageUrl"
+                [alt]="image.title"
+                class="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[400px] rounded shadow-md" />
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <section class="bg-white py-12" *ngIf="BrachData.SEOBaseAdditionalInfo">
-        <div class="container mx-auto px-4 space-y-16" *ngFor="let SEOInfo of BrachData.SEOBaseAdditionalInfo">
-            <!-- Article 1 -->
-            <article class="  p-6">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">
-                    {{ SEOInfo.title}}
-                </h2>
-                <div class="space-y-4 text-gray-700">
-
-
-                    <p class="font-semibold mt-4">{{ SEOInfo.subTittle}}</p>
-                    <p>
-                        {{SEOInfo.description}}
-                    </p>
-
-                </div>
-            </article>
-            <hr class="my-8 border-t border-gray-200">
-            <!-- Article 2 -->
-
-
+  <section class="my-10">
+    <div>
+      <div class="scroller-container">
+        <div class="scroller">
+          <div class="scroller-content">
+            <div
+              class="item"
+              [ngClass]="{
+                activeMenu: activeIndex === i,
+                '': activeIndex !== i
+              }"
+              *ngFor="let item of accordionItems; let i = index"
+              (click)="setActiveItem(i)">
+              {{ item.label }}
+            </div>
+          </div>
         </div>
-    </section>
-    <section class="bg-gray-50  py-8">
-        <div class="container mx-auto px-4">
+      </div>
 
-
-            <!-- Legal Disclaimer -->
-            <p class="text-sm text-gray-600 mb-6">
-                The information presented above does not constitute an offer within the meaning of the Civil Code, but
-                merely an invitation to conclude a contract.
+      <!-- Content -->
+      <div class="bg-white w-full h-full overflow-y-auto mt-1">
+        <div class="space-y-4 max-w-full md:max-w-sm lg:max-w-sm mx-auto my-10">
+          <div
+            *ngFor="let card of accordionItems[activeIndex]?.packages"
+            class="p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200">
+            <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">
+              {{ card.title }}
+            </h3>
+            <p *ngIf="card.description" class="text-sm text-gray-600">
+              {{ card.description }}
             </p>
 
-            <!-- Franchisee Details -->
-            <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Franchisee details</h3>
-
-                <div class="grid gap-4 text-sm text-gray-700">
-                    <div class="flex justify-between">
-                        <span class="font-medium">Name:</span>
-                        <span>{{BrachData.franchiseDetails.name}}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">Address:</span>
-                        <span class="text-right">
-                            {{BrachData.franchiseDetails.Address}}
-                        </span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">Tax identification number:</span>
-                        <span>{{BrachData.franchiseDetails.TaxIdentification}}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">REGON:</span>
-                        <span>{{BrachData.franchiseDetails.REGON}}</span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="font-medium">KRS:</span>
-                        <span>{{BrachData.franchiseDetails.KRSNo}}</span>
-                    </div>
-                </div>
+            <div class="text-sm text-gray-700 mt-2 space-y-1">
+              <p *ngIf="card.duration">
+                <strong class="text-pink-500">{{ card.duration }}</strong> per
+                week
+              </p>
+              <p *ngIf="card.durationInMinutes">
+                or
+                <strong class="text-pink-500">{{
+                  card.durationInMinutes
+                }}</strong>
+                of English per week
+              </p>
+              <p *ngIf="card.totalClasses">
+                <strong class="text-pink-500">{{ card.totalClasses }}</strong>
+                per school year
+              </p>
             </div>
 
-        </div>
-    </section>
+            <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
 
+            <h4
+              *ngIf="card.pricePerMonth"
+              class="font-semibold text-gray-900 text-lg">
+              {{ card.pricePerMonth }}
+            </h4>
+            <p *ngIf="card.materialsFee" class="text-gray-600 text-sm">
+              {{ card.materialsFee }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col gap-4 mt-4 text-[12px] pl-4 max-w-full lg:max-w-[70%] mx-auto">
+      <p *ngFor="let info of BrachData.extraInfoModal">{{ info }}</p>
+    </div>
+    <div class="w-full flex justify-center items-center">
+      <button
+        routerLink="/registration/applicationForm"
+        [queryParams]="{ branchId: BrachData._id }"
+        class="cursor-pointer bg-pink-600 text-white font-semibold text-md rounded-full px-6 py-3 hover:bg-pink-700 transition max-[500px]:text-xs max-[500px]:px-3 max-[500px]:py-1.5 mt-10">
+        signup your child
+      </button>
+    </div>
+  </section>
+
+  <section class="w-full flex flex-col gap-4 mt-10">
+    <div class="flex items-center gap-2 mx-auto">
+      <img
+        src="https://earlystage.pl/images/school.svg"
+        width="30"
+        alt="Why choose us?" />
+      <h2 class="text-2xl font-semibold">What else do you get?</h2>
+    </div>
+    <div class="flex flex-col md:flex-row w-full">
+      <div
+        class="flex flex-col gap-1 lg:gap-24 w-full lg:w-[70%] lg:flex-row mx-auto">
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              Your child's development path up to the final exams
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              Regular progress summaries
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              Constant monitoring of the level of knowledge
+            </span>
+          </li>
+        </ul>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              a convenient e-journal with information about classes
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              access to the Polyglot Kid MUSIC music application
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <img
+              src="https://earlystage.pl/images/check.svg"
+              alt="Check"
+              class="mt-1 w-5 h-5" />
+            <span class="text-gray-600 text-lg">
+              online platform with additional activities
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-8 border-t border-gray-200" />
+
+  <section
+    class="flex gap-4 lg:flex-row flex-col lg:items-start items-center lg:justify-start justify-between w-full">
+    <div class="lg:w-1/2 font-semibold text-2xl lg:text-5xl mb-16 md:text-3xl">
+      Additional information
+    </div>
+    <section class="lg:w-1/2 flex flex-col gap-4">
+      <div class="w-full">
+        <div class="flex items-center gap-2 mx-auto w-full">
+          <img src="https://earlystage.pl/images/menu-book.svg" alt="" /><span
+            class="text-lg font-semibold"
+            >Educational materials</span
+          >
+        </div>
+        <p class="pl-8 mt-3 text-gray-600">
+          Educational materials are subject to an additional fee.
+
+          <strong
+            >The one-time cost for the entire school year depends on the course
+            level</strong
+          >
+          and is PLN 140-350. We send the price list by email after assigning to
+          a group. The fee for educational materials will be added to the first
+          payment for the course.
+        </p>
+        <hr class="my-8 border-t border-gray-200" />
+      </div>
+      <div>
+        <div class="flex items-center gap-2 mx-auto">
+          <img
+            src="https://earlystage.pl/images/payments-fill.svg"
+            alt="" /><span class="text-lg font-semibold">Payments</span>
+        </div>
+        <div class="pl-8 mt-3 text-gray-600">
+          Once the educational agreement is signed, we send payment information
+          to our clients.
+          <p>You can pay for the course using quick payments:</p>
+          <li>
+            <strong>BLIK</strong>
+          </li>
+          <li>
+            <strong>Fast transfer</strong>
+          </li>
+          Safety rules: <br />
+
+          Remember to check if the sender of the message is Polyglot Kid
+        </div>
+        <hr class="my-8 border-t border-gray-200" />
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 md:mx-auto">
+          <img src="https://earlystage.pl/images/sell.svg" alt="" /><span
+            class="text-lg font-semibold"
+            >Discounts</span
+          >
+        </div>
+        <div class="pl-8 mt-3 text-gray-600">
+          The school offers the following discounts:
+          <br />
+          <strong>Sibling discount</strong>
+          <p>
+            Each sibling receives a PLN 16 discount for each month , where at
+            least two children are studying in Polyglot Kid. To receive this
+            discount, it is sufficient that the same person signs the contracts
+            for each of the children.
+          </p>
+          <br />
+          <strong>Discounts for paying in advance</strong>
+          <p>
+            The discount for a combined payment for the entire course (10
+            months) is PLN 160, and for a combined payment corresponding to 5
+            monthly fees: PLN 80.00, in relation to the annual cost of the
+            course.
+          </p>
+          <br />
+          <strong>Discounts cannot be combined with each other.</strong>
+        </div>
+        <hr class="my-8 border-t border-gray-200" />
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mx-auto">
+          <img src="https://earlystage.pl/images/history-edu.svg" alt="" /><span
+            class="text-lg font-semibold"
+            >Leveling meeting</span
+          >
+        </div>
+        <p class="pl-8 mt-3 text-gray-600">
+          We organize individual leveling meetings for all new students from the
+          second grade of primary school. During the meeting, the methodologist
+          talks to the student and conducts a short language skills test. On
+          this basis, we can select a group appropriately suited to the child's
+          level.
+        </p>
+        <hr class="my-8 border-t border-gray-200" />
+      </div>
+    </section>
+  </section>
+
+  <section
+    *ngIf="BrachData.BranchEvents.length > 0"
+    class="border-b border-gray-200 pb-10">
+    <h2 class="text-2xl font-semibold w-full text-center">
+      Events at the branch
+    </h2>
+
+    <div class="flex flex-col md:flex-row gap-4">
+      <div
+        *ngFor="let event of BrachData.BranchEvents; let i = index"
+        class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200">
+        <h2 class="text-xl font-semibold mb-2">
+          {{ event.title }}
+        </h2>
+        <p class="text-sm text-gray-500 mb-4">{{ event.date }}</p>
+
+        <div>
+          <p class="mb-3">
+            {{ event.description }}
+          </p>
+          <ng-container *ngIf="expandedEventIndex === i">
+            <p>
+              {{ event.extraDescription }}
+            </p>
+          </ng-container>
+        </div>
+
+        <button
+          *ngIf="event.extraDescription"
+          (click)="
+            expandedEventIndex === i
+              ? (expandedEventIndex = -1)
+              : (expandedEventIndex = i)
+          "
+          class="mt-4 text-pink-600 font-semibold hover:underline focus:outline-none">
+          {{ expandedEventIndex === i ? "Collapse ↑" : "Read more ↓" }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div
+    class="bg-white flex flex-col items-center p-4"
+    *ngIf="BrachData.videosGallery.length > 0">
+    <h2 class="text-center text-black text-3xl font-semibold my-10">
+      Watch a demo lesson
+    </h2>
+    <div
+      class="relative max-w-7xl w-full rounded-lg overflow-hidden mt-10"
+      *ngFor="let video of BrachData.videosGallery; let i = index">
+      <ng-container *ngIf="!video.showVideo; else videoBlock">
+        <img
+          [src]="
+            BrachData.imagesGallery[i].imageUrl ||
+            video.thumbnail ||
+            '/assets/images.jpeg'
+          "
+          alt="Video thumbnail"
+          class="w-full max-h-[546px] rounded-lg" />
+        <button
+          (click)="video.showVideo = true"
+          aria-label="Play demo lesson video"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
+          type="button">
+          <svg
+            aria-hidden="true"
+            class="w-7 h-7 text-pink-600"
+            fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+      </ng-container>
+
+      <ng-template #videoBlock class="">
+        <video
+          [src]="video.videoUrl"
+          controls
+          autoplay
+          class="w-full h-auto rounded-lg"
+          aria-label="Demo lesson video"></video>
+      </ng-template>
+    </div>
+  </div>
+
+  <section class="bg-white py-12" *ngIf="BrachData.SEOBaseAdditionalInfo">
+    <div
+      class="container mx-auto px-4 space-y-16"
+      *ngFor="let SEOInfo of BrachData.SEOBaseAdditionalInfo">
+      <!-- Article 1 -->
+      <article class="p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          {{ SEOInfo.title }}
+        </h2>
+        <div class="space-y-4 text-gray-700">
+          <p class="font-semibold mt-4">{{ SEOInfo.subTittle }}</p>
+          <p>
+            {{ SEOInfo.description }}
+          </p>
+        </div>
+      </article>
+      <hr class="my-8 border-t border-gray-200" />
+      <!-- Article 2 -->
+    </div>
+  </section>
+  <section class="bg-gray-50 py-8">
+    <div class="container mx-auto px-4">
+      <!-- Legal Disclaimer -->
+      <p class="text-sm text-gray-600 mb-6">
+        The information presented above does not constitute an offer within the
+        meaning of the Civil Code, but merely an invitation to conclude a
+        contract.
+      </p>
+
+      <!-- Franchisee Details -->
+      <div
+        class="bg-white p-6 rounded-lg shadow-md"
+        *ngIf="BrachData.franchiseDetails">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+          Franchisee details
+        </h3>
+
+        <div class="grid gap-4 text-sm text-gray-700">
+          <div class="flex justify-between">
+            <span class="font-medium">Name:</span>
+            <span>{{ BrachData.franchiseDetails.name }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">Address:</span>
+            <span class="text-right">
+              {{ BrachData.franchiseDetails.Address }}
+            </span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">Tax identification number:</span>
+            <span>{{ BrachData.franchiseDetails.TaxIdentification }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">REGON:</span>
+            <span>{{ BrachData.franchiseDetails.REGON }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">KRS:</span>
+            <span>{{ BrachData.franchiseDetails.KRSNo }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiServicesService } from '../../../services/api-services.service';
 import { DomSanitizer } from '@angular/platform-browser';
-
+declare var Swiper: any;
 @Component({
   selector: 'app-branch-price-detail',
   imports: [RouterLink, NgIf, NgFor, CommonModule],
@@ -18,8 +18,9 @@ export class BranchPriceDetailComponent {
   globalIframeSrc: any;
   contactDetail: any;
   accordionItems: any
-i: any;
-expandedEventIndex: any;
+  i: any;
+  expandedEventIndex: any;
+  branchImages: any;
   constructor(private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) { }
   expanded = false;
 
@@ -53,6 +54,49 @@ expandedEventIndex: any;
         }, 0);
       }
     });
+
+    this.api.getBranches().subscribe((res: any) => {
+
+      // Safely extract imagesGallery from each branch
+      const imageList = res?.data?.flatMap((branch: any) => branch.imagesGallery || []);
+
+      console.log(imageList, "aaaaaaaa");
+      this.branchImages = imageList;
+      setTimeout(() => {
+        new Swiper('.mySwiper', { /* config */ });
+      }, 0);
+    });
+  }
+
+  ngAfterViewInit() {
+    new Swiper('.mySwiper', {
+      loop: true,
+      spaceBetween: 20,
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      autoplay: {
+        delay: 3000, 
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1
+        },
+        768: {
+          slidesPerView: 1
+        },
+        1024: {
+          slidesPerView: 1
+        }
+      }
+    });
   }
   playVideo() {
     this.showVideo = true;
@@ -65,5 +109,6 @@ expandedEventIndex: any;
   toggleItem(index: number): void {
     this.accordionItems[index].isOpen = !this.accordionItems[index].isOpen;
   }
+
 
 }
