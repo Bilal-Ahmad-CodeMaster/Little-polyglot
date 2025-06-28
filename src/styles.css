@@ -13,6 +13,8 @@
   --color-primary: #42a6dd;
   --color-primary-hover: #28458d;
   --color-primary-gray: #dbdbdb;
+  --color-hero-section: #fffde7;
+  --color-hero-red-text: #d6336c;
 }
 
 /* styles.css or styles.scss */
@@ -28,6 +30,3 @@ body {
 body {
   font-family: sans-serif;
 }
-
-
-
