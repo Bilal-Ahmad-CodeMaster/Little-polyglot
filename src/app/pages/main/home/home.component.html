@@ -1,61 +1,65 @@
 <!-- hero section  -->
 
-<div class="relative overflow-hidden bg-[#FCEFD9] mb-20">
-    <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 max-md:flex-col-reverse md:flex-row lg:px-8 flex flex-col  items-center justify-between  pb-10 md:pb-0">
-        <div class="flex flex-col space-y-2 md:space-y-3 max-w-md md:max-w-lg h-full  items-start mt-5">
-            <h1
-                class="text-nowrap text-[22px] md:text-[28px] font-extrabold leading-tight -rotate-[6deg] w-fit bg-white px-3 py-1 inline-block">
-                ENGLISH SCHOOL
+<div class="relative overflow-hidden bg-hero-section mb-20">
+    <div class="max-w-7xl mx-auto md:px-6 pb-10 md:pb-0 flex flex-col-reverse md:flex-row items-center justify-between">
+        <!-- Text Content -->
+        <div class="w-full md:w-1/2 flex flex-col gap-4 text-center md:text-left">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
+                Empowering Young Minds<br />
+                <span class="text-hero-red-text">Through Language & Learning</span>
             </h1>
-            <p class="text-nowrap  text-[18px] md:text-[20px] font-semibold -rotate-[6deg] w-fit">
-                for children and youth
+            <p class="text-lg text-gray-600 max-w-xl">
+                High-impact English programs for children and teenagers — built on proven methods, modern tools, and a
+                passion for real-world communication.
             </p>
-            <p
-                class=" text-nowrap text-[18px] md:text-[20px] font-semibold -rotate-[6deg] w-fit bg-white px-3 py-1 inline-block">
-                ... from a different story!
-            </p>
-            <div class="flex space-x-4 mt-6">
-                <button
-                    class="text-nowrap  bg-white text-pink-500 text-[12px] md:text-sm font-semibold rounded-full px-6 py-2 hover:brightness-90 transition">
-                    FIND A SCHOOL
-                </button>
-                <button
-                    class="text-nowrap  bg-pink-500 text-white text-[12px] md:text-sm font-semibold rounded-full px-6 py-2 hover:brightness-90 transition">
-                    DISCOVER OUR COURSES
-                </button>
+            <div class="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start px-10">
+                <a routerLink="/schools"
+                    class="cursor-pointer text-center px-6 py-3 text-sm font-medium text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition">
+                    Find a Nearby Campuses
+                </a>
+                <a routerLink="/courses"
+                    class="text-center cursor-pointer  px-6 py-3 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary-hover transition">
+                    Explore Our Programs
+                </a>
             </div>
         </div>
-        <div
-            class="mt-0 md:mt-0 md:-mb-10 md:-mr-10 flex-shrink-0 h-full flex max-md:justify-center lg:justify-center items-center">
-            <img alt="Group of children and youth in classroom with decorations and British flags"
-                class="w-[70%] object-contain" height="100%" src="/assets/home-hero-updated.png" width="400" />
+
+        <!-- Hero Image -->
+        <div class="w-full md:w-1/2 flex justify-center md:justify-end mb-10 md:mb-0">
+            <img src="/assets/home-hero-updated.png" alt="Confident student with books and headphones"
+                class="max-w-sm w-full object-contain drop-shadow-xl ">
         </div>
     </div>
-    <div class="w-full max-h-12">
-        <img alt="Colorful" class="w-full object-cover" src="/assets/spacer-desktop.png" width="1920" />
+
+</div>
+
+<section class="bg-white py-16 px-6 lg:px-10 max-w-7xl mx-auto">
+    <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+            Why Choose Polyglot Kids?
+        </h2>
+        <p class="text-lg text-gray-600">
+            At <strong>Polyglot Kids</strong>, we don’t just teach English — we open doors to the world. Our programs
+            blend language learning with creativity, culture, and confidence-building activities that empower children
+            from the inside out. Whether it's their first word or their first presentation, we help them grow as
+            thinkers, explorers, and global citizens.
+        </p>
     </div>
-</div>
 
-<!-- storyline  -->
-<div class="flex justify-start items-start md:justify-center md:items-center  flex-col m-auto gap-8  w-[80%]">
-    <h1 class="text-[20px] font-semibold text-start text-nowrap md:text-[36px] md:font-normal leading-0 md:text-center">
-        Why from a different story?
-    </h1>
-    <p class="text-[16px] font-normal leading-6 mx-auto lg:max-w-[700px]">Early Stage is an English language school...
-        from
-        a different
-        story! Thanks to the author's 12 superpowers
-        method, a
-        friendly atmosphere and creative lecturers, our students enjoy English from kindergarten, pass their final exams
-        with
-        flying colors and enter adulthood with a confident step. Each of our classes is an interesting adventure, in
-        which
-        movement, rhymes, songs and fun lead children straight into the world of free communication. You want to come
-        back to
-        such classes - that's what we heard from students, and parents confirm!</p>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto text-gray-700 text-base leading-relaxed">
+        <p class="p-10 shadow-md rounded-sm border border-gray-200">
+            Our approach goes beyond grammar and vocabulary. We create immersive environments filled with music,
+            movement, storytelling, and play — all rooted in proven linguistic methods that make language stick for
+            life.
+        </p>
+        <p class="p-10 shadow-md rounded-sm border border-gray-200">
+            From preschoolers to teens, every student learns through purpose-driven lessons, collaborative tasks, and
+            personalized support. Parents love our transparency, and students love coming back — not because they have
+            to, but because they want to.
+        </p>
+    </div>
+</section>
 
-</div>
 
 
 <!-- features  -->
@@ -79,61 +83,37 @@
 
 <div class="max-w-7xl mx-auto px-4 py-10 font-sans">
     <div class="flex flex-col sm:flex-row justify-center gap-6">
-        <div class="bg-[#FAF0F2] rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
-            <i class="fas fa-chart-line text-[#E91E63] text-3xl mb-3"></i>
-            <p class="text-lg font-semibold text-[#E91E63] mb-1">90.2%</p>
+        <div class="bg-hero-section rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
+            <i class="fas fa-chart-line text-hero-red-text text-3xl mb-3"></i>
+            <p class="text-lg font-semibold text-hero-red-text mb-1">90.2%</p>
             <p class="text-xs text-[#1F1F1F] leading-tight">
                 students want to continue their<br />education in the next school year
             </p>
         </div>
-        <div class="bg-[#FAF0F2] rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
-            <i class="fas fa-star text-[#E91E63] text-3xl mb-3"></i>
-            <p class="text-lg font-semibold text-[#E91E63] mb-1">96%</p>
+        <div class="bg-hero-section rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
+            <i class="fas fa-star text-hero-red-text text-3xl mb-3"></i>
+            <p class="text-lg font-semibold text-hero-red-text mb-1">96%</p>
             <p class="text-xs text-[#1F1F1F] leading-tight">
                 This is the average score of our students<br />
                 in the eighth grade English exam.* The<br />
                 national average score is 66%
             </p>
         </div>
-        <div class="bg-[#FAF0F2] rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
-            <i class="fas fa-award text-[#E91E63] text-3xl mb-3"></i>
-            <p class="text-lg font-semibold text-[#E91E63] mb-1">100%</p>
+        <div class="bg-hero-section rounded-lg p-6 flex flex-col items-center text-center max-w-xs flex-1">
+            <i class="fas fa-award text-hero-red-text text-3xl mb-3"></i>
+            <p class="text-lg font-semibold text-hero-red-text mb-1">100%</p>
             <p class="text-xs text-[#1F1F1F] leading-tight">
                 38.3% of our students achieved this<br />
                 result in the eighth-grade English exam*
             </p>
         </div>
     </div>
-    <p class="text-[9px] text-[#1F1F1F] text-right mt-3 max-w-7xl mx-auto pr-32">
-        *Data based on 141 respondents’ responses
-    </p>
+
 </div>
 
 
 <app-course-detail-card></app-course-detail-card>
 
-
-<div class="max-w-5xl mx-auto px-4 py-16">
-    <h2 class="text-center text-black text-3xl font-semibold mb-8">
-        Early Stage in numbers
-    </h2>
-    <div class="flex flex-col sm:flex-row justify-center items-center text-center gap-6 sm:gap-0">
-        <div class="flex flex-col justify-center items-center sm:w-1/3">
-            <span class="text-pink-600 font-extrabold text-4xl leading-none">31</span>
-            <span class="text-gray-600 text-xl mt-1">years of experience</span>
-        </div>
-        <div class="hidden sm:flex border-l border-gray-300 h-12 mx-8"></div>
-        <div class="flex flex-col justify-center items-center sm:w-1/3">
-            <span class="text-pink-600 font-extrabold text-4xl leading-none">58,000</span>
-            <span class="text-gray-600 text-xl mt-1">students in 2024</span>
-        </div>
-        <div class="hidden sm:flex border-l border-gray-300 h-12 mx-8"></div>
-        <div class="flex flex-col justify-center items-center sm:w-1/3">
-            <span class="text-pink-600 font-extrabold text-4xl leading-none">850</span>
-            <span class="text-gray-600 text-xl mt-1">locations throughout Poland</span>
-        </div>
-    </div>
-</div>
 
 
 <div class="max-w-[85%] mx-auto bg-[#FDE8E9] rounded-4xl px-6 py-12 text-center my-10">
