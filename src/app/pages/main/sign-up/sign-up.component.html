@@ -12,9 +12,9 @@
 
         <div class="mt-10 ">
             <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-11 text-black">
-                Registration for the {{BrachData?.schoolDetail?.branchName}}
+                Registration for the {{BrachData?.schoolDetail?.branchName|| "Polyglot Kids"}}
             </h1>
-            <div class="flex gap-10 text-pink-600 flex-col md:flex-row">
+            <div class="flex gap-10 text-pink-600 flex-col md:flex-row" *ngIf="BrachData">
                 <button class="cursor-pointer hover:text-[#894858]" (click)="isLocationModalOpen = true">Branch
                     locations ></button>
                 <div *ngIf="isLocationModalOpen"
@@ -470,20 +470,20 @@
                     <button (click)="toggleItem(i)"
                         class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
                         <span class="font-semibold text-gray-700">{{ item.label }}</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200" [class.rotate-180]="item.isOpen"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 transform transition-transform duration-200"
+                            [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-            
+
                     <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
-            
+
                         <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
                                         shadow-md">
                             <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
                             <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
                             </p>
-            
+
                             <div class="text-sm text-gray-700 space-y-1">
                                 <p *ngIf="card.duration"><strong><span class="text-pink-500">{{ card.duration }}</span>
                                     </strong> per week</p>
@@ -494,21 +494,21 @@
                                             }}</span>
                                     </strong> per school year</p>
                             </div>
-            
+
                             <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
-            
+
                             <h1 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
                                 card.pricePerMonth }}</h1>
                             <p *ngIf="card.materialsFee" class="text-gray-600 text-md">{{ card.materialsFee }}</p>
                         </div>
-            
+
                     </div>
-            
+
                 </div>
             </div>
             <div class="flex flex-col gap-10 mt-10 text-[12px]">
                 <p *ngFor="let item of BrachData.extraInfoModal">{{item}}</p>
-            
+
             </div>
             <!-- 🔁 End -->
         </aside>
