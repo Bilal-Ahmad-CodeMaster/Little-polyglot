@@ -2,7 +2,7 @@
     <div class="max-w-[1300px] mx-auto ">
         <!-- Breadcrumb -->
         <nav class="text-[15px] pt-10 px-5">
-            <a routerLink="/" class="text-pink-600 font-semibold underline">
+            <a routerLink="/" class="text-primary font-semibold underline">
                 Home Page
             </a>
             <span class="text-black"><span class="mx-1.5 font-light">|</span>For the Parent</span>
@@ -48,7 +48,7 @@
             #carouselContainer>
             <div *ngFor="let card of cards" class="bg-white rounded-md shadow-sm p-6 w-full sm:w-72 flex-shrink-0">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="p-2 rounded border border-pink-400 text-pink-500">
+                    <div class="p-2 rounded border border-pink-400 text-primary-hover">
                         <img [src]="card.icon" class="w-6 h-6" />
                     </div>
                     <h3 class="font-semibold text-black text-sm leading-tight">
@@ -56,7 +56,7 @@
                     </h3>
                 </div>
                 <p class="text-xs text-black mb-6 leading-tight">{{ card.description }}</p>
-                <a href="#" class="text-pink-600 font-semibold text-xs flex items-center gap-1">
+                <a href="#" class="text-primary font-semibold text-xs flex items-center gap-1">
                     {{ card.linkText }} <i class="fas fa-external-link-alt text-[10px]"></i>
                 </a>
             </div>
