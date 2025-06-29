@@ -58,13 +58,14 @@
                             <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
 
                             <div class="text-sm text-gray-700 mt-2 space-y-1">
-                                <p *ngIf="card.duration"><strong class="text-pink-500">{{ card.duration }}</strong> per
+                                <p *ngIf="card.duration"><strong class="text-primary-hover">{{ card.duration }}</strong>
+                                    per
                                     week</p>
-                                <p *ngIf="card.durationInMinutes">or <strong class="text-pink-500">{{
+                                <p *ngIf="card.durationInMinutes">or <strong class="text-primary-hover">{{
                                         card.durationInMinutes
                                         }}</strong> of
                                     English per week</p>
-                                <p *ngIf="card.totalClasses"><strong class="text-pink-500">{{ card.totalClasses
+                                <p *ngIf="card.totalClasses"><strong class="text-primary-hover">{{ card.totalClasses
                                         }}</strong>
                                     per
                                     school year</p>
@@ -92,7 +93,7 @@
             <div class="flex items-center space-x-4">
                 <i class="far fa-envelope text-black text-lg"></i>
                 <a href="mailto:bydgoszcz3@earlystage.pl"
-                    class="text-pink-700 text-base font-normal underline">{{contactInfo.email}}</a>
+                    class="text-primary text-base font-normal underline">{{contactInfo.email}}</a>
             </div>
         </div>
 
@@ -143,7 +144,7 @@
         </a>
         <a (click)="closeModal()" [routerLink]="['/registration/applicationForm']"
             [queryParams]="{ branchId: schoolDetails._id }"
-            class="px-4 py-2 rounded-lg bg-pink-600 text-white hover:bg-pink-700 transition font-semibold w-full text-center cursor-pointer">
+            class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary transition font-semibold w-full text-center cursor-pointer">
             Join Us
         </a>
     </div>

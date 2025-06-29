@@ -3,10 +3,10 @@
     <div class="flex justify-between items-center mb-4">
         <form [formGroup]="searchForm" class="w-full max-w-md">
             <input type="text" formControlName="search" placeholder="Search by title or category"
-                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"
                 (input)="applyFilter()" />
         </form>
-        <button (click)="addBlog()" class="ml-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
+        <button (click)="addBlog()" class="ml-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary">
             + Add Blog
         </button>
     </div>
@@ -64,7 +64,7 @@
             Prev
         </button>
         <button *ngFor="let page of [].constructor(totalPages); let i = index" class="px-3 py-1 rounded" [ngClass]="{
-          'bg-pink-600 text-white': currentPage === i + 1,
+          'bg-primary text-white': currentPage === i + 1,
           'bg-gray-200 hover:bg-gray-300': currentPage !== i + 1
         }" (click)="goToPage(i + 1)">
             {{ i + 1 }}
@@ -94,7 +94,7 @@
         <form [formGroup]="blogForm" (ngSubmit)="submitBlog()" enctype="multipart/form-data" class="space-y-4">
             <div>
                 <input formControlName="title" type="text" placeholder="Blog title"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover" />
                 <div *ngIf="blogForm.get('title')?.invalid && (blogForm.get('title')?.dirty || blogForm.get('title')?.touched)"
                     class="text-red-600 text-sm mt-1">
                     <span *ngIf="blogForm.get('title')?.errors?.['required']">Title is required.</span>
@@ -104,7 +104,7 @@
             </div>
             <div>
                 <select formControlName="category"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
                     <option value="">Select Category</option>
                     <option value="Wychowanie">Wychowanie</option>
                     <option value="Kreatywna nauka">Kreatywna nauka</option>
@@ -117,7 +117,7 @@
             </div>
             <div>
                 <textarea formControlName="description" placeholder="Description" rows="5"
-                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
                 <div *ngIf="blogForm.get('description')?.invalid && (blogForm.get('description')?.dirty || blogForm.get('description')?.touched)"
                     class="text-red-600 text-sm mt-1">
                     <span *ngIf="blogForm.get('description')?.errors?.['required']">Description is required.</span>
@@ -129,7 +129,7 @@
             <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
                 <label class="block mb-2 font-semibold text-gray-700">Upload Image</label>
                 <input type="file" (change)="onImageChange($event)" accept="image/*"
-                    class="block w-full text-sm text-gray-700 border border-gray-300 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-pink-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100" />
+                    class="block w-full text-sm text-gray-700 border border-gray-300 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-hover file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-primary hover:file:bg-pink-100" />
                 <div *ngIf="imageError" class="text-red-600 text-sm mt-1">
                     {{ imageError }}
                 </div>
@@ -145,7 +145,7 @@
                     Cancel
                 </button>
                 <button type="submit" [disabled]="blogForm.invalid"
-                    class="px-6 py-2 rounded bg-pink-600 text-white hover:bg-pink-700 disabled:bg-pink-300 disabled:text-white disabled:opacity-60">
+                    class="px-6 py-2 rounded bg-primary text-white hover:bg-primary disabled:bg-pink-300 disabled:text-white disabled:opacity-60">
                     {{ isEditMode ? 'Update Blog' : 'Add Blog' }}
                 </button>
             </div>

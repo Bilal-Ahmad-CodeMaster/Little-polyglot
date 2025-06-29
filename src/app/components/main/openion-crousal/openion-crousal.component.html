@@ -23,7 +23,7 @@
 
         <!-- Navigation -->
         <nav class="flex flex-col items-center space-y-3">
-            <ul class="flex items-center space-x-4 text-pink-600 text-sm">
+            <ul class="flex items-center space-x-4 text-primary text-sm">
                 <li>
                     <button (click)="prev()" aria-label="Previous review" class="focus:outline-none cursor-pointer">
                         <i class="fas fa-chevron-left"></i>
@@ -31,7 +31,7 @@
                 </li>
                 <li *ngFor="let review of reviews; let i = index">
                     <button [attr.aria-current]="i === currentIndex ? 'true' : null" [ngClass]="{
-              'bg-pink-600': i === currentIndex,
+              'bg-primary': i === currentIndex,
               'bg-gray-300': i !== currentIndex
             }" class="w-2.5 h-2.5 rounded-full cursor-pointer" (click)="goTo(i)"
                         [attr.aria-label]="'Review ' + (i + 1)"></button>
@@ -42,9 +42,7 @@
                     </button>
                 </li>
             </ul>
-            <button class="text-pink-600 font-bold text-sm focus:outline-none cursor-pointer">
-                See all reviews
-            </button>
+
         </nav>
     </section>
 </main>

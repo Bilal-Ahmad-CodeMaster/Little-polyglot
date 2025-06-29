@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Little-polyglot';
+  title = 'Polyglot Kids';
   constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
