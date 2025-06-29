@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
+import { GetlocationService } from './services/getLocation.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   title = 'Little-polyglot';
-  constructor(private router: Router) {
+  constructor(private router: Router, private loctionService: GetlocationService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -20,6 +21,10 @@ export class AppComponent {
 
   ngOnInit() {
     this.detectAndTranslate();
+
+    this.loctionService.getLocation().subscribe((location) => {
+      console.log("user Location :", location)
+    })
   }
 
   detectAndTranslate() {
