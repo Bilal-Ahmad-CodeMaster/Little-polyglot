@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-method',
-  imports: [HeroSectionComponent, SuperpowerCardComponent, NgFor,RouterLink],
+  imports: [HeroSectionComponent, SuperpowerCardComponent, NgFor, RouterLink],
   templateUrl: './method.component.html',
   styleUrl: './method.component.css'
 })
@@ -62,7 +62,7 @@ The teacher, acting as a guide, puts the children's abilities and needs first. H
 
 Children like to be taken seriously, which strengthens their self-esteem. We implement this basic assumption during every class. We believe that we can count on our students and we communicate this to them clearly. Thanks to this approach, children become more responsible and independent.
 
-At Early Stage, we focus on the conscious participation of parents in their child's learning, which consists of being a good companion who supports the student's involvement and, in the event of any problems, informs the teacher about them on an ongoing basis. We organize special workshops on this topic. During the entire course, we ensure constant contact and open teacher-parent relations.
+At Polyglot Kids, we focus on the conscious participation of parents in their child's learning, which consists of being a good companion who supports the student's involvement and, in the event of any problems, informs the teacher about them on an ongoing basis. We organize special workshops on this topic. During the entire course, we ensure constant contact and open teacher-parent relations.
 `,
     },
     {
@@ -138,9 +138,9 @@ Humor makes every class more attractive and diverse. We introduce it in various 
       icon: "/assets/methods/12.svg",
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because they attract attention like a magnet',
-      expandedText: `Children love books. They usually start with the culinary stage – they check how they taste, but over time they look through them with interest. This is how they learn colours, shapes, numbers. As they grow up, they need stronger stimuli to focus their attention on the book for longer. That is why we place special emphasis on the attractiveness of our textbooks while maintaining a high level of content. The materials we create are the pillar of the unique programme implemented by the Early Stage school. They arouse students' curiosity and support the process of language acquisition. A good English textbook is great fun for children. We know this from experience.
+      expandedText: `Children love books. They usually start with the culinary stage – they check how they taste, but over time they look through them with interest. This is how they learn colours, shapes, numbers. As they grow up, they need stronger stimuli to focus their attention on the book for longer. That is why we place special emphasis on the attractiveness of our textbooks while maintaining a high level of content. The materials we create are the pillar of the unique programme implemented by the Polyglot Kids school. They arouse students' curiosity and support the process of language acquisition. A good English textbook is great fun for children. We know this from experience.
 
-Each Early Stage class is an intensive 45 to 90 minutes of contact with English and 20 to 40 new words a week. The learning materials we design support the work of the teacher and students on an ongoing basis, expand the core curriculum and prepare for the British Cambridge exams for children and young people.
+Each Polyglot Kids class is an intensive 45 to 90 minutes of contact with English and 20 to 40 new words a week. The learning materials we design support the work of the teacher and students on an ongoing basis, expand the core curriculum and prepare for the British Cambridge exams for children and young people.
 
 Our materials grow and develop together with the students, adapting to their level and ability to acquire knowledge. They were created over the years and are constantly changing, corresponding with the school education system and the current needs of children. Thanks to a team of experienced methodologists and practitioners led by Joanna Zarańska - the author of many valued publications for the Polish and foreign markets - we are always up to date and provide our students with the best textbooks for creative learning of English.
 

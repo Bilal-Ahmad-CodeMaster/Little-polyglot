@@ -10,8 +10,8 @@ import { GetlocationService } from './services/getLocation.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Little-polyglot';
-  constructor(private router: Router, private loctionService: GetlocationService) {
+  title = 'Polyglot Kids';
+  constructor(private router: Router) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {

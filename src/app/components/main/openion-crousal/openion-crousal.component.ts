@@ -14,26 +14,27 @@ export class OpenionCrousalComponent {
 
   reviews = [
     {
-      text: `Hania has been studying at Early Stage since the 1st grade of primary school. For 7 years now, I believe that we made the best decision to choose Early Stage.`,
-      author: `Dorota, mother of Hania (13 years old), Wrocław`,
+      text: `Zuzia has been learning at Polyglot Kids since the 1st grade. Over 7 years, her confidence in speaking English has grown incredibly. We couldn't have made a better choice.`,
+      author: `Anna, mother of Zuzia (13 years old), Kraków`,
     },
     {
-      text: `I didn't think that all the good opinions I heard about the Early Stage school could be true. After a year of teaching a first grader, I can honestly recommend this school to anyone looking for a reliable language education for their children.`,
-      author: `Magda, mother of Kajetan (8 years old), Wołomin`,
+      text: `I was skeptical at first, but after enrolling my son in Grade 1, I quickly saw results. Polyglot Kids offers high-quality English education that goes beyond expectations.`,
+      author: `Michał, father of Kuba (8 years old), Gdańsk`,
     },
     {
-      text: `Learning English at Early Stage from the 1st grade gave my daughter the opportunity to use it freely after 5–6 years. Being ahead of the material compared to that at school gave me great comfort...`,
-      author: `Sławek, father of Dominika (18 years old), Warsaw`,
+      text: `Starting English early with Polyglot Kids helped my daughter speak fluently and with ease. Now, in high school, she communicates confidently both at school and abroad.`,
+      author: `Tomasz, father of Lena (18 years old), Warsaw`,
     },
     {
-      text: `My daughter has been attending school for 4 years. One day she decided at home that she would only speak English. For me this is the best proof that the money and time we have invested pays off.`,
-      author: `Magda, Zuzia's mother (11 years old), Wrocław`,
+      text: `My daughter has been attending classes for 4 years now. One evening, she started speaking only English at home—it was the best proof that she’s really learning and enjoying it.`,
+      author: `Katarzyna, mother of Maja (11 years old), Wrocław`,
     },
     {
-      text: `After the first year of attending Early Stage, my son is significantly ahead of the standard curriculum and his peers. The material and program are 100% adapted to the stage and age of the children.`,
-      author: `Magda, mother of Franek (age 7), Warsaw`,
+      text: `After just one year at Polyglot Kids, my son was clearly ahead of his peers. The lessons are creative, age-appropriate, and actually fun for the children.`,
+      author: `Piotr, father of Franek (7 years old), Poznań`,
     },
   ];
+  
 
   next() {
     this.currentIndex = (this.currentIndex + 1) % this.reviews.length;

@@ -14,8 +14,8 @@ export class ParentComponent {
     {
       icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
       titleLine1: 'Login',
-      titleLine2: 'to Early Stage',
-      description: 'Log in to Early Stage Online and use all the online tools we have prepared for students and parents.',
+      titleLine2: 'to Polyglot Kids',
+      description: 'Log in to Polyglot Kids Online and use all the online tools we have prepared for students and parents.',
       linkText: 'Log in'
     },
     {
@@ -35,8 +35,8 @@ export class ParentComponent {
     {
       icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
       titleLine1: 'Login',
-      titleLine2: 'to Early Stage',
-      description: 'Log in to Early Stage Online and use all the online tools we have prepared for students and parents.',
+      titleLine2: 'to Polyglot Kids',
+      description: 'Log in to Polyglot Kids Online and use all the online tools we have prepared for students and parents.',
       linkText: 'Log in'
     },
     {

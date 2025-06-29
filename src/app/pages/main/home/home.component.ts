@@ -2,10 +2,11 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CourseDetailCardComponent } from "../../../components/main/course-detail-card/course-detail-card.component";
 import { OpenionCrousalComponent } from "../../../components/main/openion-crousal/openion-crousal.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, CourseDetailCardComponent, OpenionCrousalComponent, CommonModule],
+  imports: [NgFor, CourseDetailCardComponent, OpenionCrousalComponent, CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -15,83 +16,65 @@ export class HomeComponent {
   featureArray: any[] = [
     {
       iconUrl: "/assets/home/svgexport-5.svg",
-      title: "Our classes are chatty",
-      description: "At Early Stage, children enjoy English and use it freely. We familiarize them with speaking from a very young age."
-
+      title: "Confident Communication Starts Early",
+      description: "At Polyglot Kids, children don’t just learn English—they speak it with ease. We foster real conversations from the very first class."
     },
     {
       iconUrl: "/assets/home/svgexport-6.svg",
-      title: "We say NO to boredom",
-      description: "We juggle interesting exercises, ensuring a high level of concentration and the joy of learning."
-
-    }, {
+      title: "Engaging Lessons, Every Time",
+      description: "No dull drills here. Our interactive sessions mix creativity, play, and purpose to keep young minds curious and focused."
+    },
+    {
       iconUrl: "/assets/home/svgexport-7.svg",
-      title: "Effects without expiration date",
-      description: "Our students are ready for the eighth grade exam, Cambridge, high school leaving exam.And most importantly – they express their thoughts in English!"
-
+      title: "Lasting Language Mastery",
+      description: "We prepare children not just for exams, but for life. Our learners grow into confident speakers who think and express themselves clearly in English."
     },
     {
       iconUrl: "/assets/home/svgexport-8.svg",
-      title: "We create a friendly atmosphere",
-      description: "We are guided by empathy and care about good relationships - we want the kids to feel good in their group and come back to classes with a smile."
-
+      title: "A Place Where Kids Feel Belonging",
+      description: "Warmth, inclusivity, and fun define our classrooms. Kids thrive in supportive groups where friendships grow alongside language skills."
     },
     {
       iconUrl: "/assets/home/svgexport-9.svg",
-      title: "We look broadly",
-      description: "The structure of our classes also develops non-linguistic competences in students, including creativity, cooperation skills and critical thinking."
-
-    }, {
-      iconUrl: "/assets/home/svgexport-10.svg",
-      title: "At your fingertips",
-      description: "We teach at primary schools and kindergartens or in nearby locations. We are easy to find in the immediate vicinity."
-
+      title: "Beyond Language: Skills for Life",
+      description: "Our curriculum integrates critical thinking, collaboration, and creativity—because being multilingual is only part of the future-ready mindset."
     },
-  ]
+    {
+      iconUrl: "/assets/home/svgexport-10.svg",
+      title: "Learning Close to Home",
+      description: "With centers at local schools, preschools, and community hubs, joining Polyglot Kids is easy and convenient for every family."
+    }
+  ];
+
 
   cards = [
     {
       icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
-      titleLine1: 'Login',
-      titleLine2: 'to Early Stage',
-      description: 'Log in to Early Stage Online and use all the online tools we have prepared for students and parents.',
-      linkText: 'Log in'
+      titleLine1: 'Sign UP',
+      titleLine2: 'to Polyglot Kids',
+      description: 'SignUp to Polyglot Kids to explore new things for your children and learn english from professionals',
+      linkText: 'SignUp',
+      link: "/registration/applicationForm"
     },
     {
       icon: 'https://storage.googleapis.com/a1aa/image/eecab23f-bfb5-4eb1-dd42-cc71ecb9f0fc.jpg',
       titleLine1: 'Smart Parent',
       titleLine2: 'Academy',
       description: 'Smart Parent Academy is materials for parents developed by experts: webinars and blog articles.',
-      linkText: 'More'
+      linkText: 'More',
+      link: '/parent/smart-parent-academy'
     },
+
+
     {
       icon: 'https://storage.googleapis.com/a1aa/image/a15d0c59-0db1-4c8f-a202-c3be8bc4516f.jpg',
-      titleLine1: 'GRAMMAR RHYMES',
-      titleLine2: 'Manual',
-      description: 'GRAMMAR RHYMES – our original book for learning English grammar for children aged 8-14.',
-      linkText: 'More'
-    },
-    {
-      icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
-      titleLine1: 'Login',
-      titleLine2: 'to Early Stage',
-      description: 'Log in to Early Stage Online and use all the online tools we have prepared for students and parents.',
-      linkText: 'Log in'
-    },
-    {
-      icon: 'https://storage.googleapis.com/a1aa/image/eecab23f-bfb5-4eb1-dd42-cc71ecb9f0fc.jpg',
-      titleLine1: 'Smart Parent',
-      titleLine2: 'Academy',
-      description: 'Smart Parent Academy is materials for parents developed by experts: webinars and blog articles.',
-      linkText: 'More'
-    },
-    {
-      icon: 'https://storage.googleapis.com/a1aa/image/a15d0c59-0db1-4c8f-a202-c3be8bc4516f.jpg',
-      titleLine1: 'GRAMMAR RHYMES',
-      titleLine2: 'Manual',
-      description: 'GRAMMAR RHYMES – our original book for learning English grammar for children aged 8-14.',
-      linkText: 'More'
+      titleLine1: 'Articles/Blogs',
+      titleLine2: 'Learn It',
+      description: 'Discover fun, educational articles for parents and students! From language tips to creative activities, explore how learning English can be engaging and inspiring.',
+      linkText: 'More',
+      link: '/blogs'
     }
+
   ];
 
 

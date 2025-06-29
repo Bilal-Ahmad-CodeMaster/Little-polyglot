@@ -185,13 +185,13 @@ export class SignUpComponent {
           ? 'Yes, I consent to marketing'
           : 'No',
         consentDataProcessing: formValues.consents.consentDataProcessing
-          ? 'Yes, I consent to the processing of my personal data by Early Stage, i.e. name, surname, e-mail address and telephone number – for the purposes of marketing Early Stage\'s own products and services.'
+          ? 'Yes, I consent to the processing of my personal data by Polyglot Kids, i.e. name, surname, e-mail address and telephone number – for the purposes of marketing Polyglot Kids\'s own products and services.'
           : 'No',
         consentEmail: formValues.consents.consentEmail
-          ? 'Yes, I consent to receiving Early Stage marketing information via e-mail to the e-mail address and telephone number provided by me.'
+          ? 'Yes, I consent to receiving Polyglot Kids marketing information via e-mail to the e-mail address and telephone number provided by me.'
           : 'No',
         consentDirectMarketing: formValues.consents.consentDirectMarketing
-          ? 'Yes, I consent to Early Stage sending me direct marketing using telecommunications terminal equipment (telephone, tablet, computer connected to the Internet) to the telephone number and e-mail address provided by me.'
+          ? 'Yes, I consent to Polyglot Kids sending me direct marketing using telecommunications terminal equipment (telephone, tablet, computer connected to the Internet) to the telephone number and e-mail address provided by me.'
           : 'No',
 
         // Timestamp

@@ -10,7 +10,7 @@
         <div class="flex flex-col md:flex-row items-center md:items-start p-6 gap-6">
             <!-- Profile Image -->
             <img [src]="profile.profileUrl" alt="Profile image"
-                class="w-32 h-32 rounded-full border-4 border-pink-500 object-cover" />
+                class="w-32 h-32 rounded-full border-4 border-primary-hover object-cover" />
 
             <!-- Info -->
             <div class="flex-1">
@@ -24,7 +24,7 @@
                     </div>
                     <div>
                         <span class="font-medium text-gray-600">Role:</span>
-                        <p class="text-pink-600 font-bold">{{ profile.role }}</p>
+                        <p class="text-primary font-bold">{{ profile.role }}</p>
                     </div>
                     <div>
                         <span class="font-medium text-gray-600">Created At:</span>
@@ -46,7 +46,7 @@
         <!-- Actions -->
         <div class="border-t px-6 py-4 bg-gray-50 flex justify-end gap-4">
             <button (click)="openEditModal()"
-                class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-all text-sm font-medium">
+                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary transition-all text-sm font-medium">
                 Edit Profile
             </button>
 
@@ -67,7 +67,7 @@
             <div>
                 <label class="block text-sm font-medium text-gray-600 mb-1">Username</label>
                 <input type="text" formControlName="username"
-                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary-hover focus:border-primary-hover" />
                 <p *ngIf="editForm.get('username')?.invalid && editForm.get('username')?.touched"
                     class="text-red-500 text-xs mt-1">
                     Username is required (min 2 chars)
@@ -77,7 +77,7 @@
             <div>
                 <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
                 <input type="email" formControlName="email"
-                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary-hover focus:border-primary-hover" />
                 <p *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched"
                     class="text-red-500 text-xs mt-1">
                     Enter a valid email
@@ -86,29 +86,28 @@
             <div>
                 <label class="block text-sm font-medium text-gray-600 mb-1">Profile Image</label>
                 <input type="file" accept="image/*" (change)="onFileSelected($event)"
-                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-pink-500 focus:border-pink-500" />
-            
+                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-primary-hover focus:border-primary-hover" />
+
                 <p *ngIf="imageUploadError" class="text-red-500 text-xs mt-1">
                     {{ imageUploadError }}
                 </p>
-            
+
                 <div *ngIf="previewUrl" class="mt-2 flex items-center gap-3">
                     <img [src]="previewUrl" alt="Preview" class="w-20 h-20 rounded-full object-cover border" />
                     <span class="text-xs text-gray-500">Preview</span>
                 </div>
             </div>
-              
+
             <div class="flex justify-end gap-4 mt-4">
                 <button type="button" (click)="cancelEdit()"
                     class="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 text-sm">
                     Cancel
                 </button>
                 <button type="submit" [disabled]="editForm.invalid"
-                    class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 text-sm">
+                    class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary text-sm">
                     Save Changes
                 </button>
             </div>
         </form>
     </div>
 </div>
-  
