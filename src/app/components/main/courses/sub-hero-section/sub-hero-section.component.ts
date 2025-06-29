@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sub-hero-section',
-  imports: [RouterLink],
+  imports: [RouterLink,CommonModule],
   templateUrl: './sub-hero-section.component.html',
   styleUrl: './sub-hero-section.component.css'
 })
