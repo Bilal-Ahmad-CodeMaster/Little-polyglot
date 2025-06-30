@@ -24,14 +24,14 @@ export class AboutComponent {
 
     {
       type: 'video',
-      videoUrl: 'https://earlystage.pl/storage/movies/film_o_szkole_2022.mp4',
-      thumbnail: 'https://earlystage.pl/images/team-video/you_matter.webp',
+      videoUrl: 'https://..pl/storage/movies/film_o_szkole_2022.mp4',
+      thumbnail: 'https://..pl/images/team-video/you_matter.webp',
       playing: false,
     },
     {
       type: 'video',
-      videoUrl: 'https://earlystage.pl/storage/movies/You_Matter.mp4',
-      thumbnail: 'https://earlystage.pl/images/team-video/film_o_szkole_2022.webp', // Replace with correct thumbnail if needed
+      videoUrl: 'https://..pl/storage/movies/You_Matter.mp4',
+      thumbnail: 'https://..pl/images/team-video/film_o_szkole_2022.webp', // Replace with correct thumbnail if needed
       playing: false,
     },
   ];
