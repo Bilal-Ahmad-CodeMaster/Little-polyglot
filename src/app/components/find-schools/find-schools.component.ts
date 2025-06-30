@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SchoolDetailModalComponent } from "../../modals/school-detail-modal/school-detail-modal.component";
 import { SharedServiceService } from '../../services/shared-service.service';
 import { ApiServicesService } from '../../services/api-services.service';
@@ -28,11 +28,10 @@ export class FindSchoolsComponent implements OnInit {
   citySearch = '';
   selectedCity: any | null = null;
   cityOptions: any[] = [];
+  currRoute: any;
 
 
-
-
-  constructor(private sharedService: SharedServiceService, private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) {
+  constructor(private sharedService: SharedServiceService, private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer, private router: Router) {
     const rawUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38291.27281554404!2d17.523204484746508!3d53.14242340845767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4703a03bb964bed3%3A0xad0f7f8a02451a69!2zTmFrxYJvIG5hZCBOb3RlY2nEhSwgUG9sYW5k!5e0!3m2!1sen!2s!4v1750678214500!5m2!1sen!2s';
     this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
   }
@@ -44,6 +43,8 @@ export class FindSchoolsComponent implements OnInit {
       console.log('Selected Branch:', region);
       this.selectedProvince = region;
       this.filterBranches()
+
+       this.currRoute = this.router.url
 
     });
 

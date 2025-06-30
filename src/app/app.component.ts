@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { GetlocationService } from './services/getLocation.service';
+import { LoaderService } from './services/loader.service';
+import { CommonModule } from '@angular/common';
+import { ForgetPasswordComponent } from "./components/forget-password/forget-password.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, ForgetPasswordComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Polyglot Kids';
-  constructor(private router: Router) {
+  constructor(private router: Router, public loader: LoaderService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -22,9 +24,6 @@ export class AppComponent {
   ngOnInit() {
     this.detectAndTranslate();
 
-    this.loctionService.getLocation().subscribe((location) => {
-      console.log("user Location :", location)
-    })
   }
 
   detectAndTranslate() {
