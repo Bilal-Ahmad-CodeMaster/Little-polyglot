@@ -8,6 +8,7 @@
 .toast-bottom-center {
   z-index: 99999 !important;
 }
+
 @theme {
   --color-primary-bg: #ecf7f8;
   --color-primary: #42a6dd;
