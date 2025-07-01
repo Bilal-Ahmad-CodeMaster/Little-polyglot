@@ -1,25 +1,32 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { SharedServiceService } from '../../services/shared-service.service';
 
 @Component({
   selector: 'app-language-convertor',
-  imports: [CommonModule],
+  imports: [CommonModule, NgIf],
   templateUrl: './language-convertor.component.html',
   styleUrl: './language-convertor.component.css'
 })
 export class LanguageConvertorComponent {
 
-  selectedLanguage = { language: 'English', country: 'United States' };
+  selectedLanguage = { language: 'Polish', country: 'Poland' };
   searchQuery: string = "";
   currency: boolean = false;
   language: boolean = true;
   isLoading = false;
-
-
+  LanguageModalOpen = false
+  constructor(private shared: SharedServiceService) { }
   ngOnInit(): void {
     this.setSelectedLanguageFromCookie();
+    this.shared.languageConvert$.subscribe((e) => {
+      this.LanguageModalOpen = e
+    })
   }
+  closeModal() {
+    this.LanguageModalOpen = false
 
+  }
 
 
   langList = [
@@ -213,4 +220,7 @@ export class LanguageConvertorComponent {
     this.language = true;
     this.currency = false;
   }
+
+
+
 }

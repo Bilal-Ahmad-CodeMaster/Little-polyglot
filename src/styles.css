@@ -8,6 +8,23 @@
 .toast-bottom-center {
   z-index: 99999 !important;
 }
+/* Hide the top Google Translate banner */
+body .goog-te-banner-frame.skiptranslate {
+  display: none !important;
+  height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Prevent body shift when banner appears */
+body {
+  top: 0px !important;
+}
+
+/* Hide Google Translate toolbar that floats at bottom right */
+.goog-logo-link,
+.goog-te-gadget {
+  display: none !important;
+}
 
 @theme {
   --color-primary-bg: #ecf7f8;
@@ -18,16 +35,10 @@
   --color-hero-red-text: #d6336c;
 }
 
-/* styles.css or styles.scss */
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
 body {
   top: 0px !important;
 }
-.goog-te-gadget-icon {
-  display: none !important;
-}
+
 body {
   font-family: sans-serif;
 }
