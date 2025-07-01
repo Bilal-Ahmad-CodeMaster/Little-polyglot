@@ -19,13 +19,24 @@ export class LanguageConvertorComponent {
   constructor(private shared: SharedServiceService) { }
   ngOnInit(): void {
     this.setSelectedLanguageFromCookie();
+    const storedLang = localStorage.getItem("selectedLanguage");
+    if (storedLang) {
+      this.selectedLanguage = JSON.parse(storedLang);
+    } else {
+      this.selectedLanguage = { language: "Polish", country: "Poland" };
+    }
     this.shared.languageConvert$.subscribe((e) => {
-      this.LanguageModalOpen = e
-    })
-    this.setGoogleTranslateCookie('pl')
+      this.LanguageModalOpen = e;
+    });
+    // Check if the language was already set before using a cookie
+    if (!document.cookie.includes('langSet=true')) {
+      this.setGoogleTranslateCookie('pl');
+      document.cookie = `langSet=true; path=/; max-age=31536000; SameSite=Lax`; // 1 year
+      location.reload();
 
-
+    }
   }
+
   closeModal() {
     this.LanguageModalOpen = false
 
@@ -75,7 +86,7 @@ export class LanguageConvertorComponent {
     { language: "Dutch", country: "Belgium" },
     { language: "Dutch", country: "Netherlands" },
     { language: "Norwegian", country: "Norway" },
-   
+
     { language: "Portuguese", country: "Brazil" },
     { language: "Portuguese", country: "Portugal" },
     { language: "Romanian", country: "Romania" },
@@ -150,12 +161,13 @@ export class LanguageConvertorComponent {
 
 
   selectLanguage(language: string, country: string) {
-
     this.isLoading = true;
     this.selectedLanguage = { language, country };
-    console.log(this.selectedLanguage, 'this.selectedLanguage');
-    const langCode = this.languageCodeMap[language];
 
+    // Save to localStorage
+    localStorage.setItem('selectedLanguage', JSON.stringify(this.selectedLanguage));
+
+    const langCode = this.languageCodeMap[language];
     if (langCode) {
       this.immediateTranslateWithFallback(langCode);
     }
@@ -223,7 +235,6 @@ export class LanguageConvertorComponent {
 
   onLanguage() {
     this.language = true;
-    this.currency = false;
   }
 
 
