@@ -27,20 +27,17 @@
 
             <!-- Image Section -->
             <div class="w-[60%] flex justify-center pr-32">
-                <img src='assets/parent/hero-desktop-updated.webp' alt="Hero image" class="w-full  object-contain" />
+                <img src='assets/parent/hero.jpg' alt="Hero image" class="w-full  object-contain" />
             </div>
         </div>
     </div>
 
-    <!-- Decorative Pattern Strip -->
-    <div class="w-full max-h-12">
-        <img alt="Colorful" class="w-full object-cover" src="/assets/spacer-desktop.png" width="1920" />
-    </div>
+
 </div>
 
 
 
-<div class="px-4 py-10 bg-[#f0f8f9]    ">
+<div class="px-4 py-10 bg-hero-section mb-10  ">
     <h2 class="text-center text-black text-lg mb-8">For the parent</h2>
 
     <div class="parent-carousel-wrapper">
@@ -56,7 +53,7 @@
                     </h3>
                 </div>
                 <p class="text-xs text-black mb-6 leading-tight">{{ card.description }}</p>
-                <a href="#" class="text-primary font-semibold text-xs flex items-center gap-1">
+                <a [routerLink]="card.link" class="text-primary font-semibold text-xs flex items-center gap-1">
                     {{ card.linkText }} <i class="fas fa-external-link-alt text-[10px]"></i>
                 </a>
             </div>
