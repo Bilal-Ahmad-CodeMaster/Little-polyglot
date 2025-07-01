@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { ApiServicesService } from '../../services/api-services.service';
 import { CommonModule, NgIf } from '@angular/common';
+import { SharedServiceService } from '../../services/shared-service.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiServicesService,
     private router: Router,
+    private sharedService: SharedServiceService
   ) { }
 
   ngOnInit() {
@@ -47,11 +49,15 @@ export class LoginComponent implements OnInit {
     } catch (err: any) {
 
       const errorMsg = err?.error?.message || 'An error occurred';
-  console.log(errorMsg);
+      console.log(errorMsg);
 
     } finally {
       this.loading = false;
     }
+  }
+
+  openForgetPassword() {
+    this.sharedService.openForgetPassword();
   }
 
 }

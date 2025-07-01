@@ -64,4 +64,19 @@ export class ApiServicesService {
   getBlogById(id: string) {
     return this.http.get(`${API_CONFIG['blogs']}/${id}`);
   }
+
+  // for send otp 
+  sendOtp(email: string) {
+    return this.http.post(`${API_CONFIG['sendOtp']}`, { email });
+  }
+
+  //  Verify OTP and Reset Password
+  verifyOtpAndResetPassword(payload: {
+    email: string;
+    otp: string;
+    password: string;
+    confirmPassword: string;
+  }) {
+    return this.http.post(`${API_CONFIG['verifyOtpAndResetPassword']}`, payload);
+  }
 }

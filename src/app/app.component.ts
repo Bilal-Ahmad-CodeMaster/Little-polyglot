@@ -9,18 +9,21 @@ declare global {
     google: any;
   }
 }
+import { LoaderService } from './services/loader.service';
+import { CommonModule } from '@angular/common';
+import { ForgetPasswordComponent } from "./components/forget-password/forget-password.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LanguageConvertorComponent],
+  imports: [RouterOutlet, LanguageConvertorComponent, CommonModule, ForgetPasswordComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   title = 'Polyglot Kids';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public loader: LoaderService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.detectAndTranslate();
+
   }
   detectAndTranslate() {
     fetch('https://ipapi.co/json/')
