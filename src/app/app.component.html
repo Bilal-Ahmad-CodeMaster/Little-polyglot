@@ -6,4 +6,10 @@
     class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
 </div>
 <router-outlet></router-outlet>
+
+<app-language-convertor>
+</app-language-convertor>
+
+<button (click)="onOpen()"
+    class="fixed z-50 bottom-5 right-5 w-fit p-3 bg-primary text-white hover:bg-primary-hover rounded-2xl text-[20px]">Lang_Convert</button>
 <app-forget-password></app-forget-password>
