@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CourseDetailCardComponent } from "../../../../components/main/course-detail-card/course-detail-card.component";
-import { DemoVideoComponent } from "../../../../components/main/courses/demo-video/demo-video.component";
 import { OpenionCrousalComponent } from "../../../../components/main/openion-crousal/openion-crousal.component";
 import { FeatureComponent } from "../../../../components/main/courses/feature/feature.component";
 import { SubHeroSectionComponent } from "../../../../components/main/courses/sub-hero-section/sub-hero-section.component";
 
 @Component({
   selector: 'app-english-for-14-to-19-year-old',
-  imports: [ CourseDetailCardComponent, DemoVideoComponent, OpenionCrousalComponent, FeatureComponent, SubHeroSectionComponent],
+  imports: [CourseDetailCardComponent, RouterLink, OpenionCrousalComponent, FeatureComponent, SubHeroSectionComponent,RouterLink],
   templateUrl: './english-for-14-to-19-year-old.component.html',
   styleUrl: './english-for-14-to-19-year-old.component.css'
 })

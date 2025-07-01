@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { HeroSectionComponent } from "../../../../components/main/courses/hero-section/hero-section.component";
 import { FeatureComponent } from "../../../../components/main/courses/feature/feature.component";
 import { OpenionCrousalComponent } from "../../../../components/main/openion-crousal/openion-crousal.component";
-import { DemoVideoComponent } from "../../../../components/main/courses/demo-video/demo-video.component";
 import { CourseDetailCardComponent } from "../../../../components/main/course-detail-card/course-detail-card.component";
 import { SubHeroSectionComponent } from "../../../../components/main/courses/sub-hero-section/sub-hero-section.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-english-for-3-to-6-year-kids',
-  imports: [FeatureComponent, OpenionCrousalComponent, DemoVideoComponent, CourseDetailCardComponent, SubHeroSectionComponent],
+  imports: [FeatureComponent, OpenionCrousalComponent, CourseDetailCardComponent, SubHeroSectionComponent,RouterLink],
   templateUrl: './english-for-3-to-6-year-kids.component.html',
   styleUrl: './english-for-3-to-6-year-kids.component.css'
 })

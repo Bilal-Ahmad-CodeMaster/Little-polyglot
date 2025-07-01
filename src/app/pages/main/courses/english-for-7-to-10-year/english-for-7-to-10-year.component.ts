@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { SubHeroSectionComponent } from "../../../../components/main/courses/sub-hero-section/sub-hero-section.component";
 import { FeatureComponent } from "../../../../components/main/courses/feature/feature.component";
 import { OpenionCrousalComponent } from "../../../../components/main/openion-crousal/openion-crousal.component";
-import { DemoVideoComponent } from "../../../../components/main/courses/demo-video/demo-video.component";
 import { CourseDetailCardComponent } from "../../../../components/main/course-detail-card/course-detail-card.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-english-for-7-to-10-year',
-  imports: [SubHeroSectionComponent, FeatureComponent, OpenionCrousalComponent, DemoVideoComponent, CourseDetailCardComponent],
+  imports: [SubHeroSectionComponent, FeatureComponent, OpenionCrousalComponent, RouterLink, CourseDetailCardComponent],
   templateUrl: './english-for-7-to-10-year.component.html',
   styleUrl: './english-for-7-to-10-year.component.css'
 })
