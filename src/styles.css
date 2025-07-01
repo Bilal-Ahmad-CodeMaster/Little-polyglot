@@ -8,7 +8,7 @@
 .toast-bottom-center {
   z-index: 99999 !important;
 }
-.skiptranslate{
+.skiptranslate {
   display: none !important;
 }
 @theme {
@@ -26,4 +26,8 @@ body {
 
 body {
   font-family: sans-serif;
+}
+
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
 }
