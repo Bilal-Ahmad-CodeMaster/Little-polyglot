@@ -12,6 +12,7 @@ import { ApiServicesService } from '../../services/api-services.service';
 export class MainHeaderComponent {
   dropdown: string | null = null;
   branches: any
+  isLoggedIn = false;
   constructor(private api: ApiServicesService) { }
   ngOnInit(): void {
     this.api.getBranches().subscribe(
@@ -24,6 +25,10 @@ export class MainHeaderComponent {
         this.branches = [];
       }
     );
+
+    const token = localStorage.getItem('token');
+    const userDetail = localStorage.getItem('userDetail');
+    this.isLoggedIn = !!token && !!userDetail;
   }
   isMobileMenuOpen = false;
   activeSubmenu: string | null = null;
