@@ -22,6 +22,9 @@ export class LanguageConvertorComponent {
     this.shared.languageConvert$.subscribe((e) => {
       this.LanguageModalOpen = e
     })
+    this.setGoogleTranslateCookie('pl')
+
+
   }
   closeModal() {
     this.LanguageModalOpen = false
@@ -30,6 +33,7 @@ export class LanguageConvertorComponent {
 
 
   langList = [
+    { language: "Polish", country: "Poland" },
     { language: "English", country: "United States" },
     { language: "Danish", country: "Denmark" },
     { language: "German", country: "Austria" },
@@ -71,7 +75,7 @@ export class LanguageConvertorComponent {
     { language: "Dutch", country: "Belgium" },
     { language: "Dutch", country: "Netherlands" },
     { language: "Norwegian", country: "Norway" },
-    { language: "Polish", country: "Poland" },
+   
     { language: "Portuguese", country: "Brazil" },
     { language: "Portuguese", country: "Portugal" },
     { language: "Romanian", country: "Romania" },
@@ -86,6 +90,7 @@ export class LanguageConvertorComponent {
   ];
 
   languageCodeMap: { [key: string]: string } = {
+    "Polish": "pl",
     "English": "en",
     "Danish": "da",
     "German": "de",
@@ -99,7 +104,7 @@ export class LanguageConvertorComponent {
     "Hungarian": "hu",
     "Dutch": "nl",
     "Norwegian": "no",
-    "Polish": "pl",
+
     "Portuguese": "pt",
     "Romanian": "ro",
     "Slovenian": "sl",
@@ -161,8 +166,8 @@ export class LanguageConvertorComponent {
 
   private setSelectedLanguageFromCookie(): void {
     const match = document.cookie.match(/googtrans=\/[a-zA-Z-]+\/([a-zA-Z-]+)/);
-    if (match && match[1]) {
-      const langCode = match[1];
+    if (match && match[0]) {
+      const langCode = match[0];
 
       // Find the matching language-country pair
       const matchedItem = this.langList.find(item =>
