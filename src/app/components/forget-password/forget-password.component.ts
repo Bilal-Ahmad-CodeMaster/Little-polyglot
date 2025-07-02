@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedServiceService } from '../../services/shared-service.service';
 import { ApiServicesService } from '../../services/api-services.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forget-password',
@@ -14,7 +15,8 @@ import { ApiServicesService } from '../../services/api-services.service';
 export class ForgetPasswordComponent {
   constructor(
     private sharedService: SharedServiceService,
-    private api: ApiServicesService
+    private api: ApiServicesService,
+    private toastr: ToastrService
   ) { }
 
   showModal = false;
@@ -40,29 +42,29 @@ export class ForgetPasswordComponent {
 
   sendEmail() {
     if (!this.email) {
-      alert('Please enter your email');
+      this.toastr.error('Please enter your email');
       return;
     }
 
     this.api.sendOtp(this.email).subscribe({
       next: () => {
-        alert('OTP sent to your email');
+        this.toastr.success('OTP sent to your email');
         this.step = 2;
       },
       error: (err) => {
-        alert(err?.error?.message || 'Failed to send OTP');
+        this.toastr.error(err?.error?.message || 'Failed to send OTP');
       },
     });
   }
 
   verifyOtp() {
     if (!this.otp) {
-      alert('Please enter the OTP');
+      this.toastr.error('Please enter the OTP');
       return;
     }
 
     if (!this.newPassword || !this.confirmPassword) {
-      alert('Please fill in both password fields');
+      this.toastr.error('Please fill in both password fields');
       return;
     }
 
@@ -82,11 +84,11 @@ export class ForgetPasswordComponent {
 
     this.api.verifyOtpAndResetPassword(payload).subscribe({
       next: () => {
-        alert('Password reset successfully!');
+        this.toastr.success('Password reset successfully!');
         this.closeModal();
       },
       error: (err) => {
-        alert(err?.error?.message || 'OTP verification failed');
+        this.toastr.error(err?.error?.message || 'OTP verification failed');
       },
     });
   }

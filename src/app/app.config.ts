@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
-
+import { ToastrModule } from 'ngx-toastr';
 export const appConfig: ApplicationConfig = {
   providers: [
     // ✅ Provide the interceptor so Angular can inject it
@@ -20,5 +20,14 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
 
+    //  toastr 
+    importProvidersFrom(
+      BrowserAnimationsModule,
+      ToastrModule.forRoot({
+        maxOpened: 1,
+        positionClass: 'toast-top-right',
+        autoDismiss: true,
+        easeTime: 100
+      }))
   ]
 };
