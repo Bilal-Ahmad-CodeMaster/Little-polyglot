@@ -31,3 +31,26 @@ body {
 .VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
   display: none !important;
 }
+.toast-container {
+  @apply fixed top-4 right-4 z-50;
+}
+
+.toast {
+  @apply px-4 py-3 rounded-md shadow-lg mb-4 text-white;
+}
+
+.toast-success {
+  @apply bg-green-500 p-3;
+}
+
+.toast-error {
+  @apply bg-red-500 p-3;
+}
+
+.toast-info {
+  @apply bg-blue-500 p-3;
+}
+
+.toast-warning {
+  @apply bg-yellow-500 text-black p-3;
+}
