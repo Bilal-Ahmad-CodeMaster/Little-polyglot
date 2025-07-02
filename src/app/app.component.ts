@@ -1,62 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
+import { LanguageConvertorComponent } from "./modals/language-convertor/language-convertor.component";
+
+declare global {
+  interface Window {
+    googleTranslateElementInit: () => void;
+    google: any;
+  }
+}
+import { LoaderService } from './services/loader.service';
+import { CommonModule } from '@angular/common';
+import { ForgetPasswordComponent } from "./components/forget-password/forget-password.component";
+import { SharedServiceService } from './services/shared-service.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, LanguageConvertorComponent, CommonModule, ForgetPasswordComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'Little-polyglot';
-  constructor(private router: Router) {
+  title = 'Polyglot Kids';
+
+  constructor(private router: Router, public loader: LoaderService,  private sharedService: SharedServiceService) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // or just: window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-  }
 
-  ngOnInit() {
-    this.detectAndTranslate();
   }
+onOpen(){
+  this.sharedService.openLanguage()
+}
 
-  detectAndTranslate() {
-    fetch('https://ipapi.co/json/')
-      .then(res => res.json())
-      .then(data => {
-        const countryCode = data.country_code;
-        const languageMap: { [key: string]: string } = {
-          DE: 'de',   // Germany → German
-          FR: 'fr',   // France → French
-          PL: 'pl',   // Poland → Polish
-          ES: 'es',   // Spain → Spanish
-          IT: 'it',   // Italy → Italian
-          TR: 'tr',   // Turkey → Turkish
-          CN: 'zh-CN',// China → Chinese
-          JP: 'ja',   // Japan → Japanese
-          PK: 'ur',   // Pakistan → Urdu
-          IN: 'hi',   // India → Hindi
-          RU: 'ru',   // Russia → Russian
-          // Add more as needed
-        };
 
-        const targetLang = languageMap[countryCode];
-        if (targetLang) {
-          this.setGoogleTranslate(targetLang);
-        }
-      });
-  }
-
-  setGoogleTranslate(lang: string) {
-    const interval = setInterval(() => {
-      const selectEl = document.querySelector<HTMLSelectElement>('.goog-te-combo');
-      if (selectEl) {
-        selectEl.value = lang;
-        selectEl.dispatchEvent(new Event('change'));
-        clearInterval(interval);
-      }
-    }, 500);
-  }
 }

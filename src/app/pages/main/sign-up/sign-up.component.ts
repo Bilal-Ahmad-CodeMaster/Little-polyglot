@@ -1,23 +1,32 @@
 // sign-up.component.ts
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { CommonModule, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import emailJS from '@emailjs/browser';
+import { ApiServicesService } from '../../../services/api-services.service';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgFor],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
   registrationForm: FormGroup;
   isAsideOpen: boolean = false;
+  BrachData: any
+  isContactModalOpen: any;
+  isLocationModalOpen: any;
+  contactDetail: any;
+  globalIframeSrc: any;
+  openIndex: number | null = null;
 
-  constructor(private fb: FormBuilder) {
+  accordionItems: any
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) {
     this.registrationForm = this.fb.group({
       studentData: this.fb.group({
         studentName1: ['', Validators.required],
@@ -49,6 +58,35 @@ export class SignUpComponent {
         consentDirectMarketing: [false]
       })
     });
+
+    this.route.queryParams.subscribe(params => {
+      const branchId = params['branchId'];
+      console.log('Selected branchId:', branchId);
+      if (branchId) {
+        setTimeout(() => {
+          this.api.getSingleBranch(branchId).subscribe(
+            (branch: any) => {
+              this.BrachData = branch.data
+              this.accordionItems = this.BrachData.priceList[0].groups
+              console.log("accordian ", this.accordionItems);
+              this.contactDetail = branch.data.contactInfo
+              console.log('contact data:', this.contactDetail);
+              let rawUrl = '';
+              const match = this.BrachData.googleLocation.match(/src="([^"]+)"/);
+              if (match && match[1]) {
+                rawUrl = match[1];
+              }
+              this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
+            },
+            (error) => {
+              console.error('Error fetching branch:', error);
+            }
+          );
+        }, 0);
+      }
+
+    });
+
   }
 
   // Getters for nested form groups
@@ -112,6 +150,8 @@ export class SignUpComponent {
 
       const params = {
         // Student Info
+        branch: sanitize(this.BrachData?.schoolDetail?.branchName),
+
         studentName1: sanitize(formValues.studentData.studentName1),
         studentName2: sanitize(formValues.studentData.studentName2),
         yearOfBirth: sanitize(formValues.studentData.yearOfBirth),
@@ -145,13 +185,13 @@ export class SignUpComponent {
           ? 'Yes, I consent to marketing'
           : 'No',
         consentDataProcessing: formValues.consents.consentDataProcessing
-          ? 'Yes, I consent to the processing of my personal data by Early Stage, i.e. name, surname, e-mail address and telephone number – for the purposes of marketing Early Stage\'s own products and services.'
+          ? 'Yes, I consent to the processing of my personal data by Polyglot Kids, i.e. name, surname, e-mail address and telephone number – for the purposes of marketing Polyglot Kids\'s own products and services.'
           : 'No',
         consentEmail: formValues.consents.consentEmail
-          ? 'Yes, I consent to receiving Early Stage marketing information via e-mail to the e-mail address and telephone number provided by me.'
+          ? 'Yes, I consent to receiving Polyglot Kids marketing information via e-mail to the e-mail address and telephone number provided by me.'
           : 'No',
         consentDirectMarketing: formValues.consents.consentDirectMarketing
-          ? 'Yes, I consent to Early Stage sending me direct marketing using telecommunications terminal equipment (telephone, tablet, computer connected to the Internet) to the telephone number and e-mail address provided by me.'
+          ? 'Yes, I consent to Polyglot Kids sending me direct marketing using telecommunications terminal equipment (telephone, tablet, computer connected to the Internet) to the telephone number and e-mail address provided by me.'
           : 'No',
 
         // Timestamp
@@ -175,161 +215,7 @@ export class SignUpComponent {
     }
   }
 
-  openIndex: number | null = null;
 
-  accordionItems = [
-    {
-      title: 'Kindergarten', cards: [
-        {
-          title: 'Kids (1xweek)',
-          description: 'Classes once a week',
-          schedule: '1 x 45 min',
-          minutes: '',
-          classes: '34 classes',
-          price: '220 PLN per month',
-          materials: `and PLN 200 for educational materials
-(payment in the first month)`
-        },
-        {
-          title: 'Kids (2xweek)',
-          description: 'Classes twice a week',
-          schedule: '2 x 45 min',
-          minutes: '',
-          classes: '66 classes',
-          price: '290 PLN per month',
-          materials: `and PLN 200 for educational materials
-(payment in the first month)`
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '1st class', cards: [
-        {
-          title: 'Juniors Level 1',
-          description: 'Comprehensive English course',
-          schedule: '2 x 60 min',
-          minutes: ' 120 minutes ',
-          classes: '66 classes',
-          price: '310 PLN per month',
-          materials: `and PLN 218 for educational materials
-(payment in the first month)`
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '2nd class', cards: [
-        {
-          title: 'Juniors Level 1',
-          description: 'For students starting their studies',
-          schedule: '2 x 60 min',
-          minutes: '120 minutes',
-          classes: '66 classes',
-          price: '310 PLN per month',
-          materials: `and PLN 218 for educational materials
-(payment in the first month)`
-        },
-        {
-          title: 'Juniors Level 2',
-          description: 'For students continuing their education',
-          schedule: '2 x 90 min',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: `and PLN 188 for educational materials
-(payment in the first month)`
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '3-6th grade', cards: [
-        {
-          title: 'Juniors & Teens',
-          description: 'Comprehensive English course',
-          schedule: '2 x 90 ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: `and PLN 178-300 for educational materials
-(payment in the first month)`
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '7th grade', cards: [
-        {
-          title: 'Teens',
-          description: 'Comprehensive course with preparation for the 8th grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: `and PLN 310 for educational materials
-(payment in the first month)`
-        },
-        {
-          title: 'Exam Focus',
-          description: 'One-year course preparing for the 8th-grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 310 for educational materials (payment in the first month)'
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '8th grade',
-      isOpen: false,
-      cards: [
-        {
-          title: 'Exam Focus',
-          description: 'One-year course preparing for the 8th-grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-        {
-          title: 'Teens',
-          description: 'Comprehensive course with preparation for the 8th grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-        {
-          title: 'Pre-First & First',
-          description: 'Cambridge Exam Preparation Course',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        }
-      ]
-    },
-    {
-      title: 'High school', cards: [
-        {
-          title: 'Teens',
-          description: 'Comprehensive English course',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-
-      ], isOpen: false
-    },
-  ];
 
   toggleItem(index: number): void {
     this.accordionItems[index].isOpen = !this.accordionItems[index].isOpen;

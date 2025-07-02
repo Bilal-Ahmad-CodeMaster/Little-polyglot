@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { ApiServicesService } from '../../services/api-services.service';
 import { CommonModule, NgIf } from '@angular/common';
+import { SharedServiceService } from '../../services/shared-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private api: ApiServicesService,
     private router: Router,
+    private sharedService: SharedServiceService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -42,16 +46,22 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', res.data.accessToken);
       localStorage.setItem('userDetail', JSON.stringify(res.data.data));
       console.log(res);
-  
+
+      this.toastr.success('Login successful!');
+      console.log("hello")
       this.router.navigate(['/adminPanel']);
     } catch (err: any) {
-
-      const errorMsg = err?.error?.message || 'An error occurred';
-  console.log(errorMsg);
-
+      const errorMsg = err?.error?.message || 'Invalid email or password.';
+      this.toastr.error(errorMsg, 'Login Failed');
+      console.log(errorMsg);
     } finally {
       this.loading = false;
     }
+  }
+
+
+  openForgetPassword() {
+    this.sharedService.openForgetPassword();
   }
 
 }

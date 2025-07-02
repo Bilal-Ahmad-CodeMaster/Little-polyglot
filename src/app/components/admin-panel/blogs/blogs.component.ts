@@ -21,7 +21,7 @@ export class BlogsComponent implements OnInit {
   totalPages = 1;
   editingBlogId: string | null = null;
   imagePreview: string | ArrayBuffer | null | undefined;
-imageError: any;
+  imageError: any;
 
   constructor(private fb: FormBuilder, private api: ApiServicesService) { }
 
@@ -31,7 +31,7 @@ imageError: any;
     });
 
     this.blogForm = this.fb.group({
-      Title: ['', Validators.required],
+      title: ['', Validators.required],
       category: ['Wychowanie', Validators.required],
       description: ['', Validators.required],
       image: [null, Validators.required]
@@ -64,7 +64,7 @@ imageError: any;
   applySearch(blogs: any[]): any[] {
     const keyword = this.searchForm.value.search.toLowerCase();
     return blogs.filter(blog =>
-      blog.Title.toLowerCase().includes(keyword) ||
+      blog.title.toLowerCase().includes(keyword) ||
       blog.category.toLowerCase().includes(keyword)
     );
   }
@@ -86,11 +86,16 @@ imageError: any;
 
   editBlog(blog: any): void {
     this.blogForm.patchValue({
-      Title: blog.Title,
+      title: blog.title,
       category: blog.category,
       description: blog.description,
       image: null // reset file input
     });
+
+    // Remove image validator in edit mode
+    this.blogForm.get('image')?.clearValidators();
+    this.blogForm.get('image')?.updateValueAndValidity();
+
     this.isEditMode = true;
     this.editingBlogId = blog._id;
     this.imagePreview = blog.image || null;
@@ -118,7 +123,7 @@ imageError: any;
 
   submitBlog(): void {
     const formData = new FormData();
-    formData.append('Title', this.blogForm.value.Title);
+    formData.append('title', this.blogForm.value.title);
     formData.append('category', this.blogForm.value.category);
     formData.append('description', this.blogForm.value.description);
     if (this.blogForm.value.image) {
@@ -127,13 +132,13 @@ imageError: any;
 
     if (this.isEditMode && this.editingBlogId) {
       this.api.updateBlog(this.editingBlogId, formData).subscribe(() => {
-        this.fetchBlogs();
         this.closeModal();
+        this.fetchBlogs();
       });
     } else {
       this.api.createBlog(formData).subscribe(() => {
-        this.fetchBlogs();
         this.closeModal();
+        this.fetchBlogs();
       });
     }
   }

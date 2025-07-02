@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { CourseDetailCardComponent } from "../../../../components/main/course-detail-card/course-detail-card.component";
-import { DemoVideoComponent } from "../../../../components/main/courses/demo-video/demo-video.component";
 import { OpenionCrousalComponent } from "../../../../components/main/openion-crousal/openion-crousal.component";
 import { FeatureComponent } from "../../../../components/main/courses/feature/feature.component";
 import { SubHeroSectionComponent } from "../../../../components/main/courses/sub-hero-section/sub-hero-section.component";
@@ -8,7 +7,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-english-for-11-to-14-year-teen',
-  imports: [CourseDetailCardComponent, DemoVideoComponent, OpenionCrousalComponent, FeatureComponent, SubHeroSectionComponent, RouterLink],
+  imports: [CourseDetailCardComponent , OpenionCrousalComponent, FeatureComponent, SubHeroSectionComponent, RouterLink],
   templateUrl: './english-for-11-to-14-year-teen.component.html',
   styleUrl: './english-for-11-to-14-year-teen.component.css'
 })

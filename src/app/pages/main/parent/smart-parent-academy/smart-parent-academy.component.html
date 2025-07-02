@@ -2,24 +2,26 @@
     <div class="max-w-[1300px] mx-auto ">
         <!-- Breadcrumb -->
         <nav class="text-[15px] pt-10 px-5">
-            <a routerLink="/" class="text-pink-600 font-semibold underline">
+            <a routerLink="/" class="text-primary font-semibold underline">
                 Home Page
             </a>
-            <span routerLink="/parent" class="text-pink-600 font-semibold underline cursor-pointer"><span
+            <span routerLink="/parent" class="text-primary font-semibold underline cursor-pointer"><span
                     class="mx-1.5 font-light">|</span>For the
                 Parent</span>
             <span class="text-black"><span class="mx-1.5 font-light">|</span>Smart Parent Academy</span>
         </nav>
 
         <!-- Content Area -->
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 h-full px-5">
+        <div
+            class="flex flex-col justify-center items-center lg:flex-row lg:items-center lg:justify-between gap-6 h-full px-5">
             <!-- Text Section -->
             <div class="w-full mb-8 lg:mb-0">
                 <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug text-black">
                     Smart Parent Academy
                 </h1>
                 <p class="text-[14px] text-black leading-relaxed">
-                    At Early Stage, we believe that a child's language success is largely influenced by the parent. You
+                    At Polyglot Kids, we believe that a child's language success is largely influenced by the parent.
+                    You
                     are the one who
                     supports your child in moments of doubt, watches them master new skills and motivates them to
                     continue gaining
@@ -30,17 +32,12 @@
             </div>
 
             <!-- Image Section -->
-            <div class="w-[80%] flex justify-center pr-32">
-                <img src='assets/parent/hero-desktop-updated (1).webp' alt="Hero image"
-                    class="w-full  object-contain" />
+            <div class="w-[80%] flex justify-center pr-32 ">
+                <img src='assets/parent/smart-parent.jpg' alt="Hero image" class="w-full  object-contain" />
             </div>
         </div>
     </div>
 
-    <!-- Decorative Pattern Strip -->
-    <div class="w-full max-h-12">
-        <img alt="Colorful" class="w-full object-cover" src="/assets/spacer-desktop.png" width="1920" />
-    </div>
 </div>
 
 
@@ -57,7 +54,8 @@
                 Smart Parent Academy
             </h1>
             <p class="text-sm md:text-base text-gray-900 mb-6 leading-relaxed">
-                Smart Parent Academy is a series of activities carried out by Early Stage methodologists and experts in
+                Smart Parent Academy is a series of activities carried out by Polyglot Kids methodologists and experts
+                in
                 psychology. We
                 run a blog where we discuss topics related to learning English, share ideas for interesting ways to
                 spend time and
@@ -68,13 +66,12 @@
                 in the field of
                 child psychology, parenting, and creative English learning. You will learn about all the activities
                 carried out in the
-                weekly Newsletter - you can sign up for it by visiting the Early Stage blog.
+                weekly Newsletter - you can sign up for it by visiting the Polyglot Kids blog.
             </p>
         </section>
         <section class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
             <img alt="Portrait photo of three people: an older woman with short blonde hair and glasses wearing a pink top and scarf, a man with medium length blonde hair wearing a light blue shirt, and a woman with blonde hair wearing a teal shirt, all smiling"
-                class="rounded-lg max-w-full h-auto" height="300"
-                src="https://earlystage.pl/images/for-parent/smart-desktop.webp" width="400" />
+                class="rounded-lg max-w-full h-auto" height="300" src="assets/parent/happier.jpg" width="400" />
         </section>
     </div>
 </main>
@@ -90,7 +87,7 @@
         <p class="text-[#4B4B5B] text-medium md:text-base font-semibold mb-8">
             We share knowledge and many years of experience
         </p>
-        <button
+        <button routerLink="/blogs"
             class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
             type="button">
             Read the blog
@@ -104,7 +101,7 @@
         <p class="text-[#4B4B5B] text-base font-semibold mb-8">
             We talk about children's linguistic and emotional development
         </p>
-        <button
+        <button routerLink="/blogs"
             class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
             type="button">
             Watch webinars

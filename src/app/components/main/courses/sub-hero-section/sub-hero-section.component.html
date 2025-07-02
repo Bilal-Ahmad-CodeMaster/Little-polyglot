@@ -1,46 +1,33 @@
-<div class="bg-[#fceff3]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+<div class="bg-[#f9fafb] py-10 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 
-        <div class="flex flex-col md:flex-row items-start  gap-6 md:gap-12">
-            <!-- Text box -->
-            <div class="flex flex-col space-y-6 max-w-xl flex-shrink-0">
-                <nav class="pt-4 text-[13px] font-normal text-[#000000cc] py-10">
-                    <a class="text-[#d6006c] font-semibold hover:underline" routerLink="/">Home page</a>
-                    <span class="text-[#d6006c] font-semibold"> | </span>
-                    <a class="text-[#d6006c] font-semibold hover:underline" routerLink="/courses">Courses</a>
-                    <span> | {{ title }}</span>
-                </nav>
-
-                <div class="flex items-center space-x-4">
-                    <div class=" overflow-hidden rounded-md">
-                        <img [src]="shieldUrl" alt="Juniors" class="w-20 h-20 object-cover" loading="lazy" />
-                    </div>
-                    <div>
-                        <h1 class="text-2xl md:text-3xl font-normal text-[#000000cc] leading-tight text-nowrap">
-                            {{ title }}
-                        </h1>
-                        <h2 class="text-lg md:text-xl font-semibold text-[#000000cc] mt-1 leading-snug">
-                            {{ subtitle }}
-                        </h2>
-                    </div>
-                </div>
-
-                <div>
-                    <p class="text-[13px] md:text-sm text-[#000000cc] leading-relaxed font-normal"
-                        [innerHTML]="description"></p>
-                </div>
-            </div>
-
-            <!-- Image -->
-            <div>
-                <img [src]="imageUrl" class="w-[400px] h-full object-contain" [alt]="title" />
-            </div>
+        <!-- Side Image -->
+        <div class="md:col-span-1 flex justify-center md:justify-start">
+            <img [src]="imageUrl" [alt]="title" class="w-full max-w-xs rounded-xl shadow-md object-cover" />
         </div>
-    </div>
 
-    <!-- Decorative image -->
-    <div class="w-full flex justify-center">
-        <img src="/assets/spacer-desktop.png" class="w-full max-w-full object-cover" height="50" width="1200"
-            alt="Decorative strip" />
+        <!-- Main Content -->
+        <div class="md:col-span-2 space-y-6">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-400">
+                <a routerLink="/" class="hover:underline font-medium text-primary">Home</a>
+                <span>/</span>
+                <a routerLink="/courses" class="hover:underline font-medium text-primary">Courses</a>
+                <span>/</span>
+                <span class="text-gray-600 font-semibold">{{ title }}</span>
+            </nav>
+
+            <!-- Header -->
+            <div class="flex items-center space-x-4">
+                <img [src]="shieldUrl" alt="Icon" class="w-14 h-14 rounded shadow-sm" />
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">{{ title }}</h2>
+                    <p class="text-sm text-gray-500">{{ subtitle }}</p>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-gray-700 text-base leading-relaxed" [innerHTML]="description"></p>
+        </div>
     </div>
 </div>

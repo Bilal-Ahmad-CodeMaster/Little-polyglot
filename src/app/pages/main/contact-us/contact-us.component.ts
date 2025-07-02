@@ -1,11 +1,11 @@
 import { Component, HostListener } from '@angular/core';
 import { SharedServiceService } from '../../../services/shared-service.service';
-import { SchoolDetailModalComponent } from "../../../modals/school-detail-modal/school-detail-modal.component";
 import { NgFor, NgIf } from '@angular/common';
+import { FindSchoolsComponent } from "../../../components/find-schools/find-schools.component";
 
 @Component({
   selector: 'app-contact-us',
-  imports: [SchoolDetailModalComponent,NgFor,NgIf],
+  imports: [ NgFor, NgIf, FindSchoolsComponent],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css'
 })

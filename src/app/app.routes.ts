@@ -25,6 +25,8 @@ import { BranchesComponent } from './components/admin-panel/branches/branches.co
 import { BlogHomeComponent } from './pages/blogs/blog-home/blog-home.component';
 import { InterestingPlacesComponent } from './pages/blogs/interesting-places/interesting-places.component';
 import { BlogsComponent } from './components/admin-panel/blogs/blogs.component';
+import { BlogContactUsComponent } from './pages/blogs/blog-contact-us/blog-contact-us.component';
+import { BlogDetailsPageComponent } from './pages/blogs/blog-details-page/blog-details-page.component';
 
 
 export const routes: Routes = [
@@ -69,8 +71,11 @@ export const routes: Routes = [
             { path: 'education', component: EducationComponent },
             { path: 'creativeLearning', component: CreativeLearningComponent },
             { path: 'interestingPlaces', component: InterestingPlacesComponent },
+            {path:'contact' , component:BlogContactUsComponent}
         ],
     },
+
+    { path: 'blog/:id', component: BlogDetailsPageComponent }
 ];
 
 

@@ -1,0 +1,48 @@
+<div class="max-w-3xl mx-auto p-4">
+  <p class="text-gray-800 mb-4">
+    Do you have a question, an idea? Do you want to share something with us? Maybe you just want to write us something
+    nice? We want to get to know you and hear what interesting things you have to say! Together we can create and
+    experience another great <span class="font-bold uppercase">ADVENTURE</span>!
+  </p>
+  <p class="text-gray-800 mb-6">
+    Write to us and we will reply as soon as possible. Have a good day!
+  </p>
+
+  <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-4">
+    <!-- Name -->
+    <div>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Name and Surname (required)</label>
+      <input type="text" name="name" ngModel required
+        class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Email Address (required)</label>
+      <input type="email" name="email" ngModel required
+        class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
+    </div>
+
+    <!-- Topic -->
+    <div>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Topic</label>
+      <input type="text" name="topic" ngModel
+        class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
+    </div>
+
+    <!-- Message -->
+    <div>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Message Content</label>
+      <textarea name="message" ngModel rows="5"
+        class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
+    </div>
+
+    <!-- Button -->
+    <div>
+      <button type="submit" [disabled]="contactForm.invalid"
+        class="bg-primary-hover text-white px-6 py-2 rounded-sm hover:bg-primary transition">
+        Send
+      </button>
+    </div>
+  </form>
+</div>

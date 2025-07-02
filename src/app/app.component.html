@@ -1,1 +1,15 @@
+<!-- Simple loader -->
+<div *ngIf="loader.isLoading" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+    <div class="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+</div>
 <router-outlet></router-outlet>
+
+<app-language-convertor>
+</app-language-convertor>
+<button (click)="onOpen()"
+    class="fixed z-50 bottom-5 right-5 flex items-center gap-2 px-5 py-3 bg-primary text-white hover:bg-primary-hover rounded-full shadow-lg transition-all duration-300 text-base font-medium">
+    🌐 Change Language
+</button>
+
+
+<app-forget-password></app-forget-password>

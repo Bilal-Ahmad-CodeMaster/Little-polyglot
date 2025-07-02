@@ -11,10 +11,13 @@ import { ApiServicesService } from '../../../services/api-services.service';
 export class DashboardComponent implements OnInit {
   userDetail = JSON.parse(localStorage.getItem('userDetail') || 'null');
   branchCount: number = 0;
+  blogs: any;
 
-  constructor(private api: ApiServicesService) {}
+  constructor(private api: ApiServicesService) { }
 
   ngOnInit(): void {
+
+    this.fetchBlogs()
     this.api.getBranches().subscribe(
       (res: any) => {
         this.branchCount = res.data.length
@@ -24,5 +27,11 @@ export class DashboardComponent implements OnInit {
         this.branchCount = 0;
       }
     );
+  }
+  fetchBlogs(): void {
+    this.api.getBlogs().subscribe((res: any) => {
+      this.blogs = res.data.length;
+
+    });
   }
 }

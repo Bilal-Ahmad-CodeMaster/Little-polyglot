@@ -1,0 +1,71 @@
+
+
+<div id="exampleModal" *ngIf="LanguageModalOpen"
+    class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto p-6">
+    <div
+        class="relative w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-y-auto max-h-[calc(100%-6rem)] animate-[zoomIn_0.3s_ease-in-out]">
+        <!-- Close Button -->
+        <div class="flex justify-end mt-4 mx-2">
+            <button type="button" 
+            (click)="closeModal()"
+                class="flex h-12 w-12 items-center justify-center rounded-xl hover:bg-gray-200">
+                <svg class="h-6 w-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Language Section -->
+        <div *ngIf="language" class="px-6 py-4 overflow-y-auto">
+            <div class="flex flex-col gap-8 max-w-6xl mx-auto">
+              
+
+
+
+
+
+                <!-- Suggested Language -->
+                <div *ngIf="selectedLanguage.language !== 'English'">
+                    <h3 class="font-bold text-lg mb-4">Suggested</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div (click)="selectLanguage('English', 'United States')"
+                            [ngClass]="{'border-2 border-black': selectedLanguage.language === 'English' && selectedLanguage.country === 'United States'}"
+                            class="cursor-pointer flex items-center justify-between border border-transparent rounded-lg p-4">
+                            <div>
+                                <div class="font-semibold">English</div>
+                                <div class="text-sm text-gray-500">United States</div>
+                            </div>
+                            <svg *ngIf="selectedLanguage?.language === 'English' && selectedLanguage?.country === 'United States'"
+                                class="w-6 h-6 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language List -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Language & Region</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div *ngFor="let list of filteredLangList" (click)="selectLanguage(list.language, list.country)"
+                            [ngClass]="{'border-2 border-black': isLangSelected(list)}"
+                            class="cursor-pointer flex items-center justify-between border border-transparent rounded-lg p-4">
+                            <div>
+                                <div class="font-semibold">{{list.language}}</div>
+                                <div class="text-sm text-gray-500">{{list.country}}</div>
+                            </div>
+                            <svg *ngIf="selectedLanguage?.language === list.language && selectedLanguage?.country === list.country"
+                                class="w-6 h-6 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

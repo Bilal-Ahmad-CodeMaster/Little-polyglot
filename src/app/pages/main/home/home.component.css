@@ -4,3 +4,9 @@
 .parent-carousel::-webkit-scrollbar-thumb {
   display: none;
 }
+/* Add a custom class for masking if needed */
+.mask-custom {
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}

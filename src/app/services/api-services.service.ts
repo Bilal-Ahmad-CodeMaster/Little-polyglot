@@ -6,7 +6,7 @@ import { API_CONFIG } from '../../config';
   providedIn: 'root'
 })
 export class ApiServicesService {
-    ;
+  ;
 
   constructor(private http: HttpClient) { }
 
@@ -20,12 +20,16 @@ export class ApiServicesService {
     return this.http.get(`${API_CONFIG['branches']}`);
   }
 
+  getSingleBranch(id: string) {
+    return this.http.get(`${API_CONFIG['branches']}/${id}`);
+  }
+
   createBranch(payload: FormData) {
     return this.http.post(`${API_CONFIG['branches']}`, payload);
   }
 
   updateBranch(id: string, payload: FormData) {
-    return this.http.put(`${API_CONFIG['branches']}/${id}`, payload);
+    return this.http.patch(`${API_CONFIG['branches']}/${id}`, payload);
   }
 
   deleteBranch(id: string) {
@@ -36,9 +40,9 @@ export class ApiServicesService {
   getBlogs() {
     return this.http.get(`${API_CONFIG['blogs']}`);
   }
-  getSingleBlogs(id:string) {
-    return this.http.get(`${API_CONFIG['blogs']}`);
-  }
+  // getSingleBlogs(id: string) {
+  //   return this.http.get(`${API_CONFIG['blogs']}`);
+  // }
 
   createBlog(payload: FormData) {
     return this.http.post(`${API_CONFIG['blogs']}`, payload);
@@ -54,5 +58,25 @@ export class ApiServicesService {
 
   deleteMedia(branchId: string, type: string, mediaId: string) {
     return this.http.delete(`${API_CONFIG['branches']}/${branchId}/${type}/${mediaId}`);
+  }
+
+  // for get single blog
+  getBlogById(id: string) {
+    return this.http.get(`${API_CONFIG['blogs']}/${id}`);
+  }
+
+  // for send otp 
+  sendOtp(email: string) {
+    return this.http.post(`${API_CONFIG['sendOtp']}`, { email });
+  }
+
+  //  Verify OTP and Reset Password
+  verifyOtpAndResetPassword(payload: {
+    email: string;
+    otp: string;
+    password: string;
+    confirmPassword: string;
+  }) {
+    return this.http.post(`${API_CONFIG['verifyOtpAndResetPassword']}`, payload);
   }
 }

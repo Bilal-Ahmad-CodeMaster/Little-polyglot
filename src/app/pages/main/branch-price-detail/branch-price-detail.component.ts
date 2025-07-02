@@ -1,7 +1,9 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ApiServicesService } from '../../../services/api-services.service';
+import { DomSanitizer } from '@angular/platform-browser';
+declare var Swiper: any;
 @Component({
   selector: 'app-branch-price-detail',
   imports: [RouterLink, NgIf, NgFor, CommonModule],
@@ -12,7 +14,90 @@ export class BranchPriceDetailComponent {
   showMore: boolean = false;
   activeIndex = 0; // Default to first item
   showVideo = false;
+  BrachData: any;
+  globalIframeSrc: any;
+  contactDetail: any;
+  accordionItems: any
+  i: any;
+  expandedEventIndex: any;
+  branchImages: any;
+  constructor(private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) { }
+  expanded = false;
 
+  toggleExpand() {
+    this.expanded = !this.expanded;
+  }
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const branchId = params['branchId'];
+      console.log('Selected branchId:', branchId);
+      if (branchId) {
+        setTimeout(() => {
+          this.api.getSingleBranch(branchId).subscribe(
+            (branch: any) => {
+              this.BrachData = branch.data;
+              this.accordionItems = this.BrachData.priceList[0].groups;
+              console.log("accordian ", this.accordionItems);
+              this.contactDetail = branch.data.contactInfo
+              console.log('contact data:', this.contactDetail);
+              let rawUrl = '';
+              const match = this.BrachData.googleLocation.match(/src="([^"]+)"/);
+              if (match && match[1]) {
+                rawUrl = match[1];
+              }
+              this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
+            },
+            (error) => {
+              console.error('Error fetching branch:', error);
+            }
+          );
+        }, 0);
+      }
+    });
+
+    this.api.getBranches().subscribe((res: any) => {
+
+      // Safely extract imagesGallery from each branch
+      const imageList = res?.data?.flatMap((branch: any) => branch.imagesGallery || []);
+
+      console.log(imageList, "aaaaaaaa");
+      this.branchImages = imageList;
+      setTimeout(() => {
+        new Swiper('.mySwiper', { /* config */ });
+      }, 0);
+    });
+  }
+
+  ngAfterViewInit() {
+    new Swiper('.mySwiper', {
+      loop: true,
+      spaceBetween: 20,
+      slidesPerView: 1,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      autoplay: {
+        delay: 3000, 
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1
+        },
+        768: {
+          slidesPerView: 1
+        },
+        1024: {
+          slidesPerView: 1
+        }
+      }
+    });
+  }
   playVideo() {
     this.showVideo = true;
   }
@@ -20,158 +105,10 @@ export class BranchPriceDetailComponent {
     this.activeIndex = index;
   }
 
-  accordionItems = [
-    {
-      title: 'Kindergarten',
-      cards: [
-        {
-          title: 'Kids (1xweek)',
-          description: 'Classes once a week',
-          schedule: '1 x 45 min',
-          minutes: '',
-          classes: '34 classes',
-          price: '220 PLN per month',
-          materials: 'PLN 200 for educational materials (payment in the first month)',
-        },
-        {
-          title: 'Kids (2xweek)',
-          description: 'Classes twice a week',
-          schedule: '2 x 45 min',
-          minutes: '',
-          classes: '66 classes',
-          price: '290 PLN per month',
-          materials: 'PLN 200 for educational materials (payment in the first month)',
-        },
-      ],
-    },
-    {
-      title: '1st class',
-      cards: [
-        {
-          title: 'Juniors Level 1',
-          description: 'Comprehensive English course',
-          schedule: '2 x 60 min',
-          minutes: '120 minutes',
-          classes: '66 classes',
-          price: '310 PLN per month',
-          materials: 'PLN 218 for educational materials (payment in the first month)',
-        },
-      ],
-    },
-    {
-      title: '2nd class', cards: [
-        {
-          title: 'Juniors Level 1',
-          description: 'For students starting their studies',
-          schedule: '2 x 60 min',
-          minutes: '120 minutes',
-          classes: '66 classes',
-          price: '310 PLN per month',
-          materials: `and PLN 218 for educational materials
-(payment in the first month)`
-        },
-        {
-          title: 'Juniors Level 2',
-          description: 'For students continuing their education',
-          schedule: '2 x 90 min',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: `and PLN 188 for educational materials
-(payment in the first month)`
-        },
 
-      ], isOpen: false
-    },
-    {
-      title: '3-6th grade', cards: [
-        {
-          title: 'Juniors & Teens',
-          description: 'Comprehensive English course',
-          schedule: '2 x 90 ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: `and PLN 178-300 for educational materials
-(payment in the first month)`
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '7th grade', cards: [
-        {
-          title: 'Teens',
-          description: 'Comprehensive course with preparation for the 8th grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: `and PLN 310 for educational materials
-(payment in the first month)`
-        },
-        {
-          title: 'Exam Focus',
-          description: 'One-year course preparing for the 8th-grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 310 for educational materials (payment in the first month)'
-        },
-
-      ], isOpen: false
-    },
-    {
-      title: '8th grade',
-      isOpen: false,
-      cards: [
-        {
-          title: 'Exam Focus',
-          description: 'One-year course preparing for the 8th-grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-        {
-          title: 'Teens',
-          description: 'Comprehensive course with preparation for the 8th grade exam.',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-        {
-          title: 'Pre-First & First',
-          description: 'Cambridge Exam Preparation Course',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        }
-      ]
-    },
-    {
-      title: 'High school', cards: [
-        {
-          title: 'Teens',
-          description: 'Comprehensive English course',
-          schedule: '2 x 90 min ',
-          minutes: '180 minutes',
-          classes: '66 classes ',
-          price: '340 PLN per month',
-          materials: 'PLN 320 for educational materials (payment in the first month)'
-        },
-
-      ], isOpen: false
-    },
-  ];
   toggleItem(index: number): void {
     this.accordionItems[index].isOpen = !this.accordionItems[index].isOpen;
   }
+
 
 }
