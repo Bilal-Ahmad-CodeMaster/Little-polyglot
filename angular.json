@@ -75,7 +75,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/robots.txt",
+              "src/sitemap.xml"
             ],
             "styles": ["src/styles.css", "node_modules/ngx-toastr/toastr.css"],
             "scripts": [
@@ -86,5 +88,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "47a0db55-3940-4c37-83f1-189e3525347c"
   }
 }
