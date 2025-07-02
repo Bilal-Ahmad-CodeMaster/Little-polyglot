@@ -72,12 +72,12 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/robots.txt",
+              "src/sitemap.xml",
               {
                 "glob": "**/*",
                 "input": "public"
-              },
-              "src/robots.txt",
-              "src/sitemap.xml"
+              }
             ],
             "styles": ["src/styles.css", "node_modules/ngx-toastr/toastr.css"],
             "scripts": [

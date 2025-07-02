@@ -49,6 +49,8 @@ export const routes: Routes = [
             { path: 'parent', component: ParentComponent },
             { path: 'parent/smart-parent-academy', component: SmartParentAcademyComponent },
             { path: 'registration/applicationForm', component: SignUpComponent },
+            
+            { path: 'registration/applicationForm', component: SignUpComponent },
         ],
     },
     { path: 'login', component: LoginComponent },
