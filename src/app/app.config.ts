@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
       BrowserAnimationsModule,
       ToastrModule.forRoot({
         maxOpened: 1,
+        timeOut: 1000,
         positionClass: 'toast-top-right',
         autoDismiss: true,
         easeTime: 100

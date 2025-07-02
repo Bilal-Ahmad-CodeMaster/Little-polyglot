@@ -32,25 +32,25 @@ body {
   display: none !important;
 }
 .toast-container {
-  @apply fixed top-4 right-4 z-50;
+  @apply fixed top-3 right-1 z-50 flex flex-col items-end gap-2 p-3 text-white;
 }
 
 .toast {
-  @apply px-4 py-3 rounded-md shadow-lg mb-4 text-white;
+  @apply px-4 py-2 rounded-md shadow-md text-white text-center text-sm w-fit max-w-xs break-words transition-all duration-300;
 }
 
 .toast-success {
-  @apply bg-green-500 p-3;
+  @apply bg-green-600 p-3;
 }
 
 .toast-error {
-  @apply bg-red-500 p-3;
+  @apply bg-red-600 p-3;
 }
 
 .toast-info {
-  @apply bg-blue-500 p-3;
+  @apply bg-blue-600 p-3;
 }
 
 .toast-warning {
-  @apply bg-yellow-500 text-black p-3;
+  @apply bg-yellow-500 text-black p-3; 
 }
