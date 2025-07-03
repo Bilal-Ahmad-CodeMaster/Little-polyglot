@@ -14,13 +14,13 @@ import { RouterLink } from '@angular/router';
 })
 export class EnglishFor3To6YearKidsComponent {
   featureArray = [
-    { iconUrl: '/assets/courses/feature1.svg', title: 'Our classes are chatty' },
-    { iconUrl: '/assets/courses/feature2.svg', title: 'Ongoing contact with the lecturer' },
-    { iconUrl: '/assets/courses/feature3.svg', title: 'Semester and end of year summary' },
-    { iconUrl: '/assets/courses/feature4.svg', title: 'Progress monitoring' },
-    { iconUrl: '/assets/courses/feature5.svg', title: 'Additional online materials' },
-    { iconUrl: '/assets/courses/feature6.svg', title: 'Access to the Polyglot Kids Music App' },
-    { iconUrl: '/assets/courses/feature7.svg', title: 'Access to e-journal' }
+    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Our classes are chatty' },
+    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Ongoing contact with the lecturer' },
+    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Semester and end of year summary' },
+    { iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Progress monitoring' },
+    { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Additional online materials' },
+    { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Access to the Polyglot Kids Music App' },
+    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'Access to e-journal' }
   ];
 
 }

@@ -1,9 +1,9 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-feature',
-  imports: [NgFor],
+  imports: [NgFor,CommonModule],
   templateUrl: './feature.component.html',
   styleUrl: './feature.component.css'
 })

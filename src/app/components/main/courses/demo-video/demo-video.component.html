@@ -3,7 +3,7 @@
         {{ title }}
     </h2>
 
-    <div class="relative max-w-7xl w-full rounded-lg overflow-hidden">
+    <div class="relative max-w-3xl max-h-[468px] rounded-lg overflow-hidden">
         <ng-container *ngIf="!showVideo; else videoBlock">
             <img [src]="thumbnailUrl" alt="Video thumbnail" class="w-full h-auto object-cover rounded-lg" />
             <button (click)="playVideo()" aria-label="Play demo lesson video"

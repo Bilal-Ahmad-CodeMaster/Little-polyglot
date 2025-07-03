@@ -15,32 +15,32 @@ export class HomeComponent {
 
   featureArray: any[] = [
     {
-      iconUrl: "/assets/home/svgexport-5.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-5.svg",
       title: "Confident Communication Starts Early",
       description: "At Polyglot Kids, children don’t just learn English—they speak it with ease. We foster real conversations from the very first class."
     },
     {
-      iconUrl: "/assets/home/svgexport-6.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-6.svg",
       title: "Engaging Lessons, Every Time",
       description: "No dull drills here. Our interactive sessions mix creativity, play, and purpose to keep young minds curious and focused."
     },
     {
-      iconUrl: "/assets/home/svgexport-7.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-7.svg",
       title: "Lasting Language Mastery",
       description: "We prepare children not just for exams, but for life. Our learners grow into confident speakers who think and express themselves clearly in English."
     },
     {
-      iconUrl: "/assets/home/svgexport-8.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-8.svg",
       title: "A Place Where Kids Feel Belonging",
       description: "Warmth, inclusivity, and fun define our classrooms. Kids thrive in supportive groups where friendships grow alongside language skills."
     },
     {
-      iconUrl: "/assets/home/svgexport-9.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-9.svg",
       title: "Beyond Language: Skills for Life",
       description: "Our curriculum integrates critical thinking, collaboration, and creativity—because being multilingual is only part of the future-ready mindset."
     },
     {
-      iconUrl: "/assets/home/svgexport-10.svg",
+      iconUrl: "../../../../../public/assets/home/svgexport-10.svg",
       title: "Learning Close to Home",
       description: "With centers at local schools, preschools, and community hubs, joining Polyglot Kids is easy and convenient for every family."
     }

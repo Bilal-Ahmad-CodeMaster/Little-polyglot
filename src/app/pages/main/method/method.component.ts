@@ -15,7 +15,7 @@ export class MethodComponent {
     {
       id: 'rime',
       title: 'Rime',
-      icon: '/assets/methods/1.svg',
+      icon: '../../../../../public/assets/methods/1.svg',
       alt: 'Pink icon representing Rime with dots and lines',
       subtitle: 'because word by word stays in your head',
       expandedText: `
@@ -26,7 +26,7 @@ Rhyming develops phonemic hearing, thanks to which children learn the correct pr
     {
       id: 'music',
       title: 'Music',
-      icon: '/assets/methods/2.svg',
+      icon: '../../../../../public/assets/methods/2.svg',
       alt: 'Pink icon representing Music with vertical oval shapes',
       subtitle: 'because the brain likes good rhythms',
       expandedText: `Music has been present in human life since time immemorial. The first sounds that reach us are the beating of the heart, measured steps, the doorbell or the barking of a dog. After birth, the experiences intensify and we hear lullabies at bedtime, we sing kindergarten hits ourselves, we hum hits from animated cartoons. Some melodies are permanently recorded in our memory. After many years, we can play them flawlessly. It is similar with songs, which is why they are successfully used in learning a foreign language.
@@ -38,7 +38,7 @@ Because learning a language and learning new melodies stimulate the same structu
     {
       id: 'movement',
       title: 'Movement',
-      icon: '/assets/methods/3.svg',
+      icon: '../../../../../public/assets/methods/3.svg',
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because it releases energy to learn',
       expandedText: `Movement is a natural need of a child, accompanying them from the first weeks of life. Even in their sleep, an infant dynamically changes its position in the bed, which is why we often call it a fidgeter or a wriggler. All children are kinesthetics, focused on being in constant movement. In this way, they discharge energy and show emotions and, importantly, acquire knowledge. This is because there is a network in the human nervous system that connects perception and motor activities. Its effectiveness depends on the degree to which all senses are used during learning.
@@ -50,7 +50,7 @@ Movement is not only a great tool for memorization, but also develops imaginatio
     {
       id: 'relationships',
       title: 'Relationships',
-      icon: '/assets/methods/4.svg',
+      icon: '../../../../../public/assets/methods/4.svg',
       alt: 'Pink icon representing Rime with dots and lines',
       subtitle: 'because  they make you feel safe',
       expandedText: `
@@ -68,7 +68,7 @@ At Polyglot Kids, we focus on the conscious participation of parents in their ch
     {
       id: 'cooperation',
       title: 'Cooperation',
-      icon: '/assets/methods/5.svg',
+      icon: '../../../../../public/assets/methods/5.svg',
       alt: 'Pink icon representing Music with vertical oval shapes',
       subtitle: 'because together we can do more',
       expandedText: `We care about the comprehensive development of children. That is why from the very beginning we introduce various activities - we intertwine elements of individual work with exercises in pairs and larger groups. Thanks to frequent teamwork, our students have many opportunities to actively use and consolidate English. We engage all children and encourage them to interact with each other. We create a space for mutual support, inspiration and celebration of small successes. Our students discover individual talents and learn to use them for the good of the group and joint projects. We introduce elements of positive competition focused on mutual appreciation and respect. In this way, we increase motivation to learn and positively influence students' self-esteem.
@@ -77,7 +77,7 @@ At Polyglot Kids, we focus on the conscious participation of parents in their ch
     {
       id: 'communication',
       title: 'Communication',
-      icon: '/assets/methods/6.svg',
+      icon: '../../../../../public/assets/methods/6.svg',
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because it releases energy to learn',
       expandedText: `Movement is a natural need of a child, accompanying them from the first weeks of life. Even in their sleep, an infant dynamically changes its position in the bed, which is why we often call it a fidgeter or a wriggler. All children are kinesthetics, focused on being in constant movement. In this way, they discharge energy and show emotions and, importantly, acquire knowledge. This is because there is a network in the human nervous system that connects perception and motor activities. Its effectiveness depends on the degree to which all senses are used during learning.
@@ -89,7 +89,7 @@ Movement is not only a great tool for memorization, but also develops imaginatio
     {
       id: 'humor',
       title: 'Humor',
-      icon: '/assets/methods/7.svg',
+      icon: '../../../../../public/assets/methods/7.svg',
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because endorphins and learning are a great duo',
       expandedText: `A smile is one of the first signs of joy shown by a baby. It is a common reaction to everyday situations in which a child feels happy. This is due to endorphins, a hormone released during laughter, which causes self-satisfaction and well-being. Therefore, when a child is stimulated by laughter, they are more likely to acquire new skills.
@@ -101,7 +101,7 @@ Humor makes every class more attractive and diverse. We introduce it in various 
     {
       id: 'creativity',
       title: 'Creativity',
-      icon: '/assets/methods/8.svg',
+      icon: '../../../../../public/assets/methods/8.svg',
       alt: 'Pink icon representing Rime with dots and lines',
       subtitle: 'because the path to the goal should be interesting',
       expandedText: `We build an atmosphere of openness and safety, thanks to which students can freely share their ideas. They participate in activities that stimulate creativity - they prepare artistic, linguistic and multimedia projects, reenact scenes, take on roles. In this way, they learn to look at issues from many perspectives. To stimulate the imagination, we use visualizations - photos, images, icons, graphics that evoke non-obvious associations, leading students towards innovative solutions. Our method of teaching English involves frequent use of the brainstorming technique, which allows for the generation of many different ideas. By creating space for creativity and experimentation, we allow students to develop language competences with openness and courage`,
@@ -109,7 +109,7 @@ Humor makes every class more attractive and diverse. We introduce it in various 
     {
       id: 'critical-thinking',
       title: 'Critical thinking',
-      icon: '/assets/methods/9.svg',
+      icon: '../../../../../public/assets/methods/9.svg',
       alt: 'Pink icon representing Music with vertical oval shapes',
       subtitle: 'because it helps to understand the world',
       expandedText: `We prepare students for independent, critical thinking and encourage them to use it as a tool. Using a variety of tasks, we inspire them to formulate and verify hypotheses, look for their own answers to important questions, compare information and draw conclusions. By asking the simplest questions, we start the thought process, igniting the ability to reflect on the world and their own development. We focus on analysis, deduction and summarization, so that students can discover their own opinion. In practice, we use structures and strategies that help them present their views in a thoughtful and understandable way. All these activities stimulate language development and raise the skills of effective oral and written communication to a higher level`,
@@ -117,7 +117,7 @@ Humor makes every class more attractive and diverse. We introduce it in various 
     {
       id: 'autonomy',
       title: 'Autonomy',
-      icon: '/assets/methods/10.svg',
+      icon: '../../../../../public/assets/methods/10.svg',
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because it gives a sense of agency',
       expandedText: `Building independence is one of the goals of our English teaching method. That is why we entrust even the youngest students with responsibilities appropriate to their age, expanding them as their abilities grow. This increases their engagement in learning, giving them a sense of fulfillment and satisfaction. Thanks to regular tasks intended for their own work, children learn to be systematic and evaluate their progress. Through exercises in pairs and groups, we develop the ability to independently correct mistakes and provide each other with constructive feedback. The teacher encourages risk-taking and ensures that students have a sense of achieving the goals they have set. Therefore, they play the role of a companion in the educational process, in which the student and their development play the main roles.
@@ -126,7 +126,7 @@ Humor makes every class more attractive and diverse. We introduce it in various 
     {
       id: 'spirality',
       title: 'Spirality',
-      icon: '/assets/methods/11.svg',
+      icon: '../../../../../public/assets/methods/11.svg',
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because it stimulates development and memorization',
       expandedText: `Learning is a complex process that has a spiral character. Forgetting is an inherent element of it, which is why we give students the opportunity to return to the material they have covered: at the revision stage of the lesson, after each chapter of the textbook, in the semester and yearly summary. Our method of teaching English harmonizes with the natural way of acquiring knowledge and allows you to discover vocabulary, phrases and grammar gradually, in a dimension adapted to the age and language level of the students. In subsequent years, they return to the topics they have already learned, consolidate them and enrich them with more and more complex elements. At each stage, they gain communicative competences that allow them to communicate in English - year by year in an increasingly advanced way.
@@ -135,7 +135,7 @@ Humor makes every class more attractive and diverse. We introduce it in various 
     {
       id: "Author-materials",
       title: "Author's materials",
-      icon: "/assets/methods/12.svg",
+      icon: "../../../../../public/assets/methods/12.svg",
       alt: 'Pink icon representing Movement with horizontal oval shapes',
       subtitle: 'because they attract attention like a magnet',
       expandedText: `Children love books. They usually start with the culinary stage – they check how they taste, but over time they look through them with interest. This is how they learn colours, shapes, numbers. As they grow up, they need stronger stimuli to focus their attention on the book for longer. That is why we place special emphasis on the attractiveness of our textbooks while maintaining a high level of content. The materials we create are the pillar of the unique programme implemented by the Polyglot Kids school. They arouse students' curiosity and support the process of language acquisition. A good English textbook is great fun for children. We know this from experience.

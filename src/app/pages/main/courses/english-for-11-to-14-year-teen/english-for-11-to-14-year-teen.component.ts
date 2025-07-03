@@ -14,21 +14,21 @@ import { RouterLink } from '@angular/router';
 export class EnglishFor11To14YearTeenComponent {
   featureArray = [
     {
-      iconUrl: '/assets/courses/feature1.svg', title: 'Groups matched by age and language proficiency level'
+      iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Groups matched by age and language proficiency level'
     },
     {
-      iconUrl: '/assets/courses/feature2.svg', title: 'An ambitious program and original textbooks'
+      iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'An ambitious program and original textbooks'
     },
     {
-      iconUrl: '/assets/courses/feature3.svg', title: 'Cambridge Exam Preparation'
+      iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Cambridge Exam Preparation'
     },
-    { iconUrl: '/assets/courses/feature3.svg', title: 'Preparation for the eighth-grade exam' },
-    { iconUrl: '/assets/courses/feature5.svg', title: 'Additional online materials' },
+    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Preparation for the eighth-grade exam' },
+    { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Additional online materials' },
     {
-      iconUrl: '/assets/courses/feature4.svg', title: 'Ongoing contact with the lecturer'
+      iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Ongoing contact with the lecturer'
     },
-    { iconUrl: '/assets/courses/feature6.svg', title: 'Progress monitoring' },
-    { iconUrl: '/assets/courses/feature7.svg', title: 'E-journal and music app' },
-    { iconUrl: '/assets/courses/feature2.svg', title: 'Semester and yearly summary' }
+    { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Progress monitoring' },
+    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'E-journal and music app' },
+    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Semester and yearly summary' }
   ];
 }
