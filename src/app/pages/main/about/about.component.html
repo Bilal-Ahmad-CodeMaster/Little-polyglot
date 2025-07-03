@@ -1,46 +1,44 @@
-<!-- hero section  -->
+<!-- Hero Section -->
+<div class="bg-[#f9fafb] py-10 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
 
-<div class="relative overflow-hidden bg-[#FCEFD9] mb-20">
-    <div class="max-w-[1300px] mx-auto px-5">
-        <!-- Breadcrumb -->
-        <nav class="text-sm pt-10 mb-4" aria-label="Breadcrumb">
-            <ol class="list-none flex space-x-2">
-                <li>
-                    <a routerLink="/"
-                        class="text-primary font-semibold underline hover:text-primary transition">Home</a>
-                </li>
-                <li class="text-black">|</li>
-                <li class="text-black">About</li>
-            </ol>
-        </nav>
+        <!-- Side Image -->
+        <div class="md:col-span-1 flex justify-center md:justify-start">
+            <img src="../../../../../public/assets/methods/mike.jpg" alt="Students learning at Polyglot Kids"
+                class="w-full max-w-xs rounded-xl shadow-md object-cover" />
+        </div>
 
-        <!-- Content Area -->
-        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 py-0">
-            <!-- Text Section -->
-            <div class="w-full lg:w-1/2">
-                <h1 class="text-3xl sm:text-4xl font-bold text-black leading-snug mb-4">
-                    About
-                </h1>
-                <p class="text-base text-black leading-relaxed">
-                    Without dreams, we would never spread our wings. Without action, we would never learn to fly.
-                    Without school, we would never be able to share what gives us wings.
-                </p>
+        <!-- Main Content -->
+        <div class="md:col-span-2 space-y-6">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-400 pt-2" aria-label="Breadcrumb">
+                <a routerLink="/"
+                    class="hover:underline font-medium text-primary cursor-pointer hover:text-primary-hover">Home</a>
+                <span>/</span>
+                <span class="text-gray-600 font-semibold">About</span>
+            </nav>
+
+            <!-- Header -->
+            <div class="flex items-center space-x-4">
+
+                <div>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 leading-snug">About</h2>
+                    <p class="text-sm text-gray-500">Without dreams, we would never spread our wings.</p>
+                </div>
             </div>
 
-            <!-- Image Section -->
-            <div class="w-full lg:w-1/2 flex justify-center max-h-[300px]">
-                <img src="assets/about/about-desktop.webp" alt="Students learning at Polyglot Kids"
-                    class="w-full h-auto object-contain" />
-            </div>
+            <!-- Description -->
+            <p class="text-gray-700 text-base leading-relaxed">
+                Without dreams, we would never spread our wings. Without action, we would never learn to fly.
+                Without school, we would never be able to share what gives us wings.
+            </p>
         </div>
     </div>
-
-    <!-- Decorative Pattern Strip -->
-    <div class="w-full h-12">
-        <img src="/assets/spacer-desktop.png" alt="Decorative colorful strip" class="w-full h-full object-cover"
-            width="1920" />
-    </div>
 </div>
+
+
+
+
 
 
 
@@ -63,23 +61,23 @@
     </p>
 
     <!-- Carousel -->
-    <div class="max-w-3xl mx-auto mt-10 relative">
-        <ng-container *ngIf="items[currentIndex] as item">
+    <div class="max-w-3xl max-h-[468px] mx-auto mt-10 relative">
+        <ng-container *ngIf="items[currentIndex] as item" class="max-w-3xl max-h-[468px]">
             <!-- BANNER -->
-            <img *ngIf="item.type === 'banner'" [src]="item.thumbnail" class="w-full rounded-lg object-cover"
+            <img *ngIf="item.type === 'banner'" [src]="item.thumbnail" class="max-w-3xl max-h-[468px] rounded-lg object-cover"
                 alt="Banner" />
 
             <!-- VIDEO -->
-            <div *ngIf="item.type === 'video'" class="relative">
-                <img *ngIf="!item.playing" [src]="item.thumbnail" class="w-full rounded-lg object-cover cursor-pointer"
+            <div *ngIf="item.type === 'video'" class="relative max-w-3xl max-h-[468px]">
+                <img *ngIf="!item.playing" [src]="item.thumbnail" class="w-full rounded-lg object-cover cursor-pointer max-w-3xl max-h-[468px]"
                     (click)="showVideo(item)" />
                 <button *ngIf="!item.playing" (click)="showVideo(item)"
-                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+                    class="max-w-3xl max-h-[468px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
                     <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z"></path>
                     </svg>
                 </button>
-                <video *ngIf="item.playing" class="w-full rounded-lg" [src]="item.videoUrl" controls autoplay
+                <video *ngIf="item.playing" class="max-w-3xl max-h-[468px] w-full rounded-lg" [src]="item.videoUrl" controls autoplay
                     (ended)="onVideoEnded(item)"></video>
             </div>
         </ng-container>
