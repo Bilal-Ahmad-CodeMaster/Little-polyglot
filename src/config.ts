@@ -1,5 +1,5 @@
-const BASE_URL = "https://little-polyglot-backend.onrender.com/api";
-// const BASE_URL = "http://localhost:3000/api";
+// const BASE_URL = "https://little-polyglot-backend.onrender.com/api";
+const BASE_URL = "http://localhost:3000/api";
 
 
 export const API_CONFIG: Record<string, string> = {
