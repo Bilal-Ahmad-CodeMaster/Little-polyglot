@@ -20,8 +20,10 @@ export class BlogsComponent implements OnInit {
   itemsPerPage = 5;
   totalPages = 1;
   editingBlogId: string | null = null;
-  imagePreview: string | ArrayBuffer | null | undefined;
-  imageError: any;
+
+  selectedFiles: File[] = [];
+  imagePreviews: string[] = [];
+  existingImageUrls: string[] = [];
 
   constructor(private fb: FormBuilder, private api: ApiServicesService) { }
 
@@ -32,9 +34,11 @@ export class BlogsComponent implements OnInit {
 
     this.blogForm = this.fb.group({
       title: ['', Validators.required],
+      subTitle: [''],
       category: ['Wychowanie', Validators.required],
       description: ['', Validators.required],
-      image: [null, Validators.required]
+      subDescription: [''],
+      imagesGallery: [null]
     });
 
     this.fetchBlogs();
@@ -43,7 +47,6 @@ export class BlogsComponent implements OnInit {
   fetchBlogs(): void {
     this.api.getBlogs().subscribe((res: any) => {
       this.blogs = res.data;
-      console.log(res);
       this.updatePagination();
     });
   }
@@ -75,59 +78,75 @@ export class BlogsComponent implements OnInit {
   }
 
   addBlog(): void {
-    this.blogForm.patchValue({
-      category: 'Wychowanie',
-    });
+    this.blogForm.reset({ category: 'Wychowanie' });
     this.isEditMode = false;
     this.editingBlogId = null;
-    this.imagePreview = null;
+    this.selectedFiles = [];
+    this.imagePreviews = [];
+    this.existingImageUrls = [];
     this.showModal = true;
   }
 
   editBlog(blog: any): void {
     this.blogForm.patchValue({
       title: blog.title,
+      ubTitle: blog.ubTitle || '',
       category: blog.category,
       description: blog.description,
-      image: null // reset file input
+      subDescription: blog.subDescription || ''
     });
 
-    // Remove image validator in edit mode
-    this.blogForm.get('image')?.clearValidators();
-    this.blogForm.get('image')?.updateValueAndValidity();
-
+    this.existingImageUrls = blog.imagesGallery?.map((img: any) => img.imageUrl) || [];
+    console.log(blog);
+    this.selectedFiles = [];
+    this.imagePreviews = [];
     this.isEditMode = true;
     this.editingBlogId = blog._id;
-    this.imagePreview = blog.image || null;
     this.showModal = true;
   }
+
   closeModal(): void {
     this.blogForm.reset();
+    this.selectedFiles = [];
+    this.imagePreviews = [];
+    this.existingImageUrls = [];
     this.showModal = false;
   }
 
-
   onImageChange(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.blogForm.patchValue({ image: file });
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      this.selectedFiles.push(file);
 
       const reader = new FileReader();
       reader.onload = () => {
-        this.imagePreview = reader.result;
+        this.imagePreviews.push(reader.result as string);
       };
       reader.readAsDataURL(file);
     }
   }
 
+  removeNewImage(index: number): void {
+    this.selectedFiles.splice(index, 1);
+    this.imagePreviews.splice(index, 1);
+  }
+
+  removeExistingImage(url: string): void {
+    this.existingImageUrls = this.existingImageUrls.filter(img => img !== url);
+  }
 
   submitBlog(): void {
     const formData = new FormData();
     formData.append('title', this.blogForm.value.title);
+    formData.append('ubTitle', this.blogForm.value.ubTitle || '');
     formData.append('category', this.blogForm.value.category);
     formData.append('description', this.blogForm.value.description);
-    if (this.blogForm.value.image) {
-      formData.append('image', this.blogForm.value.image);
+    formData.append('subDescription', this.blogForm.value.subDescription || '');
+    formData.append('existingImageUrls', JSON.stringify(this.existingImageUrls));
+
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      formData.append('imagesGallery', this.selectedFiles[i]);
     }
 
     if (this.isEditMode && this.editingBlogId) {
