@@ -5,7 +5,10 @@
       class="max-w-[87%] max-[1440px]:max-w-[100%] max-[1260px]:mx-5 mx-auto flex items-center justify-between h-full">
       <!-- Logo and brand -->
       <div class="flex items-center space-x-2 cursor-pointer" routerLink="/">
-        <img src="../../../../../public/logo.svg" alt="Logo" class="w-28 h-auto" />
+        <img
+          src="../../../../../public/logo.svg"
+          alt="Logo"
+          class="w-28 h-auto" />
       </div>
 
       <!-- Nav items -->
@@ -15,45 +18,81 @@
           <!-- Dropdown with icon -->
           <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
             <div class="flex items-center space-x-1 hover:text-primary">
-              <button class="font-bold leading-0.5 cursor-pointer" routerLink="/courses">
-                Programs
+              <button
+                class="font-bold leading-0.5 cursor-pointer"
+                routerLink="/courses">
+                Programy
               </button>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
-                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round"
+              <svg
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 15 14"
+                fill="none">
+                <path
+                  d="M4 5.25L7.5 8.75L11 5.25"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </div>
-            <div class="hidden group-hover:block absolute bg-white shadow-md mt-9 right-[-100px] rounded w-fit z-50">
-              <a routerLink="/courses/english-for-children-3-6" class="block px-4 py-2 hover:text-primary">English for
-                children 3-6 years old</a>
-              <a routerLink="/courses/english-for-children-7-10" class="block px-4 py-2 hover:text-primary">English for
-                children 7-10 years old</a>
-              <a routerLink="/courses/english-for-children-11-14" class="block px-4 py-2 hover:text-primary">English for
-                youth 11-14 years old</a>
-              <a routerLink="/courses/english-for-children-14-19" class="block px-4 py-2 hover:text-primary">English for
-                young people 15-19 years old</a>
+            <div
+              class="hidden group-hover:block absolute bg-white shadow-md mt-9 right-[-100px] rounded w-fit z-50">
+              <a
+                routerLink="/courses/english-for-children-3-6"
+                class="block px-4 py-2 hover:text-primary"
+                >Angielski dla dzieci 3–6 lat</a
+              >
+              <a
+                routerLink="/courses/english-for-children-7-10"
+                class="block px-4 py-2 hover:text-primary"
+                >Angielski dla dzieci 7–10 lat</a
+              >
+              <a
+                routerLink="/courses/english-for-children-11-14"
+                class="block px-4 py-2 hover:text-primary"
+                >Angielski dla młodzieży 11–14 lat</a
+              >
+              <a
+                routerLink="/courses/english-for-children-14-19"
+                class="block px-4 py-2 hover:text-primary"
+                >Angielski dla młodzieży 15–19 lat</a
+              >
             </div>
           </li>
 
           <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
             <div class="flex items-center space-x-1 hover:text-primary">
-              <button class="font-bold leading-0.5 cursor-pointer" routerLink="/schools">
-                Our Campuses
+              <button
+                class="font-bold leading-0.5 cursor-pointer"
+                routerLink="/schools">
+                Nasze Kampusy
               </button>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
-                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round"
+              <svg
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 15 14"
+                fill="none">
+                <path
+                  d="M4 5.25L7.5 8.75L11 5.25"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </div>
             <div
               class="absolute mt-9 z-50 bg-white rounded-md shadow-lg p-2 hidden group-hover:block transition-all duration-300">
-              <div [ngClass]="{
+              <div
+                [ngClass]="{
                   'grid grid-cols-2 gap-2 w-max ': branches?.length > 5,
                   'flex flex-col min-w-[240px] right-0': branches?.length <= 5
-                }" class="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
-                <a *ngFor="let branch of branches" [routerLink]="['/schools']" [queryParams]="{ branch: branch.region }"
+                }"
+                class="max-h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
+                <a
+                  *ngFor="let branch of branches"
+                  [routerLink]="['/schools']"
+                  [queryParams]="{ branch: branch.region }"
                   class="block px-4 py-2 text-sm text-gray-700 hover:text-primary rounded transition-colors duration-200 whitespace-nowrap">
                   {{ branch.region }}
                 </a>
@@ -61,156 +100,114 @@
             </div>
           </li>
 
-          <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
-            <a routerLink="/method" class="">Our Approach</a>
+          <li
+            class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
+            <a routerLink="/method" class="">Nasze podejście</a>
           </li>
           <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
             <div class="flex items-center space-x-1 hover:text-primary">
-              <button class="font-bold leading-0.5 cursor-pointer" routerLink="/parent">
-                Parent Resources
+              <button
+                class="font-bold leading-0.5 cursor-pointer"
+                routerLink="/parent">
+                Zasoby dla rodziców
               </button>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
-                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round"
+              <svg
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 15 14"
+                fill="none">
+                <path
+                  d="M4 5.25L7.5 8.75L11 5.25"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </div>
-            <div class="hidden group-hover:flex absolute bg-white shadow-md mt-9 right-[-130px] rounded w-fit z-50">
+            <div
+              class="hidden group-hover:flex absolute bg-white shadow-md mt-9 right-[-130px] rounded w-fit z-50">
               <div>
-                <a routerLink="/registration/applicationForm" class="block px-4 py-2 hover:text-primary">Sign Up your
-                  child to Polyglot Kids</a>
-
-                <a routerLink="/parent/smart-parent-academy" class="block px-4 py-2 hover:text-primary">Smart Parent
-                  Academy</a>
-
-                <a href="/assets/faq_2.pdf" download class="block px-4 py-2 hover:text-primary">FAQ</a>
+                <a
+                  routerLink="/registration/applicationForm"
+                  class="block px-4 py-2 hover:text-primary"
+                  >Zapisz swoje dziecko do Polyglot Kids</a
+                >
+                <a
+                  routerLink="/parent/smart-parent-academy"
+                  class="block px-4 py-2 hover:text-primary"
+                  >Akademia Mądrego Rodzica</a
+                >
+                <a
+                  href="/assets/faq_2.pdf"
+                  download
+                  class="block px-4 py-2 hover:text-primary"
+                  >FAQ</a
+                >
               </div>
             </div>
           </li>
+
           <li class="relative py-10 min-[1440px]:px-2 group cursor-pointer">
             <div class="flex items-center space-x-1 hover:text-primary">
-              <button class="font-bold leading-0.5 cursor-pointer" routerLink="/blogs">
-                Articles
+              <button
+                class="font-bold leading-0.5 cursor-pointer"
+                routerLink="/blogs">
+                Artykuły
               </button>
-              <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 14" fill="none">
-                <path d="M4 5.25L7.5 8.75L11 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round"
+              <svg
+                class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 15 14"
+                fill="none">
+                <path
+                  d="M4 5.25L7.5 8.75L11 5.25"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </div>
             <div
               class="hidden group-hover:flex absolute bg-white flex-col shadow-md mt-9 right-[-100px] rounded w-fit z-50">
-              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary">Education</a>
-              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary">Creative learning</a>
-              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary">Interesting places</a>
+              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary"
+                >Edukacja</a
+              >
+              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary"
+                >Kreatywna nauka</a
+              >
+              <a routerLink="/blogs" class="block px-4 py-2 hover:text-primary"
+                >Ciekawe miejsca</a
+              >
             </div>
           </li>
 
-          <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
-            <a routerLink="" routerLink="/about">About us</a>
+          <li
+            class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
+            <a routerLink="" routerLink="/about">O nas</a>
           </li>
-          <li class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
-            <a routerLink="" routerLink="/contact">Contact</a>
+          <li
+            class="py-10 min-[1440px]:px-2 font-bold leading-0.5 hover:text-primary">
+            <a routerLink="" routerLink="/contact">Kontakt</a>
           </li>
         </ul>
       </nav>
+
       <!-- Show button only if user is logged in or not -->
       <ng-container *ngIf="isLoggedIn !== null">
-        <button *ngIf="isLoggedIn" [routerLink]="'/adminPanel'"
+        <button
+          *ngIf="isLoggedIn"
+          [routerLink]="'/adminPanel'"
           class="bg-primary text-white font-bold text-sm px-10 py-3.5 max-[1260px]:px-6 max-[1260px]:py-2.5 rounded-full shadow-md hover:bg-primary-hover">
-          Admin Panel
+          Panel Administratora
         </button>
 
-        <button *ngIf="!isLoggedIn" [routerLink]="'/login'"
+        <button
+          *ngIf="!isLoggedIn"
+          [routerLink]="'/login'"
           class="bg-primary text-white font-bold text-sm px-10 py-3.5 max-[1260px]:px-6 max-[1260px]:py-2.5 rounded-full shadow-md hover:bg-primary-hover">
-          Log in
+          Zaloguj się
         </button>
       </ng-container>
     </div>
   </div>
 </header>
-<!-- Mobile Header -->
-<div class="w-full lg:hidden">
-  <header
-    class="flex max-h-[88px] items-center justify-between fixed px-5 py-3 w-full bg-primary-bg m-auto min-[1024px]:hidden max-[500px]:px-3 max-[500px]:py-2"
-    style="z-index: 1000">
-    <button aria-label="Menu" class="text-2xl cursor-pointer max-[500px]:text-xl" (click)="toggleMobileMenu()">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="flex items-center space-x-2 max-[500px]:space-x-1 hover:text-primary">
-      <img src="../../../../../public/logo.png" alt="Logo" class="w-28 md:w-36 h-auto" />
-    </div>
-
-    <ng-container *ngIf="isLoggedIn !== null">
-      <button *ngIf="isLoggedIn" [routerLink]="'/adminPanel'"
-        class="bg-primary text-white font-bold text-sm px-10 py-3.5 max-[1260px]:px-6 max-[1260px]:py-2.5 rounded-full shadow-md hover:bg-primary-hover">
-        Admin Panel
-      </button>
-
-      <button *ngIf="!isLoggedIn" [routerLink]="'/login'"
-        class="bg-primary text-white font-bold text-sm px-10 py-3.5 max-[1260px]:px-6 max-[1260px]:py-2.5 rounded-full shadow-md hover:bg-primary-hover">
-        Log in
-      </button>
-    </ng-container>
-  </header>
-
-  <!-- Mobile Menu Content (Toggleable) -->
-  <div *ngIf="isMobileMenuOpen"
-    class="min-[1024px]:hidden fixed top-18 left-0 right-0 bottom-0 bg-white z-50 overflow-y-auto">
-    <!-- Close Button -->
-    <div class="w-full h-10 bg-primary-gray flex justify-end items-center px-4 pt-4">
-      <button aria-label="Close menu" (click)="closeMobileMenu()"
-        class="text-primary text-xxl font-bold rounded-full w-8 h-8 flex items-center justify-center leading-none">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 1L1 13M1 1L13 13" stroke="#EC268F" stroke-width="2px" stroke-linecap="round"
-            stroke-linejoin="round" fill="none"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Menu Links (Main Menu) -->
-    <main *ngIf="!activeSubmenu" class="bg-white flex-grow p-5 space-y-4 text-black font-semibold text-sm leading-6">
-      <a class="cursor-pointer hover:text-primary flex justify-between items-center w-full"
-        (click)="openSubmenu('courses')">
-        <span>Programs</span>
-        <i class="fas fa-chevron-right text-sm"></i>
-      </a>
-
-      <a class="cursor-pointer hover:text-primary flex justify-between items-center w-full"
-        (click)="openSubmenu('schools')">
-        <span>Our Campuses</span>
-        <i class="fas fa-chevron-right text-sm"></i>
-      </a>
-
-      <a class="cursor-pointer hover:text-primary w-full block" routerLink="/method" (click)="closeMobileMenu()">Our
-        Approach</a>
-      <a class="cursor-pointer hover:text-primary flex justify-between items-center w-full"
-        (click)="openSubmenu('parent')">
-        <span>Parent Resources</span>
-        <i class="fas fa-chevron-right text-sm"></i>
-      </a>
-      <a class="cursor-pointer hover:text-primary flex justify-between items-center w-full"
-        (click)="openSubmenu('blog')">
-        <span>Articles</span>
-        <i class="fas fa-chevron-right text-sm"></i>
-      </a>
-      <a class="cursor-pointer hover:text-primary w-full block" routerLink="/about" (click)="closeMobileMenu()">About
-        us</a>
-      <a class="cursor-pointer hover:text-primary w-full block" routerLink="/contact"
-        (click)="closeMobileMenu()">Contact</a>
-    </main>
-
-    <!-- Submenu Panel -->
-    <main *ngIf="activeSubmenu" class="bg-white flex-grow p-5 space-y-4 text-black font-semibold text-sm leading-6">
-      <a class="cursor-pointer hover:text-primary flex gap-2 font-bold items-center w-full" (click)="backToMainMenu()">
-        <i class="fas fa-chevron-left text-[10px]"></i>
-        <span class="pb-1 text-xl text-primary-hover">Return</span>
-      </a>
-      <ng-container *ngFor="let item of getSubmenuItems(activeSubmenu)">
-        <a class="cursor-pointer hover:text-primary w-full block" [routerLink]="item.routerLink"
-          [queryParams]="{ branch: item.item }" (click)="closeMobileMenu()">{{ item.item }}</a>
-      </ng-container>
-    </main>
-  </div>
-</div>
