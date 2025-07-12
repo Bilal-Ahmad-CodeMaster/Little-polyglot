@@ -19,27 +19,28 @@ export class LanguageConvertorComponent {
   constructor(private shared: SharedServiceService) { }
   ngOnInit(): void {
     this.setSelectedLanguageFromCookie();
+
     const storedLang = localStorage.getItem("selectedLanguage");
     if (storedLang) {
       this.selectedLanguage = JSON.parse(storedLang);
     } else {
       this.selectedLanguage = { language: "Polish", country: "Poland" };
     }
+
     this.shared.languageConvert$.subscribe((e) => {
       this.LanguageModalOpen = e;
     });
-    // Check if the language was already set before using a cookie
-    if (!document.cookie.includes('langSet=true')) {
-      this.setGoogleTranslateCookie('pl');
-      document.cookie = `langSet=true; path=/; max-age=31536000; SameSite=Lax`; // 1 year
-      location.reload();
 
+    if (!document.cookie.includes('langSet=true')) {
+      const defaultLangCode = this.languageCodeMap[this.selectedLanguage.language] || 'pl';
+      this.setGoogleTranslateCookie(defaultLangCode);
+      document.cookie = `langSet=true; path=/; max-age=31536000; SameSite=Lax`;
+      location.reload();
     }
   }
 
   closeModal() {
-    this.LanguageModalOpen = false
-
+    this.LanguageModalOpen = false;
   }
 
 
@@ -147,9 +148,7 @@ export class LanguageConvertorComponent {
       );
     }
 
-    const selectedIndex = filtered.findIndex(item =>
-      this.isLangSelected(item)
-    );
+    const selectedIndex = filtered.findIndex(item => this.isLangSelected(item));
     if (selectedIndex > -1) {
       const [selectedItem] = filtered.splice(selectedIndex, 1);
       filtered.unshift(selectedItem);
@@ -158,34 +157,30 @@ export class LanguageConvertorComponent {
     return filtered;
   }
 
-
-
   selectLanguage(language: string, country: string) {
     this.isLoading = true;
     this.selectedLanguage = { language, country };
-
-    // Save to localStorage
     localStorage.setItem('selectedLanguage', JSON.stringify(this.selectedLanguage));
 
     const langCode = this.languageCodeMap[language];
     if (langCode) {
-      this.immediateTranslateWithFallback(langCode);
+      this.setGoogleTranslateCookie(langCode);
+      this.waitForTranslateDropdown(langCode);
     }
+    this.LanguageModalOpen = false;
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  
   }
-
-
-
 
   private setSelectedLanguageFromCookie(): void {
     const match = document.cookie.match(/googtrans=\/[a-zA-Z-]+\/([a-zA-Z-]+)/);
-    if (match && match[0]) {
-      const langCode = match[0];
-
-      // Find the matching language-country pair
+    if (match && match[1]) {
+      const langCode = match[1];
       const matchedItem = this.langList.find(item =>
         this.languageCodeMap[item.language] === langCode
       );
-
       if (matchedItem) {
         this.selectedLanguage = {
           language: matchedItem.language,
@@ -195,48 +190,36 @@ export class LanguageConvertorComponent {
     }
   }
 
-  private immediateTranslateWithFallback(langCode: string) {
-    // 1. Set cookie first (fastest method)
-    this.setGoogleTranslateCookie(langCode);
+  private waitForTranslateDropdown(langCode: string) {
+    const interval = setInterval(() => {
+      const selectEl = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (selectEl) {
+        selectEl.value = langCode;
+        selectEl.dispatchEvent(new Event('change'));
+        clearInterval(interval);
 
-    // 2. Try API method if available
-    if (window.google?.translate) {
-      try {
-        const selectEl = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-        if (selectEl) {
-          selectEl.value = langCode;
-          selectEl.dispatchEvent(new Event('change'));
-          selectEl.blur();
-        }
-      } catch (e) {
-        console.error('API translation failed:', e);
+        // Optional: trigger reload softly
+        setTimeout(() => {
+          const currentPath = window.location.pathname;
+          window.location.href = currentPath;
+        }, 800);
       }
-    }
-
-    // 3. Small delay then reload
-    setTimeout(() => {
-      window.location.reload();
-    }, 300);
+    }, 200);
   }
 
-  // THE MISSING METHOD - Add this to your component
   private setGoogleTranslateCookie(langCode: string): void {
     const cookieName = 'googtrans';
-    const cookieValue = `/en/${langCode}`; // Change 'en' to your source language if different
+    const cookieValue = `/en/${langCode}`;
     const expirationDate = new Date();
-    expirationDate.setFullYear(expirationDate.getFullYear() + 1); // 1 year expiration
-
-    // Set the cookie
+    expirationDate.setFullYear(expirationDate.getFullYear() + 1);
     document.cookie = `${cookieName}=${cookieValue}; expires=${expirationDate.toUTCString()}; path=/; SameSite=Lax`;
-
     console.log('Translation cookie set:', langCode);
   }
 
-
   onLanguage() {
     this.language = true;
-  }
 
+  }
 
 
 }

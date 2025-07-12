@@ -26,18 +26,6 @@
       });
     })();
   </script>
-
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        "google_translate_element"
-      );
-    }
-  </script>
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -45,46 +33,47 @@
 
 <body>
   <app-root></app-root>
-  <script>
-    window.googleTranslateElementInit = function () {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          includedLanguages:
-            "en,da,de,et,es,fr,hr,it,lv,lt,hu,nl,no,pl,pt,ro,sl,fi,sv,zh-CN,hi,ur,mt,ru",
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        "google_translate_element"
-      );
-      console.log("Google Translate initialized");
-    };
-  </script>
-  <script>
-    function setLanguage(langCode) {
-      let attempts = 0;
-      const maxAttempts = 10;
-      const interval = setInterval(() => {
-        const select = document.querySelector(".goog-te-combo");
-        if (select) {
-          console.log("Google Translate dropdown found");
-          select.value = langCode;
-          select.dispatchEvent(new Event("change"));
-          clearInterval(interval);
-        } else {
-          console.warn("Google Translate dropdown not found, retrying...");
-          attempts++;
-          if (attempts >= maxAttempts) {
+     <script>
+      window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages:
+              "en,ar,da,de,et,es,fr,hr,it,lv,lt,hu,nl,no,pl,pt,ro,sl,fi,sv,zh-CN,hi,ur,mt,ru",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+        console.log("Google Translate initialized");
+      };
+    </script>
+    
+    <script>
+      function setLanguage(langCode) {
+        let attempts = 0;
+        const maxAttempts = 40;
+        const interval = setInterval(() => {
+          const select = document.querySelector(".goog-te-combo");
+          if (select) {
+            console.log("Google Translate dropdown found");
+            select.value = langCode;
+            select.dispatchEvent(new Event("change"));
             clearInterval(interval);
-            console.error(
-              "Google Translate dropdown not found after max attempts."
-            );
+          } else {
+            console.warn("Google Translate dropdown not found, retrying...");
+            attempts++;
+            if (attempts >= maxAttempts) {
+              clearInterval(interval);
+              console.error(
+                "Google Translate dropdown not found after max attempts."
+              );
+            }
           }
-        }
-      }, 500);
-    }
-  </script>
+        }, 500);
+      }
+    </script>
 
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
