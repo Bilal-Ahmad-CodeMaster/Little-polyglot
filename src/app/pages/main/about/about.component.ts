@@ -7,18 +7,19 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor, FeatureComponent, OpenionCrousalComponent,RouterLink],
+  imports: [CommonModule, NgIf, NgFor, FeatureComponent, OpenionCrousalComponent, RouterLink],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
   currentIndex = 0;
   featureArray = [
-    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Development' },
-    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Authenticity' },
-    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Relationships' },
-    { iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Engagement' },
+    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Rozwój' },
+    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Autentyczność' },
+    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Relacje' },
+    { iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Zaangażowanie' },
   ];
+
 
 
   items = [

@@ -1,223 +1,261 @@
 <!-- Hero Section -->
 <div class="bg-[#f9fafb] py-10 px-4">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-
-        <!-- Side Image -->
-        <div class="md:col-span-1 flex justify-center md:justify-start">
-            <img src="../../../../../public/assets/methods/mike.jpg" alt="Students learning at Polyglot Kids"
-                class="w-full max-w-xs rounded-xl shadow-md object-cover" />
-        </div>
-
-        <!-- Main Content -->
-        <div class="md:col-span-2 space-y-6">
-            <!-- Breadcrumb -->
-            <nav class="text-sm text-gray-400 pt-2" aria-label="Breadcrumb">
-                <a routerLink="/"
-                    class="hover:underline font-medium text-primary cursor-pointer hover:text-primary-hover">Home</a>
-                <span>/</span>
-                <span class="text-gray-600 font-semibold">About</span>
-            </nav>
-
-            <!-- Header -->
-            <div class="flex items-center space-x-4">
-
-                <div>
-                    <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 leading-snug">About</h2>
-                    <p class="text-sm text-gray-500">Without dreams, we would never spread our wings.</p>
-                </div>
-            </div>
-
-            <!-- Description -->
-            <p class="text-gray-700 text-base leading-relaxed">
-                Without dreams, we would never spread our wings. Without action, we would never learn to fly.
-                Without school, we would never be able to share what gives us wings.
-            </p>
-        </div>
+  <div
+    class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+    <!-- Side Image -->
+    <div class="md:col-span-1 flex justify-center md:justify-start">
+      <img
+        src="../../../../../public/assets/methods/mike.jpg"
+        alt="Students learning at Polyglot Kids"
+        class="w-full max-w-xs rounded-xl shadow-md object-cover" />
     </div>
+
+    <!-- Main Content -->
+    <div class="md:col-span-2 space-y-6">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-400 pt-2" aria-label="Breadcrumb">
+        <a
+          routerLink="/"
+          class="hover:underline font-medium text-primary cursor-pointer hover:text-primary-hover"
+          >Strona główna</a
+        >
+        <span>/</span>
+        <span class="text-gray-600 font-semibold">O nas</span>
+      </nav>
+
+      <!-- Header -->
+      <div class="flex items-center space-x-4">
+        <div>
+          <h2 class="text-2xl sm:text-4xl font-bold text-gray-800 leading-snug">
+            O nas
+          </h2>
+          <p class="text-sm text-gray-500">
+            Bez marzeń nigdy nie rozwinęlibyśmy skrzydeł.
+          </p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="text-gray-700 text-base leading-relaxed">
+        Bez marzeń nigdy nie rozwinęlibyśmy skrzydeł. Bez działania nigdy nie
+        nauczylibyśmy się latać. Bez szkoły nigdy nie moglibyśmy dzielić się
+        tym, co daje nam skrzydła.
+      </p>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
 
 <app-feature [featureArray]="featureArray"></app-feature>
 
-
 <main class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-center text-2xl font-normal mb-6">
-        Who creates Polyglot Kids?
-    </h1>
-    <p class="text-start text-sm max-w-3xl mx-auto mb-6 leading-relaxed">
-        Polyglot Kids is an English language school that was created out of a passion for teaching, a need for
-        development, and authentic contact with children and young people. School branches throughout Poland are created
-        by people who hold these values close.
-        <br />
-        We cooperate with franchisees who create a space friendly for children's development. Our methodologists support
-        teachers in improving their work and create ambitious educational materials. Teachers with passion, commitment
-        and empathy conduct classes, focusing on authentic contact with students. We invite parents who care about the
-        comprehensive development of their children, but above all children, whose colorful world drives us to action.
-    </p>
+  <h1 class="text-center text-2xl font-normal mb-6">
+    Kto tworzy Polyglot Kids?
+  </h1>
+  <p class="text-start text-sm max-w-3xl mx-auto mb-6 leading-relaxed">
+    Polyglot Kids to szkoła języka angielskiego, która powstała z pasji do
+    nauczania, potrzeby rozwoju oraz autentycznego kontaktu z dziećmi i
+    młodzieżą. Oddziały szkoły w całej Polsce tworzą osoby, którym te wartości
+    są bliskie.
+    <br />
+    Współpracujemy z franczyzobiorcami, którzy tworzą przestrzeń przyjazną
+    rozwojowi dzieci. Nasi metodycy wspierają nauczycieli w doskonaleniu pracy
+    oraz tworzą ambitne materiały edukacyjne. Nauczyciele z pasją,
+    zaangażowaniem i empatią prowadzą zajęcia, koncentrując się na autentycznym
+    kontakcie z uczniami. Zapraszamy rodziców, którym zależy na wszechstronnym
+    rozwoju ich dzieci, a przede wszystkim dzieci, których kolorowy świat
+    napędza nas do działania.
+  </p>
 
-    <!-- Carousel -->
-    <div class="max-w-3xl max-h-[468px] mx-auto mt-10 relative">
-        <ng-container *ngIf="items[currentIndex] as item" class="max-w-3xl max-h-[468px]">
-            <!-- BANNER -->
-            <img *ngIf="item.type === 'banner'" [src]="item.thumbnail" class="max-w-3xl max-h-[468px] rounded-lg object-cover"
-                alt="Banner" />
+  <!-- Carousel -->
+  <div class="max-w-3xl max-h-[468px] mx-auto mt-10 relative">
+    <ng-container
+      *ngIf="items[currentIndex] as item"
+      class="max-w-3xl max-h-[468px]">
+      <!-- BANNER -->
+      <img
+        *ngIf="item.type === 'banner'"
+        [src]="item.thumbnail"
+        class="max-w-3xl max-h-[468px] rounded-lg object-cover"
+        alt="Baner" />
 
-            <!-- VIDEO -->
-            <div *ngIf="item.type === 'video'" class="relative max-w-3xl max-h-[468px]">
-                <img *ngIf="!item.playing" [src]="item.thumbnail" class="w-full rounded-lg object-cover cursor-pointer max-w-3xl max-h-[468px]"
-                    (click)="showVideo(item)" />
-                <button *ngIf="!item.playing" (click)="showVideo(item)"
-                    class="max-w-3xl max-h-[468px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
-                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"></path>
-                    </svg>
-                </button>
-                <video *ngIf="item.playing" class="max-w-3xl max-h-[468px] w-full rounded-lg" [src]="item.videoUrl" controls autoplay
-                    (ended)="onVideoEnded(item)"></video>
-            </div>
-        </ng-container>
+      <!-- VIDEO -->
+      <div
+        *ngIf="item.type === 'video'"
+        class="relative max-w-3xl max-h-[468px]">
+        <img
+          *ngIf="!item.playing"
+          [src]="item.thumbnail"
+          class="w-full rounded-lg object-cover cursor-pointer max-w-3xl max-h-[468px]"
+          (click)="showVideo(item)" />
+        <button
+          *ngIf="!item.playing"
+          (click)="showVideo(item)"
+          class="max-w-3xl max-h-[468px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
+          <svg
+            class="w-8 h-8 text-primary"
+            fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+        <video
+          *ngIf="item.playing"
+          class="max-w-3xl max-h-[468px] w-full rounded-lg"
+          [src]="item.videoUrl"
+          controls
+          autoplay
+          (ended)="onVideoEnded(item)"></video>
+      </div>
+    </ng-container>
 
-        <!-- Controls -->
-        <nav class="flex justify-center items-center space-x-6 mt-6 text-primary text-sm select-none">
-            <button (click)="prev()" aria-label="Previous" class="focus:outline-none">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <ng-container *ngFor="let item; index as i of items">
-                <span class="w-3 h-3 rounded-full inline-block"
-                    [ngClass]="i === currentIndex ? 'bg-primary' : 'bg-gray-300'"></span>
-            </ng-container>
-            <button (click)="next()" aria-label="Next" class="focus:outline-none">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </nav>
-    </div>
+    <!-- Controls -->
+    <nav
+      class="flex justify-center items-center space-x-6 mt-6 text-primary text-sm select-none">
+      <button
+        (click)="prev()"
+        aria-label="Poprzedni"
+        class="focus:outline-none">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <ng-container *ngFor="let item; index as i; of: items">
+        <span
+          class="w-3 h-3 rounded-full inline-block"
+          [ngClass]="i === currentIndex ? 'bg-primary' : 'bg-gray-300'"></span>
+      </ng-container>
+      <button (click)="next()" aria-label="Następny" class="focus:outline-none">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </nav>
+  </div>
 </main>
 
-
-
-<main class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
-    <img alt="Two women posing for a photo, one wearing blue glasses and pink sweater, the other with blonde hair and green shirt"
-        class="rounded-lg w-full max-w-md object-cover" height="300"
-        src="https://storage.googleapis.com/a1aa/image/b1ac4653-607b-4f97-0b84-2105a9573504.jpg" width="400" />
-    <section class="max-w-xl">
-        <h1 class="text-2xl md:text-3xl font-normal mb-4 leading-snug">
-            How did Polyglot Kids come about?
-        </h1>
-        <p class="text-sm md:text-base leading-relaxed mb-4">
-            It all started in Warsaw’s Mokotów district, in a grey, inconspicuous building, where Joanna Zarańska
-            founded a language school, one of the first in Poland specializing in teaching English to children. After a
-            few weeks, it turned out that the appearance of the building had nothing to do with what was happening
-            inside. The classes were interesting, cheerful and colorful. Joanna’s enthusiasm combined with her own
-            program implemented during the course gave amazing results. The young students talked about the lessons as
-            if they were real adventures, full of puzzles, songs, rhymes and movement, increasingly using English words.
-        </p>
-        <p class="text-sm md:text-base leading-relaxed">
-            It was 1993, a supernova had just been discovered in the constellation of the Great Bear, and the Early
-            Stage language school debuted in a small Warsaw housing e state, innovative in terms of teaching methods,
-            opening children to the world, born under a lucky star.
-        </p>
-    </section>
+<main
+  class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+  <img
+    alt="Dwie kobiety pozujące do zdjęcia, jedna w niebieskich okularach i różowym swetrze, druga z blond włosami i zieloną koszulą"
+    class="rounded-lg w-full max-w-md object-cover"
+    height="300"
+    src="../../../../../public/assets/images/17.jpeg"
+    width="400" />
+  <section class="max-w-xl">
+    <h1 class="text-2xl md:text-3xl font-normal mb-4 leading-snug">
+      Jak powstało Polyglot Kids?
+    </h1>
+    <p class="text-sm md:text-base leading-relaxed mb-4">
+      Wszystko zaczęło się na warszawskim Mokotowie, w szarym, niepozornym budynku,
+      gdzie Joanna Zarańska założyła szkołę językową – jedną z pierwszych w Polsce
+      specjalizującą się w nauczaniu języka angielskiego dzieci. Po kilku tygodniach
+      okazało się, że wygląd budynku nie miał nic wspólnego z tym, co działo się w środku.
+      Zajęcia były interesujące, radosne i kolorowe. Entuzjazm Joanny w połączeniu z jej
+      autorskim programem wdrażanym podczas kursu przynosił niesamowite rezultaty.
+      Młodzi uczniowie opowiadali o lekcjach jak o prawdziwych przygodach, pełnych zagadek,
+      piosenek, rymowanek i ruchu, coraz częściej używając angielskich słów.
+    </p>
+    <p class="text-sm md:text-base leading-relaxed">
+      Był rok 1993, właśnie odkryto supernową w gwiazdozbiorze Wielkiej Niedźwiedzicy,
+      a szkoła językowa Early Stage zadebiutowała na małym warszawskim osiedlu –
+      innowacyjna pod względem metod nauczania, otwierająca dzieci na świat, urodzona pod szczęśliwą gwiazdą.
+    </p>
+  </section>
 </main>
 
 
 <main class="max-w-6xl mx-auto px-6 py-10">
-    <div class="flex flex-col-reverse md:flex-row md:items-start md:space-x-10">
-        <section class="md:flex-1 max-w-xl">
-            <h1 class="text-2xl md:text-3xl font-normal mb-6 leading-tight text-gray-900">
-                Can you have two right hands?
-            </h1>
-            <p class="text-sm md:text-base text-gray-900 mb-6 leading-relaxed">
-                It soon became clear that the school needed new people. But not ordinary English teachers, but
-                passionate, creative, cheerful teachers who loved working with children and ambitious challenges. This
-                is how Joanna's daughters joined the team: first Agnieszka, now known by her stage name Aga Zaryan, and
-                after a few years Tonia, who currently manages the entire Polyglot Kids company together with her
-                husband
-                Adam. For many years, the school operated as a small family business, gaining popularity and a wider
-                group of new students year by year.
-            </p>
-            <p class="text-sm md:text-base text-gray-900 leading-relaxed">
-                In 1997, it was time for a change. Joanna, at the urging of one of her parents, opened another branch of
-                the school, in Ursynów. At Agnieszka's initiative, a branch was established in Warsaw's Ochota district.
-                This is how Polyglot Kids's journey ar ound the capital began. Today, our schools operate throughout
-                Poland.
-            </p>
-        </section>
-        <section class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
-            <img alt="Portrait photo of three people: an older woman with short blonde hair and glasses wearing a pink top and scarf, a man with medium length blonde hair wearing a light blue shirt, and a woman with blonde hair wearing a teal shirt, all smiling"
-                class="rounded-lg max-w-full h-auto" height="300"
-                src="https://storage.googleapis.com/a1aa/image/b11b4efa-01df-4c06-be9c-6823a12e131f.jpg" width="400" />
-        </section>
-    </div>
+  <div class="flex flex-col-reverse md:flex-row md:items-start md:space-x-10">
+    <section class="md:flex-1 max-w-xl">
+      <h1
+        class="text-2xl md:text-3xl font-normal mb-6 leading-tight text-gray-900">
+        Czy można mieć dwie prawe ręce?
+      </h1>
+      <p class="text-sm md:text-base text-gray-900 mb-6 leading-relaxed">
+        Wkrótce okazało się, że szkoła potrzebuje nowych ludzi. Ale nie zwykłych nauczycieli angielskiego,
+        lecz pasjonatów – kreatywnych, radosnych nauczycieli, którzy kochają pracę z dziećmi i ambitne wyzwania.
+        W ten sposób do zespołu dołączyły córki Joanny: najpierw Agnieszka, dziś znana pod pseudonimem scenicznym
+        Aga Zaryan, a po kilku latach Tonia, która obecnie razem z mężem Adamem zarządza całą firmą Polyglot Kids.
+        Przez wiele lat szkoła działała jako mała, rodzinna firma, zyskując z roku na rok coraz większą popularność
+        i szersze grono uczniów.
+      </p>
+      <p class="text-sm md:text-base text-gray-900 leading-relaxed">
+        W 1997 roku nadszedł czas na zmiany. Joanna, za namową jednego z rodziców, otworzyła kolejny oddział szkoły – na Ursynowie.
+        Z inicjatywy Agnieszki powstał oddział na warszawskiej Ochocie. Tak rozpoczęła się podróż Polyglot Kids po stolicy.
+        Dziś nasze szkoły działają w całej Polsce.
+      </p>
+    </section>
+    <section
+      class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+      <img
+        alt="Zdjęcie portretowe trzech osób: starsza kobieta z krótkimi blond włosami i okularami, ubrana w różową bluzkę i szalik, mężczyzna ze średniej długości blond włosami w jasnoniebieskiej koszuli oraz kobieta z blond włosami w turkusowej bluzce – wszyscy uśmiechnięci"
+        class="rounded-lg max-w-full h-auto"
+        height="300"
+        src="../../../../../public/assets/images/11.jpeg"
+        width="400" />
+    </section>
+  </div>
 </main>
 
 
 <main class="max-w-6xl mx-auto px-4 py-10">
-    <div class="flex flex-col md:flex-row md:items-center md:space-x-10">
-        <div class="flex-shrink-0 md:w-1/2">
-            <img alt="Group of six smiling people sitting together with colorful background holding a yellow sign with Polish text"
-                class="rounded-md w-full h-auto object-cover" height="300"
-                src="https://storage.googleapis.com/a1aa/image/f0eed319-e6b7-400c-ba8e-0c2d1bde770d.jpg" width="500" />
-        </div>
-        <div class="mt-6 md:mt-0 md:w-1/2">
-            <h2 class="text-xl font-normal mb-4">
-                Small steps of big success
-            </h2>
-            <p class="text-sm leading-relaxed mb-4">
-                Our own textbooks, several years of experience, hundreds of ideas for interesting classes and enthusiasm
-                were the potential with which the school entered the new millennium. The New Year's Eve countdown began,
-                and with it the dynamic development of the company. Talented people joined the teaching staff, new
-                projects and branches were created. In 2005, Polyglot Kids was awarded the European Language Label for
-                innovation in teaching a foreign language for the first time. In the years 2007-2011, the school went
-                beyond the borders of Warsaw, appearing in the largest Polish cities. Currently, it operates in over 850
-                locations, teaching over 58,000 children.
-            </p>
-            <p class="text-sm leading-relaxed">
-                Apart from numerous awards and educational successes, the greatest reason for pride are the young
-                graduates of the school, leaving its walls with an excellent knowledge of English. Their openness to the
-                world and wide development prospects are the best motivation for further work. Since the beginning of
-                the school, children have inspired us the most.
-            </p>
-        </div>
+  <div class="flex flex-col md:flex-row md:items-center md:space-x-10">
+    <div class="flex-shrink-0 md:w-1/2">
+      <img
+        alt="Grupa sześciu uśmiechniętych osób siedzących razem na kolorowym tle, trzymających żółty znak z polskim tekstem"
+        class="rounded-md w-full h-auto object-cover"
+        height="300"
+        src="../../../../../public/assets/images/16.jpeg"
+        width="500" />
     </div>
+    <div class="mt-6 md:mt-0 md:w-1/2">
+      <h2 class="text-xl font-normal mb-4">Małe kroki wielkiego sukcesu</h2>
+      <p class="text-sm leading-relaxed mb-4">
+        Własne podręczniki, wieloletnie doświadczenie, setki pomysłów na ciekawe zajęcia i entuzjazm
+        były potencjałem, z jakim szkoła weszła w nowe tysiąclecie. Rozpoczęło się sylwestrowe odliczanie,
+        a wraz z nim dynamiczny rozwój firmy. Do zespołu nauczycieli dołączyli utalentowani ludzie,
+        powstały nowe projekty i oddziały. W 2005 roku Polyglot Kids po raz pierwszy otrzymało
+        Europejski Znak Innowacyjności w Nauczaniu Języków Obcych. W latach 2007–2011 szkoła wyszła poza
+        granice Warszawy, pojawiając się w największych miastach Polski. Obecnie działa w ponad 850 lokalizacjach,
+        ucząc ponad 58 000 dzieci.
+      </p>
+      <p class="text-sm leading-relaxed">
+        Poza licznymi nagrodami i sukcesami edukacyjnymi, największym powodem do dumy są młodzi absolwenci szkoły,
+        opuszczający jej mury z doskonałą znajomością języka angielskiego. Ich otwartość na świat i szerokie
+        perspektywy rozwoju są najlepszą motywacją do dalszej pracy. Od początku istnienia szkoły to dzieci
+        inspirowały nas najbardziej.
+      </p>
+    </div>
+  </div>
 </main>
 
 
 <app-openion-crousal></app-openion-crousal>
 
-
-<main class="flex flex-col lg:flex-row gap-6 justify-center mx-10  lg:mx-0">
-    <div class=" bg-[#ebf7ff] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
-        <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
-            Do you know English well?
-
-        </h2>
-        <p class="text-[#4B4B5B] text-medium md:text-base font-semibold mb-8">
-            Apply for the Polyglot Kids Lecturer position!
-        </p>
-        <button
-            class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
-            type="button">
-            Job for a lecturer
-        </button>
-    </div>
-    <div class=" bg-[#ffebf0] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
-        <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
-            Want to start your own school?
-
-        </h2>
-        <p class="text-[#4B4B5B] text-base font-semibold mb-8">
-            Join the franchisee community
-        </p>
-        <button
-            class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
-            type="button">
-            Franchise
-        </button>
-    </div>
-
+<main class="flex flex-col lg:flex-row gap-6 justify-center mx-10 lg:mx-0">
+  <div
+    class="bg-[#ebf7ff] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+    <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
+      Znasz dobrze angielski?
+    </h2>
+    <p class="text-[#4B4B5B] text-medium md:text-base font-semibold mb-8">
+      Aplikuj na stanowisko lektora w Polyglot Kids!
+    </p>
+    <button
+      class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
+      type="button">
+      Praca dla lektora
+    </button>
+  </div>
+  <div
+    class="bg-[#ffebf0] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+    <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
+      Chcesz założyć własną szkołę?
+    </h2>
+    <p class="text-[#4B4B5B] text-base font-semibold mb-8">
+      Dołącz do społeczności franczyzobiorców
+    </p>
+    <button
+      class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
+      type="button">
+      Franczyza
+    </button>
+  </div>
 </main>
+
