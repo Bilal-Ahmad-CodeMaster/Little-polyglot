@@ -1,130 +1,125 @@
 <main class="lg:px-24 px-5 min-h-screen bg-[#FAFAFC]">
-    <section>
-        <!-- Breadcrumb -->
-        <nav class="text-[15px] pt-10 ">
-            <a routerLink="/" class="text-primary font-semibold underline">
-                Home Page
-            </a>
-            <span routerLink="/schools" class="text-primary font-semibold underline cursor-pointer"><span
-                    class="mx-1.5 font-light">|</span>Registration</span>
-            <span class="text-black"><span class="mx-1.5 font-light">|</span>Application form</span>
-        </nav>
+  <section>
+    <!-- Breadcrumb -->
+    <nav class="text-[15px] pt-10 ">
+        <a routerLink="/" class="text-primary font-semibold underline">
+            Strona Główna
+        </a>
+        <span routerLink="/schools" class="text-primary font-semibold underline cursor-pointer"><span
+                class="mx-1.5 font-light">|</span>Rejestracja</span>
+        <span class="text-black"><span class="mx-1.5 font-light">|</span>Formularz zgłoszeniowy</span>
+    </nav>
 
-        <div class="mt-10 ">
-            <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-11 text-black">
-                Registration for the {{BrachData?.schoolDetail?.branchName|| "Polyglot Kids"}}
-            </h1>
-            <div class="flex gap-10 text-primary flex-col md:flex-row" *ngIf="BrachData">
-                <button class="cursor-pointer hover:text-[#894858]" (click)="isLocationModalOpen = true">Branch
-                    locations ></button>
-                <div *ngIf="isLocationModalOpen"
-                    class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
-                    <div
-                        class="bg-white rounded-lg shadow-lg max-w-[800px] h-[400px] w-full p-2 relative flex justify-center items-center flex-col">
-                        <button type="button" (click)="isLocationModalOpen = false"
-                            class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
+    <div class="mt-10 ">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-11 text-black">
+            Rejestracja do {{BrachData?.schoolDetail?.branchName|| "Polyglot Kids"}}
+        </h1>
+        <div class="flex gap-10 text-primary flex-col md:flex-row" *ngIf="BrachData">
+            <button class="cursor-pointer hover:text-[#894858]" (click)="isLocationModalOpen = true">Lokalizacje
+                oddziałów ></button>
+            <div *ngIf="isLocationModalOpen"
+                class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
+                <div
+                    class="bg-white rounded-lg shadow-lg max-w-[800px] h-[400px] w-full p-2 relative flex justify-center items-center flex-col">
+                    <button type="button" (click)="isLocationModalOpen = false"
+                        class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
 
-
-                        <iframe class="w-full h-full" loading="lazy" allowfullscreen [src]="globalIframeSrc"> </iframe>
-                    </div>
-
+                    <iframe class="w-full h-full" loading="lazy" allowfullscreen [src]="globalIframeSrc"> </iframe>
                 </div>
-
-                <button class="cursor-pointer hover:text-[#894858]" (click)="isContactModalOpen = true">Contact
-                    details &gt;</button>
-
-                <!-- Contact Modal -->
-                <div *ngIf="isContactModalOpen"
-                    class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
-                    <div
-                        class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative flex justify-center items-center flex-col">
-                        <button type="button" (click)="isContactModalOpen = false"
-                            class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
-                        <h2 class="text-xl font-bold mb-4">Contact Details</h2>
-                        <div class="mb-6 shadow-md rounded-md m-4 p-5 w-full text-gray-800">
-                            <h3 class="font-semibold mb-2 text-center">
-                                <i class="fas fa-user-tie mr-2 text-primary-hover"></i>
-                                Headmaster
-                            </h3>
-                            <p>
-                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
-                                <strong>Email:</strong> {{contactDetail.headmaster.email}}
-                            </p>
-                            <p>
-                                <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
-                                <strong>Location:</strong> {{contactDetail.headmaster.location}}
-                            </p>
-                            <p>
-                                <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
-                                <strong>Phone:</strong> {{contactDetail.headmaster.phone}}
-                            </p>
-                        </div>
-                        <div class="shadow-md rounded-md m-4 p-5 w-full text-gray-800">
-                            <h3 class="font-semibold mb-2 text-center">
-                                <i class="fas fa-building mr-2 text-primary-hover"></i>
-                                Headquarter
-                            </h3>
-                            <p>
-                                <i class="fas fa-envelope mr-2 text-gray-500"></i>
-                                <strong>Email:</strong> {{contactDetail.headquarter.email}}
-                            </p>
-                            <p>
-                                <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
-                                <strong>Location:</strong> {{contactDetail.headquarter.location}}
-                            </p>
-                            <p>
-                                <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
-                                <strong>Phone:</strong> {{contactDetail.headquarter.phone}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <button (click)="isAsideOpen = true" class="cursor-pointer hover:text-[#894858] md:hidden">See Price
-                    List>
-                </button>
             </div>
-        </div>
 
-    </section>
+            <button class="cursor-pointer hover:text-[#894858]" (click)="isContactModalOpen = true">Dane kontaktowe &gt;</button>
+
+            <!-- Contact Modal -->
+            <div *ngIf="isContactModalOpen"
+                class="fixed inset-0 z-50 flex items-center justify-center bg-[#00000096] cursor-auto">
+                <div
+                    class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative flex justify-center items-center flex-col">
+                    <button type="button" (click)="isContactModalOpen = false"
+                        class="absolute top-2 right-3 text-gray-500 hover:text-black text-2xl font-bold cursor-pointer">&times;</button>
+                    <h2 class="text-xl font-bold mb-4">Dane kontaktowe</h2>
+                    <div class="mb-6 shadow-md rounded-md m-4 p-5 w-full text-gray-800">
+                        <h3 class="font-semibold mb-2 text-center">
+                            <i class="fas fa-user-tie mr-2 text-primary-hover"></i>
+                            Dyrektor
+                        </h3>
+                        <p>
+                            <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                            <strong>Email:</strong> {{contactDetail.headmaster.email}}
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
+                            <strong>Lokalizacja:</strong> {{contactDetail.headmaster.location}}
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
+                            <strong>Telefon:</strong> {{contactDetail.headmaster.phone}}
+                        </p>
+                    </div>
+                    <div class="shadow-md rounded-md m-4 p-5 w-full text-gray-800">
+                        <h3 class="font-semibold mb-2 text-center">
+                            <i class="fas fa-building mr-2 text-primary-hover"></i>
+                            Centrala
+                        </h3>
+                        <p>
+                            <i class="fas fa-envelope mr-2 text-gray-500"></i>
+                            <strong>Email:</strong> {{contactDetail.headquarter.email}}
+                        </p>
+                        <p>
+                            <i class="fas fa-map-marker-alt mr-2 text-gray-500"></i>
+                            <strong>Lokalizacja:</strong> {{contactDetail.headquarter.location}}
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt mr-2 text-gray-500"></i>
+                            <strong>Telefon:</strong> {{contactDetail.headquarter.phone}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <button (click)="isAsideOpen = true" class="cursor-pointer hover:text-[#894858] md:hidden">Zobacz cennik
+                ></button>
+        </div>
+    </div>
+</section>
+
 
     <div class=" flex  gap-5 mt-10 pb-10">
-        <section class="lg:min-w-[70%] lg:max-w-[70%] md:max-w-[60%] max-w-full">
+       <section class="lg:min-w-[70%] lg:max-w-[70%] md:max-w-[60%] max-w-full">
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-                <!-- Student Data -->
+                <!-- Dane ucznia -->
                 <div class="w-full   mt-10 ">
                     <div class="w-full bg-white p-5 rounded-md shadow-md ">
-                        <h2 class="text-2xl font-bold mb-4">Student Data</h2>
+                        <h2 class="text-2xl font-bold mb-4">Dane ucznia</h2>
                         <div formGroupName="studentData">
-                            <!-- Student Name 1 -->
+                            <!-- Imię i nazwisko ucznia 1 -->
                             <div>
                                 <label for="studentName1" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Student Name
+                                    Imię i nazwisko ucznia
                                 </label>
                                 <input type="text" id="studentName1" formControlName="studentName1"
-                                    placeholder="Enter student name"
+                                    placeholder="Wprowadź imię i nazwisko ucznia"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                             </div>
 
-                            <!-- Student Name 2 -->
+                            <!-- Imię i nazwisko ucznia 2 -->
                             <div>
                                 <label for="studentName2" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Student Name
+                                    Imię i nazwisko ucznia
                                 </label>
                                 <input type="text" id="studentName2" formControlName="studentName2"
-                                    placeholder="Enter student name"
+                                    placeholder="Wprowadź imię i nazwisko ucznia"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                             </div>
 
-                            <!-- Year of Birth -->
+                            <!-- Rok urodzenia -->
                             <div>
                                 <label for="yearOfBirth" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Year of Birth
+                                    Rok urodzenia
                                 </label>
                                 <select id="yearOfBirth" formControlName="yearOfBirth"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition">
-                                    <option value="">Select year</option>
+                                    <option value="">Wybierz rok</option>
                                     <option value="2010">2010</option>
                                     <option value="2011">2011</option>
                                     <option value="2012">2012</option>
@@ -138,75 +133,74 @@
                                     <option value="2020">2020</option>
                                 </select>
                             </div>
-                            <!-- Select Facility -->
+                            <!-- Wybór placówki -->
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Student's school/kindergarten
+                                    Szkoła/przedszkole ucznia
                                 </label>
                                 <select formControlName="facility"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                                    <option value="">Select facility</option>
-                                    <option value="facilityA">Facility A</option>
-                                    <option value="facilityB">Facility B</option>
-                                    <option value="facilityC">Facility C</option>
-                                    <option value="homeschooling">Home Schooling</option>
-                                    <option value="facilityOther">Other Facility</option>
+                                    <option value="">Wybierz placówkę</option>
+                                    <option value="facilityA">Placówka A</option>
+                                    <option value="facilityB">Placówka B</option>
+                                    <option value="facilityC">Placówka C</option>
+                                    <option value="homeschooling">Edukacja domowa</option>
+                                    <option value="facilityOther">Inna placówka</option>
                                 </select>
                             </div>
 
-                            <!-- Home Schooling Fields -->
+                            <!-- Pola dla edukacji domowej -->
                             <div *ngIf="isHomeSchoolingSelected()" class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Level of Study</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Poziom nauczania</label>
                                     <input type="text" formControlName="levelOfStudy"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Address of the
-                                        Facility</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Adres placówki</label>
                                     <input type="text" formControlName="facilityAddress"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Location</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Lokalizacja</label>
                                     <input type="text" formControlName="facilityLocation"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                             </div>
 
-                            <!-- Other Facility Fields -->
+                            <!-- Pola dla innej placówki -->
                             <div *ngIf="isOtherFacilitySelected()" class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Type of Institution</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Typ instytucji</label>
                                     <select formControlName="institutionType"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
-                                        <option value="">Select type</option>
-                                        <option value="school">School</option>
-                                        <option value="kindergarten">Kindergarten</option>
-                                        <option value="other">Other</option>
+                                        <option value="">Wybierz typ</option>
+                                        <option value="school">Szkoła</option>
+                                        <option value="kindergarten">Przedszkole</option>
+                                        <option value="other">Inne</option>
                                     </select>
                                 </div>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label class="block text-sm font-semibold text-gray-700">Branch Number</label>
+                                        <label class="block text-sm font-semibold text-gray-700">Numer oddziału</label>
                                         <input type="text" formControlName="branchNumber"
                                             class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                     </div>
                                     <div>
-                                        <label class="block text-sm font-semibold text-gray-700">Facility Name</label>
+                                        <label class="block text-sm font-semibold text-gray-700">Nazwa placówki</label>
                                         <input type="text" formControlName="facilityName"
                                             class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Address</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Adres</label>
                                     <input type="text" formControlName="address"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-semibold text-gray-700">Location</label>
+                                    <label class="block text-sm font-semibold text-gray-700">Lokalizacja</label>
                                     <input type="text" formControlName="location"
                                         class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
@@ -214,35 +208,35 @@
                         </div>
                     </div>
 
-                    <!-- Parent Data -->
+                    <!-- Dane rodzica -->
                     <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
-                        <h2 class="text-2xl font-bold mb-4">Parent Data</h2>
+                        <h2 class="text-2xl font-bold mb-4">Dane rodzica</h2>
                         <div formGroupName="parentData">
                             <div>
                                 <label for="parentPhone" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Phone Number
+                                    Numer telefonu
                                 </label>
                                 <input type="tel" id="parentPhone" formControlName="parentPhone"
-                                    placeholder="Enter phone number"
+                                    placeholder="Wprowadź numer telefonu"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                             </div>
 
                             <div>
                                 <label for="parentEmail" class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Email Address
+                                    Adres e-mail
                                 </label>
                                 <input type="email" id="parentEmail" formControlName="parentEmail"
-                                    placeholder="Enter email"
+                                    placeholder="Wprowadź e-mail"
                                     class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                             </div>
 
-                            <!-- Additional Contact Persons -->
+                            <!-- Dodatkowe osoby kontaktowe -->
                             <div formArrayName="additionalContacts">
                                 <div *ngFor="let contact of additionalContacts.controls; let i = index"
                                     [formGroupName]="i">
                                     <div *ngIf="additionalContacts.length === 1" class="mt-6 border-t pt-6 relative">
                                         <h3 class="text-lg font-semibold mb-2 flex items-center">
-                                            Additional Contact Person
+                                            Dodatkowa osoba kontaktowa
                                         </h3>
                                         <div class="flex items-center gap-3 mb-2">
                                             <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1"
@@ -250,21 +244,16 @@
                                                 <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1"
                                                     aria-hidden="true"></i>
                                             </span>
-                                            <p class="m-0 ">Please remember to make sure you are
-                                                authorized to provide
-                                                your
-                                                contact information.</p>
+                                            <p class="m-0 ">Prosimy upewnić się, że masz uprawnienia do podawania danych kontaktowych tej osoby.</p>
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone
-                                                Number</label>
-                                            <input type="tel" formControlName="phone" placeholder="Enter phone number"
+                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Numer telefonu</label>
+                                            <input type="tel" formControlName="phone" placeholder="Wprowadź numer telefonu"
                                                 class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email
-                                                Address</label>
-                                            <input type="email" formControlName="email" placeholder="Enter email"
+                                            <label class="block text-sm font-semibold text-gray-700 mb-2">Adres e-mail</label>
+                                            <input type="email" formControlName="email" placeholder="Wprowadź e-mail"
                                                 class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" />
                                         </div>
                                     </div>
@@ -274,34 +263,32 @@
                             <button *ngIf="additionalContacts.length === 0" type="button" (click)="addContact()"
                                 class="mt-6 flex items-center text-primary-hover hover:text-primary font-semibold">
                                 <i class="fas fa-plus-circle mr-2"></i>
-                                Add Additional Contact Person
+                                Dodaj dodatkową osobę kontaktową
                             </button>
 
                             <button *ngIf="additionalContacts.length === 1" type="button" (click)="removeContact(0)"
                                 class="mt-6 flex items-center text-primary-hover hover:text-primary font-semibold">
                                 <i class="fas fa-minus-circle mr-2"></i>
-                                Remove Additional Contact Person
+                                Usuń dodatkową osobę kontaktową
                             </button>
                         </div>
                     </div>
 
 
-                    <!-- Comment -->
+                    <!-- Komentarz -->
                     <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
                         <label for="comment" class="block text-sm font-semibold text-gray-700 mb-2">
-                            Comment on the entry (optional)
+                            Komentarz do zgłoszenia (opcjonalny)
                         </label>
-                        <textarea id="comment" formControlName="comment" rows="4" placeholder="Enter your comment"
+                        <textarea id="comment" formControlName="comment" rows="4" placeholder="Wprowadź swój komentarz"
                             class="block w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"></textarea>
                     </div>
 
-                    <!-- Consents -->
+                    <!-- Zgody -->
                     <div class="w-full bg-white p-5 rounded-md shadow-md mt-10">
-                        <h3 class="text-lg font-bold mb-2">Stay in touch with us</h3>
+                        <h3 class="text-lg font-bold mb-2">Bądź z nami w kontakcie</h3>
                         <p class="mb-4 text-gray-700">
-                            Our branch is bustling with life, we organize workshops, picnics and other attractions. If
-                            you want
-                            to stay up to date, check the consents below. We promise not to spam!
+                            Nasz oddział tętni życiem, organizujemy warsztaty, pikniki i inne atrakcje. Jeśli chcesz być na bieżąco, zaznacz zgody poniżej. Obiecujemy nie spamować!
                         </p>
                         <div formGroupName="consents">
                             <div class="space-y-4">
@@ -310,7 +297,7 @@
                                         (change)="toggleAllConsents($event)"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentMarketing" class="block text-sm font-semibold text-gray-700">
-                                        I consent to marketing
+                                        Wyrażam zgodę na marketing
                                     </label>
                                 </div>
                                 <div class="flex items-start">
@@ -318,20 +305,14 @@
                                         formControlName="consentDataProcessing"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentDataProcessing" class="block text-sm text-gray-700">
-                                        I consent to the processing of my personal data by Polyglot Kid, i.e. name,
-                                        surname, e-mail
-                                        address and telephone number – for the purposes of marketing Polyglot Kid's own
-                                        products and
-                                        services.
+                                        Wyrażam zgodę na przetwarzanie przez Polyglot Kid moich danych osobowych, tj. imienia, nazwiska, adresu e-mail oraz numeru telefonu - w celach marketingowych własnych produktów i usług Polyglot Kid.
                                     </label>
                                 </div>
                                 <div class="flex items-start">
                                     <input type="checkbox" id="consentEmail" formControlName="consentEmail"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentEmail" class="block text-sm text-gray-700">
-                                        I consent to receiving Polyglot Kid marketing information via e-mail to the
-                                        e-mail address
-                                        and telephone number provided by me.
+                                        Wyrażam zgodę na otrzymywanie od Polyglot Kid informacji marketingowych drogą elektroniczną na podany przeze mnie adres e-mail i numer telefonu.
                                     </label>
                                 </div>
                                 <div class="flex items-start">
@@ -339,11 +320,7 @@
                                         formControlName="consentDirectMarketing"
                                         class="mt-1 mr-3 rounded border-gray-300 focus:ring-indigo-500" />
                                     <label for="consentDirectMarketing" class="block text-sm text-gray-700">
-                                        I consent to Polyglot Kid sending me direct marketing using telecommunications
-                                        terminal
-                                        equipment (telephone, tablet, computer connected to the Internet) to the
-                                        telephone number
-                                        and e-mail address provided by me.
+                                        Wyrażam zgodę na przesyłanie mi przez Polyglot Kid marketingu bezpośredniego przy użyciu telekomunikacyjnych urządzeń końcowych (telefon, tablet, komputer podłączony do Internetu) na podany przeze mnie numer telefonu i adres e-mail.
                                     </label>
                                 </div>
                             </div>
@@ -353,12 +330,10 @@
                                 <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1 flex"
                                     aria-hidden="true">
                                     <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
-                                        class=" hidden md:block">information</span>
+                                        class=" hidden md:block">informacja</span>
                                 </span>
                                 <p class="m-0">
-                                    We inform you that for the purpose of concluding an agreement regarding the Child's
-                                    participation in this course, the data contained in the above application will be
-                                    processed.
+                                    Informujemy, że w celu zawarcia umowy dotyczącej udziału Dziecka w niniejszym kursie, przetwarzane będą dane zawarte w powyższym zgłoszeniu.
 
                                 </p>
                             </div>
@@ -366,87 +341,73 @@
                                 <span class="material-icons text-gray-400 text-2xl flex-shrink-0 mt-1 flex"
                                     aria-hidden="true">
                                     <i class="fas fa-info-circle pr-1 flex-shrink-0 mt-1" aria-hidden="true"></i><span
-                                        class=" hidden md:block">information</span>
+                                        class=" hidden md:block">informacja</span>
                                 </span>
                                 <p class="m-0">
-                                    The application does not constitute a contract for the provision of an English
-                                    language course.
-                                    We will inform you about the next steps related to the application by e-mail. In
-                                    some of our
-                                    branches, organizing a group for a child may not be possible due to the availability
-                                    of rooms,
-                                    the availability of teachers, the schedule of lessons at the school and the number
-                                    of
-                                    applications.
+                                    Zgłoszenie nie stanowi umowy o świadczenie kursu języka angielskiego. O kolejnych krokach związanych ze zgłoszeniem poinformujemy mailowo. W niektórych naszych oddziałach zorganizowanie grupy dla dziecka może być niemożliwe ze względu na dostępność sal, dostępność nauczycieli, plan lekcji w szkole oraz liczbę zgłoszeń.
                                 </p>
                             </div>
                         </div>
                         <div class="flex justify-end mt-6">
                             <button type="submit"
                                 class="px-8 py-3 bg-primary-hover text-white font-semibold rounded-md hover:bg-primary transition">
-                                Submit a request
+                                Złóż zgłoszenie
                             </button>
                         </div>
                     </div>
                 </div>
             </form>
         </section>
+<aside class="min-w-full md:min-w-[39%] md:max-w-[39%] lg:min-w-[39px] lg:max-w-[39%] mt-20 hidden md:block">
+    <h2 class="text-lg font-bold mb-4">Zobacz cennik</h2>
+    <p class="text-[15px]">Różne ceny odpowiadają różnym opcjom kursów. Po zapisaniu otrzymasz zaproszenie na spotkanie kwalifikacyjne. Przy tworzeniu grupy bierzemy pod uwagę wiek dziecka oraz poziom znajomości języka.</p>
+    <div class="max-w-xl mx-auto space-y-4 mt-10">
+        <div *ngFor="let item of accordionItems; let i = index">
+            <button (click)="toggleItem(i)"
+                class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
+                <span class="font-semibold text-gray-700">{{ item.label }}</span>
+                <svg class="w-5 h-5 transform transition-transform duration-200"
+                    [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
 
-        <aside class="min-w-full md:min-w-[39%] md:max-w-[39%] lg:min-w-[39px] lg:max-w-[39%] mt-20 hidden md:block">
-            <h2 class="text-lg font-bold mb-4">See Price list</h2>
-            <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
-                receive an invitation
-                to a leveling
-                meeting. When creating a group, we take into account the child's age and language proficiency level.</p>
-            <div class="max-w-xl mx-auto space-y-4 mt-10">
-                <div *ngFor="let item of accordionItems; let i = index">
-                    <button (click)="toggleItem(i)"
-                        class="w-full text-left px-4 py-3 rounded-lg flex justify-between items-center transition">
-                        <span class="font-semibold text-gray-700">{{ item.label }}</span>
-                        <svg class="w-5 h-5 transform transition-transform duration-200"
-                            [class.rotate-180]="item.isOpen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
+            <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
 
-                    <div *ngIf="item.isOpen" class="mt-2 px-4 py-3 w-full  space-y-6">
+                <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
+                    shadow-md">
+                    <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                    <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
+                    </p>
 
-                        <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
-                            shadow-md">
-                            <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
-                            <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
-                            </p>
-
-                            <div class="text-sm text-gray-700 space-y-1">
-                                <p *ngIf="card.duration"><strong><span class="text-primary-hover">{{ card.duration
-                                            }}</span>
-                                    </strong> per week</p>
-                                <p *ngIf="card.durationInMinutes">or <strong><span class="text-primary-hover">{{
-                                            card.durationInMinutes
-                                            }}</span></strong> of English per week</p>
-                                <p *ngIf="card.totalClasses"><strong><span class="text-primary-hover">{{
-                                            card.totalClasses
-                                            }}</span>
-                                    </strong> per school year</p>
-                            </div>
-
-                            <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
-
-                            <h1 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
-                                card.pricePerMonth }}</h1>
-                            <p *ngIf="card.materialsFee" class="text-gray-600 text-md">{{ card.materialsFee }}</p>
-                        </div>
-
+                    <div class="text-sm text-gray-700 space-y-1">
+                        <p *ngIf="card.duration"><strong><span class="text-primary-hover">{{ card.duration
+                                    }}</span>
+                            </strong> tygodniowo</p>
+                        <p *ngIf="card.durationInMinutes">lub <strong><span class="text-primary-hover">{{
+                                    card.durationInMinutes
+                                    }}</span></strong> angielskiego tygodniowo</p>
+                        <p *ngIf="card.totalClasses"><strong><span class="text-primary-hover">{{
+                                    card.totalClasses
+                                    }}</span>
+                            </strong> w roku szkolnym</p>
                     </div>
 
+                    <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
+
+                    <h1 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">{{
+                        card.pricePerMonth }}</h1>
+                    <p *ngIf="card.materialsFee" class="text-gray-600 text-md">{{ card.materialsFee }}</p>
                 </div>
-            </div>
-            <div class="flex flex-col gap-10 mt-10 text-[12px]">
-                <p *ngFor="let item of BrachData.extraInfoModal">{{item}}</p>
 
             </div>
 
-        </aside>
+        </div>
+    </div>
+    <div class="flex flex-col gap-10 mt-10 text-[12px]">
+        <p *ngFor="let item of BrachData.extraInfoModal">{{item}}</p>
+    </div>
+</aside>
     </div>
 </main>
 

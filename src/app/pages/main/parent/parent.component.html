@@ -1,65 +1,72 @@
 <div class="relative overflow-hidden bg-[#FEF3F6] mb-20">
-    <div class="max-w-[1300px] mx-auto ">
-        <!-- Breadcrumb -->
-        <nav class="text-[15px] pt-10 px-5">
-            <a routerLink="/" class="text-primary font-semibold underline">
-                Home Page
-            </a>
-            <span class="text-black"><span class="mx-1.5 font-light">|</span>For the Parent</span>
-        </nav>
+  <div class="max-w-[1300px] mx-auto">
+    <!-- Breadcrumb -->
+    <nav class="text-[15px] pt-10 px-5">
+      <a routerLink="/" class="text-primary font-semibold underline">
+        Strona główna
+      </a>
+      <span class="text-black"
+        ><span class="mx-1.5 font-light">|</span>Dla Rodzica</span
+      >
+    </nav>
 
-        <!-- Content Area -->
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 h-full px-5">
-            <!-- Text Section -->
-            <div class="w-full mb-8 lg:mb-0">
-                <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug text-black">
-                    For the Parent
-                </h1>
-                <p class="text-[14px] text-black leading-relaxed">
-                    Mom, Dad - we invite you to actively participate in your child's language journey! Your support will
-                    play a big role in
-                    developing their language skills. We have prepared many technological conveniences and a knowledge
-                    base for you, which
-                    will be a guide on this journey. Let learning English become a fascinating adventure for the whole
-                    family!
-                </p>
-            </div>
+    <!-- Content Area -->
+    <div
+      class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 h-full px-5">
+      <!-- Text Section -->
+      <div class="w-full mb-8 lg:mb-0">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug text-black">
+          Dla Rodzica
+        </h1>
+        <p class="text-[14px] text-black leading-relaxed">
+          Mamo, Tato – zapraszamy Was do aktywnego udziału w językowej podróży
+          Waszego dziecka! Wasze wsparcie odegra ogromną rolę w rozwijaniu jego
+          umiejętności językowych. Przygotowaliśmy dla Was wiele
+          technologicznych udogodnień i bazę wiedzy, która będzie przewodnikiem
+          w tej podróży. Niech nauka angielskiego stanie się fascynującą
+          przygodą dla całej rodziny!
+        </p>
+      </div>
 
-            <!-- Image Section -->
-            <div class="w-[60%] flex justify-center pr-32">
-                <img src='../../../../../public/assets/parent/hero.jpg' alt="Hero image"
-                    class="w-full  object-contain" />
-            </div>
-        </div>
+      <!-- Image Section -->
+      <div class="w-[60%] flex justify-center pr-32">
+        <img
+          src="../../../../../public/assets/parent/13.jpeg"
+          alt="Obraz główny"
+          class="w-full object-contain" />
+      </div>
     </div>
-
-
+  </div>
 </div>
 
+<div class="px-4 py-10 bg-hero-section mb-10">
+  <h2 class="text-center text-black text-lg mb-8">Dla rodzica</h2>
 
-
-<div class="px-4 py-10 bg-hero-section mb-10  ">
-    <h2 class="text-center text-black text-lg mb-8">For the parent</h2>
-
-    <div class="parent-carousel-wrapper">
-        <div class="flex-wrap parent-carousel flex gap-6 justify-center max-w-6xl mx-auto transition-transform duration-300"
-            #carouselContainer>
-            <div *ngFor="let card of cards" class="bg-white rounded-md shadow-sm p-6 w-full sm:w-72 flex-shrink-0">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="p-2 rounded border border-primary text-primary-hover">
-                        <img [src]="card.icon" class="w-6 h-6" />
-                    </div>
-                    <h3 class="font-semibold text-black text-sm leading-tight">
-                        {{ card.titleLine1 }}<br />{{ card.titleLine2 }}
-                    </h3>
-                </div>
-                <p class="text-xs text-black mb-6 leading-tight">{{ card.description }}</p>
-                <a [routerLink]="card.link" class="text-primary font-semibold text-xs flex items-center gap-1">
-                    {{ card.linkText }} <i class="fas fa-external-link-alt text-[10px]"></i>
-                </a>
-            </div>
+  <div class="parent-carousel-wrapper">
+    <div
+      class="flex-wrap parent-carousel flex gap-6 justify-center max-w-6xl mx-auto transition-transform duration-300"
+      #carouselContainer>
+      <div
+        *ngFor="let card of cards"
+        class="bg-white rounded-md shadow-sm p-6 w-full sm:w-72 flex-shrink-0">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="p-2 rounded border border-primary text-primary-hover">
+            <img [src]="card.icon" class="w-6 h-6" />
+          </div>
+          <h3 class="font-semibold text-black text-sm leading-tight">
+            {{ card.titleLine1 }}<br />{{ card.titleLine2 }}
+          </h3>
         </div>
-
-
+        <p class="text-xs text-black mb-6 leading-tight">
+          {{ card.description }}
+        </p>
+        <a
+          [routerLink]="card.link"
+          class="text-primary font-semibold text-xs flex items-center gap-1">
+          {{ card.linkText }}
+          <i class="fas fa-external-link-alt text-[10px]"></i>
+        </a>
+      </div>
     </div>
+  </div>
 </div>

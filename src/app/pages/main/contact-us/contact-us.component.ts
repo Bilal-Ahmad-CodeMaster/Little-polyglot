@@ -5,7 +5,7 @@ import { FindSchoolsComponent } from "../../../components/find-schools/find-scho
 
 @Component({
   selector: 'app-contact-us',
-  imports: [ NgFor, NgIf, FindSchoolsComponent],
+  imports: [NgFor, NgIf, FindSchoolsComponent],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css'
 })
@@ -13,12 +13,13 @@ export class ContactUsComponent {
   dropdownOpen = false;
   selectedOptions: string[] = [];
   options: string[] = [
-    'Kindergertin',
-    '1st class',
-    '2nd-6th grade',
-    '7th-8th grade',
-    'High School'
+    'Przedszkole',
+    '1. klasa',
+    '2.–6. klasa',
+    '7.–8. klasa',
+    'Liceum'
   ];
+
   constructor(private sharedService: SharedServiceService) { }
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;

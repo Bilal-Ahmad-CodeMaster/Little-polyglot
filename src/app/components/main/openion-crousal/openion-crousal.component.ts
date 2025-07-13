@@ -14,26 +14,27 @@ export class OpenionCrousalComponent {
 
   reviews = [
     {
-      text: `Zuzia has been learning at Polyglot Kids since the 1st grade. Over 7 years, her confidence in speaking English has grown incredibly. We couldn't have made a better choice.`,
-      author: `Anna, mother of Zuzia (13 years old), Kraków`,
+      text: `Zuzia uczy się w Polyglot Kids od 1. klasy. Przez 7 lat jej pewność w mówieniu po angielsku niesamowicie wzrosła. Nie mogliśmy dokonać lepszego wyboru.`,
+      author: `Anna, mama Zuzi (13 lat), Kraków`,
     },
     {
-      text: `I was skeptical at first, but after enrolling my son in Grade 1, I quickly saw results. Polyglot Kids offers high-quality English education that goes beyond expectations.`,
-      author: `Michał, father of Kuba (8 years old), Gdańsk`,
+      text: `Na początku byłem sceptyczny, ale po zapisaniu syna do 1. klasy szybko zobaczyłem efekty. Polyglot Kids oferuje edukację angielskiego na najwyższym poziomie – przekracza oczekiwania.`,
+      author: `Michał, tata Kuby (8 lat), Gdańsk`,
     },
     {
-      text: `Starting English early with Polyglot Kids helped my daughter speak fluently and with ease. Now, in high school, she communicates confidently both at school and abroad.`,
-      author: `Tomasz, father of Lena (18 years old), Warsaw`,
+      text: `Wczesne rozpoczęcie nauki języka angielskiego w Polyglot Kids pomogło mojej córce mówić płynnie i swobodnie. Teraz, w liceum, z łatwością komunikuje się w szkole i za granicą.`,
+      author: `Tomasz, tata Leny (18 lat), Warszawa`,
     },
     {
-      text: `My daughter has been attending classes for 4 years now. One evening, she started speaking only English at home—it was the best proof that she’s really learning and enjoying it.`,
-      author: `Katarzyna, mother of Maja (11 years old), Wrocław`,
+      text: `Moja córka uczęszcza na zajęcia od 4 lat. Pewnego wieczoru zaczęła mówić w domu tylko po angielsku – to był najlepszy dowód, że naprawdę się uczy i że sprawia jej to radość.`,
+      author: `Katarzyna, mama Mai (11 lat), Wrocław`,
     },
     {
-      text: `After just one year at Polyglot Kids, my son was clearly ahead of his peers. The lessons are creative, age-appropriate, and actually fun for the children.`,
-      author: `Piotr, father of Franek (7 years old), Poznań`,
+      text: `Już po roku nauki w Polyglot Kids mój syn znacznie wyprzedzał rówieśników. Zajęcia są kreatywne, dostosowane do wieku i naprawdę sprawiają dzieciom przyjemność.`,
+      author: `Piotr, tata Franka (7 lat), Poznań`,
     },
   ];
+
   
 
   next() {

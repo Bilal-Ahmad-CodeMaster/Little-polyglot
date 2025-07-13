@@ -13,6 +13,7 @@ export class MainHeaderComponent {
   dropdown: string | null = null;
   branches: any
   isLoggedIn = false;
+  isMenuOpen = false;
   constructor(private api: ApiServicesService) { }
   ngOnInit(): void {
     this.api.getBranches().subscribe(

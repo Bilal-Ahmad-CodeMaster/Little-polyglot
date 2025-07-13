@@ -10,8 +10,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SmartParentAcademyComponent {
   featureArray = [
-    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Education Blog' },
-    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Parenting Webinars' },
-    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Valuable newsletter' },
+    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Blog edukacyjny' },
+    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Webinary dla rodziców' },
+    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Wartościowy newsletter' },
   ];
+
 }
