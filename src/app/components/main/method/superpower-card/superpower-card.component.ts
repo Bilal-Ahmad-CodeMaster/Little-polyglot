@@ -2,7 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-superpower-card',
-  imports: [CommonModule,NgIf],
+  imports: [CommonModule, NgIf],
   templateUrl: './superpower-card.component.html',
   styleUrl: './superpower-card.component.css'
 })

@@ -15,7 +15,7 @@ export class MethodComponent {
     {
       id: 'rime',
       title: 'Rym',
-      icon: '../../../../../public/assets/methods/book-saved.png',
+      icon: 'fa fa-book',
       alt: 'Różowa ikona przedstawiająca Rym z kropkami i liniami',
       subtitle: 'bo słowo po słowie zostaje w głowie',
       expandedText: `
@@ -27,7 +27,7 @@ Rymowanie rozwija słuch fonemowy, dzięki któremu dzieci uczą się poprawnej 
     {
       id: 'music',
       title: 'Muzyka',
-      icon: '../../../../../public/assets/methods/briefcase.svg',
+      icon: 'fa fa-music',
       alt: 'Różowa ikona przedstawiająca Muzykę z pionowymi owalnymi kształtami',
       subtitle: 'bo mózg lubi dobre rytmy',
       expandedText: `
@@ -41,7 +41,7 @@ Ponieważ nauka języka i melodii aktywuje te same struktury w mózgu, połącze
     {
       id: 'movement',
       title: 'Ruch',
-      icon: '../../../../../public/assets/methods/book.png',
+      icon: 'fa fa-feather',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo uwalnia energię do nauki',
       expandedText: `
@@ -55,7 +55,7 @@ Ruch nie tylko wspomaga zapamiętywanie, ale także rozwija wyobraźnię i kreat
     {
       id: 'relationships',
       title: 'Relacje',
-      icon: '../../../../../public/assets/methods/building.png',
+      icon: 'fa fa-people-arrows',
       alt: 'Różowa ikona przedstawiająca Rym z kropkami i liniami',
       subtitle: 'bo dają poczucie bezpieczeństwa',
       expandedText: `
@@ -71,7 +71,7 @@ Dzieci chcą być traktowane poważnie – to wzmacnia ich poczucie własnej war
     {
       id: 'cooperation',
       title: 'Współpraca',
-      icon: '../../../../../public/assets/methods/chart.png',
+      icon: 'fa fa-handshake',
       alt: 'Różowa ikona przedstawiająca Muzykę z pionowymi owalnymi kształtami',
       subtitle: 'bo razem możemy więcej',
       expandedText: `Dbamy o wszechstronny rozwój dzieci. Dlatego od początku łączymy pracę indywidualną z zadaniami w parach i grupach. Dzięki temu uczniowie mają wiele okazji do aktywnego używania angielskiego. Angażujemy wszystkie dzieci i zachęcamy je do interakcji. Tworzymy przestrzeń do wzajemnego wsparcia i świętowania małych sukcesów. Uczniowie odkrywają swoje talenty i uczą się wykorzystywać je dla dobra grupy. Wprowadzamy pozytywną rywalizację opartą na szacunku i docenieniu. W ten sposób zwiększamy motywację do nauki i pozytywnie wpływamy na samoocenę uczniów.`,
@@ -79,7 +79,7 @@ Dzieci chcą być traktowane poważnie – to wzmacnia ich poczucie własnej war
     {
       id: 'communication',
       title: 'Komunikacja',
-      icon: '../../../../../public/assets/methods/ftx-token-(ftt).png',
+      icon: 'fa fa-comments',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo uwalnia energię do nauki',
       expandedText: `Ruch to naturalna potrzeba dziecka, towarzysząca mu od pierwszych tygodni życia. Nawet podczas snu niemowlę zmienia pozycję w łóżeczku – dlatego często nazywamy je wiercipiętą. Wszystkie dzieci to kinestetycy – muszą być w ruchu. W ten sposób rozładowują energię, okazują emocje i – co ważne – przyswajają wiedzę. W układzie nerwowym istnieje bowiem sieć łącząca percepcję i aktywność ruchową. Jej skuteczność zależy od stopnia zaangażowania wszystkich zmysłów podczas nauki.
@@ -91,7 +91,7 @@ Ruch nie tylko wspomaga zapamiętywanie, ale także rozwija wyobraźnię i kreat
     {
       id: 'humor',
       title: 'Humor',
-      icon: '../../../../../public/assets/methods/huobi-token-(ht).png',
+      icon: '	fas fa-grin-beam',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo endorfiny i nauka to świetny duet',
       expandedText: `Uśmiech to jeden z pierwszych objawów radości u dziecka. To reakcja na sytuacje, w których czuje się szczęśliwe. To zasługa endorfin – hormonów szczęścia wydzielanych podczas śmiechu. Dlatego dziecko stymulowane śmiechem łatwiej przyswaja nowe umiejętności.
@@ -103,7 +103,7 @@ Humor uatrakcyjnia każdą lekcję. Wprowadzamy go w różny sposób – poprzez
     {
       id: 'creativity',
       title: 'Kreatywność',
-      icon: '../../../../../public/assets/methods/map.png',
+      icon: 'fa fa-lightbulb',
       alt: 'Różowa ikona przedstawiająca Rym z kropkami i liniami',
       subtitle: 'bo droga do celu powinna być ciekawa',
       expandedText: `Tworzymy atmosferę otwartości i bezpieczeństwa, dzięki której uczniowie chętnie dzielą się pomysłami. Uczestniczą w działaniach pobudzających kreatywność – tworzą projekty artystyczne, językowe i multimedialne, odgrywają scenki, wcielają się w role. Uczą się patrzeć z wielu perspektyw. Pobudzamy wyobraźnię za pomocą wizualizacji – zdjęć, obrazków, grafik wywołujących nieoczywiste skojarzenia. Często korzystamy z burzy mózgów. Dzięki temu uczniowie rozwijają kompetencje językowe z otwartością i odwagą.`,
@@ -111,7 +111,7 @@ Humor uatrakcyjnia każdą lekcję. Wprowadzamy go w różny sposób – poprzez
     {
       id: 'critical-thinking',
       title: 'Myślenie krytyczne',
-      icon: '../../../../../public/assets/methods/note.png',
+      icon: 'fa fa-brain',
       alt: 'Różowa ikona przedstawiająca Muzykę z pionowymi owalnymi kształtami',
       subtitle: 'bo pomaga zrozumieć świat',
       expandedText: `Przygotowujemy uczniów do samodzielnego, krytycznego myślenia. Różnorodne zadania inspirują do formułowania hipotez, szukania odpowiedzi, porównywania informacji i wyciągania wniosków. Zadając proste pytania, uruchamiamy refleksję nad światem i rozwojem osobistym. Stawiamy na analizę, dedukcję i podsumowania, by uczniowie potrafili formułować własne opinie. Uczymy struktur i strategii, dzięki którym mogą wyrażać swoje zdanie w sposób przemyślany i zrozumiały. Wszystko to wspiera rozwój językowy i komunikację.`,
@@ -119,7 +119,7 @@ Humor uatrakcyjnia każdą lekcję. Wprowadzamy go w różny sposób – poprzez
     {
       id: 'autonomy',
       title: 'Autonomia',
-      icon: '../../../../../public/assets/methods/ocean-protocol-(ocean).svg',
+      icon: 'fa fa-user-check',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo daje poczucie sprawczości',
       expandedText: `Budowanie samodzielności to jeden z celów naszej metody nauki angielskiego. Dlatego powierzamy uczniom odpowiedzialność dostosowaną do ich wieku i możliwości. To zwiększa zaangażowanie i poczucie satysfakcji. Dzięki regularnym zadaniom dzieci uczą się systematyczności i oceny postępów. Poprzez pracę w parach i grupach rozwijamy umiejętność samodzielnej korekty błędów i udzielania informacji zwrotnej. Nauczyciel zachęca do podejmowania ryzyka i wspiera w osiąganiu celów. Staje się towarzyszem w procesie edukacyjnym.`,
@@ -127,7 +127,7 @@ Humor uatrakcyjnia każdą lekcję. Wprowadzamy go w różny sposób – poprzez
     {
       id: 'spirality',
       title: 'Spiralność',
-      icon: '../../../../../public/assets/methods/ruler&pen.png',
+      icon: 'fa fa-circle-notch',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo pobudza rozwój i zapamiętywanie',
       expandedText: `Nauka to proces złożony i spiralny. Zapominanie to jego naturalna część, dlatego umożliwiamy uczniom powroty do wcześniej poznanych treści – w trakcie lekcji, po rozdziałach, na podsumowaniach. Nasza metoda współgra z naturalnym sposobem przyswajania wiedzy. Słownictwo i gramatyka pojawiają się stopniowo, w dostosowanej formie. W kolejnych latach uczniowie wracają do tematów, utrwalają je i rozbudowują. Z każdym etapem rosną ich kompetencje komunikacyjne.`,
@@ -135,7 +135,7 @@ Humor uatrakcyjnia każdą lekcję. Wprowadzamy go w różny sposób – poprzez
     {
       id: "Author-materials",
       title: "Materiały autorskie",
-      icon: "../../../../../public/assets/methods/wing-(wing).svg",
+      icon: 'fa fa-book-open',
       alt: 'Różowa ikona przedstawiająca Ruch z poziomymi owalnymi kształtami',
       subtitle: 'bo przyciągają uwagę jak magnes',
       expandedText: `Dzieci kochają książki. Zaczynają od etapu „do buzi”, a potem z zainteresowaniem je oglądają. Uczą się kolorów, kształtów, liczb. Starsze dzieci potrzebują silniejszych bodźców – dlatego nasze podręczniki są atrakcyjne wizualnie i bogate merytorycznie. To filar unikalnego programu Polyglot Kids.
