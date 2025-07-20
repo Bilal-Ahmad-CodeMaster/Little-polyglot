@@ -1,9 +1,9 @@
-<section class="px-8 md:px-24 py-10 bg-white">
+<section class=" md:px-24 md:py-10 py-2 bg-white">
   <div routerLink="/schools" class="cursor-pointer text-black hover:text-primary">
     ← Back to map
   </div>
-  <main class="flex flex-col gap-10 mt-14 bg-[#F3F5F8] p-5 md:p-10 rounded-lg">
-    <div class="w-full bg-[#42a6dd] text-white p-6 rounded-xl shadow-md">
+  <main class="flex flex-col gap-10 mt-3 md:mt-14 bg-[#F3F5F8]  md:p-10 md:rounded-lg">
+    <div class="w-full bg-[#42a6dd] text-white p-6 md:rounded-xl shadow-md">
       <!-- Title -->
       <h2 class="text-2xl md:text-5xl font-bold mb-4">
         {{ BrachData.schoolDetail.titleToShowBranchFor }}
@@ -12,7 +12,7 @@
       <!-- Main content split into description & contact (reversed) -->
       <div class="flex flex-col md:flex-row gap-8 mt-4">
         <!-- Left (Now First): Description with Expand/Collapse -->
-        <div class="md:w-1/2 flex flex-col gap-6">
+        <div class="md:w-1/2 hidden lg:flex flex-col gap-6 ">
           <p>
             {{ BrachData.schoolDetail.description }}
           </p>
@@ -33,7 +33,7 @@
         </div>
 
         <!-- Right (Now Second): Contact Info -->
-        <div class="md:w-1/2">
+        <div class="md:w-1/2 hidden lg:block">
           <h3 class="text-lg md:text-xl font-semibold mb-4">
             Kontakt z Dyrektorem
           </h3>
@@ -47,59 +47,59 @@
     </div>
 
 
-  <div class="w-full flex flex-col md:flex-row gap-6 px-4 md:px-10">
-    <!-- Left Side: Class Location -->
-    <div class="w-full md:w-1/2">
-      <h2 class="text-2xl font-semibold mb-4">Lokalizacja Zajęć</h2>
-      <div class="flex items-start gap-4">
-        <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
-        <div>
-          <p>{{ BrachData.streetAddress }}</p>
-          <p>{{ BrachData.city }}</p>
-          <p class="font-medium mt-1 text-gray-700">
-            {{ BrachData.schoolName }}
-          </p>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Right Side: Headquarters -->
-    <div class="w-full md:w-1/2">
-      <h2 class="text-2xl font-semibold mb-4">Siedziba Główna (Biuro)</h2>
-      <div class="space-y-4">
+    <div class="w-full flex flex-col md:flex-row gap-6 px-4 md:px-10">
+      <!-- Left Side: Class Location -->
+      <div class="w-full md:w-1/2">
+        <h2 class="text-2xl font-semibold mb-4">Lokalizacja Zajęć</h2>
         <div class="flex items-start gap-4">
           <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
           <div>
-            <p>{{ contactDetail.headquarter.location }}</p>
+            <p>{{ BrachData.streetAddress }}</p>
+            <p>{{ BrachData.city }}</p>
+            <p class="font-medium mt-1 text-gray-700">
+              {{ BrachData.schoolName }}
+            </p>
           </div>
         </div>
-  
-        <div class="flex items-start gap-4">
-          <i class="fa fa-phone text-lg pt-1 text-blue-600"></i>
-          <div>
-            <p>{{ contactDetail.headquarter.phone }}</p>
+      </div>
+
+      <!-- Right Side: Headquarters -->
+      <div class="w-full md:w-1/2">
+        <h2 class="text-2xl font-semibold mb-4">Skontaktuj się z nami</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <i class="fa fa-map-marker-alt text-lg pt-1 text-red-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.location }}</p>
+            </div>
           </div>
-        </div>
-  
-        <div class="flex items-start gap-4">
-          <i class="fa fa-envelope text-lg pt-1 text-green-600"></i>
-          <div>
-            <p>{{ contactDetail.headquarter.email }}</p>
+
+          <div class="flex items-start gap-4">
+            <i class="fa fa-phone text-lg pt-1 text-blue-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.phone }}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <i class="fa fa-envelope text-lg pt-1 text-green-600"></i>
+            <div>
+              <p>{{ contactDetail.headquarter.email }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
     <!-- Map Section -->
-    <div class="w-full px-4 md:px-10 mt-8">
-      <iframe class="w-full h-[27rem] border-0 rounded-lg shadow" loading="lazy" allowfullscreen
+    <div class="w-full md:px-10 md:mt-8">
+      <iframe class="w-full h-[16rem] border-0 md:rounded-lg shadow" loading="lazy" allowfullscreen
         referrerpolicy="no-referrer-when-downgrade" [src]="globalIframeSrc">
       </iframe>
     </div>
   </main>
-  <section class="my-10">
+  <section class="my-10 px-3 md:px-0">
     <div>
       <div class="scroller-container">
         <div class="scroller">
@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-  
+
       <!-- Content -->
       <div class="bg-white w-full h-full overflow-y-auto mt-1">
         <div class="space-y-4 max-w-full md:max-w-sm lg:max-w-sm mx-auto my-10">
@@ -125,7 +125,7 @@
             <p *ngIf="card.description" class="text-sm text-gray-600">
               {{ card.description }}
             </p>
-  
+
             <div class="text-sm text-gray-700 mt-2 space-y-1">
               <p *ngIf="card.duration">
                 <strong class="text-primary-hover">{{ card.duration }}</strong> tygodniowo
@@ -140,9 +140,9 @@
                 w ciągu roku szkolnego
               </p>
             </div>
-  
+
             <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />
-  
+
             <h4 *ngIf="card.pricePerMonth" class="font-semibold text-gray-900 text-lg">
               {{ card.pricePerMonth }}
             </h4>
@@ -153,12 +153,12 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Additional Info -->
     <div class="flex flex-col gap-4 mt-4 text-[12px] pl-4 max-w-full lg:max-w-[70%] mx-auto">
       <p *ngFor="let info of BrachData.extraInfoModal">{{ info }}</p>
     </div>
-  
+
     <!-- Signup Button -->
     <div class="w-full flex justify-center items-center">
       <button routerLink="/registration/applicationForm" [queryParams]="{ branchId: BrachData._id }"
@@ -169,7 +169,7 @@
   </section>
 
 
-  <div class="w-full px-4 py-10 md:py-16 bg-white">
+  <div class="w-full py-10 md:py-16 bg-white px-3 md:px-0">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-10">
       <!-- Left: Text Section -->
       <div class="md:w-1/2">
@@ -204,60 +204,61 @@
   </div>
 
 
-<section class="w-full flex flex-col gap-4 mt-10">
-  <div class="flex items-center gap-2 mx-auto">
-    <h2 class="text-2xl font-semibold">Co jeszcze otrzymujesz?</h2>
-  </div>
-  <div class="flex flex-col md:flex-row w-full">
-    <div class="flex flex-col gap-1 lg:gap-24 w-full lg:w-[70%] lg:flex-row mx-auto">
-      <ul class="space-y-2">
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check mt-1 w-5 h-5 text-green-600"></i>
-          <span class="text-gray-600 text-lg">
-            Ścieżka rozwoju Twojego dziecka aż do egzaminów końcowych
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check mt-1 w-5 h-5 text-green-600"></i>
-          <span class="text-gray-600 text-lg">
-            Regularne podsumowania postępów
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check text-green-600 mt-1 text-[20px]"></i>
-          <span class="text-gray-600 text-lg">
-            Stały monitoring poziomu wiedzy
-          </span>
-        </li>
-      </ul>
-      <ul class="space-y-2">
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check mt-1 text-green-600 text-[20px]"></i>
-          <span class="text-gray-600 text-lg">
-            Wygodny e-dziennik z informacjami o zajęciach
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check mt-1 text-[20px] text-green-600"></i>
-          <span class="text-gray-600 text-lg">
-            Dostęp do aplikacji muzycznej Polyglot Kid MUSIC
-          </span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fas fa-check mt-1 text-[20px] text-green-600"></i>
-          <span class="text-gray-600 text-lg">
-            Platforma online z dodatkowymi aktywnościami
-          </span>
-        </li>
-      </ul>
+  <section class="w-full flex flex-col gap-4 mt-10 px-3 md:px-0">
+    <div class="flex items-center gap-2 mx-auto">
+      <h2 class="text-2xl font-semibold">Co jeszcze otrzymujesz?</h2>
     </div>
-  </div>
-</section>
+    <div class="flex flex-col md:flex-row w-full">
+      <div class="flex flex-col gap-1 lg:gap-24 w-full lg:w-[70%] lg:flex-row mx-auto">
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check mt-1 w-5 h-5 text-green-600"></i>
+            <span class="text-gray-600 text-lg">
+              Ścieżka rozwoju Twojego dziecka aż do egzaminów końcowych
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check mt-1 w-5 h-5 text-green-600"></i>
+            <span class="text-gray-600 text-lg">
+              Regularne podsumowania postępów
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check text-green-600 mt-1 text-[20px]"></i>
+            <span class="text-gray-600 text-lg">
+              Stały monitoring poziomu wiedzy
+            </span>
+          </li>
+        </ul>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check mt-1 text-green-600 text-[20px]"></i>
+            <span class="text-gray-600 text-lg">
+              Wygodny e-dziennik z informacjami o zajęciach
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check mt-1 text-[20px] text-green-600"></i>
+            <span class="text-gray-600 text-lg">
+              Dostęp do aplikacji muzycznej Polyglot Kid MUSIC
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check mt-1 text-[20px] text-green-600"></i>
+            <span class="text-gray-600 text-lg">
+              Platforma online z dodatkowymi aktywnościami
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
 
   <hr class="my-8 border-t border-gray-200" />
 
-  <section class="flex gap-4 lg:flex-row flex-col lg:items-start items-center lg:justify-start justify-between w-full">
+  <section
+    class="flex gap-4 lg:flex-row flex-col lg:items-start items-center lg:justify-start justify-between w-full px-3 md:px-0">
     <div class="lg:w-1/2 font-semibold text-2xl lg:text-5xl mb-16 md:text-3xl">
       Informacje dodatkowe
     </div>
@@ -276,7 +277,7 @@
         </p>
         <hr class="my-8 border-t border-gray-200" />
       </div>
-  
+
       <!-- Płatności -->
       <div>
         <div class="flex items-center gap-2 mx-auto">
@@ -293,7 +294,7 @@
         </div>
         <hr class="my-8 border-t border-gray-200" />
       </div>
-  
+
       <!-- Zniżki -->
       <div>
         <div class="flex items-center gap-2 md:mx-auto">
@@ -321,7 +322,7 @@
         </div>
         <hr class="my-8 border-t border-gray-200" />
       </div>
-  
+
       <!-- Spotkanie wyrównawcze -->
       <div>
         <div class="flex items-center gap-2 mx-auto">
@@ -338,206 +339,164 @@
       </div>
     </section>
   </section>
+  <!-- branch event   -->
+  <!-- <section *ngIf=" BrachData.BranchEvents ||BrachData.BranchEvents.length "
+    class="border-b border-gray-200 pb-10 px-3 md:px-0">
+    <h2 class="text-2xl font-semibold w-full text-center">
+      Wydarzenia w oddziale
+    </h2>
 
-<section *ngIf="BrachData.BranchEvents.length > 0" class="border-b border-gray-200 pb-10">
-  <h2 class="text-2xl font-semibold w-full text-center">
-    Wydarzenia w oddziale
-  </h2>
+    <div class="flex flex-col md:flex-row gap-4">
+      <div *ngFor="let event of BrachData.BranchEvents; let i = index"
+        class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200">
+        <h2 class="text-xl font-semibold mb-2">
+          {{ event.title }}
+        </h2>
+        <p class="text-sm text-gray-500 mb-4">{{ event.date }}</p>
 
-  <div class="flex flex-col md:flex-row gap-4">
-    <div *ngFor="let event of BrachData.BranchEvents; let i = index"
-      class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200">
-      <h2 class="text-xl font-semibold mb-2">
-        {{ event.title }}
-      </h2>
-      <p class="text-sm text-gray-500 mb-4">{{ event.date }}</p>
-
-      <div>
-        <p class="mb-3">
-          {{ event.description }}
-        </p>
-        <ng-container *ngIf="expandedEventIndex === i">
-          <p>
-            {{ event.extraDescription }}
+        <div>
+          <p class="mb-3">
+            {{ event.description }}
           </p>
-        </ng-container>
-      </div>
+          <ng-container *ngIf="expandedEventIndex === i">
+            <p>
+              {{ event.extraDescription }}
+            </p>
+          </ng-container>
+        </div>
 
-      <button *ngIf="event.extraDescription" (click)="
+        <button *ngIf="event.extraDescription" (click)="
           expandedEventIndex === i
             ? (expandedEventIndex = -1)
             : (expandedEventIndex = i)
         " class="mt-4 text-primary font-semibold hover:underline focus:outline-none">
-        {{ expandedEventIndex === i ? "Zwiń ↑" : "Czytaj więcej ↓" }}
-      </button>
+          {{ expandedEventIndex === i ? "Zwiń ↑" : "Czytaj więcej ↓" }}
+        </button>
+      </div>
     </div>
-  </div>
-</section>
+  </section> -->
 
 
-<div class="bg-white flex flex-col items-center p-4" *ngIf="BrachData.videosGallery.length > 0">
-  <h2 class="text-center text-black text-3xl font-semibold my-10">
-    Obejrzyj lekcję pokazową
-  </h2>
-  <div class="relative max-w-3xl max-h-[468px] min-w-3xl rounded-lg overflow-hidden mt-10"
-    *ngFor="let video of BrachData.videosGallery; let i = index">
-    <ng-container *ngIf="!video.showVideo; else videoBlock">
-      <img [src]="
+  <div class="bg-white flex flex-col items-center p-4 px-3 md:px-0" *ngIf="BrachData.videosGallery.length > 0">
+    <h2 class="text-center text-black text-3xl font-semibold my-10">
+      Obejrzyj lekcję pokazową
+    </h2>
+    <div class="relative max-w-3xl max-h-[468px] min-w-3xl rounded-lg overflow-hidden mt-10"
+      *ngFor="let video of BrachData.videosGallery; let i = index">
+      <ng-container *ngIf="!video.showVideo; else videoBlock">
+        <img [src]="
           BrachData.imagesGallery[i].imageUrl ||
           video.thumbnail ||
           '/assets/images.jpeg'
         " alt="Miniatura wideo" class="w-full max-h-[546px] rounded-lg" />
-      <button (click)="video.showVideo = true" aria-label="Odtwórz lekcję pokazową"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
-        type="button">
-        <svg aria-hidden="true" class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"></path>
-        </svg>
-      </button>
-    </ng-container>
+        <button (click)="video.showVideo = true" aria-label="Odtwórz lekcję pokazową"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
+          type="button">
+          <svg aria-hidden="true" class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+      </ng-container>
 
-    <ng-template #videoBlock class="">
-      <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg"
-        aria-label="Lekcja pokazowa"></video>
-    </ng-template>
+      <ng-template #videoBlock class="">
+        <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg"
+          aria-label="Lekcja pokazowa"></video>
+      </ng-template>
+    </div>
   </div>
-</div>
 
-<!-- Sekcja kontaktowa dyrektora -->
-<div class="md:w-1/2">
-  <h3 class="text-lg md:text-xl font-semibold mb-4">
-    Kontakt z dyrektorem
-  </h3>
-  <div class="space-y-2">
-    <p><strong>Telefon:</strong> {{ BrachData.contactInfo.headmaster.phone }}</p>
-    <p><strong>Email:</strong> {{ BrachData.contactInfo.headmaster.email }}</p>
+
+
+
+
+  <!-- Obejrzyj lekcję pokazową -->
+  <div class="bg-white flex flex-col items-center p-4 px-3 md:px-0" *ngIf="BrachData.videosGallery.length > 0">
+    <h2 class="text-center text-black text-3xl font-semibold my-10">
+      Obejrzyj lekcję pokazową
+    </h2>
+    <div class="relative max-w-3xl max-h-[468px] min-w-3xl  rounded-lg overflow-hidden mt-10"
+      *ngFor="let video of BrachData.videosGallery; let i = index">
+      <ng-container *ngIf="!video.showVideo; else videoBlock">
+        <img [src]="
+          BrachData.imagesGallery[i].imageUrl ||
+          video.thumbnail ||
+          '/assets/images.jpeg'
+        " alt="Miniatura wideo" class="w-full max-h-[546px] rounded-lg" />
+        <button (click)="video.showVideo = true" aria-label="Odtwórz lekcję pokazową"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
+          type="button">
+          <svg aria-hidden="true" class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+      </ng-container>
+
+      <ng-template #videoBlock>
+        <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg"
+          aria-label="Lekcja pokazowa"></video>
+      </ng-template>
+    </div>
   </div>
-</div>
 
-<!-- Wydarzenia w oddziale -->
-<section *ngIf="BrachData.BranchEvents.length > 0" class="border-b border-gray-200 pb-10">
-  <h2 class="text-2xl font-semibold w-full text-center">
-    Wydarzenia w oddziale
-  </h2>
-
-  <div class="flex flex-col md:flex-row gap-4">
-    <div *ngFor="let event of BrachData.BranchEvents; let i = index"
-      class="bg-white rounded-md shadow-md p-6 max-w-sm mx-auto mt-6 text-[#111724] border border-gray-200">
-      <h2 class="text-xl font-semibold mb-2">
-        {{ event.title }}
-      </h2>
-      <p class="text-sm text-gray-500 mb-4">{{ event.date }}</p>
-
-      <div>
-        <p class="mb-3">
-          {{ event.description }}
-        </p>
-        <ng-container *ngIf="expandedEventIndex === i">
+  <!-- Dodatkowe informacje SEO -->
+  <section class="bg-white py-12 px-3 md:px-0" *ngIf="BrachData.SEOBaseAdditionalInfo">
+    <div class="container mx-auto px-4 space-y-16" *ngFor="let SEOInfo of BrachData.SEOBaseAdditionalInfo">
+      <!-- Artykuł -->
+      <article class="p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          {{ SEOInfo.title }}
+        </h2>
+        <div class="space-y-4 text-gray-700">
+          <p class="font-semibold mt-4">{{ SEOInfo.subTittle }}</p>
           <p>
-            {{ event.extraDescription }}
+            {{ SEOInfo.description }}
           </p>
-        </ng-container>
-      </div>
-
-      <button *ngIf="event.extraDescription" (click)="
-          expandedEventIndex === i
-            ? (expandedEventIndex = -1)
-            : (expandedEventIndex = i)
-        " class="mt-4 text-primary font-semibold hover:underline focus:outline-none">
-        {{ expandedEventIndex === i ? "Zwiń ↑" : "Czytaj więcej ↓" }}
-      </button>
+        </div>
+      </article>
+      <hr class="my-8 border-t border-gray-200" />
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Obejrzyj lekcję pokazową -->
-<div class="bg-white flex flex-col items-center p-4" *ngIf="BrachData.videosGallery.length > 0">
-  <h2 class="text-center text-black text-3xl font-semibold my-10">
-    Obejrzyj lekcję pokazową
-  </h2>
-  <div class="relative max-w-3xl max-h-[468px] min-w-3xl  rounded-lg overflow-hidden mt-10"
-    *ngFor="let video of BrachData.videosGallery; let i = index">
-    <ng-container *ngIf="!video.showVideo; else videoBlock">
-      <img [src]="
-          BrachData.imagesGallery[i].imageUrl ||
-          video.thumbnail ||
-          '/assets/images.jpeg'
-        " alt="Miniatura wideo" class="w-full max-h-[546px] rounded-lg" />
-      <button (click)="video.showVideo = true" aria-label="Odtwórz lekcję pokazową"
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg"
-        type="button">
-        <svg aria-hidden="true" class="w-7 h-7 text-primary" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"></path>
-        </svg>
-      </button>
-    </ng-container>
+  <section class="bg-gray-50 py-8 px-3 md:px-0">
+    <div class="container mx-auto px-4">
+      <!-- Legal Disclaimer -->
+      <p class="text-sm text-gray-600 mb-6">
+        Powyższe informacje nie stanowią oferty w rozumieniu Kodeksu cywilnego,
+        a jedynie zaproszenie do zawarcia umowy.
+      </p>
 
-    <ng-template #videoBlock>
-      <video [src]="video.videoUrl" controls autoplay class="w-full h-auto rounded-lg"
-        aria-label="Lekcja pokazowa"></video>
-    </ng-template>
-  </div>
-</div>
+      <!-- Franchisee Details -->
+      <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails.length > 0">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+          Szczegóły franczyzobiorcy
+        </h3>
 
-<!-- Dodatkowe informacje SEO -->
-<section class="bg-white py-12" *ngIf="BrachData.SEOBaseAdditionalInfo">
-  <div class="container mx-auto px-4 space-y-16" *ngFor="let SEOInfo of BrachData.SEOBaseAdditionalInfo">
-    <!-- Artykuł -->
-    <article class="p-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">
-        {{ SEOInfo.title }}
-      </h2>
-      <div class="space-y-4 text-gray-700">
-        <p class="font-semibold mt-4">{{ SEOInfo.subTittle }}</p>
-        <p>
-          {{ SEOInfo.description }}
-        </p>
-      </div>
-    </article>
-    <hr class="my-8 border-t border-gray-200" />
-  </div>
-</section>
-
-<section class="bg-gray-50 py-8">
-  <div class="container mx-auto px-4">
-    <!-- Legal Disclaimer -->
-    <p class="text-sm text-gray-600 mb-6">
-      Powyższe informacje nie stanowią oferty w rozumieniu Kodeksu cywilnego,
-      a jedynie zaproszenie do zawarcia umowy.
-    </p>
-
-    <!-- Franchisee Details -->
-    <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails.length > 0">
-      <h3 class="text-lg font-semibold text-gray-800 mb-4">
-        Szczegóły franczyzobiorcy
-      </h3>
-
-      <div class="grid gap-4 text-sm text-gray-700">
-        <div class="flex justify-between">
-          <span class="font-medium">Nazwa:</span>
-          <span>{{ BrachData.franchiseDetails.name }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">Adres:</span>
-          <span class="text-right">
-            {{ BrachData.franchiseDetails.Address }}
-          </span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">Numer identyfikacji podatkowej (NIP):</span>
-          <span>{{ BrachData.franchiseDetails.TaxIdentification }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">REGON:</span>
-          <span>{{ BrachData.franchiseDetails.REGON }}</span>
-        </div>
-        <div class="flex justify-between">
-          <span class="font-medium">KRS:</span>
-          <span>{{ BrachData.franchiseDetails.KRSNo }}</span>
+        <div class="grid gap-4 text-sm text-gray-700">
+          <div class="flex justify-between">
+            <span class="font-medium">Nazwa:</span>
+            <span>{{ BrachData.franchiseDetails.name }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">Adres:</span>
+            <span class="text-right">
+              {{ BrachData.franchiseDetails.Address }}
+            </span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">Numer identyfikacji podatkowej (NIP):</span>
+            <span>{{ BrachData.franchiseDetails.TaxIdentification }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">REGON:</span>
+            <span>{{ BrachData.franchiseDetails.REGON }}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="font-medium">KRS:</span>
+            <span>{{ BrachData.franchiseDetails.KRSNo }}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </section>

@@ -1,5 +1,4 @@
-<app-hero-section
-  [content]="{
+<app-hero-section [content]="{
     breadcrumb: {
     label: 'Strona główna',
 link: '/',
@@ -9,7 +8,7 @@ title: 'Metoda nauczania angielskiego w Polyglot Kids',
 subtitle: '',
 description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca na nudę! Mamy 12 supermocy, które wciągają dzieci w świat swobodnej komunikacji, przełamują ich lęki i zamieniają rumieńce zawstydzenia w wypieki ekscytacji.',
 
-    imageUrl: '../../../../../public/assets/methods/mike.jpg',
+    imageUrl: '../../../../../public/assets/methods/123.jpeg',
   }"></app-hero-section>
 
 <main class="w-full py-10">
@@ -17,52 +16,35 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
     Więcej niż tylko nauka angielskiego
   </h2>
 
-  <section
-    class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-20 mb-14">
-    <div class="flex flex-col items-center">
-      <span class="text-primary-hover font-semibold text-4xl leading-none"
-        >31</span
-      >
-      <span class="text-gray-600 text-sm mt-1">lat rozwijania metody</span>
+  <section class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-20 mb-14">
+    <div class="flex flex-col items-center justify-center">
+      <span class="text-primary-hover font-semibold text-4xl leading-none "> 2</span>
+      <span class="text-gray-600 text-sm mt-1 text-center">solidne filary metody
+        <br> (nawiązanie do Growth Mindset i Metody Colina Rose)</span>
     </div>
     <div class="border-l border-gray-300 h-10 hidden sm:block"></div>
-    <div class="flex flex-col items-center">
-      <span class="text-primary-hover font-semibold text-4xl leading-none"
-        >12</span
-      >
-      <span class="text-gray-600 text-sm mt-1">sprawdzonych supermocy</span>
+    <div class="flex flex-col items-center justify-center">
+      <span class="text-primary-hover font-semibold text-4xl leading-none"> 8</span>
+      <span class="text-gray-600 text-sm mt-1 text-center">kluczowych umiejętności XXI wieku
+        <br> (np. kreatywność, myślenie krytyczne, współpraca itd.)</span>
     </div>
     <div class="border-l border-gray-300 h-10 hidden sm:block"></div>
-    <div class="flex flex-col items-center">
-      <span class="text-primary-hover font-semibold text-4xl leading-none"
-        >10</span
-      >
-      <span class="text-gray-600 text-sm mt-1">kompetencji przyszłości</span>
+    <div class="flex flex-col items-center justify-center">
+      <span class="text-primary-hover font-semibold text-4xl leading-none">1</span>
+      <span class="text-gray-600 text-sm mt-1 text-center">cel: sukces na całe życie
+        <br>(podkreślenie długofalowych korzyści)</span>
     </div>
   </section>
 
-  <section
-    class="max-w-[70%] mx-auto text-sm sm:text-base text-gray-900 leading-relaxed">
+  <section class="max-w-[70%] mx-auto text-sm sm:text-base text-gray-900 leading-relaxed">
     <p class="mb-4">
-      <strong
-        >Nasza metoda jest wynikiem wieloletniego doświadczenia w nauczaniu
-        dzieci i młodzieży.</strong
-      >
-      Działamy zgodnie z podejściem „growth mindset”. Zakłada ono rozwojowe
-      spojrzenie na możliwości ludzkiego mózgu i traktowanie nauki jako procesu.
-      Dzięki temu nasi uczniowie nie boją się wyzwań i nie traktują błędów jako
-      porażek. Chętnie podejmują ryzyko dalszego rozwoju, ponieważ wiedzą, że
-      ewentualne potknięcia nie przekreślają ich dotychczasowych osiągnięć. To
-      jedynie etap na drodze do nowego celu.
-    </p>
-    <p>
-      <strong
-        >Ucząc języka angielskiego, równocześnie rozwijamy w uczniach
-        kompetencje przyszłości,</strong
-      >
-      przydatne w innych obszarach życia, takie jak: kreatywność, otwartość,
-      myślenie krytyczne i nastawienie na rozwój.
-    </p>
+      <strong>W Polyglot Kids łączymy siłę nastawienia na rozwój („growth mindset”) z metodą Colina Rose.</strong>
+
+      Dzięki naszej metodzie dzieci nie boją się błędów, a poprzez angażującą naukę opartą na grach i muzyce, szybko i
+      naturalnie przyswajają angielski. Kształtujemy nie tylko umiejętności językowe, ale również pewność siebie i
+      kreatywność
+      na całe życie
+
   </section>
 </main>
 
@@ -70,10 +52,7 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
   <h2 class="text-black text-lg mb-8">Odkryj nasze supermoce</h2>
 
   <div class="flex flex-wrap justify-center gap-6 w-full">
-    <app-superpower-card
-      *ngFor="let card of cards"
-      [card]="card"
-      [isExpanded]="expandedCardId === card.id"
+    <app-superpower-card *ngFor="let card of cards" [card]="card" [isExpanded]="expandedCardId === card.id"
       [onToggle]="toggleCard.bind(this, card.id)"></app-superpower-card>
   </div>
 </div>
@@ -82,8 +61,7 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
   <div
     class="competences__container col-span-full sm:col-span-2 lg:col-span-4 w-[70%] mx-auto text-center flex flex-col justify-center items-center my-24">
     <!-- Centered Heading -->
-    <h2
-      class="competences__heading text-2xl sm:text-3xl font-bold w-full text-center my-5">
+    <h2 class="competences__heading text-2xl sm:text-3xl font-bold w-full text-center my-5">
       Nasze kursy angielskiego rozwijają umiejętności przyszłości
     </h2>
 
@@ -94,26 +72,11 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
     </p>
   </div>
 
-  <div
-    class="max-w-7xl sm:mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 mx-3">
+  <div class="max-w-7xl sm:mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10 mx-3">
     <!-- Kids -->
     <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
-      <header
-        class="flex items-center gap-3 bg-[#f6b1c0] rounded-t-md px-4 py-5">
-        <svg
-          class="courses-icon"
-          width="37"
-          height="40"
-          viewBox="0 0 37 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
-            fill=" white "></path>
-          <path
-            d="M23.8038 11.65H20.3478L16.1898 17.248V11.65H13.2738V24.25H16.1898V18.688L20.3298 24.25H23.8038L18.8538 17.896L23.8038 11.65Z"
-            fill="#161616"></path>
-        </svg>
+      <header class="flex items-center gap-3 bg-[#f6b1c0] rounded-t-md px-4 py-5">
+
         <h2 class="font-bold text-lg text-black flex-1">Dzieci</h2>
         <span class="text-black font-bold text-lg">3–6 lat</span>
       </header>
@@ -137,22 +100,8 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
 
     <!-- Juniors -->
     <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
-      <header
-        class="flex items-center gap-3 bg-[#fdcf9c] rounded-t-md px-4 py-5">
-        <svg
-          class="courses-icon"
-          width="37"
-          height="40"
-          viewBox="0 0 37 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
-            fill=" white "></path>
-          <path
-            d="M17.6569 24.574C20.5369 24.574 22.2649 22.9 22.2649 19.804V11.65H19.3669V19.984C19.3669 21.226 18.8089 22.072 17.6569 22.072C16.5229 22.072 15.9829 21.208 15.9829 19.912H13.0669C13.0669 22.612 14.6149 24.574 17.6569 24.574Z"
-            fill="#161616"></path>
-        </svg>
+      <header class="flex items-center gap-3 bg-[#fdcf9c] rounded-t-md px-4 py-5">
+
         <h2 class="text-black text-lg font-bold flex-1">Juniorzy</h2>
         <span class="text-black text-lg font-bold">7–10 lat</span>
       </header>
@@ -197,22 +146,8 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
 
     <!-- Teens -->
     <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
-      <header
-        class="flex items-center gap-3 bg-[#ffd549] rounded-t-md px-4 py-5">
-        <svg
-          class="courses-icon"
-          width="37"
-          height="40"
-          viewBox="0 0 37 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
-            fill=" white "></path>
-          <path
-            d="M16.545 24.25H19.443V14.242H22.917V11.65H13.089V14.242H16.545V24.25Z"
-            fill="#161616"></path>
-        </svg>
+      <header class="flex items-center gap-3 bg-[#ffd549] rounded-t-md px-4 py-5">
+
         <h2 class="font-bold text-lg text-black flex-1">Nastolatki</h2>
         <span class="text-black font-bold text-lg">11–14 lat</span>
       </header>
@@ -278,22 +213,8 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
 
     <!-- Masters -->
     <section class="bg-white rounded-md shadow-sm text-nowrap overflow-hidden">
-      <header
-        class="flex items-center gap-3 bg-[#ee4023] rounded-t-md px-4 py-5">
-        <svg
-          class="courses-icon"
-          width="37"
-          height="40"
-          viewBox="0 0 37 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M18.0773 40C10.1776 40 1.24556 24.8986 0.250784 23.1766L0 22.7335L1.22466 5.08673L18.0773 0L34.93 5.08673L36.1546 22.7335L35.8997 23.1766C34.9133 24.8986 25.977 40 18.0773 40ZM3.40648 21.9436C6.87565 27.8161 13.6844 36.6562 18.0773 36.6562C22.4744 36.6562 29.2832 27.8119 32.7482 21.9436L31.7576 7.61964L18.0773 3.49007L4.40125 7.61964L3.40648 21.9436Z"
-            fill=" white "></path>
-          <path
-            d="M11.3051 24.25H14.0951V16.024L16.9571 24.25H19.1171L21.9071 16.078V24.25H24.6971V11.65H21.3851L18.0371 20.596L14.6891 11.65H11.3051V24.25Z"
-            fill="#161616"></path>
-        </svg>
+      <header class="flex items-center gap-3 bg-[#ee4023] rounded-t-md px-4 py-5">
+
         <h2 class="font-bold text-lg text-black flex-1">Mistrzowie</h2>
         <span class="text-black font-bold text-lg">15–19 lat</span>
       </header>
@@ -373,16 +294,14 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
   </div>
 </main>
 
-<div
-  class="max-w-[85%] mx-auto bg-[#ffebf0] rounded-4xl px-6 py-12 text-center my-10">
+<div class="max-w-[85%] mx-auto bg-[#ffebf0] rounded-4xl px-6 py-12 text-center my-10">
   <h2 class="text-black text-2xl font-bold mb-3">
     Wybierz kurs języka angielskiego w Polyglot Kids
   </h2>
   <p class="text-[#4B4B5B] text-base font-semibold mb-8">
     Zapewnij swojemu dziecku rozwój na wielu płaszczyznach
   </p>
-  <button
-    routerLink="/registration/applicationForm"
+  <button routerLink="/registration/applicationForm"
     class="bg-[#E6007E] text-white font-semibold text-md uppercase rounded-full px-10 py-3 shadow-[0_4px_8px_rgba(230,0,126,0.4)] hover:brightness-110 transition"
     type="button">
     Zapisz się na angielski
@@ -394,19 +313,21 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
     <!-- Box 1 -->
     <div class="bg-gray-50 p-6 rounded-xl shadow">
       <h3 class="text-xl font-semibold mb-2">
-        Metoda Polyglot Kids – 12 supermocy
+        Nasza Metoda: Fundament Sukcesu Twojego Dziecka
       </h3>
       <p class="text-gray-700">
-        W Polyglot Kids język angielski to wspaniała przygoda – odpowiednio
-        dostosowana do wieku i poziomu naszych uczniów.
-        <br /><br />
-        <strong>
-          Aby ułatwić uczniom naukę angielskiego, korzystamy ze sprawdzonych
-          technik pracy
-        </strong>
-        z dziećmi i młodzieżą. Są one ułożone w autorską strukturę lekcji, która
-        zapewnia celowość metodyczną i daje przestrzeń na spontaniczność, radość
-        i autentyczny kontakt między uczniami, nauczycielem i grupą.
+        W Polyglot Kids nauka angielskiego to przemyślana podróż, w której łączymy psychologię rozwojową z
+        najskuteczniejszymi
+        technikami. Nasza autorska struktura, oparta na filarach „growth mindset” i metodzie Colina Rose, zapewnia
+        solidne ramy
+        dla nauki. Jednocześnie daje przestrzeń na to, co w edukacji najważniejsze: spontaniczną radość, kreatywność i
+        autentyczną relację między uczniem a nauczycielem. Każde zajęcia są przygodą, idealnie dopasowaną do energii i
+        możliwości uczestników.
+        Dopasowane Ścieżki Nauczania dla Każdego Wieku
+        Rozumiemy, że kluczem do efektywności jest dostosowanie metod do etapu rozwoju ucznia. Dlatego naszą wiedzę i
+        narzędzia
+        stosujemy w sposób celowy na każdym etapie edukacji:
+
       </p>
     </div>
 
@@ -419,35 +340,13 @@ description: 'Rymowanki, muzyka, ruch – na naszych zajęciach nie ma miejsca n
         Zapewniamy naszym nauczycielom stałe wsparcie metodyczne oraz możliwości
         rozwoju zawodowego.
         <br /><br />
-        To niezwykle ważne, ponieważ – w zależności od wieku uczniów –
-        <strong>wykorzystujemy nasze supermoce na różne sposoby.</strong>
-        Dla najmłodszych grup zajęcia wypełnione są ruchem, piosenkami i zabawą
-        (
-        <a
-          routerLink="/courses/english-for-children-3-6"
-          class="text-blue-600 underline"
-          >Kids</a
-        >
-        &nbsp;&amp;&nbsp;
-        <a
-          routerLink="/courses/english-for-children-7-10"
-          class="text-blue-600 underline"
-          >Juniors</a
-        >
-        ), podczas gdy starsi uczniowie koncentrują się na aktywnej komunikacji
-        i przygotowaniu do egzaminów (
-        <a
-          routerLink="/courses/english-for-children-11-14"
-          class="text-blue-600 underline"
-          >Teens</a
-        >
-        &nbsp;&amp;&nbsp;
-        <a
-          routerLink="/courses/english-for-children-14-19"
-          class="text-blue-600 underline"
-          >Masters</a
-        >
-        ).
+        Dla młodszych uczniów (Kids & Juniors): Zanurzamy dzieci w języku poprzez polisensoryczną metodę Colina Rose. Nauka
+        odbywa się w ruchu, przez gry, piosenki i rytm, budując trwałe i pozytywne skojarzenia z językiem angielskim.
+        Dla starszych uczniów (Teens & Masters): Na solidnym fundamencie rozwijamy kompetencje przyszłości. Kładziemy nacisk na
+        płynną komunikację, krytyczne myślenie i skuteczne przygotowanie do egzaminów oraz realnych wyzwań językowych, cały czas
+        pielęgnując nastawienie na rozwój.
+        Dbamy również o nasz zespół, zapewniając nauczycielom stałe wsparcie metodologiczne i możliwości rozwoju, by mogli w
+        pełni wykorzystywać potencjał naszej unikalnej metody.
       </p>
     </div>
   </div>
