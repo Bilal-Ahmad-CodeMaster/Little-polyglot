@@ -16,33 +16,33 @@ export class HomeComponent {
   featureArray: any[] = [
     {
       iconUrl: "../../../../../public/assets/home/svgexport-5.svg",
-      title: "Pewna komunikacja zaczyna się wcześnie",
-      description: "At Polyglot Kids, children don’t just learn English—they speak it with ease. We foster real conversations from the very first class."
+      title: "Pewna siebie komunikacja zaczyna się wcześnie.",
+      description: "W Polyglot Kids dzieci nie tylko uczą się angielskiego one zaczynają nim mówić z łatwością Wspieramy autentyczne rozmowy już od pierwszych zajęć."
     },
     {
       iconUrl: "../../../../../public/assets/home/svgexport-6.svg",
       title: "Angażujące lekcje za każdym razem",
-      description: "No dull drills here. Our interactive sessions mix creativity, play, and purpose to keep young minds curious and focused."
+      description: "U nas nie ma miejsca na nudne ćwiczenia.Nasze interaktywne zajęcia łączą kreatywność, zabawę i jasno określony cel, aby utrzymać ciekawość i koncentrację młodych umysłów."
     },
     {
       iconUrl: "../../../../../public/assets/home/svgexport-7.svg",
-      title: "Trwałe opanowanie języka",
-      description: "We prepare children not just for exams, but for life. Our learners grow into confident speakers who think and express themselves clearly in English."
+      title: "Trwała biegłość językowa",
+      description: "Przygotowujemy dzieci nie tylko do egzaminów, ale do życia.Nasi uczniowie wyrastają na pewnych siebie mówców, którzy myślą i wyrażają się jasno po angielsku."
     },
     {
       iconUrl: "../../../../../public/assets/home/svgexport-8.svg",
       title: "Miejsce, gdzie dzieci czują przynależność",
-      description: "Warmth, inclusivity, and fun define our classrooms. Kids thrive in supportive groups where friendships grow alongside language skills."
+      description: "Ciepło, integracja i zabawa definiują nasze sale lekcyjne.Dzieci rozwijają się w wspierających grupach, gdzie przyjaźnie rosną razem z umiejętnościami językowymi."
     },
     {
       iconUrl: "../../../../../public/assets/home/svgexport-9.svg",
       title: "Poza językiem: umiejętności na całe życie",
-      description: "Our curriculum integrates critical thinking, collaboration, and creativity—because being multilingual is only part of the future-ready mindset."
+      description: "Nasz program nauczania integruje myślenie krytyczne, współpracę i kreatywność ponieważ wielojęzyczność to tylko część nastawienia gotowego na przyszłość."
     },
     {
       iconUrl: "../../../../../public/assets/home/svgexport-10.svg",
       title: "Nauka blisko domu",
-      description: "With centers at local schools, preschools, and community hubs, joining Polyglot Kids is easy and convenient for every family."
+      description: "Dzięki centrom w lokalnych szkołach, przedszkolach i ośrodkach społecznych, dołączenie do Polyglot Kids jest łatwe i wygodne dla każdej rodziny."
     }
   ];
 
