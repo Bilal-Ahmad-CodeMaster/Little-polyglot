@@ -46,21 +46,21 @@
     class="lg:hidden bg-white px-6 transition-all duration-300 ease-in-out"
     *ngIf="isMenuOpen">
     <ul class="flex flex-col space-y-3 py-4 font-semibold text-gray-800">
-      <li><a routerLink="/courses" class="hover:text-primary">Programy</a></li>
+      <li><a (click)="isMenuOpen = !isMenuOpen" routerLink="/courses" class="hover:text-primary">Programy</a></li>
       <li>
-        <a routerLink="/schools" class="hover:text-primary">Nasze Kampusy</a>
+        <a (click)="isMenuOpen = !isMenuOpen" routerLink="/schools" class="hover:text-primary">Nasze Kampusy</a>
       </li>
       <li>
-        <a routerLink="/method" class="hover:text-primary">Nasze podejście</a>
+        <a (click)="isMenuOpen = !isMenuOpen" routerLink="/method" class="hover:text-primary">Nasze podejście</a>
       </li>
       <li>
-        <a routerLink="/parent" class="hover:text-primary"
+        <a (click)="isMenuOpen = !isMenuOpen" routerLink="/parent" class="hover:text-primary"
           >Zasoby dla rodziców</a
         >
       </li>
-      <li><a routerLink="/blogs" class="hover:text-primary">Artykuły</a></li>
-      <li><a routerLink="/about" class="hover:text-primary">O nas</a></li>
-      <li><a routerLink="/contact" class="hover:text-primary">Kontakt</a></li>
+      <li><a (click)="isMenuOpen = !isMenuOpen" routerLink="/blogs" class="hover:text-primary">Artykuły</a></li>
+      <li><a (click)="isMenuOpen = !isMenuOpen" routerLink="/about" class="hover:text-primary">O nas</a></li>
+      <li><a (click)="isMenuOpen = !isMenuOpen" routerLink="/contact" class="hover:text-primary">Kontakt</a></li>
       <ng-container *ngIf="isLoggedIn !== null">
         <button
           *ngIf="isLoggedIn"
