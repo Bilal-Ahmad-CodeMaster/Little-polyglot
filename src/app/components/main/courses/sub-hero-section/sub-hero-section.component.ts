@@ -14,5 +14,5 @@ export class SubHeroSectionComponent {
   @Input() breadcrumb: string = 'English for children 3-6 years old - ES Kids';
   @Input() description: string = '';
   @Input() imageUrl: string = '';
-  @Input() shieldUrl: string = '';
+ 
 }

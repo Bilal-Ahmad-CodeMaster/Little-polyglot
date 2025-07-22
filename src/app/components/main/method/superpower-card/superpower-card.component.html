@@ -1,6 +1,8 @@
 <div class="bg-white rounded-md shadow-sm w-72 p-4 flex flex-col items-center transition-all duration-500">
-    <img [src]="card.icon" [alt]="card.alt" class="mb-2 w-12 h-8 object-cover" />
-    <h3 class="font-semibold text-xl  mb-0.5">{{ card.title }}</h3>
+    <i class="text-pink-500 text-2xl" [ngClass]="card.icon"></i>
+
+
+    <h3 class="font-semibold text-xl mb-0.5">{{ card.title }}</h3>
     <p class="text-sm font-normal mb-2 text-center leading-tight">
         {{ card.subtitle }}
     </p>
