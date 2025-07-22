@@ -53,21 +53,21 @@ export class HomeComponent {
       icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
       titleLine1: 'Zarejestruj się',
       titleLine2: 'w Polyglot Kids',
-      description: 'Zarejestruj się w Polyglot Kids, aby odkrywać nowe możliwości dla swojego dziecka i uczyć się angielskiego od profesjonalistów.',
+      description: 'Zarejestruj swoje dziecko w Polyglot Kids, aby odkrywać nowe możliwości i uczyć się angielskiego z profesjonalistami.',
       linkText: 'Zarejestruj się',
       link: "/registration/applicationForm"
     },
     {
       icon: 'https://storage.googleapis.com/a1aa/image/eecab23f-bfb5-4eb1-dd42-cc71ecb9f0fc.jpg',
       titleLine1: 'Akademia',
-      titleLine2: 'Mądrego Rodzica',
-      description: 'Akademia Mądrego Rodzica to materiały dla rodziców opracowane przez ekspertów: webinary i artykuły na blogu.',
+      titleLine2: 'Dla Mądrego Rodzica',
+      description: 'Akademia Mądrego Rodzica to materiały dla rodziców opracowane przez ekspertów – webinary i artykuły na blogu.',
       linkText: 'Więcej',
       link: '/parent/smart-parent-academy'
     },
     {
       icon: 'https://storage.googleapis.com/a1aa/image/a15d0c59-0db1-4c8f-a202-c3be8bc4516f.jpg',
-      titleLine1: 'Artykuły/Blogi',
+      titleLine1: 'Artykuły / Blogi',
       titleLine2: 'Poznaj je',
       description: 'Odkrywaj ciekawe i edukacyjne artykuły dla rodziców i uczniów! Od wskazówek językowych po kreatywne aktywności — ucz się angielskiego w inspirujący sposób.',
       linkText: 'Więcej',

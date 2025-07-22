@@ -14,11 +14,11 @@ export class OpenionCrousalComponent {
 
   reviews = [
     {
-      text: `Zuzia uczy się w Polyglot Kids od 1. klasy. Przez 7 lat jej pewność w mówieniu po angielsku niesamowicie wzrosła. Nie mogliśmy dokonać lepszego wyboru.`,
+      text: `Zuzia uczy się w Polyglot Kids od 1. klasy. Przez 7 lat jej pewność siebie w mówieniu po angielsku niesamowicie wzrosła. Nie mogliśmy dokonać lepszego wyboru.`,
       author: `Anna, mama Zuzi (13 lat), Kraków`,
     },
     {
-      text: `Na początku byłem sceptyczny, ale po zapisaniu syna do 1. klasy szybko zobaczyłem efekty. Polyglot Kids oferuje edukację angielskiego na najwyższym poziomie – przekracza oczekiwania.`,
+      text: `Na początku byłem sceptyczny, ale po zapisaniu syna do 1. klasy szybko zobaczyłem efekty. Polyglot Kids oferuje edukację z języka angielskiego na najwyższym poziomie – przekracza wszelkie oczekiwania.`,
       author: `Michał, tata Kuby (8 lat), Gdańsk`,
     },
     {
@@ -26,7 +26,7 @@ export class OpenionCrousalComponent {
       author: `Tomasz, tata Leny (18 lat), Warszawa`,
     },
     {
-      text: `Moja córka uczęszcza na zajęcia od 4 lat. Pewnego wieczoru zaczęła mówić w domu tylko po angielsku – to był najlepszy dowód, że naprawdę się uczy i że sprawia jej to radość.`,
+      text: `Moja córka uczęszcza na zajęcia od 4 lat. Pewnego wieczoru zaczęła mówić w domu tylko po angielsku – to był najlepszy dowód na to, że naprawdę się uczy i że sprawia jej to radość.`,
       author: `Katarzyna, mama Mai (11 lat), Wrocław`,
     },
     {
