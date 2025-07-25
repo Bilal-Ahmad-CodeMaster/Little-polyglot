@@ -23,6 +23,7 @@ export class BlogDetailsPageComponent {
     if (blogId) {
       this.api.getBlogById(blogId).subscribe((res: any) => {
         this.blog = res?.data;
+        console.log(this.blog)
       });
     }
   }

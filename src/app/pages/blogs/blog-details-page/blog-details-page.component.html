@@ -1,7 +1,7 @@
 <app-blogs-header></app-blogs-header>
 <div class="min-h-screen bg-[#f5f5f5] text-gray-800" *ngIf="blog">
-  <!-- Main Blog Container -->
   <div class="max-w-4xl mx-auto bg-white px-6 py-10">
+
     <!-- Author & Date -->
     <p class="text-sm text-gray-500 mb-2">
       By <span class="font-semibold text-gray-800">Polyglot Team</span> –
@@ -15,7 +15,11 @@
 
     <!-- Cover Image -->
     <div class="mb-6">
-      <img [src]="blog?.image" alt="cover" class="w-full rounded-lg shadow" />
+      <img
+        [src]="blog?.imagesGallery[0]?.imageUrl"
+        alt="cover"
+        class="w-full rounded-lg shadow"
+      />
     </div>
 
     <!-- Highlight Text -->
@@ -23,19 +27,41 @@
       {{ blog?.category }}
     </h2>
 
-    <!-- Description Paragraph -->
-    <p class="text-base leading-relaxed mb-6">
+    <!-- First Description -->
+    <p class="text-base leading-relaxed mb-6 whitespace-pre-line">
       {{ blog?.description }}
     </p>
 
-    <!-- Sample Static Quote - Optional dynamic if needed -->
+    <!-- Additional Image in the Middle -->
+    <div class="my-8 mx-auto w-[320px] h-[300px]">
+      <img
+        *ngIf="blog?.imagesGallery[0]?.imageUrl"
+        [src]="blog?.imagesGallery[0]?.imageUrl"
+        alt="Additional Image"
+        class="w-full rounded-lg shadow-md"
+      />
+    </div>
+
+    <!-- Blockquote from subDescription -->
     <blockquote
       class="border-l-4 border-gray-300 pl-4 italic text-gray-700 text-base mb-6">
-      “{{ blog?.description?.slice(0, 150) }}...”
+      “{{ blog?.subDescription?.slice(0, 200) }}...”
     </blockquote>
 
-    <p class="text-base leading-relaxed mb-6">
-      {{ blog?.description }}
+    <!-- Full Sub Description -->
+    <p class="text-base leading-relaxed whitespace-pre-line">
+      {{ blog?.subDescription }}
     </p>
+
+    <!-- 👉 Another Image After SubDescription (Optional) -->
+    <div class="my-8">
+      <img
+        *ngIf="blog?.imagesGallery[2]?.imageUrl"
+        [src]="blog?.imagesGallery[2]?.imageUrl"
+        alt="Another Image"
+        class="w-full rounded-lg shadow-md"
+      />
+    </div>
+    
   </div>
 </div>
