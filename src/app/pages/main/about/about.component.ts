@@ -14,12 +14,12 @@ import { RouterLink } from '@angular/router';
 export class AboutComponent {
   currentIndex = 0;
   featureArray = [
-    { iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Rozwój' },
-    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Autentyczność' },
-    { iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Relacje' },
-    { iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Zaangażowanie' },
+    { iconUrl: 'fa-comments', title: 'Rozwój' },
+    { iconUrl: 'fa-lightbulb', title: 'Autentyczność' },
+    { iconUrl: 'fa-language', title: 'Relacje' },
+    { iconUrl: 'fa-users', title: 'Zaangażowanie' },
   ];
-
+ 
 
 
   items = [
