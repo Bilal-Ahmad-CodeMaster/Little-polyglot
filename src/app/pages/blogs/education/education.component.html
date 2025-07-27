@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
   <div *ngFor="let card of allBlogs" class="bg-white rounded-lg shadow overflow-hidden flex flex-col">
     <a [routerLink]="['/blog-details', card._id]">
-      <img [src]="card.image" alt="blog image" class="w-full h-48 object-cover" />
+      <img [src]="card.imagesGallery[0].imageUrl" alt="blog image" class="w-full h-48 object-cover" />
     </a>
     <div class="p-6 flex flex-col flex-1">
       <!-- Categories -->
