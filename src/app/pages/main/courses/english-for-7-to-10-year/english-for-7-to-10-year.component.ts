@@ -14,20 +14,20 @@ import { RouterLink } from '@angular/router';
 export class EnglishFor7To10YearComponent {
   featureArray = [
     {
-      iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Groups matched by age and language proficiency level'
+      iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Grupy dopasowane pod względem wieku i poziomu znajomości języka'
     },
     {
-      iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'An ambitious program and original textbooks'
+      iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Ambitny program i oryginalne podręczniki'
     },
     {
-      iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Cambridge Exam Preparation'
+      iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Przygotowanie do egzaminów Cambridge'
     },
-    { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Additional online materials' },
+    { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Dodatkowe materiały online' },
     {
-      iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Ongoing contact with the lecturer'
+      iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Stały kontakt z lektorem'
     },
-    { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Progress monitoring' },
-    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'E-journal and music app' },
-    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Semester and yearly summary' }
+    { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Monitorowanie postępów' },
+    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'E-dziennik i aplikacja muzyczna' },
+    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Podsumowanie semestralne i roczne' }
   ];
 }

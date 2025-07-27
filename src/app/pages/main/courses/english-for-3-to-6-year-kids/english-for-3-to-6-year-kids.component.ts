@@ -20,7 +20,7 @@ export class EnglishFor3To6YearKidsComponent {
     { iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Monitorowanie postępów' },
     { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Dodatkowe materiały online' },
     { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Dostęp do aplikacji muzycznej Polyglot Kids' },
-    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'Access to e-journal' }
+    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'Dostęp do e-dziennika' }
   ];
 
 }
