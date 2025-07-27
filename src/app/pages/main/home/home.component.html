@@ -3,7 +3,7 @@
 <div class="relative overflow-hidden bg-hero-section mb-20 mt-[10px]">
   <div class="max-w-7xl mx-auto md:px-6 pb-10 md:pb-0 flex flex-col-reverse md:flex-row items-center justify-between">
     <!-- Text Content -->
-    <div class="w-full md:w-1/2 flex flex-col gap-4 text-center md:text-left">
+    <div class="w-full md:w-1/2 flex flex-col gap-4 text-center md:text-left px-4">
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
 
         Wzmacnianie Młodych Umysłów<br />
@@ -31,7 +31,6 @@
     <!-- Hero Image -->
     <div class="w-full md:w-1/2 flex justify-center md:justify-end mb-10 md:mb-0">
       <img src="../../../../../public/assets/images/14.jpeg" alt="Confident student with books and headphones"
-
         class="h-auto lg:h-[427px] w-full drop-shadow-xl" />
 
     </div>
@@ -83,10 +82,10 @@
 
     <div class="w-16 h-16 rounded-full bg-primary-bg flex items-center justify-center mb-4">
 
-      <div class="w-8 h-8 bg-primary-hover mask mask-custom" [ngStyle]="{
-          maskImage: 'url(' + feature.iconUrl + ')',
-          WebkitMaskImage: 'url(' + feature.iconUrl + ')'
-        }"></div>
+      <div class="text-3xl text-primary-hover mask mask-custom">
+        <i class="fa " [ngClass]="feature.iconUrl"></i> <!-- fa-comments -->
+
+      </div>
     </div>
 
     <h3 class="text-lg font-semibold mb-1 leading-tight">

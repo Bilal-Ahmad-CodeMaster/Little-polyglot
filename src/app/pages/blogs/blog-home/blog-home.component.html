@@ -2,10 +2,7 @@
   <div class="max-w-[1200px] mx-auto px-4 grid md:grid-cols-3 gap-0">
     <!-- Left big image -->
     <div class="md:col-span-2 relative" *ngIf="blogs[0]">
-      <img
-        [src]="blogs[0]?.imagesGallery[0]?.imageUrl"
-        [alt]="blogs[0]?.title"
-        class="w-full h-full object-cover" />
+      <img [src]="blogs[0]?.imagesGallery[0]?.imageUrl" [alt]="blogs[0]?.title" class="w-full h-full object-cover" />
       <h2
         class="absolute bottom-[160px] left-4 bg-white font-extrabold hover:text-primary-hover text-black text-lg px-3 py-1 shadow">
         {{ blogs[0]?.title }}
@@ -14,10 +11,7 @@
 
     <div class="flex flex-col">
       <div class="relative" *ngIf="blogs[1]">
-        <img
-          [src]="blogs[1]?.imagesGallery[0]?.imageUrl"
-          [alt]="blogs[1].title"
-          class="w-full h-full object-cover" />
+        <img [src]="blogs[1]?.imagesGallery[0]?.imageUrl" [alt]="blogs[1].title" class="w-full h-full object-cover" />
         <h3
           class="absolute bottom-3 left-3 bg-white text-black text-xs hover:text-primary-hover font-semibold px-2 py-1">
           {{ blogs[1].title }}
@@ -25,10 +19,7 @@
       </div>
 
       <div class="relative" *ngIf="blogs[2]">
-        <img
-          [src]="blogs[2]?.imagesGallery[0]?.imageUrl"
-          [alt]="blogs[2].title"
-          class="w-full h-full object-cover" />
+        <img [src]="blogs[2]?.imagesGallery[0]?.imageUrl" [alt]="blogs[2].title" class="w-full h-full object-cover" />
         <h3
           class="absolute bottom-3 left-3 bg-white text-black hover:text-primary-hover text-xs font-semibold px-2 py-1">
           {{ blogs[2].title }}
@@ -54,16 +45,14 @@
 
 <!-- next post section -->
 <div class="flex">
-  <div id="main" class="w-full md:w-3/4 lg:w-2/3 p-4">
+  <div id="main" class="w-full md:w-3/4 lg:w-2/3 p-4 ">
     <div class="sticky top-4">
       <!-- Latest Posts Title -->
       <div class="mb-8 pb-2 py-5">
         <h3 class="text-xl font-bold">Najnowsze posty</h3>
       </div>
 
-      <div
-        *ngFor="let blog of blogs"
-        (click)="onBlogClick(blog._id)"
+      <div *ngFor="let blog of blogs" (click)="onBlogClick(blog._id)"
         class="mb-12 bg-white rounded-lg shadow-md overflow-hidden">
         <!-- Article Content -->
         <div class="p-6">
@@ -71,24 +60,15 @@
             <!-- Category -->
             <div class="mb-2">
               <span class="cat">
-                <a
-                  class="text-primary-hover hover:text-primary-hover hover:underline text-sm"
-                  href="#">
+                <a class="text-primary-hover hover:text-primary-hover hover:underline text-sm" href="#">
                   {{ blog.category }}
                 </a>
               </span>
             </div>
             <!-- date  -->
             <div class="flex items-center text-sm text-gray-500 mb-2 md:mb-0">
-              <svg
-                class="w-4 h-4 mr-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
               </svg>
               {{ blog.createdAt | date : "MMMM d, y" }}
@@ -97,9 +77,7 @@
 
           <!-- Title -->
           <h2 class="text-2xl font-bold mb-4">
-            <a
-              [routerLink]="['/blog', blog._id]"
-              class="hover:text-primary-hover transition duration-200">
+            <a [routerLink]="['/blog', blog._id]" class="hover:text-primary-hover transition duration-200">
               {{ blog.title }}
             </a>
           </h2>
@@ -107,13 +85,8 @@
           <!-- Featured Image -->
           <div class="standard-post-image">
             <a [routerLink]="['/blog', blog._id]">
-              <img
-                width="740"
-                height="590"
-                [src]="blog?.imagesGallery[0]?.imageUrl"
-                class="w-full h-auto"
-                [alt]="blog.Title"
-                loading="lazy" />
+              <img width="740" height="590" [src]="blog?.imagesGallery[0]?.imageUrl" class="w-full h-auto"
+                [alt]="blog.Title" loading="lazy" />
             </a>
           </div>
           <!-- Excerpt -->
@@ -123,52 +96,36 @@
 
           <!-- Read More -->
           <div class="penci-more-link mb-6">
-            <a
-              [routerLink]="['/blog', blog._id]"
+            <a [routerLink]="['/blog', blog._id]"
               class="text-primary-hover hover:text-primary-hover hover:underline font-bold">
               Czytaj więcej
             </a>
           </div>
 
           <!-- Meta Info -->
-          <div
-            class="flex flex-wrap justify-between items-center pt-4 border-t border-gray-100">
+          <div class="flex flex-wrap justify-between items-center pt-4 border-t border-gray-100">
             <div class="flex items-center space-x-4">
               <!-- Like Button -->
-              <a
-                class="flex items-center text-sm text-gray-500 hover:text-red-500">
-                <img
-                  class="h-[13px] w-[13px]"
-                  src="../../../../../public/assets/heart.svg"
-                  alt="" />
+              <a class="flex items-center text-sm text-gray-500 hover:text-red-500">
+                <img class="h-[13px] w-[13px]" src="../../../../../public/assets/heart.svg" alt="" />
                 <span class="dt-share">1</span>
               </a>
 
               <!-- Socials -->
-              <a
-                target="_blank"
-                href="#"
-                class="flex items-center text-sm text-gray-500 hover:text-primary-hover">
-                <svg
-                  class="w-4 h-4 mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 24 24">
+              <a target="_blank" href="#" class="flex items-center text-sm text-gray-500 hover:text-primary-hover">
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                   <path
-                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z">
+                  </path>
                 </svg>
                 Facebook
               </a>
 
-              <a
-                target="_blank"
-                href="#"
-                class="flex items-center text-sm text-gray-500 hover:text-primary-hover">
-                <svg
-                  class="w-4 h-4 mr-1"
-                  fill="currentColor"
-                  viewBox="0 0 24 24">
+              <a target="_blank" href="#" class="flex items-center text-sm text-gray-500 hover:text-primary-hover">
+                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                   <path
-                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"></path>
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z">
+                  </path>
                 </svg>
                 LinkedIn
               </a>
@@ -182,39 +139,21 @@
         <div class="newer">
           <div class="text-gray-400 cursor-not-allowed">
             <span class="flex items-center">
-              <svg
-                class="w-4 h-4 mr-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 19l-7-7 7-7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
               </svg>
               Nowsze posty
             </span>
           </div>
         </div>
         <div class="older">
-          <a
-            href=""
-            class="text-primary-hover hover:text-primary-hover font-medium">
+          <a href="" class="text-primary-hover hover:text-primary-hover font-medium">
             <span class="flex items-center">
               Starsze posty
-              <svg
-                class="w-4 h-4 ml-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
               </svg>
             </span>
           </a>
@@ -223,112 +162,97 @@
     </div>
   </div>
   <!-- next -->
-  <div id="sidebar" class="w-full md:w-1/4 lg:w-1/3 p-4">
+  <div id="sidebar" class="w-full md:w-1/4 lg:w-1/3 p-4 hidden md:block">
     <div class="sticky top-4">
       <!-- Banner Widget -->
       <aside class="mb-8">
         <div class="textwidget">
           <a href="" target="_blank" class="block">
-            <img
-              src="public/assets/parent/13.jpeg"
-              class="mx-auto max-w-full h-auto"
-              alt="English course" />
+            <img src="public/assets/parent/13.jpeg" class="mx-auto max-w-full h-auto" alt="English course" />
           </a>
         </div>
       </aside>
 
       <!-- Newsletter Widget -->
-   <aside class="mb-8">
-  <h4 class="text-lg font-bold mb-4 relative pb-2 border-b border-gray-200">
-    <span class="relative"> Newsletter </span>
-  </h4>
+      <aside class="mb-8">
+        <h4 class="text-lg font-bold mb-4 relative pb-2 border-b border-gray-200">
+          <span class="relative"> Newsletter </span>
+        </h4>
 
-  <form action="/blog/" method="post" class="js-newsletter" novalidate>
-    <input
-      name="name"
-      type="text"
-      required
-      class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:none"
-      placeholder="Imię" />
+        <form action="/blog/" method="post" class="js-newsletter" novalidate>
+          <input name="name" type="text" required
+            class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:none"
+            placeholder="Imię" />
 
-    <input
-      name="email"
-      type="email"
-      required
-      class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:none"
-      placeholder="E-mail" />
+          <input name="email" type="email" required
+            class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:outline-none focus:none"
+            placeholder="E-mail" />
 
-    <div class="agreement mb-4">
-      <label class="flex items-start">
-        <input
-          type="checkbox"
-          name="agreement_2"
-          class="mt-1 mr-2 accent-primary-hover" />
-        <span class="text-sm">
-          Wyrażam zgodę na przesyłanie mi przez ES EDUCATION bezpośredniego marketingu produktów i usług własnych ES EDUCATION na podany przeze mnie adres e-mail. Wiem, że mogę w każdej chwili cofnąć powyższą zgodę, informując o tym ES EDUCATION, co nie wpływa na zgodność z prawem przesyłania informacji przed jej cofnięciem.
-        </span>
-      </label>
-    </div>
+          <div class="agreement mb-4">
+            <label class="flex items-start">
+              <input type="checkbox" name="agreement_2" class="mt-1 mr-2 accent-primary-hover" />
+              <span class="text-sm">
+                Wyrażam zgodę na przesyłanie mi przez ES EDUCATION bezpośredniego marketingu produktów i usług własnych
+                ES EDUCATION na podany przeze mnie adres e-mail. Wiem, że mogę w każdej chwili cofnąć powyższą zgodę,
+                informując o tym ES EDUCATION, co nie wpływa na zgodność z prawem przesyłania informacji przed jej
+                cofnięciem.
+              </span>
+            </label>
+          </div>
 
-    <div class="agreement mb-6">
-      <label class="flex items-start">
-        <input
-          type="checkbox"
-          name="agreement_3"
-          class="mt-1 mr-2 accent-primary-hover" />
-        <span class="text-sm">
-          Wyrażam zgodę na przetwarzanie moich danych osobowych (imienia i adresu e-mail) przez ES EDUCATION w celu przesyłania informacji marketingowych dotyczących własnych produktów i usług ES EDUCATION na podany adres e-mail. Wiem, że mogę w każdej chwili wycofać powyższą zgodę, informując o tym ES EDUCATION, co nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem. Podane dane osobowe będą przechowywane przez okres trwania kampanii marketingowych ES EDUCATION, nie dłużej jednak niż do momentu cofnięcia zgody, z zastrzeżeniem dalszego przetwarzania dopuszczalnego przez prawo (z uwzględnieniem terminów przedawnienia).
-          <br /><br />
-          Administratorem Twoich danych osobowych jest ES EDUCATION Bochińska i Wspólnicy. Dane osobowe będą przetwarzane w celu marketingu bezpośredniego, w tym przesyłania informacji handlowych o naszych produktach, usługach, kampaniach promocyjnych, wydarzeniach. Masz prawo żądania dostępu do swoich danych osobowych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz prawo do sprzeciwu i prawo do wniesienia skargi do organu nadzorczego (Prezesa Urzędu Ochrony Danych Osobowych). Szczegółowe informacje o przetwarzaniu danych osobowych znajdziesz
-          <a
-            href="#"
-            class="js-popup-open text-primary-hover font-semibold hover:underline"
-            data-id="agreement-3-popup"
-            >tutaj</a
-          >.
-        </span>
-      </label>
-    </div>
+          <div class="agreement mb-6">
+            <label class="flex items-start">
+              <input type="checkbox" name="agreement_3" class="mt-1 mr-2 accent-primary-hover" />
+              <span class="text-sm">
+                Wyrażam zgodę na przetwarzanie moich danych osobowych (imienia i adresu e-mail) przez ES EDUCATION w
+                celu przesyłania informacji marketingowych dotyczących własnych produktów i usług ES EDUCATION na podany
+                adres e-mail. Wiem, że mogę w każdej chwili wycofać powyższą zgodę, informując o tym ES EDUCATION, co
+                nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem. Podane dane osobowe będą
+                przechowywane przez okres trwania kampanii marketingowych ES EDUCATION, nie dłużej jednak niż do momentu
+                cofnięcia zgody, z zastrzeżeniem dalszego przetwarzania dopuszczalnego przez prawo (z uwzględnieniem
+                terminów przedawnienia).
+                <br /><br />
+                Administratorem Twoich danych osobowych jest ES EDUCATION Bochińska i Wspólnicy. Dane osobowe będą
+                przetwarzane w celu marketingu bezpośredniego, w tym przesyłania informacji handlowych o naszych
+                produktach, usługach, kampaniach promocyjnych, wydarzeniach. Masz prawo żądania dostępu do swoich danych
+                osobowych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz prawo do sprzeciwu
+                i prawo do wniesienia skargi do organu nadzorczego (Prezesa Urzędu Ochrony Danych Osobowych).
+                Szczegółowe informacje o przetwarzaniu danych osobowych znajdziesz
+                <a href="#" class="js-popup-open text-primary-hover font-semibold hover:underline"
+                  data-id="agreement-3-popup">tutaj</a>.
+              </span>
+            </label>
+          </div>
 
-    <button
-      type="submit"
-      class="w-full bg-primary-hover hover:bg-primary-hover text-white font-bold py-3 px-4 rounded transition duration-200">
-      Zapisz się
-    </button>
+          <button type="submit"
+            class="w-full bg-primary-hover hover:bg-primary-hover text-white font-bold py-3 px-4 rounded transition duration-200">
+            Zapisz się
+          </button>
 
-    <p class="message js-message mt-2 text-sm"></p>
-  </form>
-</aside>
+          <p class="message js-message mt-2 text-sm"></p>
+        </form>
+      </aside>
 
 
       <!-- Popular Posts Widget -->
       <aside>
-        <h4
-          class="text-lg font-bold mb-4 relative pb-2 border-b border-gray-200">
+        <h4 class="text-lg font-bold mb-4 relative pb-2 border-b border-gray-200">
           <span class="relative">Najpopularniejsze posty </span>
         </h4>
 
         <ul class="space-y-6">
-          <li
-            class="penci-feed"
-            *ngFor="let post of blogs"
-            (click)="onBlogClick(post._id)">
+          <li class="penci-feed" *ngFor="let post of blogs" (click)="onBlogClick(post._id)">
             <div class="flex gap-4">
               <div class="side-image flex-shrink-0 w-20 h-20">
-                <a
-                  [routerLink]="['/blog-details', post._id]"
-                  class="block w-full h-full bg-cover bg-center"
-                  [title]="post.title"
-                  [style.backgroundImage]="
+                <a [routerLink]="['/blog-details', post._id]" class="block w-full h-full bg-cover bg-center"
+                  [title]="post.title" [style.backgroundImage]="
                     'url(' + post.imagesGallery[0].imageUrl + ')'
                   ">
                 </a>
               </div>
               <div class="side-item-text">
                 <h4 class="text-sm font-semibold leading-tight">
-                  <a
-                    [routerLink]="['/blog-details', post._id]"
-                    [title]="post.title"
+                  <a [routerLink]="['/blog-details', post._id]" [title]="post.title"
                     class="hover:text-primary-hover transition duration-200">
                     {{ post.title }}
                   </a>
@@ -340,61 +264,39 @@
       </aside>
 
       <!-- Popup Modals (hidden by default) -->
-      <div
-        class="u-popup js-popup hidden fixed inset-0 bg-black bg-opacity-50 z-50"
-        data-id="newsletter-popup">
+      <div class="u-popup js-popup hidden fixed inset-0 bg-black bg-opacity-50 z-50" data-id="newsletter-popup">
         <div class="wrapper flex items-center justify-center h-full">
           <div class="content bg-white rounded-lg max-w-2xl w-full mx-4">
             <div class="content-inner p-6">
               <div class="newsletter-popup">
                 <h2 class="popup-title text-xl font-bold mb-4">
-             Jeśli chcesz być na bieżąco z tym, co dzieje się w Early Stage – zapisz się do newslettera!
+                  Jeśli chcesz być na bieżąco z tym, co dzieje się w Early Stage – zapisz się do newslettera!
                 </h2>
 
-                <form
-                  action="/blog/"
-                  method="post"
-                  class="js-newsletter"
-                  novalidate>
+                <form action="/blog/" method="post" class="js-newsletter" novalidate>
                   <div class="fields-row mb-4">
-                    <input
-                      name="name"
-                      type="text"
-                      required
+                    <input name="name" type="text" required
                       class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-hover"
                       placeholder="Name" />
-                    <input
-                      name="email"
-                      type="email"
-                      required
+                    <input name="email" type="email" required
                       class="w-full px-4 py-2 mt-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-hover"
                       placeholder="E-mail" />
                   </div>
 
                   <!-- Agreement checkboxes similar to above -->
 
-                  <button
-                    type="submit"
+                  <button type="submit"
                     class="w-full bg-primary-hover hover:bg-primary-hover text-white font-bold py-3 px-4 rounded transition duration-200">
-             Zapisz się
+                    Zapisz się
                   </button>
 
                   <p class="message js-message mt-2 text-sm"></p>
                 </form>
               </div>
-              <button
-                class="js-popup-close absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
+              <button class="js-popup-close absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -403,29 +305,17 @@
       </div>
 
       <!-- Second Popup Modal -->
-      <div
-        class="u-popup js-popup hidden fixed inset-0 bg-black bg-opacity-50 z-50"
-        data-id="agreement-3-popup">
+      <div class="u-popup js-popup hidden fixed inset-0 bg-black bg-opacity-50 z-50" data-id="agreement-3-popup">
         <div class="wrapper flex items-center justify-center h-full">
-          <div
-            class="content bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+          <div class="content bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
             <div class="content-inner p-6">
               <div class="text text-sm text-left space-y-4">
                 <!-- Privacy policy content here -->
               </div>
-              <button
-                class="js-popup-close absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
+              <button class="js-popup-close absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
