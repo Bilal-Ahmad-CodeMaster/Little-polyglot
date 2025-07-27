@@ -1,35 +1,35 @@
 <div class="max-w-3xl mx-auto p-4">
   <p class="text-gray-800 mb-4">
-    Do you have a question, an idea? ...
+    Masz pytanie, pomysł? ...
   </p>
-  <p class="text-gray-800 mb-6">Write to us and we will reply ...</p>
+  <p class="text-gray-800 mb-6">Napisz do nas, a my odpowiemy ...</p>
 
-  <!-- ✅ Move formGroup and ngSubmit here -->
+  <!--  Move formGroup and ngSubmit here -->
   <form class="space-y-4" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <!-- Name -->
     <div>
-      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Name and Surname (required)</label>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Imię i nazwisko (wymagane)</label>
       <input type="text" formControlName="name"
         class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
     </div>
 
     <!-- Email -->
     <div>
-      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Email Address (required)</label>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Adres e-mail (wymagany)</label>
       <input type="email" formControlName="email"
         class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
     </div>
 
     <!-- Topic -->
     <div>
-      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Topic</label>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Temat</label>
       <input type="text" formControlName="topic"
         class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
     </div>
 
     <!-- Message -->
     <div>
-      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Message Content</label>
+      <label class="block text-xs font-bold uppercase text-gray-600 mb-1">Treść wiadomości</label>
       <textarea formControlName="message" rows="5"
         class="w-full border border-gray-300 rounded-sm p-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
     </div>
@@ -38,7 +38,7 @@
     <div>
       <button type="submit" [disabled]="contactForm.invalid"
         class="bg-primary-hover text-white px-6 py-2 rounded-sm hover:bg-primary transition">
-        Send
+        Wyślij
       </button>
     </div>
   </form>

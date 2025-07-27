@@ -15,6 +15,7 @@ export class CreativeLearningComponent {
   ngOnInit() {
     this.api.getBlogs().subscribe((res: any) => {
       this.allBlogs = res.data.filter((b: any) => b.category === 'Kreatywna nauka')
+
     })
   }
 
