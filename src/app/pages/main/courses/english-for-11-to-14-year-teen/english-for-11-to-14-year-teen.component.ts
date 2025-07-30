@@ -14,20 +14,21 @@ import { RouterLink } from '@angular/router';
 export class EnglishFor11To14YearTeenComponent {
   featureArray = [
     {
-      iconUrl: '../../../../../public/assets/courses/feature1.svg', title: 'Grupy dopasowane pod względem wieku i poziomu znajomości języka'
+      iconUrl: 'fa-users', title: 'Grupy dopasowane pod względem wieku i poziomu znajomości języka'
     },
     {
-      iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Ambitny program i oryginalne podręczniki'
+      iconUrl: 'fa-language', title: 'Ambitny program i oryginalne podręczniki'
     },
     {
-      iconUrl: '../../../../../public/assets/courses/feature3.svg', title: 'Przygotowanie do egzaminów Cambridge'
+      iconUrl: 'fa-lightbulb', title: 'Przygotowanie do egzaminów Cambridge'
     },
-    { iconUrl: '../../../../../public/assets/courses/feature5.svg', title: 'Dodatkowe materiały online' },
+    { iconUrl: 'fa-comments', title: 'Przygotowanie do egzaminu ósmoklasisty' },
+    { iconUrl: 'fa-language', title: 'Dodatkowe materiały online' },
     {
-      iconUrl: '../../../../../public/assets/courses/feature4.svg', title: 'Stały kontakt z lektorem'
+      iconUrl: 'fa-users', title: 'Stały kontakt z lektorem'
     },
-    { iconUrl: '../../../../../public/assets/courses/feature6.svg', title: 'Monitorowanie postępów' },
-    { iconUrl: '../../../../../public/assets/courses/feature7.svg', title: 'E-dziennik i aplikacja muzyczna' },
-    { iconUrl: '../../../../../public/assets/courses/feature2.svg', title: 'Podsumowanie semestralne i roczne' }
+    { iconUrl: 'fa-graduation-cap', title: 'Monitorowanie postępów' },
+    { iconUrl: 'fa-seedling', title: 'E-dziennik i aplikacja muzyczna' },
+    { iconUrl: 'fa-language', title: 'Podsumowanie semestralne i roczne' }
   ];
 }

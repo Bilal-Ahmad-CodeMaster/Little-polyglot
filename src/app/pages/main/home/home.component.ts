@@ -15,32 +15,32 @@ export class HomeComponent {
 
   featureArray: any[] = [
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-5.svg",
+      iconUrl: "fa-comments",
       title: "Pewna siebie komunikacja zaczyna się wcześnie.",
       description: "W Polyglot Kids dzieci nie tylko uczą się angielskiego one zaczynają nim mówić z łatwością Wspieramy autentyczne rozmowy już od pierwszych zajęć."
     },
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-6.svg",
+      iconUrl: "fa-lightbulb",
       title: "Angażujące lekcje za każdym razem",
       description: "U nas nie ma miejsca na nudne ćwiczenia.Nasze interaktywne zajęcia łączą kreatywność, zabawę i jasno określony cel, aby utrzymać ciekawość i koncentrację młodych umysłów."
     },
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-7.svg",
+      iconUrl: "fa-language",
       title: "Trwała biegłość językowa",
       description: "Przygotowujemy dzieci nie tylko do egzaminów, ale do życia.Nasi uczniowie wyrastają na pewnych siebie mówców, którzy myślą i wyrażają się jasno po angielsku."
     },
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-8.svg",
+      iconUrl: "fa-users",
       title: "Miejsce, gdzie dzieci czują przynależność",
       description: "Ciepło, integracja i zabawa definiują nasze sale lekcyjne.Dzieci rozwijają się w wspierających grupach, gdzie przyjaźnie rosną razem z umiejętnościami językowymi."
     },
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-9.svg",
+      iconUrl: "fa-seedling",
       title: "Poza językiem: umiejętności na całe życie",
       description: "Nasz program nauczania integruje myślenie krytyczne, współpracę i kreatywność ponieważ wielojęzyczność to tylko część nastawienia gotowego na przyszłość."
     },
     {
-      iconUrl: "../../../../../public/assets/home/svgexport-10.svg",
+      iconUrl: "fa-graduation-cap",
       title: "Nauka blisko domu",
       description: "Dzięki centrom w lokalnych szkołach, przedszkolach i ośrodkach społecznych, dołączenie do Polyglot Kids jest łatwe i wygodne dla każdej rodziny."
     }
