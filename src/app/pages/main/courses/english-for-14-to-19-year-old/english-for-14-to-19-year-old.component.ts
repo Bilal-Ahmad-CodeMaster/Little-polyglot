@@ -14,21 +14,21 @@ import { SubHeroSectionComponent } from "../../../../components/main/courses/sub
 export class EnglishFor14To19YearOldComponent {
   featureArray = [
     {
-      iconUrl: 'fa-users', title: 'Groups matched by age and language proficiency level'
+      iconUrl: 'fa-users', title: 'Grupy dopasowane pod względem wieku i poziomu znajomości języka'
     },
     {
-      iconUrl: 'fa-language', title: 'An ambitious program and original textbooks'
+      iconUrl: 'fa-language', title: 'Ambitny program i oryginalne podręczniki'
     },
     {
-      iconUrl: 'fa-lightbulb', title: 'Cambridge Exam Preparation'
+      iconUrl: 'fa-lightbulb', title: 'Przygotowanie do egzaminów Cambridge'
     },
-    { iconUrl: 'fa-comments', title: 'Preparation for the eighth-grade exam' },
-    { iconUrl: 'fa-language', title: 'Additional online materials' },
+    { iconUrl: 'fa-comments', title: 'Przygotowanie do egzaminu ósmoklasisty' },
+    { iconUrl: 'fa-language', title: 'Dodatkowe materiały online' },
     {
-      iconUrl: 'fa-users', title: 'Ongoing contact with the lecturer'
+      iconUrl: 'fa-users', title: 'Stały kontakt z lektorem'
     },
-    { iconUrl: 'fa-graduation-cap', title: 'Progress monitoring' },
-    { iconUrl: 'fa-seedling', title: 'E-journal and music app' },
-    { iconUrl: 'fa-language', title: 'Semester and yearly summary' }
+    { iconUrl: 'fa-graduation-cap', title: 'Monitorowanie postępów' },
+    { iconUrl: 'fa-seedling', title: 'E-dziennik i aplikacja muzyczna' },
+    { iconUrl: 'fa-language', title: 'Podsumowanie semestralne i roczne' }
   ];
 }
