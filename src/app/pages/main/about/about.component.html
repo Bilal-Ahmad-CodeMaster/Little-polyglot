@@ -1,12 +1,9 @@
 <!-- Hero Section -->
 <div class="bg-[#f9fafb] py-10 px-4">
-  <div
-    class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
     <!-- Side Image -->
     <div class="md:col-span-1 flex justify-center md:justify-start">
-      <img
-        src="../../../../../public/assets/methods/mike.jpg"
-        alt="Students learning at Polyglot Kids"
+      <img src="../../../../../public/assets/methods/mike.jpg" alt="Students learning at Polyglot Kids"
         class="w-full max-w-xs rounded-xl shadow-md object-cover" />
     </div>
 
@@ -14,11 +11,8 @@
     <div class="md:col-span-2 space-y-6">
       <!-- Breadcrumb -->
       <nav class="text-sm text-gray-400 pt-2" aria-label="Breadcrumb">
-        <a
-          routerLink="/"
-          class="hover:underline font-medium text-primary cursor-pointer hover:text-primary-hover"
-          >Strona główna</a
-        >
+        <a routerLink="/"
+          class="hover:underline font-medium text-primary cursor-pointer hover:text-primary-hover">Strona główna</a>
         <span>/</span>
         <span class="text-gray-600 font-semibold">O nas</span>
       </nav>
@@ -49,77 +43,49 @@
 
 <main class="max-w-4xl mx-auto px-4 py-8">
   <h1 class="text-center text-2xl font-normal mb-6">
-    Kto tworzy Polyglot Kids?
+    Polyglot Kids – Skuteczna i Praktyczna Nauka Angielskiego dla Dzieci w Polsce
   </h1>
   <p class="text-start text-sm max-w-3xl mx-auto mb-6 leading-relaxed">
-    Polyglot Kids to szkoła języka angielskiego, która powstała z pasji do
-    nauczania, potrzeby rozwoju oraz autentycznego kontaktu z dziećmi i
-    młodzieżą. Oddziały szkoły w całej Polsce tworzą osoby, którym te wartości
-    są bliskie.
+    W Polyglot Kids wierzymy, że nauka języka angielskiego dla dzieci to nie tylko słówka i gramatyka, ale przede
+    wszystkim praktyczna komunikacja. Naszym celem jest rozwijanie pasji do języków, aby dzieci stały się prawdziwymi
+    obywatelami świata. Zamiast tradycyjnych metod, stawiamy na mówienie – bo to ono buduje płynność i pewność siebie.
     <br />
-    Współpracujemy z franczyzobiorcami, którzy tworzą przestrzeń przyjazną
-    rozwojowi dzieci. Nasi metodycy wspierają nauczycieli w doskonaleniu pracy
-    oraz tworzą ambitne materiały edukacyjne. Nauczyciele z pasją,
-    zaangażowaniem i empatią prowadzą zajęcia, koncentrując się na autentycznym
-    kontakcie z uczniami. Zapraszamy rodziców, którym zależy na wszechstronnym
-    rozwoju ich dzieci, a przede wszystkim dzieci, których kolorowy świat
-    napędza nas do działania.
+    Dzięki intensywnej, ale zabawnej praktyce, każde dziecko już w miesiąc potrafi wypowiedzieć ponad 120 zdań po
+    angielsku. Uczymy poprzez powtórzenia, aktywne słuchanie i naśladowanie native speakerów, co pozwala naturalnie
+    opanować poprawny akcent i melodię języka.
+    Nasze zajęcia to gry, piosenki i zabawy, które zachęcają do mówienia. To zanurzenie w języku sprawia, że dzieci nie
+    uczą się mechanicznie – one zaczynają myśleć i mówić po angielsku.
   </p>
 
   <!-- Carousel -->
   <div class="max-w-3xl max-h-[468px] mx-auto mt-10 relative">
-    <ng-container
-      *ngIf="items[currentIndex] as item"
-      class="max-w-3xl max-h-[468px]">
+    <ng-container *ngIf="items[currentIndex] as item" class="max-w-3xl max-h-[468px]">
       <!-- BANNER -->
-      <img
-        *ngIf="item.type === 'banner'"
-        [src]="item.thumbnail"
-        class="max-w-3xl max-h-[468px] rounded-lg object-cover"
+      <img *ngIf="item.type === 'banner'" [src]="item.thumbnail" class="max-w-3xl max-h-[468px] rounded-lg object-cover"
         alt="Baner" />
 
       <!-- VIDEO -->
-      <div
-        *ngIf="item.type === 'video'"
-        class="relative max-w-3xl max-h-[468px]">
-        <img
-          *ngIf="!item.playing"
-          [src]="item.thumbnail"
-          class="w-full rounded-lg object-cover cursor-pointer max-w-3xl max-h-[468px]"
-          (click)="showVideo(item)" />
-        <button
-          *ngIf="!item.playing"
-          (click)="showVideo(item)"
+      <div *ngIf="item.type === 'video'" class="relative max-w-3xl max-h-[468px]">
+        <img *ngIf="!item.playing" [src]="item.thumbnail"
+          class="w-full rounded-lg object-cover cursor-pointer max-w-3xl max-h-[468px]" (click)="showVideo(item)" />
+        <button *ngIf="!item.playing" (click)="showVideo(item)"
           class="max-w-3xl max-h-[468px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg">
-          <svg
-            class="w-8 h-8 text-primary"
-            fill="currentColor"
-            viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"></path>
           </svg>
         </button>
-        <video
-          *ngIf="item.playing"
-          class="max-w-3xl max-h-[468px] w-full rounded-lg"
-          [src]="item.videoUrl"
-          controls
-          autoplay
-          (ended)="onVideoEnded(item)"></video>
+        <video *ngIf="item.playing" class="max-w-3xl max-h-[468px] w-full rounded-lg" [src]="item.videoUrl" controls
+          autoplay (ended)="onVideoEnded(item)"></video>
       </div>
     </ng-container>
 
     <!-- Controls -->
-    <nav
-      class="flex justify-center items-center space-x-6 mt-6 text-primary text-sm select-none">
-      <button
-        (click)="prev()"
-        aria-label="Poprzedni"
-        class="focus:outline-none">
+    <nav class="flex justify-center items-center space-x-6 mt-6 text-primary text-sm select-none">
+      <button (click)="prev()" aria-label="Poprzedni" class="focus:outline-none">
         <i class="fas fa-chevron-left"></i>
       </button>
       <ng-container *ngFor="let item; index as i; of: items">
-        <span
-          class="w-3 h-3 rounded-full inline-block"
+        <span class="w-3 h-3 rounded-full inline-block"
           [ngClass]="i === currentIndex ? 'bg-primary' : 'bg-gray-300'"></span>
       </ng-container>
       <button (click)="next()" aria-label="Następny" class="focus:outline-none">
@@ -129,32 +95,33 @@
   </div>
 </main>
 
-<main
-  class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+<main class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
   <img
     alt="Dwie kobiety pozujące do zdjęcia, jedna w niebieskich okularach i różowym swetrze, druga z blond włosami i zieloną koszulą"
-    class="rounded-lg w-full max-w-md object-cover"
-    height="300"
-    src="../../../../../public/assets/images/17.jpeg"
+    class="rounded-lg w-full max-w-md object-cover" height="300" src="../../../../../public/assets/images/17.jpeg"
     width="400" />
   <section class="max-w-xl">
     <h1 class="text-2xl md:text-3xl font-normal mb-4 leading-snug">
-      Jak powstało Polyglot Kids?
+      Jak skutecznie i z radością uczyć dzieci angielskiego w erze cyfrowej?
     </h1>
     <p class="text-sm md:text-base leading-relaxed mb-4">
-      Wszystko zaczęło się na warszawskim Mokotowie, w szarym, niepozornym budynku,
-      gdzie Joanna Zarańska założyła szkołę językową – jedną z pierwszych w Polsce
-      specjalizującą się w nauczaniu języka angielskiego dzieci. Po kilku tygodniach
-      okazało się, że wygląd budynku nie miał nic wspólnego z tym, co działo się w środku.
-      Zajęcia były interesujące, radosne i kolorowe. Entuzjazm Joanny w połączeniu z jej
-      autorskim programem wdrażanym podczas kursu przynosił niesamowite rezultaty.
-      Młodzi uczniowie opowiadali o lekcjach jak o prawdziwych przygodach, pełnych zagadek,
-      piosenek, rymowanek i ruchu, coraz częściej używając angielskich słów.
+      W Polyglot Kids odkryliśmy, że tradycyjne metody nauczania języka angielskiego po prostu nie działają na dzieci
+      wychowane w świecie cyfrowym. Maluchy dorastające z telefonami, tabletami i interaktywnymi mediami myślą i uczą
+      się zupełnie inaczej niż wcześniejsze pokolenia. Potrzebują podejścia, które odpowiada ich rzeczywistości —
+      dynamicznego, angażującego i pełnego sensu. Dlatego w Polyglot Kids całkowicie zrewolucjonizowaliśmy sposób
+      nauczania języka angielskiego dla najmłodszych. Zamiast polegać na przestarzałych podręcznikach i monotonnych
+      ćwiczeniach, oferujemy dynamiczne, immersyjne doświadczenie, w którym działanie, interakcja i zabawa są
+      fundamentem nauki języka.
+      Nasze zajęcia z angielskiego dla dzieci są pełne energii i kreatywności. Dzięki animowanym filmom edukacyjnym,
+      interaktywnym grom językowym, zabawom ruchowym, śpiewowi i tańcowi tworzymy radosne środowisko, w którym dzieci
+      naturalnie przyswajają język angielski. Nauka staje się podróżą odkrywania, a język nie jest czymś do zapamiętania
+      — lecz czymś, czym się żyje. Każde nowe słowo czy wyrażenie wprowadzane jest od razu w zrozumiały, codzienny
+      kontekst, co pozwala dzieciom łatwiej je zapamiętać i używać z pewnością siebie. Takie podejście oparte na
+      doświadczeniu odzwierciedla sposób, w jaki języka uczą się jego rodzimi użytkownicy, i buduje solidne podstawy w
+      zakresie wymowy, słuchania i mówienia.
     </p>
     <p class="text-sm md:text-base leading-relaxed">
-      Był rok 1993, właśnie odkryto supernową w gwiazdozbiorze Wielkiej Niedźwiedzicy,
-      a szkoła językowa Polyglot Kids zadebiutowała na małym warszawskim osiedlu –
-      innowacyjna pod względem metod nauczania, otwierająca dzieci na świat, urodzona pod szczęśliwą gwiazdą.
+      Z pasji do innowacji w edukacji dzieci stworzyliśmy w Polyglot Kids nowoczesne środowisko nauki, które łączy najlepsze aspekty technologii z siłą relacji międzyludzkich. Nasza misja pozostaje niezmienna: uczyć angielskiego z pasją, radością i skutecznością, wykorzystując nowoczesne narzędzia i podejście, które naprawdę trafia do dzieci. Niezależnie od tego, czy szukasz alternatywy dla tradycyjnych metod, czy interesuje Cię coś podobnego do metody Helen Doron — Polyglot Kids to doskonały wybór. Oferujemy immersyjne kursy angielskiego dla dzieci, zaprojektowane z troską, energią i głębokim zrozumieniem potrzeb najmłodszych uczniów. Podaruj swojemu dziecku pewność w komunikacji i radosny start w dwujęzyczną przyszłość — z Polyglot Kids nauka angielskiego staje się językiem zabawy, rozwoju i nieograniczonych możliwości.
     </p>
   </section>
 </main>
@@ -163,31 +130,21 @@
 <main class="max-w-6xl mx-auto px-6 py-10">
   <div class="flex flex-col-reverse md:flex-row md:items-start md:space-x-10">
     <section class="md:flex-1 max-w-xl">
-      <h1
-        class="text-2xl md:text-3xl font-normal mb-6 leading-tight text-gray-900">
+      <h1 class="text-2xl md:text-3xl font-normal mb-6 leading-tight text-gray-900">
         Czy można mieć dwie prawe ręce?
       </h1>
       <p class="text-sm md:text-base text-gray-900 mb-6 leading-relaxed">
-        Wkrótce okazało się, że szkoła potrzebuje nowych ludzi. Ale nie zwykłych nauczycieli angielskiego,
-        lecz pasjonatów – kreatywnych, radosnych nauczycieli, którzy kochają pracę z dziećmi i ambitne wyzwania.
-        W ten sposób do zespołu dołączyły córki Joanny: najpierw Agnieszka, dziś znana pod pseudonimem scenicznym
-        Aga Zaryan, a po kilku latach Tonia, która obecnie razem z mężem Adamem zarządza całą firmą Polyglot Kids.
-        Przez wiele lat szkoła działała jako mała, rodzinna firma, zyskując z roku na rok coraz większą popularność
-        i szersze grono uczniów.
+       Największą siłą Polyglot Kids jest nasz zespół pełnych pasji, zaangażowania i empatii nauczycieli. To osoby, które nie tylko posiadają wysokie kwalifikacje językowe, ale również wykazują się ogromnym sercem i zrozumieniem dla potrzeb najmłodszych. Dla naszych lektorów nauczanie to coś więcej niż praca – to misja, która polega na inspirowaniu, wspieraniu i budowaniu pewności siebie u dzieci. Każdy z naszych nauczycieli łączy doskonałą znajomość języka angielskiego z wiedzą z zakresu psychologii rozwojowej oraz doświadczeniem w pracy z dziećmi w różnym wieku.
+       Nieustannie rozwijamy nasz zespół poprzez szkolenia z nowoczesnych i skutecznych metod nauczania – opartych na zabawie, ruchu, kreatywności i pozytywnym wzmocnieniu. Dzięki temu nasze zajęcia są dynamiczne, ciekawe i dostosowane do indywidualnych potrzeb każdego ucznia. Wiemy, że to właśnie entuzjazm i autentyczne zaangażowanie nauczyciela są kluczem do tego, by dziecko pokochało język angielski i z radością uczyło się nowych rzeczy.
       </p>
       <p class="text-sm md:text-base text-gray-900 leading-relaxed">
-        W 1997 roku nadszedł czas na zmiany. Joanna, za namową jednego z rodziców, otworzyła kolejny oddział szkoły – na Ursynowie.
-        Z inicjatywy Agnieszki powstał oddział na warszawskiej Ochocie. Tak rozpoczęła się podróż Polyglot Kids po stolicy.
-        Dziś nasze szkoły działają w całej Polsce.
+        W Polyglot Kids tworzymy atmosferę bezpieczeństwa, akceptacji i radości, w której każde dziecko może rozwinąć skrzydła i poczuć się wyjątkowo. Dołącz do naszej społeczności i przekonaj się, jak nasi nauczyciele potrafią rozbudzić w dzieciach naturalną ciekawość świata i miłość do nauki języków!
       </p>
     </section>
-    <section
-      class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <section class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center md:items-start gap-8">
       <img
         alt="Zdjęcie portretowe trzech osób: starsza kobieta z krótkimi blond włosami i okularami, ubrana w różową bluzkę i szalik, mężczyzna ze średniej długości blond włosami w jasnoniebieskiej koszuli oraz kobieta z blond włosami w turkusowej bluzce – wszyscy uśmiechnięci"
-        class="rounded-lg max-w-full h-auto"
-        height="300"
-        src="../../../../../public/assets/images/11.jpeg"
+        class="rounded-lg max-w-full h-auto" height="300" src="../../../../../public/assets/images/11.jpeg"
         width="400" />
     </section>
   </div>
@@ -199,27 +156,17 @@
     <div class="flex-shrink-0 md:w-1/2">
       <img
         alt="Grupa sześciu uśmiechniętych osób siedzących razem na kolorowym tle, trzymających żółty znak z polskim tekstem"
-        class="rounded-md w-full h-auto object-cover"
-        height="300"
-        src="../../../../../public/assets/images/16.jpeg"
+        class="rounded-md w-full h-auto object-cover" height="300" src="../../../../../public/assets/images/16.jpeg"
         width="500" />
     </div>
     <div class="mt-6 md:mt-0 md:w-1/2">
       <h2 class="text-xl font-normal mb-4">Małe kroki wielkiego sukcesu</h2>
       <p class="text-sm leading-relaxed mb-4">
-        Własne podręczniki, wieloletnie doświadczenie, setki pomysłów na ciekawe zajęcia i entuzjazm
-        były potencjałem, z jakim szkoła weszła w nowe tysiąclecie. Rozpoczęło się sylwestrowe odliczanie,
-        a wraz z nim dynamiczny rozwój firmy. Do zespołu nauczycieli dołączyli utalentowani ludzie,
-        powstały nowe projekty i oddziały. W 2005 roku Polyglot Kids po raz pierwszy otrzymało
-        Europejski Znak Innowacyjności w Nauczaniu Języków Obcych. W latach 2007–2011 szkoła wyszła poza
-        granice Warszawy, pojawiając się w największych miastach Polski. Obecnie działa w ponad 850 lokalizacjach,
-        ucząc ponad 58 000 dzieci.
+        Decydując się na naukę w Polyglot Kids, inwestujesz w przyszłość swojego dziecka w najpiękniejszy możliwy sposób. Nasze zajęcia to nie tylko nauka języka angielskiego – to rozwój kompetencji, które zostaną z dzieckiem na całe życie. Pracujemy nad budowaniem pewności siebie, rozwijaniem kreatywności, wzmacnianiem otwartości na inne kultury i umiejętności współpracy z rówieśnikami.
+        Dzieci, które od najmłodszych lat uczą się języka, szybciej adaptują się w różnorodnym środowisku, łatwiej nawiązują relacje międzynarodowe i osiągają sukcesy edukacyjne oraz zawodowe. W Polyglot Kids dbamy o indywidualne podejście – regularnie monitorujemy postępy każdego ucznia i zapewniamy rodzicom rzetelne informacje na temat rozwoju ich dziecka.
       </p>
       <p class="text-sm leading-relaxed">
-        Poza licznymi nagrodami i sukcesami edukacyjnymi, największym powodem do dumy są młodzi absolwenci szkoły,
-        opuszczający jej mury z doskonałą znajomością języka angielskiego. Ich otwartość na świat i szerokie
-        perspektywy rozwoju są najlepszą motywacją do dalszej pracy. Od początku istnienia szkoły to dzieci
-        inspirowały nas najbardziej.
+        Z nami Twoje dziecko nie tylko opanuje język obcy, ale również nauczy się wiary w siebie, otwartości i niezależności. Daj swojemu dziecku wyjątkowy start i pomóż mu wkroczyć na ścieżkę dwujęzycznej przyszłości. Razem możemy zbudować lepsze jutro
       </p>
     </div>
   </div>
@@ -229,8 +176,7 @@
 <app-openion-crousal></app-openion-crousal>
 
 <main class="flex flex-col lg:flex-row gap-6 justify-center mx-10 lg:mx-0">
-  <div
-    class="bg-[#ebf7ff] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+  <div class="bg-[#ebf7ff] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
     <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
       Znasz dobrze angielski?
     </h2>
@@ -243,8 +189,7 @@
       Praca dla lektora
     </button>
   </div>
-  <div
-    class="bg-[#ffebf0] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
+  <div class="bg-[#ffebf0] rounded-4xl px-10 py-5 md:px-20 md:py-10 lg:px-28 lg:py-10 text-center my-10">
     <h2 class="text-black text-lg md:text-2xl font-bold mb-3">
       Chcesz założyć własną szkołę?
     </h2>
@@ -258,4 +203,3 @@
     </button>
   </div>
 </main>
-
