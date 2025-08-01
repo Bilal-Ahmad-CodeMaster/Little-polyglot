@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
 })
 export class EnglishFor3To6YearKidsComponent {
   featureArray = [
+
     {
       iconUrl: 'fa-users', title: 'Groups matched by age and language proficiency level'
     },
@@ -31,6 +32,7 @@ export class EnglishFor3To6YearKidsComponent {
     { iconUrl: 'fa-graduation-cap', title: 'Progress monitoring' },
     { iconUrl: 'fa-seedling', title: 'E-journal and music app' },
     { iconUrl: 'fa-language', title: 'Semester and yearly summary' }
+
   ];
 
 }
