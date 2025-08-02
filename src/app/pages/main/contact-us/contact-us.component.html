@@ -8,8 +8,7 @@
   </ul>
 
   <!-- Heading -->
-  <h1
-    class="text-[#111724] font-medium text-2xl md:text-[34px] leading-snug tracking-tight mb-8">
+  <h1 class="text-[#111724] font-medium text-2xl md:text-[34px] leading-snug tracking-tight mb-8">
     Skontaktuj się z nami
   </h1>
 
@@ -17,59 +16,34 @@
   <div class="flex flex-col lg:flex-row gap-8 max-w-screen-lg">
     <!-- Search Field -->
     <div class="w-full max-w-md">
-      <label class="block text-[#111724] text-base font-medium mb-2"
-        >Wyszukaj</label
-      >
-      <div
-        class="flex items-center border border-gray-300 bg-white rounded px-3 py-2 relative">
-        <input
-          type="text"
-          placeholder="Wpisz szkołę, adres, miasto"
-          class="w-full outline-none" />
-        <svg
-          class="absolute top-2 right-2 w-6 h-6"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 50 50">
+      <label class="block text-[#111724] text-base font-medium mb-2">Wyszukaj</label>
+      <div class="flex items-center border border-gray-300 bg-white rounded px-3 py-2 relative">
+        <input type="text" placeholder="Wpisz szkołę, adres, miasto" class="w-full outline-none" />
+        <svg class="absolute top-2 right-2 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
           <path
-            d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.7 37 28.1 35.8 30.9 33.8 L 44.1 46.9 L 46.9 44.1 L 33.9 31.1 C 36.5 28.1 38 24.2 38 20 C 38 10.6 30.4 3 21 3 Z M 21 5 C 29.3 5 36 11.7 36 20 C 36 28.3 29.3 35 21 35 C 12.7 35 6 28.3 6 20 C 6 11.7 12.7 5 21 5 Z"></path>
+            d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.7 37 28.1 35.8 30.9 33.8 L 44.1 46.9 L 46.9 44.1 L 33.9 31.1 C 36.5 28.1 38 24.2 38 20 C 38 10.6 30.4 3 21 3 Z M 21 5 C 29.3 5 36 11.7 36 20 C 36 28.3 29.3 35 21 35 C 12.7 35 6 28.3 6 20 C 6 11.7 12.7 5 21 5 Z">
+          </path>
         </svg>
       </div>
     </div>
 
     <!-- Age Group Dropdown -->
     <div class="w-full max-w-md relative custom-dropdown">
-      <label class="block text-[#111724] text-base font-medium mb-2"
-        >Grupy wiekowe</label
-      >
-      <div
-        (click)="toggleDropdown()"
+      <label class="block text-[#111724] text-base font-medium mb-2">Grupy wiekowe</label>
+      <div (click)="toggleDropdown()"
         class="cursor-pointer border border-gray-300 px-4 h-[41.6px] py-3 bg-white rounded flex justify-between items-center">
         <span class="text-gray-800 truncate">{{ displayValue }}</span>
-        <svg
-          class="w-4 h-4 ml-2"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19 9l-7 7-7-7" />
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </div>
 
       <!-- Dropdown Options -->
-      <ul
-        *ngIf="dropdownOpen"
+      <ul *ngIf="dropdownOpen"
         class="absolute mt-1 w-full max-h-48 overflow-y-auto bg-white border border-gray-300 rounded shadow z-50">
-        <li
-          *ngFor="let option of options"
-          class="px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer">
+        <li *ngFor="let option of options" class="px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer">
           <label class="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              [checked]="isChecked(option)"
-              (change)="selectOption(option)"
+            <input type="checkbox" [checked]="isChecked(option)" (change)="selectOption(option)"
               class="form-checkbox text-blue-600" />
             <span>{{ option }}</span>
           </label>
@@ -108,10 +82,16 @@
   <div class="flex-1 bg-white p-6 rounded-md shadow-[0_0_15px_0_rgba(0,0,0,0.05)]">
     <h3 class="font-bold text-sm mb-3 border-b border-gray-300 pb-1">Dane rejestrowe</h3>
     <p class="text-xs text-black/80 leading-tight">
-      ES Education Bochińska i Partnerzy Spółka Komandytowa<br />
-      Plac Thomasa Woodrowa Wilsona 4/15<br />
-      01-626 Warszawa<br />
-      NIP: 5252852107
+      BRITISHWE MUHAMMED HAYDAROV <br>
+      ul. Pomorska 16A,<br />
+      80-333 Gdańsk <br>
+      <strong>REGON : </strong> 522029318 <br>
+      <strong>NIP : </strong>5842817827
+
+
     </p>
+
   </div>
+
+
 </div>
