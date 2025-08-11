@@ -148,7 +148,7 @@
 
             <div *ngIf="existingImageUrls.length > 0" class="flex flex-wrap gap-2 mt-2">
                 <div *ngFor="let url of existingImageUrls" class="relative">
-                    <img [src]="url" class="w-28 h-20 object-cover border rounded" />
+                    <img [src]="url?.imageUrl" class="w-28 h-20 object-cover border rounded" />
                     <button type="button" (click)="removeExistingImage(url)"
                         class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center hover:bg-red-700">&times;</button>
                 </div>
