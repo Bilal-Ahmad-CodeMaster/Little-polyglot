@@ -26,7 +26,7 @@ export class BlogsComponent implements OnInit {
 
   selectedFiles: File[] = [];
   imagePreviews: string[] = [];
-  existingImageUrls: string[] = [];
+  existingImageUrls: any[] = [];
 
   loading = false;
 
@@ -72,7 +72,7 @@ export class BlogsComponent implements OnInit {
     this.imagePreviews.splice(index, 1);
   }
 
-  removeExistingImage(url: string): void {
+  removeExistingImage(url: any): void {
     this.existingImageUrls = this.existingImageUrls.filter(img => img !== url);
   }
 
@@ -89,8 +89,10 @@ export class BlogsComponent implements OnInit {
     formData.append('category', this.blogForm.value.category);
     formData.append('description', this.blogForm.value.description);
     formData.append('subDescription', this.blogForm.value.subDescription || '');
-    formData.append('existingImageUrls', JSON.stringify(this.existingImageUrls || []));
-
+    formData.append(
+      'existingImageUrls',
+      JSON.stringify(this.existingImageUrls.map(img => typeof img === 'string' ? img : img.imageUrl))
+    );
     for (let file of this.selectedFiles) {
       formData.append('imagesGallery', file, file.name);
     }
@@ -151,9 +153,9 @@ export class BlogsComponent implements OnInit {
       this.showModal = true;
       this.cd.detectChanges();
     });
-    this.isEditMode=false
+    this.isEditMode = false
     this.closeModal()
-    
+
   }
 
   openEdit(blog: any): void {
@@ -168,6 +170,7 @@ export class BlogsComponent implements OnInit {
       subDescription: blog.subDescription || ''
     });
     this.existingImageUrls = blog.imagesGallery || [];
+    console.log(this.existingImageUrls);
     setTimeout(() => {
       this.showModal = true;
       this.cd.detectChanges();
