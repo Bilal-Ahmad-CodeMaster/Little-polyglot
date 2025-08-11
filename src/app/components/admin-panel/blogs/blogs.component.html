@@ -18,41 +18,54 @@
                 <tr class="bg-gray-100 text-left text-sm font-semibold text-gray-700">
                     <th class="px-4 py-3 border-b">#</th>
                     <th class="px-4 py-3 border-b">Image</th>
-                    <th class="px-4 py-3 border-b">title</th>
+                    <th class="px-4 py-3 border-b">Title</th>
                     <th class="px-4 py-3 border-b">Category</th>
                     <th class="px-4 py-3 border-b">Likes</th>
                     <th class="px-4 py-3 border-b text-center">Actions</th>
                 </tr>
             </thead>
-            <tbody *ngIf="paginatedBlogs.length > 0; else noBlogs"></tbody>
-            <tr *ngFor="let blog of paginatedBlogs; let i = index" class="hover:bg-gray-50">
-                <td class="px-4 py-3 border-b">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
-                <td class="px-4 py-3 border-b">
-                    <img [src]="blog.imagesGallery[0].imageUrl" alt="blog" class="w-20 h-14 object-cover rounded border" />
-                </td>
-                <td class="px-4 py-3 border-b">{{ blog.title }}</td>
-                <td class="px-4 py-3 border-b">{{ blog.category }}</td>
-                <td class="px-4 py-3 border-b">{{ blog.likes.length }}</td>
-                <td class="px-4 py-3 border-b text-center">
-                    <button (click)="editBlog(blog)" class="text-blue-600 hover:underline mr-2">Edit</button>
-                    <button (click)="deleteBlog(blog._id)" class="text-red-600 hover:underline">Delete</button>
-                </td>
-            </tr>
 
-            <ng-template #noBlogs>
-                <tr>
-                    <td colspan="6" class="py-12">
-                        <div class="flex flex-col items-center justify-center text-gray-500">
-                            <svg class="w-16 h-16 mb-4 text-primary" fill="none" stroke="currentColor"
-                                stroke-width="1.5" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <div class="text-lg font-semibold mb-1">No blogs found</div>
-                            <div class="text-sm">Add more blogs to see them listed here.</div>
-                        </div>
+            <tbody *ngIf="paginatedBlogs.length > 0; else noBlogs">
+                <tr *ngFor="let blog of paginatedBlogs; let i = index" class="hover:bg-gray-50">
+                    <td class="px-4 py-3 border-b">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+
+                    <td class="px-4 py-3 border-b">
+                        <ng-container *ngIf="blog.imagesGallery?.length > 0; else noImage">
+                            <img [src]="blog.imagesGallery[0]?.imageUrl" alt="blog"
+                                class="w-20 h-14 object-cover rounded border" />
+                        </ng-container>
+                        <ng-template #noImage>
+                            <span class="text-gray-400 text-xs italic">No image</span>
+                        </ng-template>
+                    </td>
+
+                    <td class="px-4 py-3 border-b">{{ blog.title }}</td>
+                    <td class="px-4 py-3 border-b">{{ blog.category }}</td>
+                    <td class="px-4 py-3 border-b">{{ blog.likes?.length || 0 }}</td>
+
+                    <td class="px-4 py-3 border-b text-center">
+                        <button (click)="openEdit(blog)" class="text-blue-600 hover:underline mr-2">Edit</button>
+                        <button (click)="deleteBlog(blog._id)" class="text-red-600 hover:underline">Delete</button>
                     </td>
                 </tr>
+            </tbody>
+
+            <ng-template #noBlogs>
+                <tbody>
+                    <tr>
+                        <td colspan="6" class="py-12">
+                            <div class="flex flex-col items-center justify-center text-gray-500">
+                                <svg class="w-16 h-16 mb-4 text-primary" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div class="text-lg font-semibold mb-1">No blogs found</div>
+                                <div class="text-sm">Add more blogs to see them listed here.</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
             </ng-template>
         </table>
     </div>
@@ -79,100 +92,85 @@
 <div class="fixed inset-0 bg-[#21212193] flex items-center justify-center z-50" *ngIf="showModal">
     <div class="bg-white rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] flex flex-col p-0" role="dialog"
         aria-modal="true">
-
-        <!-- Modal Header (Fixed) -->
         <div class="px-6 py-4 border-b flex justify-between items-center">
-            <h2 class="text-xl font-semibold">
-                {{ isEditMode ? 'Edit Blog' : 'Add New Blog' }}
-            </h2>
-            <button (click)="closeModal()" class="text-gray-600 hover:text-red-600 text-2xl font-bold leading-none"
-                aria-label="Close modal">
-                &times;
-            </button>
+            <h2 class="text-xl font-semibold">{{ isEditMode ? 'Edit Blog' : 'Add New Blog' }}</h2>
+            <button (click)="closeModal()" type="button"
+                class="text-gray-600 hover:text-red-600 text-2xl font-bold leading-none"
+                aria-label="Close modal">&times;</button>
         </div>
 
-        <!-- Modal Scrollable Body -->
-        <div class="overflow-y-auto px-6 py-4 space-y-4 flex-1 min-h-0">
-            <form [formGroup]="blogForm" enctype="multipart/form-data">
+        <!-- Attach ngSubmit here -->
+        <form [formGroup]="blogForm" (ngSubmit)="submitBlog()" enctype="multipart/form-data"
+            class="overflow-y-auto px-6 py-4 space-y-4 flex-1 min-h-0">
 
-                <!-- Title -->
-                <div>
-                    <input formControlName="title" type="text" placeholder="Blog title"
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover" />
-                    <div *ngIf="blogForm.get('title')?.invalid && blogForm.get('title')?.touched"
-                        class="text-red-600 text-sm mt-1">Title is required.</div>
+            <div>
+                <input formControlName="title" type="text" placeholder="Blog title"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover" />
+                <div *ngIf="blogForm.get('title')?.invalid && blogForm.get('title')?.touched"
+                    class="text-red-600 text-sm mt-1">Title is required.</div>
+            </div>
+
+            <div>
+                <input formControlName="subTitle" type="text" placeholder="Blog subtitle"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover" />
+            </div>
+
+            <div>
+                <select formControlName="category"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
+                    <option value="">Select Category</option>
+                    <option value="Wychowanie">Wychowanie</option>
+                    <option value="Kreatywna nauka">Kreatywna nauka</option>
+                    <option value="Ciekawe miejsca">Ciekawe miejsca</option>
+                </select>
+                <div *ngIf="blogForm.get('category')?.invalid && blogForm.get('category')?.touched"
+                    class="text-red-600 text-sm mt-1">Category is required.</div>
+            </div>
+
+            <div>
+                <textarea formControlName="description" rows="4" placeholder="Description"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
+                <div *ngIf="blogForm.get('description')?.invalid && blogForm.get('description')?.touched"
+                    class="text-red-600 text-sm mt-1">Description is required.</div>
+            </div>
+
+            <div>
+                <textarea formControlName="subDescription" rows="3" placeholder="Sub description"
+                    class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
+            </div>
+
+            <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
+                <label class="block mb-2 font-semibold text-gray-700">Upload Images</label>
+                <!-- add template ref so we can clear it -->
+                <input #fileInput type="file" multiple accept="image/*" (change)="onImageChange($event)"
+                    class="block w-full text-sm text-gray-700 border border-gray-300 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-hover file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-primary hover:file:bg-pink-100" />
+            </div>
+
+            <div *ngIf="existingImageUrls.length > 0" class="flex flex-wrap gap-2 mt-2">
+                <div *ngFor="let url of existingImageUrls" class="relative">
+                    <img [src]="url" class="w-28 h-20 object-cover border rounded" />
+                    <button type="button" (click)="removeExistingImage(url)"
+                        class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center hover:bg-red-700">&times;</button>
                 </div>
+            </div>
 
-                <!-- Subtitle -->
-                <div>
-                    <input formControlName="subTitle" type="text" placeholder="Blog subtitle"
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover" />
+            <div *ngIf="imagePreviews.length > 0" class="flex flex-wrap gap-2 mt-2">
+                <div *ngFor="let img of imagePreviews; let i = index" class="relative">
+                    <img [src]="img" class="w-28 h-20 object-cover border rounded" />
+                    <button type="button" (click)="removeNewImage(i)"
+                        class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center hover:bg-red-700">&times;</button>
                 </div>
+            </div>
 
-                <!-- Category -->
-                <div>
-                    <select formControlName="category"
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover">
-                        <option value="">Select Category</option>
-                        <option value="Wychowanie">Wychowanie</option>
-                        <option value="Kreatywna nauka">Kreatywna nauka</option>
-                        <option value="Ciekawe miejsca">Ciekawe miejsca</option>
-                    </select>
-                    <div *ngIf="blogForm.get('category')?.invalid && blogForm.get('category')?.touched"
-                        class="text-red-600 text-sm mt-1">Category is required.</div>
-                </div>
-
-                <!-- Description -->
-                <div>
-                    <textarea formControlName="description" rows="4" placeholder="Description"
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
-                    <div *ngIf="blogForm.get('description')?.invalid && blogForm.get('description')?.touched"
-                        class="text-red-600 text-sm mt-1">Description is required.</div>
-                </div>
-
-                <!-- SubDescription -->
-                <div>
-                    <textarea formControlName="subDescription" rows="3" placeholder="Sub description"
-                        class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-hover"></textarea>
-                </div>
-
-                <!-- Upload -->
-                <div class="border border-gray-300 rounded-lg p-4 bg-gray-50">
-                    <label class="block mb-2 font-semibold text-gray-700">Upload Images</label>
-                    <input type="file" multiple accept="image/*" (change)="onImageChange($event)"
-                        class="block w-full text-sm text-gray-700 border border-gray-300 rounded cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-hover file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-primary hover:file:bg-pink-100" />
-                </div>
-
-                <!-- Existing Images -->
-                <div *ngIf="existingImageUrls.length > 0" class="flex flex-wrap gap-2 mt-2">
-                    <div *ngFor="let url of existingImageUrls" class="relative">
-                        <img [src]="url" class="w-28 h-20 object-cover border rounded" />
-                        <button type="button" (click)="removeExistingImage(url)"
-                            class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center hover:bg-red-700">&times;</button>
-                    </div>
-                </div>
-
-                <!-- New Image Previews -->
-                <div *ngIf="imagePreviews.length > 0" class="flex flex-wrap gap-2 mt-2">
-                    <div *ngFor="let img of imagePreviews; let i = index" class="relative">
-                        <img [src]="img" class="w-28 h-20 object-cover border rounded" />
-                        <button type="button" (click)="removeNewImage(i)"
-                            class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 text-sm flex items-center justify-center hover:bg-red-700">&times;</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Modal Footer (Fixed) -->
-        <div class="px-6 py-4 border-t flex justify-end space-x-2">
-            <button type="button" (click)="closeModal()" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
-                Cancel
-            </button>
-            <button type="submit" (click)="submitBlog()" [disabled]="blogForm.invalid"
-                class="px-6 py-2 rounded bg-primary text-white hover:bg-primary-dark disabled:opacity-60">
-                {{ isEditMode ? 'Update Blog' : 'Add Blog' }}
-            </button>
-        </div>
+            <!-- footer inside form so submit triggers ngSubmit -->
+            <div class="px-6 py-4 border-t flex justify-end space-x-2">
+                <button type="button" (click)="closeModal()"
+                    class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">Cancel</button>
+                <button type="submit" [disabled]="blogForm.invalid || loading"
+                    class="px-6 py-2 rounded bg-primary text-white hover:bg-primary-dark disabled:opacity-60">
+                    {{ isEditMode ? 'Update Blog' : 'Add Blog' }}
+                </button>
+            </div>
+        </form>
     </div>
 </div>
-  
