@@ -15,5 +15,6 @@ export const API_CONFIG: Record<string, string> = {
 
 
   blogs: `${BASE_URL}/blog`,
+  translate: `${BASE_URL}/translate`,
 
 };

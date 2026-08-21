@@ -9,9 +9,7 @@
   z-index: 99999 !important;
 }
 .skiptranslate,
-.goog-te-banner-frame,
-.goog-te-gadget,
-#google_translate_element {
+.goog-te-banner-frame {
   display: none !important;
 }
 @theme {

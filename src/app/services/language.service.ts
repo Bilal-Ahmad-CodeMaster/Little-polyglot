@@ -50,6 +50,10 @@ export class LanguageService {
     return this.current.value;
   }
 
+  get languageCode(): string {
+    return LANGUAGE_CODE_MAP[this.currentLanguage.language] || 'pl';
+  }
+
   readStored(): AppLanguage {
     try {
       const raw = localStorage.getItem(LANGUAGE_STORAGE_KEY);

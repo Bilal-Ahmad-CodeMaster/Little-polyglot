@@ -27,90 +27,10 @@
   </script>
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Apply saved language (default Polish) before Google Translate loads -->
-  <script>
-    (function applyStoredLanguage() {
-      var SOURCE_LANG = "pl";
-      var DEFAULT_LANG = { language: "Polish", country: "Poland" };
-      var CODE_MAP = {
-        Polish: "pl",
-        English: "en",
-        Danish: "da",
-        German: "de",
-        Estonian: "et",
-        Spanish: "es",
-        French: "fr",
-        Croatian: "hr",
-        Italian: "it",
-        Latvian: "lv",
-        Lithuanian: "lt",
-        Hungarian: "hu",
-        Dutch: "nl",
-        Norwegian: "no",
-        Portuguese: "pt",
-        Romanian: "ro",
-        Slovenian: "sl",
-        Finnish: "fi",
-        Swedish: "sv",
-        "Chinese (Simplified)": "zh-CN",
-        Hindi: "hi",
-        Urdu: "ur",
-        Maltese: "mt",
-        Russian: "ru"
-      };
-
-      function readSaved() {
-        try {
-          var raw = localStorage.getItem("selectedLanguage");
-          if (!raw) return null;
-          var parsed = JSON.parse(raw);
-          if (parsed && parsed.language && CODE_MAP[parsed.language]) {
-            return parsed;
-          }
-        } catch (e) {}
-        return null;
-      }
-
-      function setCookie(value) {
-        var host = location.hostname;
-        document.cookie = "googtrans=" + value + "; path=/";
-        if (host && host !== "localhost" && host !== "127.0.0.1") {
-          document.cookie = "googtrans=" + value + "; path=/; domain=" + host;
-          document.cookie = "googtrans=" + value + "; path=/; domain=." + host;
-        }
-      }
-
-      var saved = readSaved();
-      if (!saved) {
-        saved = DEFAULT_LANG;
-        localStorage.setItem("selectedLanguage", JSON.stringify(saved));
-      }
-
-      var code = CODE_MAP[saved.language] || "pl";
-      setCookie("/" + SOURCE_LANG + "/" + code);
-    })();
-  </script>
 </head>
 
 <body>
-  <div id="google_translate_element"></div>
   <app-root></app-root>
-  <script>
-    window.googleTranslateElementInit = function () {
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: "pl",
-          includedLanguages:
-            "en,ar,da,de,et,es,fr,hr,it,lv,lt,hu,nl,no,pl,pt,ro,sl,fi,sv,zh-CN,hi,ur,mt,ru",
-          autoDisplay: false,
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        "google_translate_element"
-      );
-    };
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

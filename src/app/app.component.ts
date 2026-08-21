@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ForgetPasswordComponent } from "./components/forget-password/forget-password.component";
 import { SharedServiceService } from './services/shared-service.service';
 import { AppLanguage, LanguageService } from './services/language.service';
+import { PageTranslatorService } from './services/page-translator.service';
 
 @Component({
   selector: 'app-root',
@@ -24,9 +25,11 @@ export class AppComponent implements AfterViewInit {
     public loader: LoaderService,
     private sharedService: SharedServiceService,
     private languageService: LanguageService,
+    private pageTranslator: PageTranslatorService,
     private cd: ChangeDetectorRef
   ) {
     this.currentLanguage = this.languageService.currentLanguage;
+    this.pageTranslator.start();
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
