@@ -8,10 +8,19 @@
 
 <app-language-convertor>
 </app-language-convertor>
-<button (click)="onOpen()"
+<!-- Language switcher temporarily hidden; re-enable by removing *ngIf="false" -->
+<button *ngIf="false" (click)="onOpen()"
     class="notranslate fixed z-50 bottom-5 right-5 flex items-center gap-2 px-5 py-3 bg-primary text-white hover:bg-primary-hover rounded-full shadow-lg transition-all duration-300 text-base font-medium">
     🌐 {{ currentLanguage.language }}
 </button>
+
+<!-- Floating WhatsApp contact button (site-wide) -->
+<a href="https://wa.me/48513259917" target="_blank" rel="noopener noreferrer"
+    aria-label="Skontaktuj się z nami na WhatsApp: +48 513 259 917"
+    class="notranslate fixed z-50 bottom-5 right-5 flex items-center gap-2 bg-[#25D366] text-white rounded-full shadow-lg px-5 py-3 hover:scale-105 hover:shadow-xl transition-transform duration-200">
+    <i class="fab fa-whatsapp text-2xl leading-none"></i>
+    <span class="hidden sm:inline text-sm font-semibold whitespace-nowrap">+48 513 259 917</span>
+</a>
 
 
 <app-forget-password></app-forget-password>
