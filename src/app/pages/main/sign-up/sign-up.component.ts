@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import emailJS from '@emailjs/browser';
 import { ApiServicesService } from '../../../services/api-services.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { getCourseLanguageLabel } from '../../../constants/course-language';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -26,6 +27,11 @@ export class SignUpComponent {
   openIndex: number | null = null;
 
   accordionItems: any
+
+  getLanguageLabel(code?: string): string {
+    return getCourseLanguageLabel(code);
+  }
+
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private api: ApiServicesService, private sanitizer: DomSanitizer) {
     this.registrationForm = this.fb.group({
       studentData: this.fb.group({

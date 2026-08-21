@@ -54,7 +54,7 @@ export class MainHeaderComponent {
 
   getSubmenuItems(menu: string): { item: string, routerLink: string }[] {
     const submenus: { [key: string]: { item: string, routerLink: string }[] } = {
-      courses: [{ item: 'English for children 3-6 years old', routerLink: "/courses/english-for-children-3-6" }, { item: 'English for children 7-10 years old', routerLink: "/courses/english-for-children-7-10" }, { item: 'English for youth 11-14 years old', routerLink: "/courses/english-for-children-11-14" }, { item: 'English for young people 15-19 years old', routerLink: "/courses/english-for-children-14-19" }],
+      courses: [{ item: 'Kursy językowe dla dzieci 3-6 lat', routerLink: "/courses/english-for-children-3-6" }, { item: 'Kursy językowe dla dzieci 7-10 lat', routerLink: "/courses/english-for-children-7-10" }, { item: 'Kursy językowe dla młodzieży 11-14 lat', routerLink: "/courses/english-for-children-11-14" }, { item: 'Kursy językowe dla młodzieży 15-19 lat', routerLink: "/courses/english-for-children-14-19" }],
       schools: this.branches.map((branch: { region: any; }) => ({
         item: branch.region,
         routerLink: "/schools",

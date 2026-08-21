@@ -208,7 +208,8 @@ export class BranchesComponent implements OnInit {
       durationInMinutes: [''],
       totalClasses: [''],
       pricePerMonth: [''],
-      materialsFee: ['']
+      materialsFee: [''],
+      language: ['']
     });
 
     const group = this.fb.group({
@@ -259,7 +260,8 @@ export class BranchesComponent implements OnInit {
             durationInMinutes: [''],
             totalClasses: [''],
             pricePerMonth: [''],
-            materialsFee: ['']
+            materialsFee: [''],
+            language: ['']
           }));
         }
       }
@@ -361,7 +363,8 @@ export class BranchesComponent implements OnInit {
             durationInMinutes: [pkg.durationInMinutes],
             totalClasses: [pkg.totalClasses],
             pricePerMonth: [pkg.pricePerMonth],
-            materialsFee: [pkg.materialsFee]
+            materialsFee: [pkg.materialsFee],
+            language: [pkg.language || '']
           }));
         });
 

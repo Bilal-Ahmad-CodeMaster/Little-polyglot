@@ -54,21 +54,24 @@
                     <div class="space-y-4">
                         <div *ngFor="let card of accordionItems[activeIndex]?.packages"
                             class=" p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200 ">
-                            <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
+                            <div class="flex items-center justify-between gap-2">
+                                <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h3>
+                                <span *ngIf="card.language" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary-bg text-primary-hover whitespace-nowrap">
+                                    {{ getLanguageLabel(card.language) }}
+                                </span>
+                            </div>
                             <p *ngIf="card.description" class="text-sm text-gray-600">{{ card.description }}</p>
 
                             <div class="text-sm text-gray-700 mt-2 space-y-1">
                                 <p *ngIf="card.duration"><strong class="text-primary-hover">{{ card.duration }}</strong>
-                                    per
-                                    week</p>
-                                <p *ngIf="card.durationInMinutes">or <strong class="text-primary-hover">{{
+                                    tygodniowo</p>
+                                <p *ngIf="card.durationInMinutes">lub <strong class="text-primary-hover">{{
                                         card.durationInMinutes
-                                        }}</strong> of
-                                    English per week</p>
+                                        }}</strong>
+                                    minut zajęć tygodniowo</p>
                                 <p *ngIf="card.totalClasses"><strong class="text-primary-hover">{{ card.totalClasses
                                         }}</strong>
-                                    per
-                                    school year</p>
+                                    w ciągu roku szkolnego</p>
                             </div>
 
                             <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />

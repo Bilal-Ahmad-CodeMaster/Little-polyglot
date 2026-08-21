@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import { SharedServiceService } from '../../services/shared-service.service';
 import { RouterLink } from '@angular/router';
+import { getCourseLanguageLabel } from '../../constants/course-language';
 
 @Component({
   selector: 'app-school-detail-modal',
@@ -22,6 +23,10 @@ export class SchoolDetailModalComponent implements OnInit {
   accordionItems: any
   contactInfo: any
   constructor(private sharedService: SharedServiceService) { }
+
+  getLanguageLabel(code?: string): string {
+    return getCourseLanguageLabel(code);
+  }
  
   ngOnInit() {
     this.sharedService.showDetails$.subscribe((value) => {

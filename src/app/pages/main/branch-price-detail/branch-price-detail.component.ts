@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ApiServicesService } from '../../../services/api-services.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { getCourseLanguageLabel } from '../../../constants/course-language';
 declare var Swiper: any;
 @Component({
   selector: 'app-branch-price-detail',
@@ -26,6 +27,10 @@ export class BranchPriceDetailComponent {
 
   toggleExpand() {
     this.expanded = !this.expanded;
+  }
+
+  getLanguageLabel(code?: string): string {
+    return getCourseLanguageLabel(code);
   }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

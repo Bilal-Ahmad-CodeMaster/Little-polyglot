@@ -344,7 +344,7 @@
                                         class=" hidden md:block">informacja</span>
                                 </span>
                                 <p class="m-0">
-                                    Zgłoszenie nie stanowi umowy o świadczenie kursu języka angielskiego. O kolejnych krokach związanych ze zgłoszeniem poinformujemy mailowo. W niektórych naszych oddziałach zorganizowanie grupy dla dziecka może być niemożliwe ze względu na dostępność sal, dostępność nauczycieli, plan lekcji w szkole oraz liczbę zgłoszeń.
+                                    Zgłoszenie nie stanowi umowy o świadczenie kursu językowego. O kolejnych krokach związanych ze zgłoszeniem poinformujemy mailowo. W niektórych naszych oddziałach zorganizowanie grupy dla dziecka może być niemożliwe ze względu na dostępność sal, dostępność nauczycieli, plan lekcji w szkole oraz liczbę zgłoszeń.
                                 </p>
                             </div>
                         </div>
@@ -376,7 +376,12 @@
 
                 <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
                     shadow-md">
-                    <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                    <div class="flex items-center justify-between gap-2">
+                        <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                        <span *ngIf="card.language" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary-bg text-primary-hover whitespace-nowrap">
+                            {{ getLanguageLabel(card.language) }}
+                        </span>
+                    </div>
                     <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
                     </p>
 
@@ -386,7 +391,7 @@
                             </strong> tygodniowo</p>
                         <p *ngIf="card.durationInMinutes">lub <strong><span class="text-primary-hover">{{
                                     card.durationInMinutes
-                                    }}</span></strong> angielskiego tygodniowo</p>
+                                    }}</span></strong> zajęć tygodniowo</p>
                         <p *ngIf="card.totalClasses"><strong><span class="text-primary-hover">{{
                                     card.totalClasses
                                     }}</span>
@@ -423,11 +428,10 @@
             </button>
             <!-- Copy your same <aside> content here or extract it into a reusable component if needed -->
             <!-- 🔁 Start -->
-            <h2 class="text-lg font-bold mb-4">See Price list</h2>
-            <p class="text-[15px]">Different prices correspond to different course options. After signing up, you will
-                receive an invitation
-                to a leveling
-                meeting. When creating a group, we take into account the child's age and language proficiency level.</p>
+            <h2 class="text-lg font-bold mb-4">Zobacz cennik</h2>
+            <p class="text-[15px]">Różne ceny odpowiadają różnym opcjom kursu. Po zapisaniu się otrzymasz zaproszenie
+                na spotkanie kwalifikacyjne. Tworząc grupę, bierzemy pod uwagę wiek dziecka oraz poziom
+                znajomości języka.</p>
             <div class="max-w-xl mx-auto space-y-4 mt-10">
                 <div *ngFor="let item of accordionItems; let i = index">
                     <button (click)="toggleItem(i)"
@@ -443,21 +447,26 @@
 
                         <div *ngFor="let card of item.packages" class=" border-gray-300 p-4 bg-white rounded-md
                                         shadow-md">
-                            <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                            <div class="flex items-center justify-between gap-2">
+                                <h2 *ngIf="card.title" class="text-base font-bold text-gray-800">{{ card.title }}</h2>
+                                <span *ngIf="card.language" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary-bg text-primary-hover whitespace-nowrap">
+                                    {{ getLanguageLabel(card.language) }}
+                                </span>
+                            </div>
                             <p *ngIf="card.description" class="text-normal text-gray-500 mb-2">{{ card.description }}
                             </p>
 
                             <div class="text-sm text-gray-700 space-y-1">
                                 <p *ngIf="card.duration"><strong><span class="text-primary-hover">{{ card.duration
                                             }}</span>
-                                    </strong> per week</p>
-                                <p *ngIf="card.durationInMinutes">or <strong><span class="text-primary-hover">{{
+                                    </strong> tygodniowo</p>
+                                <p *ngIf="card.durationInMinutes">lub <strong><span class="text-primary-hover">{{
                                             card.durationInMinutes
-                                            }}</span></strong> of English per week</p>
+                                            }}</span></strong> zajęć tygodniowo</p>
                                 <p *ngIf="card.totalClasses"><strong><span class="text-primary-hover">{{
                                             card.totalClasses
                                             }}</span>
-                                    </strong> per school year</p>
+                                    </strong> w roku szkolnym</p>
                             </div>
 
                             <hr *ngIf="card.pricePerMonth || card.materialsFee" class="my-2" />

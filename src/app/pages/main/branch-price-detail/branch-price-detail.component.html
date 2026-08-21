@@ -119,9 +119,14 @@
         <div class="space-y-4 max-w-full md:max-w-sm lg:max-w-sm mx-auto my-10">
           <div *ngFor="let card of accordionItems[activeIndex]?.packages"
             class="p-4 bg-white rounded-md shadow-md w-full mx-auto border border-gray-200">
-            <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">
-              {{ card.title }}
-            </h3>
+            <div class="flex items-center justify-between gap-2">
+              <h3 *ngIf="card.title" class="text-base font-bold text-gray-800">
+                {{ card.title }}
+              </h3>
+              <span *ngIf="card.language" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-primary-bg text-primary-hover whitespace-nowrap">
+                {{ getLanguageLabel(card.language) }}
+              </span>
+            </div>
             <p *ngIf="card.description" class="text-sm text-gray-600">
               {{ card.description }}
             </p>
