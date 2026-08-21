@@ -8,7 +8,10 @@
 .toast-bottom-center {
   z-index: 99999 !important;
 }
-.skiptranslate {
+.skiptranslate,
+.goog-te-banner-frame,
+.goog-te-gadget,
+#google_translate_element {
   display: none !important;
 }
 @theme {

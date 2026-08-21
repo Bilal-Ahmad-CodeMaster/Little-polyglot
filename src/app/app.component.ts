@@ -6,6 +6,7 @@ import { LoaderService } from './services/loader.service';
 import { CommonModule } from '@angular/common';
 import { ForgetPasswordComponent } from "./components/forget-password/forget-password.component";
 import { SharedServiceService } from './services/shared-service.service';
+import { AppLanguage, LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,16 @@ import { SharedServiceService } from './services/shared-service.service';
 })
 export class AppComponent implements AfterViewInit {
   title = 'Polyglot Kids';
+  currentLanguage: AppLanguage;
 
   constructor(
     private router: Router,
     public loader: LoaderService,
     private sharedService: SharedServiceService,
+    private languageService: LanguageService,
     private cd: ChangeDetectorRef
   ) {
+    this.currentLanguage = this.languageService.currentLanguage;
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
