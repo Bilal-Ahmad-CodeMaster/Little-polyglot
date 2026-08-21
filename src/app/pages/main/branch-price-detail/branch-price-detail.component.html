@@ -1,4 +1,4 @@
-<section class=" md:px-24 md:py-10 py-2 bg-white">
+<section class=" md:px-24 md:py-10 py-2 bg-white" *ngIf="BrachData">
   <div routerLink="/schools" class="cursor-pointer text-black hover:text-primary">
     ← Back to map
   </div>
@@ -471,7 +471,7 @@
       </p>
 
       <!-- Franchisee Details -->
-      <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails.length > 0">
+      <div class="bg-white p-6 rounded-lg shadow-md" *ngIf="BrachData.franchiseDetails?.length > 0">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">
           Szczegóły franczyzobiorcy
         </h3>

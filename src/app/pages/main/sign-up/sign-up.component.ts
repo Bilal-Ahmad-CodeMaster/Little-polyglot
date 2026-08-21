@@ -25,6 +25,8 @@ export class SignUpComponent {
   contactDetail: any;
   globalIframeSrc: any;
   openIndex: number | null = null;
+  formSubmitError: string | null = null;
+  submitSuccess: boolean = false;
 
   accordionItems: any
 
@@ -144,6 +146,7 @@ export class SignUpComponent {
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
+      this.formSubmitError = null;
       const formValues = this.registrationForm.value;
 
       // Helper to replace empty values with "Not Provided"
@@ -205,16 +208,46 @@ export class SignUpComponent {
         .send('service_ser1iix', 'template_5a4jc8k', params, 'qP0eRLo2JQeNXRI7a')
         .then((response) => {
           console.log('✅ Email sent successfully:', response);
+          this.submitSuccess = true;
+          this.registrationForm.reset();
+          this.scrollToElement('.form-status-banner');
         })
         .catch((error) => {
           console.error('❌ Error sending email:', error);
+          this.formSubmitError = 'Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę lub skontaktuj się z nami telefonicznie.';
+          this.scrollToElement('.form-status-banner');
         });
 
       console.log('Form Data:', formValues);
     } else {
-      console.warn('⚠️ Form is invalid');
+      this.submitSuccess = false;
       this.registrationForm.markAllAsTouched();
+      this.formSubmitError = 'Formularz zawiera błędy. Sprawdź podświetlone pola poniżej i uzupełnij je poprawnie.';
+      this.scrollToFirstInvalidControl();
     }
+  }
+
+  private scrollToElement(selector: string): void {
+    setTimeout(() => {
+      document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  private scrollToFirstInvalidControl(): void {
+    // Wait a tick so Angular has applied the ng-invalid/ng-touched classes
+    // to the DOM before we go looking for them.
+    setTimeout(() => {
+      const firstInvalid = document.querySelector(
+        'form .ng-invalid[formControlName], form .ng-invalid[formGroupName]'
+      ) as HTMLElement | null;
+
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus?.();
+      } else {
+        document.querySelector('.form-status-banner')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
   }
 
 

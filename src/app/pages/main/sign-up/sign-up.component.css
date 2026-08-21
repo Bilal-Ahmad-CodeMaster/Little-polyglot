@@ -12,3 +12,12 @@ input[type="number"] {
 label {
   margin: 10px;
 }
+
+/* Highlight invalid fields once the user has interacted with them (or after
+   a failed submit attempt via markAllAsTouched()). */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 1px #dc2626;
+}
