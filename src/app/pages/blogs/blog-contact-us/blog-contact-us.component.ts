@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import emailJS from '@emailjs/browser';
+import { ApiServicesService } from '../../../services/api-services.service';
 
 @Component({
   selector: 'app-blog-contact-us',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './blog-contact-us.component.html',
   styleUrl: './blog-contact-us.component.css'
 })
-export class BlogContactUsComponent {
+export class BlogContactUsComponent implements OnInit {
   contactForm!: FormGroup;
+  submitSuccess = false;
+  formSubmitError: string | null = null;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private api: ApiServicesService) { }
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -23,20 +26,24 @@ export class BlogContactUsComponent {
   }
 
   onSubmit(): void {
-    console.log(this.contactForm.value);
-    if (this.contactForm.invalid) return;
+    this.submitSuccess = false;
+    this.formSubmitError = null;
 
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      this.formSubmitError = 'Uzupełnij wymagane pola (imię i adres e-mail).';
+      return;
+    }
 
-
-    emailJS
-      .send('service_ser1iix', 'template_5a4jc8k', this.contactForm.value, 'qP0eRLo2JQeNXRI7a')
-      .then((response) => {
-        alert('Email sent successfully!');
+    this.api.sendContactUsMessage(this.contactForm.value).subscribe({
+      next: () => {
+        this.submitSuccess = true;
         this.contactForm.reset();
-      })
-      .catch((error) => {
-        console.error('EmailJS error:', error);
-        alert('Failed to send email. Try again later.');
-      });
+      },
+      error: (error) => {
+        console.error('Contact form error:', error);
+        this.formSubmitError = 'Nie udało się wysłać wiadomości. Spróbuj ponownie później.';
+      }
+    });
   }
 }

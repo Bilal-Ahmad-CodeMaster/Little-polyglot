@@ -5,7 +5,6 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import emailJS from '@emailjs/browser';
 import { ApiServicesService } from '../../../services/api-services.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { getCourseLanguageLabel } from '../../../constants/course-language';
@@ -203,20 +202,20 @@ export class SignUpComponent {
         time: new Date().toLocaleString()
       };
 
-      // Send Email
-      emailJS
-        .send('service_ser1iix', 'template_5a4jc8k', params, 'qP0eRLo2JQeNXRI7a')
-        .then((response) => {
-          console.log('✅ Email sent successfully:', response);
+      // Send notification email via our backend (Nodemailer/SMTP)
+      this.api.sendSignUpNotification(params).subscribe({
+        next: (response) => {
+          console.log('✅ Sign-up notification sent:', response);
           this.submitSuccess = true;
           this.registrationForm.reset();
           this.scrollToElement('.form-status-banner');
-        })
-        .catch((error) => {
-          console.error('❌ Error sending email:', error);
+        },
+        error: (error) => {
+          console.error('❌ Error sending sign-up notification:', error);
           this.formSubmitError = 'Nie udało się wysłać zgłoszenia. Spróbuj ponownie za chwilę lub skontaktuj się z nami telefonicznie.';
           this.scrollToElement('.form-status-banner');
-        });
+        }
+      });
 
       console.log('Form Data:', formValues);
     } else {

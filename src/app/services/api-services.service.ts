@@ -79,4 +79,14 @@ export class ApiServicesService {
   }) {
     return this.http.post(`${API_CONFIG['verifyOtpAndResetPassword']}`, payload);
   }
+
+  // Course sign-up / registration form notification
+  sendSignUpNotification(payload: any) {
+    return this.http.post(`${API_CONFIG['signUpNotification']}`, payload);
+  }
+
+  // Generic "contact us" form (e.g. from blog pages)
+  sendContactUsMessage(payload: any) {
+    return this.http.post(`${API_CONFIG['contactUsMessage']}`, payload);
+  }
 }

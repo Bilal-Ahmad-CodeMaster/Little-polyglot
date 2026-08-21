@@ -17,4 +17,7 @@ export const API_CONFIG: Record<string, string> = {
   blogs: `${BASE_URL}/blog`,
   translate: `${BASE_URL}/translate`,
 
+  signUpNotification: `${BASE_URL}/contact/sign-up`,
+  contactUsMessage: `${BASE_URL}/contact/blog`,
+
 };
