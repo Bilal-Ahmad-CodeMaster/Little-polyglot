@@ -17,32 +17,32 @@ export class HomeComponent {
     {
       iconUrl: "fa-comments",
       title: "Pewna siebie komunikacja zaczyna się wcześnie.",
-      description: "W Polyglot Kids dzieci nie tylko uczą się nowego języka (amerykańskiego angielskiego, brytyjskiego angielskiego lub polskiego) one zaczynają nim mówić z łatwością. Wspieramy autentyczne rozmowy już od pierwszych zajęć."
+      description: "Dzieci szybko zaczynają mówić z łatwością – wspieramy autentyczne rozmowy już od pierwszych zajęć."
     },
     {
       iconUrl: "fa-lightbulb",
       title: "Angażujące lekcje za każdym razem",
-      description: "U nas nie ma miejsca na nudne ćwiczenia.Nasze interaktywne zajęcia łączą kreatywność, zabawę i jasno określony cel, aby utrzymać ciekawość i koncentrację młodych umysłów."
+      description: "Żadnych nudnych ćwiczeń – nasze zajęcia łączą kreatywność, zabawę i jasny cel."
     },
     {
       iconUrl: "fa-language",
       title: "Trwała biegłość językowa",
-      description: "Przygotowujemy dzieci nie tylko do egzaminów, ale do życia. Nasi uczniowie wyrastają na pewnych siebie mówców, którzy myślą i wyrażają się jasno w wybranym języku – amerykańskim angielskim, brytyjskim angielskim lub polskim."
+      description: "Przygotowujemy dzieci nie tylko do egzaminów, ale do życia – uczymy pewnej i jasnej komunikacji."
     },
     {
       iconUrl: "fa-users",
       title: "Miejsce, gdzie dzieci czują przynależność",
-      description: "Ciepło, integracja i zabawa definiują nasze sale lekcyjne.Dzieci rozwijają się w wspierających grupach, gdzie przyjaźnie rosną razem z umiejętnościami językowymi."
+      description: "Ciepło i integracja definiują nasze zajęcia – przyjaźnie rosną razem z umiejętnościami językowymi."
     },
     {
       iconUrl: "fa-seedling",
       title: "Poza językiem: umiejętności na całe życie",
-      description: "Nasz program nauczania integruje myślenie krytyczne, współpracę i kreatywność ponieważ wielojęzyczność to tylko część nastawienia gotowego na przyszłość."
+      description: "Uczymy też myślenia krytycznego, współpracy i kreatywności – kompetencji przyszłości."
     },
     {
       iconUrl: "fa-graduation-cap",
       title: "Nauka blisko domu",
-      description: "Dzięki centrom w lokalnych szkołach, przedszkolach i ośrodkach społecznych, dołączenie do Polyglot Kids jest łatwe i wygodne dla każdej rodziny."
+      description: "Centra w lokalnych szkołach i przedszkolach – dołączenie do Polyglot Kids jest łatwe i wygodne."
     }
   ];
 
