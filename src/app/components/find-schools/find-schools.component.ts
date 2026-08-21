@@ -18,6 +18,7 @@ import { OnInit } from '@angular/core';
 export class FindSchoolsComponent implements OnInit {
   allBranches: any[] = []; // Original fetched list
   branches: any[] = [];
+  isLoadingBranches = true;
   globalIframeSrc: any = "";
   dropdownOpen: string | null = null;
 
@@ -52,7 +53,8 @@ export class FindSchoolsComponent implements OnInit {
     this.api.getBranches().subscribe({
       next: (response: any) => {
         this.allBranches = response.data;
-        this.branches = response.data;
+        this.isLoadingBranches = false;
+        this.filterBranches();
 
         const regions = new Set();
         const cities = new Set();
@@ -67,19 +69,18 @@ export class FindSchoolsComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching branches:', err);
+        this.isLoadingBranches = false;
       }
     });
 
   }
 
   filterBranches() {
-    setTimeout(() => {
-      this.branches = this.allBranches.filter((branch: any) => {
-        const matchesProvince = this.selectedProvince ? branch.region === this.selectedProvince : true;
-        const matchesCity = this.selectedCity ? branch.city === this.selectedCity : true;
-        return matchesProvince && matchesCity;
-      });
-    }, 500);
+    this.branches = this.allBranches.filter((branch: any) => {
+      const matchesProvince = this.selectedProvince ? branch.region === this.selectedProvince : true;
+      const matchesCity = this.selectedCity ? branch.city === this.selectedCity : true;
+      return matchesProvince && matchesCity;
+    });
   }
 
 

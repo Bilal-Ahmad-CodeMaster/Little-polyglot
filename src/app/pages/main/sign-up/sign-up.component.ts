@@ -63,26 +63,22 @@ export class SignUpComponent {
       const branchId = params['branchId'];
       console.log('Selected branchId:', branchId);
       if (branchId) {
-        setTimeout(() => {
-          this.api.getSingleBranch(branchId).subscribe(
-            (branch: any) => {
-              this.BrachData = branch.data
-              this.accordionItems = this.BrachData.priceList[0].groups
-              console.log("accordian ", this.accordionItems);
-              this.contactDetail = branch.data.contactInfo
-              console.log('contact data:', this.contactDetail);
-              let rawUrl = '';
-              const match = this.BrachData.googleLocation.match(/src="([^"]+)"/);
-              if (match && match[1]) {
-                rawUrl = match[1];
-              }
-              this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
-            },
-            (error) => {
-              console.error('Error fetching branch:', error);
+        this.api.getSingleBranch(branchId).subscribe(
+          (branch: any) => {
+            this.BrachData = branch.data;
+            this.accordionItems = this.BrachData.priceList[0].groups;
+            this.contactDetail = branch.data.contactInfo;
+            let rawUrl = '';
+            const match = this.BrachData.googleLocation.match(/src="([^"]+)"/);
+            if (match && match[1]) {
+              rawUrl = match[1];
             }
-          );
-        }, 0);
+            this.globalIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
+          },
+          (error) => {
+            console.error('Error fetching branch:', error);
+          }
+        );
       }
 
     });

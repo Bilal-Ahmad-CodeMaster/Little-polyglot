@@ -31,17 +31,21 @@ const TRANSLATE_KEYS = new Set([
 ]);
 
 const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'CODE', 'PRE']);
+const PERSISTENT_CACHE_KEY = 'translationCache.v1';
+const MAX_PERSISTENT_ENTRIES = 2000;
+const GOOGLE_CONCURRENCY = 10;
 
 @Injectable({
   providedIn: 'root',
 })
 export class PageTranslatorService {
-  private readonly memoryCache = new Map<string, string>();
+  private readonly memoryCache = this.loadPersistentCache();
   private readonly translatedOutputs = new Set<string>();
   private readonly translatedNodes = new WeakSet<Text>();
   private started = false;
   private domTimer: ReturnType<typeof setTimeout> | null = null;
   private translatingDom = false;
+  private persistTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private languageService: LanguageService,
@@ -273,6 +277,7 @@ export class PageTranslatorService {
       this.translatedOutputs.add(translated);
     });
 
+    this.schedulePersistCache();
     return results;
   }
 
@@ -286,7 +291,7 @@ export class PageTranslatorService {
 
   private async translateViaGoogle(texts: string[]): Promise<string[]> {
     const results: string[] = [];
-    const groups = this.chunk(texts, 5);
+    const groups = this.chunk(texts, GOOGLE_CONCURRENCY);
     for (const group of groups) {
       const part = await Promise.all(group.map((text) => this.translateOneWithGoogle(text)));
       results.push(...part);
@@ -335,5 +340,37 @@ export class PageTranslatorService {
       groups.push(items.slice(i, i + size));
     }
     return groups;
+  }
+
+  private loadPersistentCache(): Map<string, string> {
+    try {
+      const raw = localStorage.getItem(PERSISTENT_CACHE_KEY);
+      if (!raw) {
+        return new Map();
+      }
+      const entries = JSON.parse(raw) as [string, string][];
+      return new Map(entries);
+    } catch {
+      return new Map();
+    }
+  }
+
+  private schedulePersistCache(): void {
+    if (this.persistTimer) {
+      clearTimeout(this.persistTimer);
+    }
+    this.persistTimer = setTimeout(() => this.persistCache(), 500);
+  }
+
+  private persistCache(): void {
+    try {
+      let entries = [...this.memoryCache.entries()];
+      if (entries.length > MAX_PERSISTENT_ENTRIES) {
+        entries = entries.slice(entries.length - MAX_PERSISTENT_ENTRIES);
+      }
+      localStorage.setItem(PERSISTENT_CACHE_KEY, JSON.stringify(entries));
+    } catch {
+      // Storage full or unavailable — translations still work via memory cache.
+    }
   }
 }
