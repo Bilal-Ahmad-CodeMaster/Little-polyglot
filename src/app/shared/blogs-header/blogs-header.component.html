@@ -19,19 +19,19 @@
 
     <div class="border-t border-[#f3ebe6] py-2.5 text-center">
       <a routerLink="/blogs" class="inline-flex items-center gap-3">
-        <img src="../../../../../public/favicon.ico" alt="Polyglot Kids" class="h-9 w-9 rounded-xl" />
+        <img src="../../../../../public/favicon.ico" alt="Polyglot Kids" class="h-12 w-12 rounded-xl shadow-sm ring-1 ring-[#f3d7ca]" />
         <h1 class="text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">Blog dla rodziców</h1>
       </a>
     </div>
 
     <nav
       class="hidden flex-col items-center gap-2 border-t border-[#f3ebe6] py-2 sm:flex sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
-      <a routerLink="/blogs" routerLinkActive="activlink" [routerLinkActiveOptions]="{ exact: true }" class="blog-nav-pill">
+      <a routerLink="/blogs" routerLinkActive="activlink" [routerLinkActiveOptions]="{ exact: true }" class="inline-flex blog-nav-pill">
         Wszystkie posty
       </a>
 
       <div class="relative hidden sm:block group">
-        <a routerLink="/blogs/education" routerLinkActive="activlink" class="blog-nav-pill">
+        <a routerLink="/blogs/education" routerLinkActive="activlink" class="inline-flex blog-nav-pill">
           Wychowanie
         </a>
         <div class="blog-hover-panel">
@@ -49,7 +49,7 @@
       </div>
 
       <div class="relative hidden sm:block group">
-        <a routerLink="/blogs/creativeLearning" routerLinkActive="activlink" class="blog-nav-pill">
+        <a routerLink="/blogs/creativeLearning" routerLinkActive="activlink" class="inline-flex blog-nav-pill">
           Kreatywna nauka
         </a>
         <div class="blog-hover-panel">
@@ -67,7 +67,7 @@
       </div>
 
       <div class="relative hidden sm:block group">
-        <a routerLink="/blogs/interestingPlaces" routerLinkActive="activlink" class="blog-nav-pill">
+        <a routerLink="/blogs/interestingPlaces" routerLinkActive="activlink" class="inline-flex blog-nav-pill">
           Ciekawe miejsca
         </a>
         <div class="blog-hover-panel">
@@ -84,17 +84,17 @@
         </div>
       </div>
 
-      <a routerLink="/blogs/education" routerLinkActive="activlink" class="blog-nav-pill sm:hidden">
+      <a routerLink="/blogs/education" routerLinkActive="activlink" class="inline-flex blog-nav-pill sm:hidden">
         Wychowanie
       </a>
-      <a routerLink="/blogs/creativeLearning" routerLinkActive="activlink" class="blog-nav-pill sm:hidden">
+      <a routerLink="/blogs/creativeLearning" routerLinkActive="activlink" class="inline-flex blog-nav-pill sm:hidden">
         Kreatywna nauka
       </a>
-      <a routerLink="/blogs/interestingPlaces" routerLinkActive="activlink" class="blog-nav-pill sm:hidden">
+      <a routerLink="/blogs/interestingPlaces" routerLinkActive="activlink" class="inline-flex blog-nav-pill sm:hidden">
         Ciekawe miejsca
       </a>
 
-      <a routerLink="/about" routerLinkActive="activlink" class="blog-nav-pill">
+      <a routerLink="/about" routerLinkActive="activlink" class="inline-flex blog-nav-pill">
         O nas
       </a>
     </nav>
@@ -127,42 +127,42 @@
           routerLink="/blogs"
           routerLinkActive="activlink"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           Wszystkie posty
         </a>
         <a
           routerLink="/blogs/education"
           routerLinkActive="activlink"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           Wychowanie
         </a>
         <a
           routerLink="/blogs/creativeLearning"
           routerLinkActive="activlink"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           Kreatywna nauka
         </a>
         <a
           routerLink="/blogs/interestingPlaces"
           routerLinkActive="activlink"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           Ciekawe miejsca
         </a>
         <a
           routerLink="/about"
           routerLinkActive="activlink"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           O nas
         </a>
         <a
           routerLink="/blogs/contact"
           routerLinkActive="activlink"
-          class="blog-nav-pill blog-nav-pill--mobile"
+          class="inline-flex blog-nav-pill blog-nav-pill--mobile"
           (click)="closeMobileMenu()">
           Kontakt
         </a>
