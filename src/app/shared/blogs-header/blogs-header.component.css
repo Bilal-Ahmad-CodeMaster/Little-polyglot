@@ -23,6 +23,59 @@
   color: #ff6b35;
 }
 
+.group:hover > .blog-hover-panel,
+.group:focus-within > .blog-hover-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.blog-hover-panel {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.8rem);
+  width: min(24rem, 80vw);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 50;
+}
+
+.blog-hover-panel__inner {
+  border: 1px solid #ece5df;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  padding: 1rem;
+}
+
+.blog-hover-panel__title {
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ff6b35;
+}
+
+.blog-hover-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  padding: 0.55rem;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.blog-hover-item:hover {
+  background: #f8fafc;
+}
+
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
