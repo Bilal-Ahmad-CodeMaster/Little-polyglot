@@ -22,6 +22,15 @@
 
       <div class="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/20 to-transparent"></div>
       <div class="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/28 to-transparent"></div>
+
+      <button
+        type="button"
+        class="video-hero__sound-button absolute right-3 top-3 z-10"
+        (click)="toggleMute()"
+        [attr.aria-label]="isMuted ? 'Włącz dźwięk' : 'Wycisz dźwięk'"
+      >
+        <i class="fas" [ngClass]="isMuted ? 'fa-volume-mute' : 'fa-volume-up'"></i>
+      </button>
     </div>
   </div>
 </div>

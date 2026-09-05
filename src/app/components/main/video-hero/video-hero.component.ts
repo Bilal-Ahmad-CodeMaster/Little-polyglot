@@ -27,6 +27,7 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   ];
 
   activeIndex = 0;
+  isMuted = true;
 
   @ViewChildren("heroVideo") videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 
@@ -72,6 +73,13 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  toggleMute(): void {
+    this.isMuted = !this.isMuted;
+    this.videoRefs?.forEach((videoRef: ElementRef<HTMLVideoElement>) => {
+      videoRef.nativeElement.muted = this.isMuted;
+    });
+  }
+
   private startRotation(): void {
     if (this.rotationTimer) {
       clearInterval(this.rotationTimer);
@@ -101,7 +109,7 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     const active = this.getActiveVideo();
     if (!active) return;
 
-    active.muted = true;
+    active.muted = this.isMuted;
     try {
       await active.play();
     } catch {
@@ -114,7 +122,7 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
 
     this.videoRefs.forEach((videoRef: ElementRef<HTMLVideoElement>, index: number) => {
       const { nativeElement } = videoRef;
-      nativeElement.muted = true;
+      nativeElement.muted = this.isMuted;
       nativeElement.controls = false;
       nativeElement.loop = false;
 
