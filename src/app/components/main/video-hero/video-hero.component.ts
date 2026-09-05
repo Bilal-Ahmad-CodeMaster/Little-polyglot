@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Inject,
+  OnDestroy,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
@@ -16,7 +17,7 @@ import {
   templateUrl: './video-hero.component.html',
   styleUrl: './video-hero.component.css',
 })
-export class VideoHeroComponent implements AfterViewInit {
+export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   readonly videos = [
     '/public/assets/videos/1.mp4',
     '/public/assets/videos/2.mp4',
@@ -26,12 +27,15 @@ export class VideoHeroComponent implements AfterViewInit {
   ];
 
   activeIndex = 0;
-  isMuted = true;
 
   @ViewChildren('heroVideo') videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 
   private readonly loadedIndices = new Set<number>();
   private readonly isBrowser: boolean;
+  private slideTimer?: ReturnType<typeof setInterval>;
+
+  /** Fade to the next clip every 5 seconds */
+  private readonly slideIntervalMs = 5000;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -46,6 +50,14 @@ export class VideoHeroComponent implements AfterViewInit {
     this.videoRefs.changes.subscribe(() => void this.syncPlayback());
 
     queueMicrotask(() => void this.syncPlayback());
+
+    this.slideTimer = setInterval(() => {
+      this.goTo(this.nextIndex(this.activeIndex));
+    }, this.slideIntervalMs);
+  }
+
+  ngOnDestroy(): void {
+    if (this.slideTimer) clearInterval(this.slideTimer);
   }
 
   shouldLoad(index: number): boolean {
@@ -66,22 +78,10 @@ export class VideoHeroComponent implements AfterViewInit {
     queueMicrotask(() => void this.syncPlayback());
   }
 
-  onVideoEnded(index: number): void {
-    if (index !== this.activeIndex) return;
-    this.goTo(this.nextIndex(this.activeIndex));
-  }
-
   onCanPlay(index: number): void {
     if (index === this.activeIndex) {
       void this.playActiveVideo();
     }
-  }
-
-  toggleMute(): void {
-    this.isMuted = !this.isMuted;
-    this.videoRefs?.forEach(({ nativeElement }) => {
-      nativeElement.muted = this.isMuted;
-    });
   }
 
   private markLoaded(index: number): void {
@@ -100,11 +100,11 @@ export class VideoHeroComponent implements AfterViewInit {
     const active = this.getActiveVideo();
     if (!active) return;
 
-    active.muted = this.isMuted;
+    active.muted = true;
     try {
       await active.play();
     } catch {
-      // Autoplay blocked until user interacts — muted retry on next canplay.
+      // Autoplay blocked — will retry on next canplay.
     }
   }
 
@@ -112,8 +112,9 @@ export class VideoHeroComponent implements AfterViewInit {
     if (!this.isBrowser || !this.videoRefs) return;
 
     this.videoRefs.forEach(({ nativeElement }, index) => {
-      nativeElement.muted = this.isMuted;
+      nativeElement.muted = true;
       nativeElement.controls = false;
+      nativeElement.loop = index === this.activeIndex;
       if (index !== this.activeIndex) {
         nativeElement.pause();
       }

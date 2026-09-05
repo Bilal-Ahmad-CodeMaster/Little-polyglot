@@ -1,60 +1,24 @@
-<section class="video-hero relative w-full overflow-hidden mb-5 mt-[10px]" aria-label="Hero Polyglot Kids">
-  <!-- Full-bleed TikTok-ratio video background -->
-  <div class="video-hero__media absolute inset-0">
+<div class="video-reel mx-auto w-full max-w-[320px] sm:max-w-[360px] lg:max-w-full" aria-label="Wideo Polyglot Kids">
+  <div class="video-reel__card relative aspect-[9/16] w-full overflow-hidden rounded-3xl bg-slate-900 shadow-[0_20px_50px_rgba(15,23,42,0.18)] ring-1 ring-black/5">
     @for (src of videos; track src; let i = $index) {
       <video
         #heroVideo
-        class="video-hero__video"
-        [class.video-hero__video--active]="isActive(i)"
+        class="video-reel__video"
+        [class.video-reel__video--active]="isActive(i)"
         [attr.src]="shouldLoad(i) ? src : null"
         playsinline
         muted
         autoplay
+        loop
         [attr.preload]="isActive(i) ? 'auto' : 'none'"
         disablePictureInPicture
         controlsList="nodownload noplaybackrate noremoteplayback"
         [attr.aria-hidden]="!isActive(i)"
         (canplay)="onCanPlay(i)"
-        (ended)="onVideoEnded(i)"
       ></video>
     }
+
+    <!-- Subtle reel-style vignette -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20"></div>
   </div>
-
-  <!-- Gradient overlays for text readability -->
-  <div class="video-hero__overlay video-hero__overlay--base pointer-events-none absolute inset-0"></div>
-  <div class="video-hero__overlay video-hero__overlay--top pointer-events-none absolute inset-0"></div>
-  <div class="video-hero__overlay video-hero__overlay--bottom pointer-events-none absolute inset-0"></div>
-
-  <!-- Hero text + CTAs (projected from home page) -->
-  <div class="video-hero__content relative z-10 flex min-h-[78vh] sm:min-h-[82vh] lg:min-h-[88vh] flex-col justify-center px-5 py-16 sm:px-10 lg:px-16">
-    <div class="mx-auto w-full max-w-7xl">
-      <ng-content></ng-content>
-    </div>
-  </div>
-
-  <!-- Minimal controls: mute + slide dots (no progress bar) -->
-  <div class="absolute bottom-5 left-0 right-0 z-20 flex flex-col items-center gap-4 px-4">
-    <div class="flex items-center gap-2" role="tablist" aria-label="Wybierz wideo">
-      @for (src of videos; track src; let i = $index) {
-        <button
-          type="button"
-          role="tab"
-          class="video-hero__dot"
-          [class.video-hero__dot--active]="isActive(i)"
-          [attr.aria-selected]="isActive(i)"
-          [attr.aria-label]="'Wideo ' + (i + 1)"
-          (click)="goTo(i)"
-        ></button>
-      }
-    </div>
-  </div>
-
-  <button
-    type="button"
-    class="video-hero__mute absolute bottom-5 right-5 z-20"
-    (click)="toggleMute()"
-    [attr.aria-label]="isMuted ? 'Włącz dźwięk' : 'Wycisz'"
-  >
-    <i class="fas" [ngClass]="isMuted ? 'fa-volume-mute' : 'fa-volume-up'"></i>
-  </button>
-</section>
+</div>
