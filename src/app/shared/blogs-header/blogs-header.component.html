@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-40 border-b border-[#eee5df] bg-white/95 backdrop-blur">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between gap-4 py-4 text-sm">
+    <div class="flex items-center justify-between gap-4 py-2.5 text-sm">
       <a routerLink="/" class="font-semibold text-slate-500 transition hover:text-[#FF6B35]">
         ← Wróć do strony głównej
       </a>
@@ -17,20 +17,20 @@
       </a>
     </div>
 
-    <div class="border-t border-[#f3ebe6] py-8 text-center">
+    <div class="border-t border-[#f3ebe6] py-4 text-center">
       <a routerLink="/blogs" class="inline-flex flex-col items-center">
-        <img src="../../../../../public/favicon.ico" alt="Polyglot Kids" class="mb-3 h-14 w-14 rounded-2xl" />
+        <img src="../../../../../public/favicon.ico" alt="Polyglot Kids" class="mb-2 h-10 w-10 rounded-xl" />
         <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[#FF6B35]">Polyglot Kids</p>
-        <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Blog dla rodziców i uczniów</h1>
+        <h1 class="mt-1.5 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Blog dla rodziców i uczniów</h1>
       </a>
-      <p class="mx-auto mt-3 max-w-2xl text-sm leading-7 text-slate-500 sm:text-base">
+      <p class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500">
         Porady dla rodziców, inspiracje do nauki i praktyczne wskazówki językowe w jednym miejscu.
       </p>
     </div>
 
     <nav
       [ngClass]="isMenuOpen ? 'flex' : 'hidden sm:flex'"
-      class="flex-col items-center gap-3 border-t border-[#f3ebe6] py-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
+      class="flex-col items-center gap-2 border-t border-[#f3ebe6] py-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
       <a routerLink="/blogs" routerLinkActive="activlink" [routerLinkActiveOptions]="{ exact: true }" class="blog-nav-pill">
         Wszystkie posty
       </a>
