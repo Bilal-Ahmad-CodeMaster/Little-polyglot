@@ -18,11 +18,11 @@ export class OpenionCrousalComponent {
       author: `Anna, mama Zuzi (13 lat), Kraków`,
     },
     {
-      text: `Na początku byłem sceptyczny, ale po zapisaniu syna do 1. klasy szybko zobaczyłem efekty. Polyglot Kids oferuje edukację z języka angielskiego na najwyższym poziomie – przekracza wszelkie oczekiwania.`,
+      text: `Na początku byłem sceptyczny, ale po zapisaniu syna do 1. klasy szybko zobaczyłem efekty. Polyglot Kids oferuje edukację językową na najwyższym poziomie – przekracza wszelkie oczekiwania.`,
       author: `Michał, tata Kuby (8 lat), Gdańsk`,
     },
     {
-      text: `Wczesne rozpoczęcie nauki języka angielskiego w Polyglot Kids pomogło mojej córce mówić płynnie i swobodnie. Teraz, w liceum, z łatwością komunikuje się w szkole i za granicą.`,
+      text: `Wczesne rozpoczęcie nauki języków obcych w Polyglot Kids pomogło mojej córce mówić płynnie i swobodnie. Teraz, w liceum, z łatwością komunikuje się w szkole i za granicą.`,
       author: `Tomasz, tata Leny (18 lat), Warszawa`,
     },
     {

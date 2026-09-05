@@ -53,7 +53,7 @@ export class HomeComponent {
       icon: 'https://storage.googleapis.com/a1aa/image/f4ef5205-4f75-473d-f306-a62dec847a6f.jpg',
       titleLine1: 'Zarejestruj się',
       titleLine2: 'w Polyglot Kids',
-      description: 'Zarejestruj swoje dziecko w Polyglot Kids, aby odkrywać nowe możliwości i uczyć się amerykańskiego angielskiego, brytyjskiego angielskiego lub polskiego z profesjonalistami.',
+      description: 'Zarejestruj swoje dziecko w Polyglot Kids, aby odkrywać nowe możliwości i uczyć się angielskiego, hiszpańskiego lub niemieckiego z profesjonalistami.',
       linkText: 'Zarejestruj się',
       link: "/registration/applicationForm"
     },
@@ -69,7 +69,7 @@ export class HomeComponent {
       icon: 'https://storage.googleapis.com/a1aa/image/a15d0c59-0db1-4c8f-a202-c3be8bc4516f.jpg',
       titleLine1: 'Artykuły / Blogi',
       titleLine2: 'Poznaj je',
-      description: 'Odkrywaj ciekawe i edukacyjne artykuły dla rodziców i uczniów! Od wskazówek językowych po kreatywne aktywności — ucz się amerykańskiego angielskiego, brytyjskiego angielskiego lub polskiego w inspirujący sposób.',
+      description: 'Odkrywaj ciekawe i edukacyjne artykuły dla rodziców i uczniów! Od wskazówek językowych po kreatywne aktywności — ucz się angielskiego, hiszpańskiego lub niemieckiego w inspirujący sposób.',
       linkText: 'Więcej',
       link: '/blogs'
     }
