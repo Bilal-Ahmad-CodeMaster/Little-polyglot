@@ -1,30 +1,28 @@
-<footer class="bg-orange-200 text-black text-center py-6 relative mt-10">
-  <div class="flex flex-wrap justify-center gap-8 text-sm font-medium">
-    <a routerLink="" class="hover:text-primary-hover ">Statute</a>
-    <a routerLink="" class="hover:text-primary-hover ">Privacy Policy</a>
-    <a routerLink="/blogs/education" class="hover:text-primary-hover ">Education</a>
-    <a routerLink="/blogs/creativeLearning" class="hover:text-primary-hover ">Creative learning</a>
-    <a routerLink="/blogs/interestingPlaces" class="hover:text-primary-hover ">Interesting places</a>
-    <a routerLink="/about" class="hover:text-primary-hover ">About us</a>
-    <a routerLink="/contact" class="hover:text-primary-hover ">Contact</a>
-  </div>
+<footer class="mt-12 border-t border-[#f1e6df] bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#FF6B35]">Polyglot Kids</p>
+        <h2 class="mt-2 text-2xl font-bold text-slate-900">Blog dla rodziców i uczniów</h2>
+        <p class="mt-3 max-w-xl text-sm leading-7 text-slate-600">
+          Artykuły o wychowaniu, kreatywnej nauce i rozwoju językowym dzieci w przyjaznej, nowoczesnej formie.
+        </p>
+      </div>
 
-  <div class="mt-4">
-    <button (click)="scrollToTop()"
-      class="flex flex-col items-center justify-center mx-auto text-sm font-semibold hover:text-primary-hover ">
-      <span class="text-xl">↑</span>
-      Back to top
-    </button>
-  </div>
+      <div class="flex flex-wrap gap-3 text-sm font-semibold text-slate-600">
+        <a routerLink="/blogs" class="rounded-full border border-slate-200 px-4 py-2 transition hover:border-[#FF6B35] hover:text-[#FF6B35]">Wszystkie posty</a>
+        <a routerLink="/blogs/education" class="rounded-full border border-slate-200 px-4 py-2 transition hover:border-[#FF6B35] hover:text-[#FF6B35]">Wychowanie</a>
+        <a routerLink="/blogs/creativeLearning" class="rounded-full border border-slate-200 px-4 py-2 transition hover:border-[#FF6B35] hover:text-[#FF6B35]">Kreatywna nauka</a>
+        <a routerLink="/blogs/interestingPlaces" class="rounded-full border border-slate-200 px-4 py-2 transition hover:border-[#FF6B35] hover:text-[#FF6B35]">Ciekawe miejsca</a>
+        <a routerLink="/blogs/contact" class="rounded-full border border-slate-200 px-4 py-2 transition hover:border-[#FF6B35] hover:text-[#FF6B35]">Kontakt</a>
+      </div>
+    </div>
 
-  <!-- Floating pink circle icon -->
-  <div
-    class="fixed left-4 bottom-10 z-50 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-lg">
-    <span class="text-xl font-semibold">CO</span>
-  </div>
-
-  <!-- ReCaptcha or any floating element -->
-  <div class="fixed right-2 bottom-4 z-50">
-    <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+    <div class="mt-8 flex flex-col gap-4 border-t border-slate-100 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© Polyglot Kids Blog. Wszystkie prawa zastrzeżone.</p>
+      <button (click)="scrollToTop()" class="font-semibold text-[#FF6B35] hover:underline">
+        Wróć na górę
+      </button>
+    </div>
   </div>
 </footer>

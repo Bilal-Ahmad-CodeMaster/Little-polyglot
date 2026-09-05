@@ -1,3 +1,31 @@
-.activlink{
-    color:#e60076 !important ;
+.activlink {
+  background: #ff6b35;
+  border-color: #ff6b35;
+  color: #fff !important;
+  box-shadow: 0 12px 24px rgba(255, 107, 53, 0.2);
+}
+
+.blog-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.blog-nav-pill:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
