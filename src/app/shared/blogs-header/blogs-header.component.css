@@ -23,6 +23,18 @@
   color: #ff6b35;
 }
 
+.blog-nav-pill--mobile {
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  background: #fffaf7;
+}
+
+.blog-mobile-drawer {
+  will-change: transform;
+}
+
 .group:hover > .blog-hover-panel,
 .group:focus-within > .blog-hover-panel {
   opacity: 1;

@@ -27,8 +27,16 @@ export class BlogsHeaderComponent {
     });
   }
 
-  onBlogClick(id: string) {
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMobileMenu() {
     this.isMenuOpen = false;
+  }
+
+  onBlogClick(id: string) {
+    this.closeMobileMenu();
     this.router.navigate(['/blog', id]);
   }
 

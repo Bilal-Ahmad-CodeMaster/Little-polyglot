@@ -7,7 +7,7 @@
 
       <button
         class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700 sm:hidden"
-        (click)="isMenuOpen = !isMenuOpen"
+        (click)="toggleMenu()"
         aria-label="Przełącz menu bloga">
         <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
       </button>
@@ -17,12 +17,19 @@
       </a>
     </div>
 
-
+    <div class="border-t border-[#f3ebe6] py-4 text-center">
+      <a routerLink="/blogs" class="inline-flex flex-col items-center">
+        <img src="../../../../../public/favicon.ico" alt="Polyglot Kids" class="mb-2 h-10 w-10 rounded-xl" />
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[#FF6B35]">Polyglot Kids</p>
+        <h1 class="mt-1.5 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">Blog dla rodziców i uczniów</h1>
+      </a>
+      <p class="mx-auto mt-2 max-w-2xl text-sm leading-6 text-slate-500">
+        Porady dla rodziców, inspiracje do nauki i praktyczne wskazówki językowe w jednym miejscu.
+      </p>
     </div>
 
     <nav
-      [ngClass]="isMenuOpen ? 'flex' : 'hidden sm:flex'"
-      class="flex-col items-center gap-2 border-t border-[#f3ebe6] py-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
+      class="hidden flex-col items-center gap-2 border-t border-[#f3ebe6] py-3 sm:flex sm:flex-row sm:flex-wrap sm:justify-center sm:gap-2">
       <a routerLink="/blogs" routerLinkActive="activlink" [routerLinkActiveOptions]="{ exact: true }" class="blog-nav-pill">
         Wszystkie posty
       </a>
@@ -94,9 +101,76 @@
       <a routerLink="/about" routerLinkActive="activlink" class="blog-nav-pill">
         O nas
       </a>
-      <a routerLink="/blogs/contact" routerLinkActive="activlink" class="blog-nav-pill sm:hidden">
-        Kontakt
-      </a>
+    </nav>
+  </div>
+
+  <div class="sm:hidden" [class.pointer-events-none]="!isMenuOpen">
+    <button
+      type="button"
+      aria-label="Zamknij menu bloga"
+      class="fixed inset-0 z-40 bg-slate-900/25 transition-opacity duration-300"
+      [ngClass]="isMenuOpen ? 'opacity-100' : 'opacity-0'"
+      (click)="closeMobileMenu()"></button>
+
+    <nav
+      class="blog-mobile-drawer fixed right-0 top-0 z-50 flex h-screen w-[min(86vw,22rem)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out"
+      [ngClass]="isMenuOpen ? 'translate-x-0' : 'translate-x-full'">
+      <div class="flex items-center justify-between border-b border-[#f3ebe6] px-5 py-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-[#FF6B35]">Blog menu</p>
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-700"
+          (click)="closeMobileMenu()"
+          aria-label="Zamknij menu">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="flex flex-1 flex-col gap-3 overflow-y-auto px-5 py-5">
+        <a
+          routerLink="/blogs"
+          routerLinkActive="activlink"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          Wszystkie posty
+        </a>
+        <a
+          routerLink="/blogs/education"
+          routerLinkActive="activlink"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          Wychowanie
+        </a>
+        <a
+          routerLink="/blogs/creativeLearning"
+          routerLinkActive="activlink"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          Kreatywna nauka
+        </a>
+        <a
+          routerLink="/blogs/interestingPlaces"
+          routerLinkActive="activlink"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          Ciekawe miejsca
+        </a>
+        <a
+          routerLink="/about"
+          routerLinkActive="activlink"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          O nas
+        </a>
+        <a
+          routerLink="/blogs/contact"
+          routerLinkActive="activlink"
+          class="blog-nav-pill blog-nav-pill--mobile"
+          (click)="closeMobileMenu()">
+          Kontakt
+        </a>
+      </div>
     </nav>
   </div>
 </header>
