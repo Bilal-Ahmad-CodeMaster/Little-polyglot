@@ -15,6 +15,7 @@
           controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
           [attr.aria-hidden]="!isActive(i)"
           (canplay)="onCanPlay(i)"
+          (ended)="onVideoEnded(i)"
         >
           Twoja przeglądarka nie obsługuje odtwarzania wideo HTML5.
         </video>

@@ -33,7 +33,6 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
 
   private readonly loadedIndices = new Set<number>();
   private readonly isBrowser: boolean;
-  private rotationTimer?: ReturnType<typeof setInterval>;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -50,13 +49,10 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     });
 
     queueMicrotask(() => void this.syncPlayback());
-    this.startRotation();
   }
 
   ngOnDestroy(): void {
-    if (this.rotationTimer) {
-      clearInterval(this.rotationTimer);
-    }
+    // No timers to clean up; the carousel advances on video end.
   }
 
   shouldLoad(index: number): boolean {
@@ -73,24 +69,20 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  onVideoEnded(index: number): void {
+    if (index !== this.activeIndex) return;
+
+    this.activeIndex = this.nextIndex(this.activeIndex);
+    this.markLoaded(this.activeIndex);
+    this.markLoaded(this.nextIndex(this.activeIndex));
+    void this.syncPlayback();
+  }
+
   toggleMute(): void {
     this.isMuted = !this.isMuted;
     this.videoRefs?.forEach((videoRef: ElementRef<HTMLVideoElement>) => {
       videoRef.nativeElement.muted = this.isMuted;
     });
-  }
-
-  private startRotation(): void {
-    if (this.rotationTimer) {
-      clearInterval(this.rotationTimer);
-    }
-
-    this.rotationTimer = setInterval(() => {
-      this.activeIndex = this.nextIndex(this.activeIndex);
-      this.markLoaded(this.activeIndex);
-      this.markLoaded(this.nextIndex(this.activeIndex));
-      void this.syncPlayback();
-    }, 5000);
   }
 
   private markLoaded(index: number): void {
