@@ -2,11 +2,12 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CourseDetailCardComponent } from "../../../components/main/course-detail-card/course-detail-card.component";
 import { OpenionCrousalComponent } from "../../../components/main/openion-crousal/openion-crousal.component";
+import { VideoHeroComponent } from "../../../components/main/video-hero/video-hero.component";
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor, CourseDetailCardComponent, OpenionCrousalComponent, CommonModule, RouterLink],
+  imports: [NgFor, CourseDetailCardComponent, OpenionCrousalComponent, VideoHeroComponent, CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

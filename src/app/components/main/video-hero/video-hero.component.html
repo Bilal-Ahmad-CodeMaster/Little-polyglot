@@ -1,0 +1,105 @@
+<div class="video-hero relative w-full" aria-label="Galeria wideo Polyglot Kids">
+  <!-- Video stack with crossfade -->
+  <div class="video-hero__frame relative aspect-[4/3] sm:aspect-video w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5">
+    @for (video of videos; track video.src; let i = $index) {
+      <video
+        #heroVideo
+        class="video-hero__video absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out"
+        [class.video-hero__video--active]="isActive(i)"
+        [attr.src]="shouldLoad(i) ? video.src : null"
+        [attr.poster]="shouldLoad(i) ? null : undefined"
+        playsinline
+        preload="metadata"
+        [muted]="isMuted"
+        [attr.aria-hidden]="!isActive(i)"
+        [attr.tabindex]="isActive(i) ? 0 : -1"
+        (loadedmetadata)="onLoadedMetadata(i)"
+        (ended)="onVideoEnded(i)"
+      >
+        Twoja przeglądarka nie obsługuje odtwarzania wideo HTML5.
+      </video>
+    }
+
+    <!-- Readability overlays -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent"></div>
+
+    <!-- Top controls -->
+    <div class="absolute top-3 right-3 z-20 flex items-center gap-2">
+      <button
+        type="button"
+        class="video-hero__control"
+        (click)="togglePlay()"
+        [attr.aria-label]="isPlaying ? 'Wstrzymaj wideo' : 'Odtwórz wideo'"
+      >
+        <i class="fas" [ngClass]="isPlaying ? 'fa-pause' : 'fa-play'"></i>
+      </button>
+      <button
+        type="button"
+        class="video-hero__control"
+        (click)="toggleMute()"
+        [attr.aria-label]="isMuted ? 'Włącz dźwięk' : 'Wycisz wideo'"
+      >
+        <i class="fas" [ngClass]="isMuted ? 'fa-volume-mute' : 'fa-volume-up'"></i>
+      </button>
+    </div>
+
+    <!-- Side navigation -->
+    <button
+      type="button"
+      class="video-hero__nav video-hero__nav--prev hidden sm:flex"
+      (click)="previous()"
+      aria-label="Poprzednie wideo"
+    >
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button
+      type="button"
+      class="video-hero__nav video-hero__nav--next hidden sm:flex"
+      (click)="next()"
+      aria-label="Następne wideo"
+    >
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Bottom bar: label, dots, progress -->
+    <div class="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-4">
+      <p class="mb-2 text-xs font-medium text-white/90 drop-shadow-sm sm:text-sm">
+        {{ videos[activeIndex].label }}
+      </p>
+
+      <div class="mb-2 h-1 overflow-hidden rounded-full bg-white/25">
+        <div
+          class="h-full rounded-full bg-white transition-[width] duration-150 ease-linear"
+          [style.width.%]="progress"
+        ></div>
+      </div>
+
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-1.5" role="tablist" aria-label="Wybierz wideo">
+          @for (video of videos; track video.src; let i = $index) {
+            <button
+              type="button"
+              role="tab"
+              class="video-hero__dot"
+              [class.video-hero__dot--active]="isActive(i)"
+              [attr.aria-selected]="isActive(i)"
+              [attr.aria-label]="'Przejdź do wideo ' + (i + 1)"
+              (click)="goTo(i)"
+            ></button>
+          }
+        </div>
+
+        <div class="flex items-center gap-2 sm:hidden">
+          <button type="button" class="video-hero__control video-hero__control--compact" (click)="previous()" aria-label="Poprzednie">
+            <i class="fas fa-chevron-left text-xs"></i>
+          </button>
+          <span class="text-[11px] font-semibold text-white/90">{{ activeIndex + 1 }}/{{ videos.length }}</span>
+          <button type="button" class="video-hero__control video-hero__control--compact" (click)="next()" aria-label="Następne">
+            <i class="fas fa-chevron-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
