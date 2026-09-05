@@ -12,6 +12,12 @@
         [routerLinkActiveOptions]="{ exact: true }" class="hover:text-primary-hover">Profile</a>
 </nav>
 
-<main class="p-6">
+<main class="admin-main relative p-6">
+    <div *ngIf="loader.isLoading" class="admin-loader-overlay" role="status" aria-live="polite" aria-label="Loading admin data">
+        <div class="admin-loader-card">
+            <div class="admin-loader-spinner"></div>
+            <p class="admin-loader-text">Loading admin data...</p>
+        </div>
+    </div>
     <router-outlet></router-outlet>
 </main>

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 import { ApiServicesService } from '../../../services/api-services.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class ProfileComponent implements OnInit {
   imageUploadError: string | null = null;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder, private api: ApiServicesService) { }
+  constructor(private fb: FormBuilder, private api: ApiServicesService, private router: Router) { }
 
   ngOnInit(): void {
     this.editForm = this.fb.group({
@@ -103,5 +105,21 @@ for (const [key, value] of formData.entries()) {
         this.imageUploadError = err?.error?.message || 'Something went wrong.';
       }
     });
+  }
+
+  logout(): void {
+    this.api.logout()
+      .pipe(
+        finalize(() => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('userDetail');
+          this.router.navigate(['/login']);
+        })
+      )
+      .subscribe({
+        error: (error) => {
+          console.error('Logout failed, clearing local session anyway.', error);
+        },
+      });
   }
 }

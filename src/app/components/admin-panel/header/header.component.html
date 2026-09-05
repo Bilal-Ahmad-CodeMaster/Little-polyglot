@@ -1,4 +1,4 @@
-<header class="flex justify-between items-center px-6 py-4 bg-primary text-white shadow">
+<header class="flex justify-between items-center gap-4 px-6 py-4 bg-primary text-white shadow">
     <!-- Left Side: Profile Image -->
     <div routerLink="/adminPanel/profile" class="flex items-center space-x-4">
         <div class="relative">
@@ -10,8 +10,17 @@
         <span class="text-lg font-semibold">Admin Panel</span>
     </div>
 
-    <!-- Right Side: Logo -->
-    <div routerLink="/" class="flex items-center space-x-3 cursor-pointer">
-        <span class="text-xl font-bold tracking-wide">Polyglot Kids</span>
+    <!-- Right Side: Actions -->
+    <div class="flex items-center gap-3">
+        <div routerLink="/" class="hidden cursor-pointer items-center space-x-3 sm:flex">
+            <span class="text-xl font-bold tracking-wide">Polyglot Kids</span>
+        </div>
+
+        <button
+            type="button"
+            (click)="logout()"
+            class="rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10">
+            Logout
+        </button>
     </div>
 </header>

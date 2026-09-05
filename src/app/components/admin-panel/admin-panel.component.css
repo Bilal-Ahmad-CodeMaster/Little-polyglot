@@ -1,0 +1,48 @@
+.admin-main {
+  min-height: calc(100vh - 8rem);
+}
+
+.admin-loader-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.admin-loader-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid #f1dfd6;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  padding: 0.9rem 1.1rem;
+}
+
+.admin-loader-spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #ffd2c1;
+  border-top-color: #ff6b35;
+  border-radius: 9999px;
+  animation: admin-loader-spin 0.7s linear infinite;
+}
+
+.admin-loader-text {
+  margin: 0;
+  color: #334155;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@keyframes admin-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

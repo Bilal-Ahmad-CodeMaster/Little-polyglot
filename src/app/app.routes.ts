@@ -27,6 +27,7 @@ import { InterestingPlacesComponent } from './pages/blogs/interesting-places/int
 import { BlogsComponent } from './components/admin-panel/blogs/blogs.component';
 import { BlogContactUsComponent } from './pages/blogs/blog-contact-us/blog-contact-us.component';
 import { BlogDetailsPageComponent } from './pages/blogs/blog-details-page/blog-details-page.component';
+import { adminAuthGuard } from './guards/admin-auth.guard';
 
 
 export const routes: Routes = [
@@ -57,6 +58,7 @@ export const routes: Routes = [
     {
         path: 'adminPanel',
         component: AdminPanelComponent,
+        canActivate: [adminAuthGuard],
         children: [
             { path: '', component: DashboardComponent },
             { path: 'dashboard', component: DashboardComponent },

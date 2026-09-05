@@ -13,6 +13,9 @@ export class ApiServicesService {
   login(credentials: { email: string; password: string }) {
     return this.http.post(`${API_CONFIG['login']}`, credentials);
   }
+  logout() {
+    return this.http.get(`${API_CONFIG['logout']}`);
+  }
   updateProfile(payload: FormData) {
     return this.http.patch(`${API_CONFIG['updateProfile']}`, payload);
   }
