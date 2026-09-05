@@ -1,13 +1,13 @@
+.video-hero__frame {
+  /* Matches TikTok / Reels 9:16 vertical format */
+  aspect-ratio: 9 / 16;
+}
+
 .video-hero__video {
   opacity: 0;
   z-index: 0;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-}
-
-.video-hero__frame {
-  /* Letterbox/pillarbox bars when video ratio differs from 16:9 */
-  background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
 }
 
 .video-hero__video--active {
@@ -46,8 +46,8 @@
   transform: translateY(-50%);
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: rgba(15, 23, 42, 0.45);
@@ -62,11 +62,11 @@
 }
 
 .video-hero__nav--prev {
-  left: 0.75rem;
+  left: 0.5rem;
 }
 
 .video-hero__nav--next {
-  right: 0.75rem;
+  right: 0.5rem;
 }
 
 .video-hero__dot {

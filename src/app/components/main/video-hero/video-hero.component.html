@@ -1,28 +1,28 @@
-<div class="video-hero relative w-full" aria-label="Galeria wideo Polyglot Kids">
-  <!-- Video stack with crossfade -->
-  <div class="video-hero__frame relative aspect-video w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 bg-slate-900">
+<div class="video-hero relative mx-auto w-full max-w-[260px] min-[400px]:max-w-[300px] sm:max-w-[320px] md:max-w-[340px] lg:max-w-[380px]" aria-label="Galeria wideo Polyglot Kids">
+  <!-- TikTok-style 9:16 vertical frame -->
+  <div class="video-hero__frame relative aspect-[9/16] w-full overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/10">
     @for (video of videos; track video.src; let i = $index) {
       <video
         #heroVideo
-        class="video-hero__video absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ease-in-out"
+        class="video-hero__video absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ease-in-out"
         [class.video-hero__video--active]="isActive(i)"
         [attr.src]="shouldLoad(i) ? video.src : null"
-        [attr.poster]="shouldLoad(i) ? null : undefined"
         playsinline
-        preload="metadata"
+        [attr.preload]="isActive(i) ? 'auto' : 'metadata'"
         [muted]="isMuted"
+        [autoplay]="isActive(i)"
         [attr.aria-hidden]="!isActive(i)"
         [attr.tabindex]="isActive(i) ? 0 : -1"
         (loadedmetadata)="onLoadedMetadata(i)"
+        (canplay)="onCanPlay(i)"
         (ended)="onVideoEnded(i)"
       >
         Twoja przeglądarka nie obsługuje odtwarzania wideo HTML5.
       </video>
     }
 
-    <!-- Readability overlays -->
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent"></div>
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent"></div>
+    <!-- Bottom gradient for controls -->
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10"></div>
 
     <!-- Top controls -->
     <div class="absolute top-3 right-3 z-20 flex items-center gap-2">
@@ -44,7 +44,7 @@
       </button>
     </div>
 
-    <!-- Side navigation -->
+    <!-- Side navigation (desktop) -->
     <button
       type="button"
       class="video-hero__nav video-hero__nav--prev hidden sm:flex"
@@ -62,19 +62,8 @@
       <i class="fas fa-chevron-right"></i>
     </button>
 
-    <!-- Bottom bar: label, dots, progress -->
+    <!-- Bottom: dots only -->
     <div class="absolute inset-x-0 bottom-0 z-20 p-3 sm:p-4">
-      <p class="mb-2 text-xs font-medium text-white/90 drop-shadow-sm sm:text-sm">
-        {{ videos[activeIndex].label }}
-      </p>
-
-      <div class="mb-2 h-1 overflow-hidden rounded-full bg-white/25">
-        <div
-          class="h-full rounded-full bg-white transition-[width] duration-150 ease-linear"
-          [style.width.%]="progress"
-        ></div>
-      </div>
-
       <div class="flex items-center justify-between gap-3">
         <div class="flex items-center gap-1.5" role="tablist" aria-label="Wybierz wideo">
           @for (video of videos; track video.src; let i = $index) {

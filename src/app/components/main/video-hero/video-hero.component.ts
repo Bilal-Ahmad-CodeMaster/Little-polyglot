@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   Inject,
-  OnDestroy,
   PLATFORM_ID,
   QueryList,
   ViewChildren,
@@ -22,7 +21,7 @@ export interface HeroVideo {
   templateUrl: './video-hero.component.html',
   styleUrl: './video-hero.component.css',
 })
-export class VideoHeroComponent implements AfterViewInit, OnDestroy {
+export class VideoHeroComponent implements AfterViewInit {
   readonly videos: HeroVideo[] = [
     { src: '/public/assets/videos/1.mp4', label: 'Zajęcia językowe 1' },
     { src: '/public/assets/videos/2.mp4', label: 'Zajęcia językowe 2' },
@@ -34,12 +33,10 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   activeIndex = 0;
   isPlaying = true;
   isMuted = true;
-  progress = 0;
 
   @ViewChildren('heroVideo') videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 
   private readonly loadedIndices = new Set<number>();
-  private progressFrame?: number;
   private readonly isBrowser: boolean;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
@@ -57,13 +54,6 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     });
 
     queueMicrotask(() => void this.syncPlayback());
-    this.startProgressLoop();
-  }
-
-  ngOnDestroy(): void {
-    if (this.progressFrame) {
-      cancelAnimationFrame(this.progressFrame);
-    }
   }
 
   shouldLoad(index: number): boolean {
@@ -78,7 +68,6 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     if (index === this.activeIndex || index < 0 || index >= this.videos.length) return;
 
     this.activeIndex = index;
-    this.progress = 0;
     this.markLoaded(index);
     this.markLoaded(this.nextIndex(index));
 
@@ -114,6 +103,12 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  onCanPlay(index: number): void {
+    if (index === this.activeIndex && this.isPlaying) {
+      void this.playActiveVideo();
+    }
+  }
+
   private markLoaded(index: number): void {
     this.loadedIndices.add(index);
   }
@@ -132,6 +127,19 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     });
   }
 
+  private async playActiveVideo(): Promise<void> {
+    const active = this.getActiveVideo();
+    if (!active || !this.isPlaying) return;
+
+    active.muted = this.isMuted;
+    try {
+      await active.play();
+    } catch {
+      // Browser may block until user gesture; retry on next interaction.
+      this.isPlaying = true;
+    }
+  }
+
   private async syncPlayback(): Promise<void> {
     if (!this.isBrowser || !this.videoRefs) return;
 
@@ -145,31 +153,10 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     const active = this.getActiveVideo();
     if (!active) return;
 
-    active.currentTime = 0;
-    this.progress = 0;
-
     if (this.isPlaying) {
-      try {
-        await active.play();
-      } catch {
-        this.isPlaying = false;
-      }
+      await this.playActiveVideo();
     } else {
       active.pause();
     }
-  }
-
-  private startProgressLoop(): void {
-    if (!this.isBrowser) return;
-
-    const tick = () => {
-      const active = this.getActiveVideo();
-      if (active?.duration && Number.isFinite(active.duration)) {
-        this.progress = (active.currentTime / active.duration) * 100;
-      }
-      this.progressFrame = requestAnimationFrame(tick);
-    };
-
-    this.progressFrame = requestAnimationFrame(tick);
   }
 }
