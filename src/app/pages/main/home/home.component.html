@@ -1,38 +1,26 @@
-<!-- hero section  -->
-
-<div class="relative overflow-hidden bg-hero-section mb-5 mt-[10px]">
-  <div class="absolute inset-0 bg-gradient-to-br from-primary-bg/40 via-transparent to-primary/5 pointer-events-none"></div>
-  <div class="relative max-w-7xl mx-auto md:px-4 pb-10 md:pb-0 flex flex-col-reverse md:flex-row items-center justify-between gap-8">
-    <!-- Text Content -->
-    <div class="w-full md:w-1/2 flex flex-col gap-4 text-center md:text-left px-4">
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
-
-        Wzmacnianie Młodych Umysłów<br />
-        <span class="text-primary-hover">Poprzez Język i Nauczanie</span>
-
-      </h1>
-      <p class="text-lg text-gray-600 max-w-xl text-justify md:text-left mx-auto md:mx-0">
-        Kursy angielskiego, hiszpańskiego i niemieckiego dla dzieci i młodzieży – sprawdzone
-        metody, doświadczeni nauczyciele (również native speakerzy) i nauka pełna radości.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 mt-6 justify-center md:justify-start px-4 sm:px-10 md:px-0">
-        <a routerLink="/schools"
-          class="cursor-pointer text-center px-4 py-3 text-sm font-medium text-primary border border-primary rounded-full hover:bg-primary hover:text-white transition">
-          Znajdź pobliskie kampusy
-        </a>
-        <a routerLink="/courses"
-          class="text-center cursor-pointer px-4 py-3 text-sm font-medium text-white bg-primary rounded-full hover:bg-primary-hover transition">
-          Odkryj nasze programy
-        </a>
-      </div>
-    </div>
-
-    <!-- Video Hero (TikTok 9:16) -->
-    <div class="w-full md:w-auto md:flex-shrink-0 flex justify-center md:justify-end mb-6 md:mb-0 px-4 md:px-0">
-      <app-video-hero></app-video-hero>
+<!-- hero section — full-width video background with text overlay -->
+<app-video-hero>
+  <div class="max-w-2xl text-center md:text-left">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight drop-shadow-lg">
+      Wzmacnianie Młodych Umysłów<br />
+      <span class="text-primary-bg">Poprzez Język i Nauczanie</span>
+    </h1>
+    <p class="mt-5 text-base sm:text-lg text-white/90 max-w-xl text-justify md:text-left mx-auto md:mx-0 leading-relaxed drop-shadow">
+      Kursy angielskiego, hiszpańskiego i niemieckiego dla dzieci i młodzieży – sprawdzone
+      metody, doświadczeni nauczyciele (również native speakerzy) i nauka pełna radości.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
+      <a routerLink="/schools"
+        class="cursor-pointer text-center px-6 py-3 text-sm font-semibold text-white border-2 border-white/80 rounded-full hover:bg-white hover:text-primary transition backdrop-blur-sm">
+        Znajdź pobliskie kampusy
+      </a>
+      <a routerLink="/courses"
+        class="text-center cursor-pointer px-6 py-3 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary-hover transition shadow-lg">
+        Odkryj nasze programy
+      </a>
     </div>
   </div>
-</div>
+</app-video-hero>
 
 <app-course-detail-card></app-course-detail-card>
 

@@ -9,11 +9,6 @@ import {
   ViewChildren,
 } from '@angular/core';
 
-export interface HeroVideo {
-  src: string;
-  label: string;
-}
-
 @Component({
   selector: 'app-video-hero',
   standalone: true,
@@ -22,16 +17,15 @@ export interface HeroVideo {
   styleUrl: './video-hero.component.css',
 })
 export class VideoHeroComponent implements AfterViewInit {
-  readonly videos: HeroVideo[] = [
-    { src: '/public/assets/videos/1.mp4', label: 'Zajęcia językowe 1' },
-    { src: '/public/assets/videos/2.mp4', label: 'Zajęcia językowe 2' },
-    { src: '/public/assets/videos/3.mp4', label: 'Zajęcia językowe 3' },
-    { src: '/public/assets/videos/4.mp4', label: 'Zajęcia językowe 4' },
-    { src: '/public/assets/videos/5.mp4', label: 'Zajęcia językowe 5' },
+  readonly videos = [
+    '/public/assets/videos/1.mp4',
+    '/public/assets/videos/2.mp4',
+    '/public/assets/videos/3.mp4',
+    '/public/assets/videos/4.mp4',
+    '/public/assets/videos/5.mp4',
   ];
 
   activeIndex = 0;
-  isPlaying = true;
   isMuted = true;
 
   @ViewChildren('heroVideo') videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
@@ -49,9 +43,7 @@ export class VideoHeroComponent implements AfterViewInit {
     this.markLoaded(this.activeIndex);
     this.markLoaded(this.nextIndex(this.activeIndex));
 
-    this.videoRefs.changes.subscribe(() => {
-      void this.syncPlayback();
-    });
+    this.videoRefs.changes.subscribe(() => void this.syncPlayback());
 
     queueMicrotask(() => void this.syncPlayback());
   }
@@ -74,39 +66,22 @@ export class VideoHeroComponent implements AfterViewInit {
     queueMicrotask(() => void this.syncPlayback());
   }
 
-  previous(): void {
-    this.goTo((this.activeIndex - 1 + this.videos.length) % this.videos.length);
-  }
-
-  next(): void {
+  onVideoEnded(index: number): void {
+    if (index !== this.activeIndex) return;
     this.goTo(this.nextIndex(this.activeIndex));
   }
 
-  togglePlay(): void {
-    this.isPlaying = !this.isPlaying;
-    void this.syncPlayback();
+  onCanPlay(index: number): void {
+    if (index === this.activeIndex) {
+      void this.playActiveVideo();
+    }
   }
 
   toggleMute(): void {
     this.isMuted = !this.isMuted;
-    this.applyMuteState();
-  }
-
-  onVideoEnded(index: number): void {
-    if (index !== this.activeIndex) return;
-    this.next();
-  }
-
-  onLoadedMetadata(index: number): void {
-    if (index === this.activeIndex) {
-      void this.syncPlayback();
-    }
-  }
-
-  onCanPlay(index: number): void {
-    if (index === this.activeIndex && this.isPlaying) {
-      void this.playActiveVideo();
-    }
+    this.videoRefs?.forEach(({ nativeElement }) => {
+      nativeElement.muted = this.isMuted;
+    });
   }
 
   private markLoaded(index: number): void {
@@ -121,22 +96,15 @@ export class VideoHeroComponent implements AfterViewInit {
     return this.videoRefs?.get(this.activeIndex)?.nativeElement;
   }
 
-  private applyMuteState(): void {
-    this.videoRefs?.forEach(({ nativeElement }) => {
-      nativeElement.muted = this.isMuted;
-    });
-  }
-
   private async playActiveVideo(): Promise<void> {
     const active = this.getActiveVideo();
-    if (!active || !this.isPlaying) return;
+    if (!active) return;
 
     active.muted = this.isMuted;
     try {
       await active.play();
     } catch {
-      // Browser may block until user gesture; retry on next interaction.
-      this.isPlaying = true;
+      // Autoplay blocked until user interacts — muted retry on next canplay.
     }
   }
 
@@ -144,19 +112,17 @@ export class VideoHeroComponent implements AfterViewInit {
     if (!this.isBrowser || !this.videoRefs) return;
 
     this.videoRefs.forEach(({ nativeElement }, index) => {
+      nativeElement.muted = this.isMuted;
+      nativeElement.controls = false;
       if (index !== this.activeIndex) {
         nativeElement.pause();
       }
-      nativeElement.muted = this.isMuted;
     });
 
     const active = this.getActiveVideo();
     if (!active) return;
 
-    if (this.isPlaying) {
-      await this.playActiveVideo();
-    } else {
-      active.pause();
-    }
+    active.currentTime = 0;
+    await this.playActiveVideo();
   }
 }
