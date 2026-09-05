@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from "@angular/common";
 import {
   AfterViewInit,
   Component,
@@ -8,34 +8,31 @@ import {
   PLATFORM_ID,
   QueryList,
   ViewChildren,
-} from '@angular/core';
+} from "@angular/core";
 
 @Component({
-  selector: 'app-video-hero',
+  selector: "app-video-hero",
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './video-hero.component.html',
-  styleUrl: './video-hero.component.css',
+  templateUrl: "./video-hero.component.html",
+  styleUrl: "./video-hero.component.css",
 })
 export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   readonly videos = [
-    '/public/assets/videos/1.mp4',
-    '/public/assets/videos/2.mp4',
-    '/public/assets/videos/3.mp4',
-    '/public/assets/videos/4.mp4',
-    '/public/assets/videos/5.mp4',
+    "/public/assets/videos/1.mp4",
+    "/public/assets/videos/2.mp4",
+    "/public/assets/videos/3.mp4",
+    "/public/assets/videos/4.mp4",
+    "/public/assets/videos/5.mp4",
   ];
 
   activeIndex = 0;
 
-  @ViewChildren('heroVideo') videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
+  @ViewChildren("heroVideo") videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 
   private readonly loadedIndices = new Set<number>();
   private readonly isBrowser: boolean;
-  private slideTimer?: ReturnType<typeof setInterval>;
-
-  /** Fade to the next clip every 5 seconds */
-  private readonly slideIntervalMs = 5000;
+  private rotationTimer?: ReturnType<typeof setInterval>;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -47,17 +44,18 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     this.markLoaded(this.activeIndex);
     this.markLoaded(this.nextIndex(this.activeIndex));
 
-    this.videoRefs.changes.subscribe(() => void this.syncPlayback());
+    this.videoRefs.changes.subscribe(() => {
+      void this.syncPlayback();
+    });
 
     queueMicrotask(() => void this.syncPlayback());
-
-    this.slideTimer = setInterval(() => {
-      this.goTo(this.nextIndex(this.activeIndex));
-    }, this.slideIntervalMs);
+    this.startRotation();
   }
 
   ngOnDestroy(): void {
-    if (this.slideTimer) clearInterval(this.slideTimer);
+    if (this.rotationTimer) {
+      clearInterval(this.rotationTimer);
+    }
   }
 
   shouldLoad(index: number): boolean {
@@ -68,20 +66,23 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     return index === this.activeIndex;
   }
 
-  goTo(index: number): void {
-    if (index === this.activeIndex || index < 0 || index >= this.videos.length) return;
-
-    this.activeIndex = index;
-    this.markLoaded(index);
-    this.markLoaded(this.nextIndex(index));
-
-    queueMicrotask(() => void this.syncPlayback());
-  }
-
   onCanPlay(index: number): void {
     if (index === this.activeIndex) {
       void this.playActiveVideo();
     }
+  }
+
+  private startRotation(): void {
+    if (this.rotationTimer) {
+      clearInterval(this.rotationTimer);
+    }
+
+    this.rotationTimer = setInterval(() => {
+      this.activeIndex = this.nextIndex(this.activeIndex);
+      this.markLoaded(this.activeIndex);
+      this.markLoaded(this.nextIndex(this.activeIndex));
+      void this.syncPlayback();
+    }, 5000);
   }
 
   private markLoaded(index: number): void {
@@ -104,17 +105,19 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     try {
       await active.play();
     } catch {
-      // Autoplay blocked — will retry on next canplay.
+      // Muted autoplay can still be deferred by some browsers.
     }
   }
 
   private async syncPlayback(): Promise<void> {
     if (!this.isBrowser || !this.videoRefs) return;
 
-    this.videoRefs.forEach(({ nativeElement }, index) => {
+    this.videoRefs.forEach((videoRef: ElementRef<HTMLVideoElement>, index: number) => {
+      const { nativeElement } = videoRef;
       nativeElement.muted = true;
       nativeElement.controls = false;
-      nativeElement.loop = index === this.activeIndex;
+      nativeElement.loop = false;
+
       if (index !== this.activeIndex) {
         nativeElement.pause();
       }

@@ -1,4 +1,18 @@
-.video-reel__video {
+.video-hero__card {
+  position: relative;
+}
+
+.video-hero__card::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  border-radius: 2.25rem;
+  background: radial-gradient(circle at top right, rgba(255, 107, 53, 0.16), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(255, 107, 53, 0.12), transparent 40%);
+}
+
+.video-hero__video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -6,27 +20,40 @@
   object-fit: cover;
   object-position: center;
   opacity: 0;
-  z-index: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 900ms ease-in-out;
   pointer-events: none;
 }
 
-.video-reel__video--active {
+.video-hero__video--active {
   opacity: 1;
-  z-index: 1;
 }
 
-/* Hide all native browser video controls / timeline */
-.video-reel__video::-webkit-media-controls,
-.video-reel__video::-webkit-media-controls-enclosure,
-.video-reel__video::-webkit-media-controls-timeline,
-.video-reel__video::-webkit-media-controls-current-time-display,
-.video-reel__video::-webkit-media-controls-time-remaining-display {
+.video-hero__video::-webkit-media-controls,
+.video-hero__video::-webkit-media-controls-enclosure,
+.video-hero__video::-webkit-media-controls-timeline,
+.video-hero__video::-webkit-media-controls-current-time-display,
+.video-hero__video::-webkit-media-controls-time-remaining-display {
   display: none !important;
 }
 
+.video-hero__video::-moz-media-controls {
+  display: none !important;
+}
+
+@media (max-width: 1023px) {
+  .video-hero {
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .video-hero {
+    max-width: min(100%, 18.5rem);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .video-reel__video {
+  .video-hero__video {
     transition: none;
   }
 }
