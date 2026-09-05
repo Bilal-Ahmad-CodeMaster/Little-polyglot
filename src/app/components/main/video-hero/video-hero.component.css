@@ -1,6 +1,13 @@
 .video-hero__video {
   opacity: 0;
   z-index: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.video-hero__frame {
+  /* Letterbox/pillarbox bars when video ratio differs from 16:9 */
+  background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
 }
 
 .video-hero__video--active {
