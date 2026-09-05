@@ -31,6 +31,13 @@
   background: #fffaf7;
 }
 
+.blog-nav-pill--mobile.activlink {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8457 100%);
+  border-color: #ff6b35;
+  color: #fff !important;
+  box-shadow: 0 14px 28px rgba(255, 107, 53, 0.22);
+}
+
 .blog-mobile-drawer {
   will-change: transform;
 }
