@@ -40,7 +40,7 @@
             <button *ngFor="let blog of educationBlog" type="button" (click)="onBlogClick(blog._id)" class="blog-hover-item">
               <img [src]="getCover(blog)" [alt]="blog?.title" class="h-12 w-12 rounded-xl object-cover" />
               <div>
-                <p class="line-clamp-2 text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
+                <p class="text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
                 <p class="text-xs text-slate-500">{{ blog?.createdAt | date : 'd MMM y' }}</p>
               </div>
             </button>
@@ -58,7 +58,7 @@
             <button *ngFor="let blog of creativeBlog" type="button" (click)="onBlogClick(blog._id)" class="blog-hover-item">
               <img [src]="getCover(blog)" [alt]="blog?.title" class="h-12 w-12 rounded-xl object-cover" />
               <div>
-                <p class="line-clamp-2 text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
+                <p class="text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
                 <p class="text-xs text-slate-500">{{ blog?.createdAt | date : 'd MMM y' }}</p>
               </div>
             </button>
@@ -76,7 +76,7 @@
             <button *ngFor="let blog of interestingPlaces" type="button" (click)="onBlogClick(blog._id)" class="blog-hover-item">
               <img [src]="getCover(blog)" [alt]="blog?.title" class="h-12 w-12 rounded-xl object-cover" />
               <div>
-                <p class="line-clamp-2 text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
+                <p class="text-sm font-semibold text-slate-800">{{ blog?.title }}</p>
                 <p class="text-xs text-slate-500">{{ blog?.createdAt | date : 'd MMM y' }}</p>
               </div>
             </button>
