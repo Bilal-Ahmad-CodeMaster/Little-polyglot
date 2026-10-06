@@ -7,14 +7,14 @@
           class="video-hero__video"
           [class.video-hero__video--active]="isActive(i)"
           [attr.src]="shouldLoad(i) ? src : null"
-          autoplay
-          muted
+          [muted]="!isActive(i) || isMuted"
           playsinline
           preload="metadata"
           disablePictureInPicture
           controlsList="nodownload noplaybackrate noremoteplayback nofullscreen"
           [attr.aria-hidden]="!isActive(i)"
           (canplay)="onCanPlay(i)"
+          (playing)="onPlaying(i)"
           (ended)="onVideoEnded(i)"
         >
           Twoja przeglądarka nie obsługuje odtwarzania wideo HTML5.

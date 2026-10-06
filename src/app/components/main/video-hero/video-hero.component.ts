@@ -52,7 +52,9 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // No timers to clean up; the carousel advances on video end.
+    this.videoRefs?.forEach((videoRef: ElementRef<HTMLVideoElement>) => {
+      this.silenceVideo(videoRef.nativeElement);
+    });
   }
 
   shouldLoad(index: number): boolean {
@@ -66,7 +68,15 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
   onCanPlay(index: number): void {
     if (index === this.activeIndex) {
       void this.playActiveVideo();
+      return;
     }
+
+    this.silenceVideo(this.videoRefs?.get(index)?.nativeElement);
+  }
+
+  onPlaying(index: number): void {
+    if (index === this.activeIndex) return;
+    this.silenceVideo(this.videoRefs?.get(index)?.nativeElement);
   }
 
   onVideoEnded(index: number): void {
@@ -80,9 +90,7 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
 
   toggleMute(): void {
     this.isMuted = !this.isMuted;
-    this.videoRefs?.forEach((videoRef: ElementRef<HTMLVideoElement>) => {
-      videoRef.nativeElement.muted = this.isMuted;
-    });
+    this.applyAudioState();
   }
 
   private markLoaded(index: number): void {
@@ -97,11 +105,29 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     return this.videoRefs?.get(this.activeIndex)?.nativeElement;
   }
 
+  private silenceVideo(video?: HTMLVideoElement): void {
+    if (!video) return;
+
+    video.pause();
+    video.muted = true;
+    video.volume = 0;
+  }
+
+  private applyAudioState(): void {
+    this.videoRefs?.forEach((videoRef: ElementRef<HTMLVideoElement>, index: number) => {
+      const video = videoRef.nativeElement;
+      const isActive = index === this.activeIndex;
+
+      video.muted = !isActive || this.isMuted;
+      video.volume = isActive && !this.isMuted ? 1 : 0;
+    });
+  }
+
   private async playActiveVideo(): Promise<void> {
     const active = this.getActiveVideo();
     if (!active) return;
 
-    active.muted = this.isMuted;
+    this.applyAudioState();
     try {
       await active.play();
     } catch {
@@ -113,13 +139,13 @@ export class VideoHeroComponent implements AfterViewInit, OnDestroy {
     if (!this.isBrowser || !this.videoRefs) return;
 
     this.videoRefs.forEach((videoRef: ElementRef<HTMLVideoElement>, index: number) => {
-      const { nativeElement } = videoRef;
-      nativeElement.muted = this.isMuted;
-      nativeElement.controls = false;
-      nativeElement.loop = false;
+      const video = videoRef.nativeElement;
+      video.controls = false;
+      video.loop = false;
+      video.autoplay = false;
 
       if (index !== this.activeIndex) {
-        nativeElement.pause();
+        this.silenceVideo(video);
       }
     });
 
